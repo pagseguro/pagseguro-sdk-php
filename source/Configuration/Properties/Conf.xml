@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+    <environment>production</environment><!-- sandbox or production -->
+    <credentials>
+        <account>
+            <email>your_pagseguro_email</email>
+            <production>
+                <token>your_production_token</token>
+            </production>
+            <sandbox>
+                <token>your_sandbox_token</token>
+            </sandbox>
+        </account>
+        <application>
+            <production>
+                <appId>your_production_application_id</appId>
+                <appKey>your_production_application_key</appKey>
+            </production>
+            <sandbox>
+                <appId>your_sandbox_application_id</appId>
+                <appKey>your_sandbox_application_key</appKey>
+            </sandbox>
+        </application>
+    </credentials>
+    <charset>UTF-8</charset>
+    <log>
+        <active>false</active>
+        <location>/</location>
+    </log>
+</config>
