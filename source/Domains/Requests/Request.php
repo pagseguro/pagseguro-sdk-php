@@ -33,6 +33,8 @@ class Request
     use Currency;
     use Item;
     use Notification {
+        Notification::getUrl as getNotificationUrl;
+        Notification::setUrl as setNotificationUrl;
         Notification::getUrl insteadof Redirect;
         Notification::setUrl insteadof Redirect;
     }
@@ -40,7 +42,7 @@ class Request
     use Shipping;
     use Reference;
     use Redirect {
-        Redirect::getUrl insteadof Notification;
-        Redirect::setUrl insteadof Notification;
+        Redirect::getUrl as getRedirectUrl;
+        Redirect::setUrl as setRedirectUrl;
     }
 }

@@ -28,8 +28,13 @@ use PagSeguro\Domains\Requests\Adapter\Url;
 
 trait Redirect
 {
-    use Url{
-        Url::getUrl as getRedirectUrl;
-        Url::setUrl as setRedirectUrl;
+    private $rUrl;
+    
+    function getUrl() {
+        return $this->rUrl;
+    }
+
+    function setUrl($url) {
+        $this->rUrl = $url;
     }
 }
