@@ -9,11 +9,17 @@ require_once "../../vendor/autoload.php";
 $payment = new \PagSeguro\Domains\Requests\Payment();
 
 $payment->addItems()->withParameters(
-    '0001', 'Notebook prata', 2, 430.00
+    '0001',
+    'Notebook prata',
+    2,
+    430.00
 );
 
 $payment->addItems()->withParameters(
-    '0002', 'Notebook preto', 2, 430.00
+    '0002',
+    'Notebook preto',
+    2,
+    430.00
 );
 
 $payment->setCurrency("BRL");
@@ -46,13 +52,6 @@ $payment->setShipping()->setType()->withParameters(\PagSeguro\Enum\Shipping\Type
 $payment->setRedirectUrl("http://www.lojamodelo.com.br");
 $payment->setNotificationUrl("http://www.lojamodelo.com.br/nofitication");
 
-//$configure = new \PagSeguro\Configuration\Configure();
-//$configure->handler();
-
-var_dump(\PagSeguro\Configuration\Configure::getAccountCredentials(),
-    \PagSeguro\Configuration\Configure::getEnvironment());
-
-die();
 try {
     $result = $payment->register(
         \PagSeguro\Configuration\Configure::getAccountCredentials()
@@ -61,23 +60,3 @@ try {
 } catch (Exception $e) {
     die($e->getMessage());
 }
-
-//class ConfigWrapper{
-//
-//    const ENV = "sandbox";
-//
-//    const EMAIL = "your_pagseguro_email";
-//
-//    const TOKEN_PRODUCTION = "your_production_token";
-//    const TOKEN_SANDBOX = "your_sandbox_token";
-//
-//    const APP_ID_PRODUCTION = "your_production_application_id";
-//    const APP_ID_SANDBOX = "your_sandbox_application_id";
-//    const APP_KEY_PRODUCTION = "your_production_application_key";
-//    const APP_KEY_SANDBOX = "your_sandbox_application_key";
-//
-//    const CHARSET = "UTF-8";
-//
-//    const LOG_ACTIVE = false;
-//    const LOG_LOCATION = "";
-//}

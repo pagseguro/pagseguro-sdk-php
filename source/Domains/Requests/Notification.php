@@ -24,12 +24,15 @@
 
 namespace PagSeguro\Domains\Requests;
 
-use PagSeguro\Domains\Requests\Adapter\Url;
-
 trait Notification
 {
-    use Url {
-        Url::setUrl as setNotificationUrl;
-        Url::getUrl as getNotificationUrl;
+    private $nUrl;
+    
+    function getUrl() {
+        return $this->nUrl;
+    }
+
+    function setUrl($url) {
+        $this->nUrl = $url;
     }
 }
