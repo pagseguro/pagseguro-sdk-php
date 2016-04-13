@@ -165,4 +165,14 @@ class Current
      * Reference
      */
     const REFERENCE = "reference";
+
+    /**
+     * Refund value
+     */
+    const REFUND_VALUE = "refundValue";
+
+    /**
+     * Transaction code
+     */
+    const TRANSACTION_CODE = "transactionCode";
 }

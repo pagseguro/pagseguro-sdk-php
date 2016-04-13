@@ -38,5 +38,8 @@
             <request>v2/checkout</request>
             <response>v2/checkout/payment.html</response>
         </payment>
+        <refund>
+            <request>/v2/transactions/refunds</request>
+        </refund>
     </services>
 </Resources>

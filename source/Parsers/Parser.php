@@ -22,27 +22,12 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection;
+namespace PagSeguro\Parsers;
 
-use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Resources\Builder;
+use PagSeguro\Resources\Http;
 
-/**
- * Class Data
- * @package PagSeguro\Services\Connection
- */
-class Data
+interface Parser
 {
-    use Base\Credentials;
-    use Base\Payment;
-    use Base\Refund;
-
-    /**
-     * Data constructor.
-     * @param Credentials $credentials
-     */
-    public function __construct(Credentials $credentials)
-    {
-        $this->setCredentials($credentials);
-    }
+    public static function success(Http $http);
+    public static function error(Http $http);
 }

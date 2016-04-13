@@ -22,43 +22,40 @@
  *
  */
 
-namespace PagSeguro\Parsers\Checkout;
+namespace PagSeguro\Parsers\Refund;
 
 use PagSeguro\Enum\Properties\Current;
-use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Error;
-use PagSeguro\Parsers\Item;
 use PagSeguro\Parsers\Parser;
-use PagSeguro\Parsers\Sender;
-use PagSeguro\Parsers\Shipping;
 use PagSeguro\Resources\Http;
 
 /**
  * Class Payment
  * @package PagSeguro\Parsers\Checkout
  */
-class Payment extends Error implements Parser
+class Request extends Error implements Parser
 {
-    use Basic;
-    use Item;
-    use Sender;
-    use Shipping;
+
 
     /**
-     * @param \PagSeguro\Domains\Requests\Payment $payment
+     * @param $code
+     * @param $value
      * @return array
      */
-    public static function getData(\PagSeguro\Domains\Requests\Payment $payment)
+    public static function getData($code, $value)
     {
         $data = [];
         $properties = new Current;
-        return array_merge(
-            $data,
-            Basic::getData($payment, $properties),
-            Item::getData($payment, $properties),
-            Sender::getData($payment, $properties),
-            Shipping::getData($payment, $properties)
-        );
+
+        if (!is_null($code)) {
+            $data[$properties::TRANSACTION_CODE] = $code;
+        }
+
+        if (!is_null($value)) {
+            $data[$properties::REFUND_VALUE] = $value;
+        }
+
+        return $data;
     }
 
     /**
@@ -68,8 +65,9 @@ class Payment extends Error implements Parser
     public static function success(Http $http)
     {
         $xml = simplexml_load_string($http->getResponse());
-        return (new Response)->setCode(current($xml->code))
-                             ->setDate(current($xml->date));
+        $result = new \PagSeguro\Parsers\Refund\Response();
+        $result->setResult(current($xml));
+        return $result;
     }
 
     /**
@@ -78,6 +76,7 @@ class Payment extends Error implements Parser
      */
     public static function error(Http $http)
     {
-        return parent::error($http);
+        $error = parent::error($http);
+        return $error;
     }
 }
