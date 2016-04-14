@@ -41,5 +41,8 @@
         <refund>
             <request>/v2/transactions/refunds</request>
         </refund>
+        <cancel>
+            <request>/v2/transactions/cancels</request>
+        </cancel>
     </services>
 </Resources>

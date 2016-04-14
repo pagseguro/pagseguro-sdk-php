@@ -22,28 +22,35 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection;
-
-use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Resources\Builder;
+namespace PagSeguro\Parsers\Cancel;
 
 /**
- * Class Data
- * @package PagSeguro\Services\Connection
+ * Class Response
+ * @package PagSeguro\Parsers\Refund
  */
-class Data
+class Response
 {
-    use Base\Credentials;
-    use Base\Payment;
-    use Base\Refund;
-    use Base\Cancel;
 
     /**
-     * Data constructor.
-     * @param Credentials $credentials
+     * @var
      */
-    public function __construct(Credentials $credentials)
+    private $result;
+
+    /**
+     * @return mixed
+     */
+    public function getResult()
     {
-        $this->setCredentials($credentials);
+        return $this->result;
     }
+
+    /**
+     * @param mixed $result
+     * @return Response
+     */
+    public function setResult($result)
+    {
+        $this->result = $result;
+    }
+
 }
