@@ -22,28 +22,21 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection;
+namespace PagSeguro\Resources\Connection\Base;
 
-use PagSeguro\Domains\Account\Credentials;
 use PagSeguro\Resources\Builder;
 
 /**
- * Class Data
- * @package PagSeguro\Services\Connection
+ * Class Payment
+ * @package PagSeguro\Services\Connection\Base
  */
-class Data
+trait Refund
 {
-    use Base\Credentials;
-    use Base\Payment;
-    use Base\Refund;
-    use Base\Cancel;
-
     /**
-     * Data constructor.
-     * @param Credentials $credentials
+     * @return string
      */
-    public function __construct(Credentials $credentials)
+    public function buildRefundRequestUrl()
     {
-        $this->setCredentials($credentials);
+        return Builder\Refund::getRefundRequestUrl();
     }
 }

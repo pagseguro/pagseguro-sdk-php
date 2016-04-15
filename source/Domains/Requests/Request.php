@@ -45,4 +45,6 @@ class Request
         Redirect::getUrl as getRedirectUrl;
         Redirect::setUrl as setRedirectUrl;
     }
+    use Metadata;
+    use Parameter;
 }

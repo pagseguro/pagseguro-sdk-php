@@ -165,4 +165,29 @@ class Current
      * Reference
      */
     const REFERENCE = "reference";
+
+    /**
+     * Refund value
+     */
+    const REFUND_VALUE = "refundValue";
+
+    /**
+     * Transaction code
+     */
+    const TRANSACTION_CODE = "transactionCode";
+    
+    /**
+     * Metadata item key
+     */
+    const METADATA_ITEM_KEY = "metadataItemKey%s";
+    
+    /**
+     * Metadata item value
+     */
+    const METADATA_ITEM_VALUE = "metadataItemValue%s";
+    
+    /**
+     * Metadata item group
+     */
+    const METADATA_ITEM_GROUP = "metadataItemGroup%s";
 }

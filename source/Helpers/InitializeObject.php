@@ -22,28 +22,27 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection;
-
-use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Resources\Builder;
+namespace PagSeguro\Helpers;
 
 /**
- * Class Data
- * @package PagSeguro\Services\Connection
+ * Class InitializeObject
+ * @package PagSeguro\Helpers
  */
-class Data
-{
-    use Base\Credentials;
-    use Base\Payment;
-    use Base\Refund;
-    use Base\Cancel;
-
+class InitializeObject {
+    
     /**
-     * Data constructor.
-     * @param Credentials $credentials
+     * Check if $attr is started, if not instatiate it
+     * @param object $attr
+     * @param class $instantiateClass
+     * @return object from $instantiateClass
      */
-    public function __construct(Credentials $credentials)
+    public static function initialize($attr,$instantiateClass)
     {
-        $this->setCredentials($credentials);
+        if (! isset($attr) || empty($attr)) {
+            $attr = new $instantiateClass;
+        }
+        
+        return $attr;
     }
 }
+

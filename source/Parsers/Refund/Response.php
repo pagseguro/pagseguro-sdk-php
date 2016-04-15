@@ -22,44 +22,35 @@
  *
  */
 
-namespace PagSeguro\Resources\Responsibility\Factory\Request;
-
-
-use PagSeguro\Enum\Http\Status;
-use PagSeguro\Resources\Http;
-use PagSeguro\Resources\Responsibility\Handler;
+namespace PagSeguro\Parsers\Refund;
 
 /**
- * Class Success
- * @package PagSeguro\Services\Connection\HttpMethods
+ * Class Response
+ * @package PagSeguro\Parsers\Refund
  */
-class Parameter implements Handler
+class Response
 {
+
     /**
      * @var
      */
-    private $successor;
+    private $result;
 
     /**
-     * @param $successor
-     * @return $this
-     */
-    public function successor($successor)
-    {
-        $this->successor = $successor;
-        return $this;
-    }
-
-    /**
-     * @param Http $http
-     * @param $class
      * @return mixed
      */
-    public function handler(Http $http, $class)
+    public function getResult()
     {
-        if ($http->getStatus() == Status::OK) {
-            return $class::success($http);
-        }
-        return $this->successor->handler($http, $class);
+        return $this->result;
     }
+
+    /**
+     * @param mixed $result
+     * @return Response
+     */
+    public function setResult($result)
+    {
+        $this->result = $result;
+    }
+
 }

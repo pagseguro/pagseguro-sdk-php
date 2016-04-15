@@ -30,14 +30,13 @@ namespace PagSeguro\Enum;
  */
 class Enum extends BaseEnum
 {
-
     /**
      * @return array
      */
     public static function getList()
     {
-        $reflection = new \ReflectionClass(__CLASS__);
-        return $reflection->getConstant();
+        $reflection = new \ReflectionClass(get_called_class());
+        return $reflection->getConstants();
     }
 
     /**
@@ -46,12 +45,12 @@ class Enum extends BaseEnum
      */
     public static function getType($key)
     {
-        $declared = parent::getConstList();
+        $declared = parent::getConstants();
         if (array_key_exists($key, $declared)) {
-            $reflection = new \ReflectionClass(__CLASS__);
+            $reflection = new \ReflectionClass(get_called_class());
             return $reflection->getConstant($key);
         } else {
-            return self::__DEFAULT;
+            return false;
         }
     }
 

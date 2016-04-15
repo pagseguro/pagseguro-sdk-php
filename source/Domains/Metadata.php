@@ -22,28 +22,51 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection;
-
-use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Resources\Builder;
+namespace PagSeguro\Domains;
 
 /**
- * Class Data
- * @package PagSeguro\Services\Connection
+ * Class Metadata
+ *
+ * @package PagSeguro\Domains
  */
-class Data
+class Metadata 
 {
-    use Base\Credentials;
-    use Base\Payment;
-    use Base\Refund;
-    use Base\Cancel;
-
     /**
-     * Data constructor.
-     * @param Credentials $credentials
+     * Metadata key 
      */
-    public function __construct(Credentials $credentials)
-    {
-        $this->setCredentials($credentials);
+    private $key;
+    /**
+     * Metadata value
+     */
+    private $value;
+    /**
+     * Metadata group
+     */        
+    private $group;
+    
+    public function getKey() {
+        return $this->key;
+    }
+
+    public function setKey($key) {
+        $this->key = $key;
+        return $this;
+    }
+    public function getValue() {
+        return $this->value;
+    }
+
+    public function setValue($value) {
+        $this->value = $value;
+        return $this;
+    }
+
+    public function getGroup() {
+        return $this->group;
+    }
+
+    public function setGroup($group) {
+        $this->group = $group;
+        return $this;
     }
 }

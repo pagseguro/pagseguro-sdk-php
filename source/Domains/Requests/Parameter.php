@@ -26,44 +26,48 @@ namespace PagSeguro\Domains\Requests;
 
 use PagSeguro\Helpers\InitializeObject;
 
-trait Item
+/**
+ * Description of Parameter
+ *
+ */
+trait Parameter
 {
-    private $item;
-
-    public function addItems()
+    private $parameter;
+    
+    public function addParameter()
     {
-        $this->item = InitializeObject::Initialize(
-            $this->item,
-            new \PagSeguro\Resources\Factory\Request\Item()
+        $this->parameter = InitializeObject::Initialize(
+            $this->parameter,
+            new \PagSeguro\Resources\Factory\Request\Parameter()
         );
         
-        return $this->item;
+        return $this->parameter;
     }
 
-    public function setItems($items)
+    public function setParameter($parameter)
     {
-        if (is_array($items)) {
+        if (is_array($parameter)) {
             $i = array();
-            foreach ($items as $key => $item) {
-                if ($item instanceof \PagSeguro\Domains\Item) {
-                    $i[$key] = $item;
+            foreach ($parameter as $key => $parameterItem) {
+                if ($parameterItem instanceof \PagSeguro\Domains\Parameter) {
+                    $i[$key] = $parameterItem;
                 } else {
-                    if (is_array($item)) {
-                        $i[$key] = new \PagSeguro\Domains\Item($item);
+                    if (is_array($parameter)) {
+                        $i[$key] = new \PagSeguro\Domains\Parameter($parameterItem);
                     }
                 }
             }
-            $this->items = $i;
+            $this->parameter = $i;
         }
     }
 
-    public function getItems()
+    public function getParameter()
     {
-        return current($this->item);
+        return current($this->parameter);
     }
 
-    public function ItemLenght()
+    public function parameterLenght()
     {
-        return count(current($this->item));
+        return count(current($this->parameter));
     }
 }

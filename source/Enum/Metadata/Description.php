@@ -22,28 +22,25 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection;
+namespace PagSeguro\Enum\Metadata;
 
-use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Resources\Builder;
+use PagSeguro\Enum\Enum;
 
 /**
- * Class Data
- * @package PagSeguro\Services\Connection
+ * Class Description
+ * @package PagSeguro\Enum\Metadata
  */
-class Data
+class Description extends Enum
 {
-    use Base\Credentials;
-    use Base\Payment;
-    use Base\Refund;
-    use Base\Cancel;
-
-    /**
-     * Data constructor.
-     * @param Credentials $credentials
-     */
-    public function __construct(Credentials $credentials)
-    {
-        $this->setCredentials($credentials);
-    }
+    const PASSENGER_CPF = 'CPF do passageiro';
+    const PASSENGER_PASSPORT = ' Passaporte do passageiro';
+    const ORIGIN_CITY = 'Cidade de origem';
+    const DESTINATION_CITY = 'Cidade de destino';
+    const ORIGIN_AIRPORT_CODE = 'Código do aeroporto de origem';
+    const DESTINATION_AIRPORT_CODE = 'Código do aeroporto de destino';
+    const GAME_NAME = 'Nome do jogo';
+    const PLAYER_ID = 'ID do jogador';
+    const TIME_IN_GAME_DAYS = 'Tempo no jogo em dias';
+    const MOBILE_NUMBER = 'Celular de recarga';
+    const PASSENGER_NAME = 'Nome do passageiro';
 }
