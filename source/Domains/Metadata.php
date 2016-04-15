@@ -22,29 +22,51 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Domains;
 
 /**
- * Class Request
- * @package PagSeguro\Domains\Requests
+ * Class Metadata
+ *
+ * @package PagSeguro\Domains
  */
-class Request
+class Metadata 
 {
-    use Currency;
-    use Item;
-    use Notification {
-        Notification::getUrl as getNotificationUrl;
-        Notification::setUrl as setNotificationUrl;
-        Notification::getUrl insteadof Redirect;
-        Notification::setUrl insteadof Redirect;
+    /**
+     * Metadata key 
+     */
+    private $key;
+    /**
+     * Metadata value
+     */
+    private $value;
+    /**
+     * Metadata group
+     */        
+    private $group;
+    
+    public function getKey() {
+        return $this->key;
     }
-    use Sender;
-    use Shipping;
-    use Reference;
-    use Redirect {
-        Redirect::getUrl as getRedirectUrl;
-        Redirect::setUrl as setRedirectUrl;
+
+    public function setKey($key) {
+        $this->key = $key;
+        return $this;
     }
-    use Metadata;
-    use Parameter;
+    public function getValue() {
+        return $this->value;
+    }
+
+    public function setValue($value) {
+        $this->value = $value;
+        return $this;
+    }
+
+    public function getGroup() {
+        return $this->group;
+    }
+
+    public function setGroup($group) {
+        $this->group = $group;
+        return $this;
+    }
 }

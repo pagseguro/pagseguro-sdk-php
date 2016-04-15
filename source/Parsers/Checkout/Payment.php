@@ -31,6 +31,8 @@ use PagSeguro\Parsers\Item;
 use PagSeguro\Parsers\Parser;
 use PagSeguro\Parsers\Sender;
 use PagSeguro\Parsers\Shipping;
+use PagSeguro\Parsers\Metadata;
+use PagSeguro\Parsers\Parameter;
 use PagSeguro\Resources\Http;
 
 /**
@@ -43,6 +45,8 @@ class Payment extends Error implements Parser
     use Item;
     use Sender;
     use Shipping;
+    use Metadata;
+    use Parameter;
 
     /**
      * @param \PagSeguro\Domains\Requests\Payment $payment
@@ -57,7 +61,9 @@ class Payment extends Error implements Parser
             Basic::getData($payment, $properties),
             Item::getData($payment, $properties),
             Sender::getData($payment, $properties),
-            Shipping::getData($payment, $properties)
+            Shipping::getData($payment, $properties),
+            Metadata::getData($payment, $properties),
+            Parameter::getData($payment)
         );
     }
 

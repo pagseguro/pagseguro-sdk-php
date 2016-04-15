@@ -27,55 +27,46 @@ namespace PagSeguro\Resources\Factory\Request;
 use PagSeguro\Enum\Properties\Current;
 
 /**
- * Class Shipping
+ * Class Metadata
  * @package PagSeguro\Resources\Factory\Request
  */
-class Item
+class Metadata 
 {
-    private $item;
+    private $metadata;
 
     public function __construct()
     {
-        $this->item = [];
+        $this->metadata = [];
     }
 
-    public function instance(\PagSeguro\Domains\Item $item)
+    public function instance(\PagSeguro\Domains\Metadata $metadata)
     {
-        return $item;
+        return $metadata;
     }
 
     public function withArray($array)
     {
         $properties = new Current;
 
-        $item = new \PagSeguro\Domains\Item();
-        $item->setId($array[$properties::ITEM_ID])
-             ->setAmount($array[$properties::ITEM_AMOUNT])
-             ->setDescription($array[$properties::ITEM_DESCRIPTION])
-             ->setQuantity($array[$properties::ITEM_DESCRIPTION])
-             ->setWeight($array[$properties::ITEM_WEIGHT])
-             ->setShippingCost($array[$properties::ITEM_SHIPPING_COST]);
+        $metadata = new \PagSeguro\Domains\Metadata();
+        $metadata->setKey($array[$properties::METADATA_ITEM_KEY])
+             ->setValue($array[$properties::METADATA_ITEM_VALUE])
+             ->setGroup($array[$properties::METADATA_ITEM_GROUP]);
 
-        array_push($this->item, $item);
-        return $this->item;
+        array_push($this->metadata, $metadata);
+        return $this->metadata;
     }
 
     public function withParameters(
-        $id,
-        $description,
-        $quantity,
-        $amount,
-        $weight = null,
-        $shippingCost = null
+        $key,
+        $value,
+        $group = null
     ){
-        $item = new \PagSeguro\Domains\Item();
-        $item->setId($id)
-            ->setAmount($amount)
-            ->setDescription($description)
-            ->setQuantity($quantity)
-            ->setWeight($weight)
-            ->setShippingCost($shippingCost);
-        array_push($this->item, $item);
-        return $this->item;
+        $metadata = new \PagSeguro\Domains\Metadata();
+        $metadata->setKey($key)
+            ->setValue($value)
+            ->setGroup($group);
+        array_push($this->metadata, $metadata);
+        return $this->metadata;
     }
 }

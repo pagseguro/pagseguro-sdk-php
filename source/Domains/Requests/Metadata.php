@@ -26,44 +26,45 @@ namespace PagSeguro\Domains\Requests;
 
 use PagSeguro\Helpers\InitializeObject;
 
-trait Item
+trait Metadata 
 {
-    private $item;
-
-    public function addItems()
+    private $metadata;
+    
+    public function addMetadata()
     {
-        $this->item = InitializeObject::Initialize(
-            $this->item,
-            new \PagSeguro\Resources\Factory\Request\Item()
+        $this->metadata = InitializeObject::Initialize(
+            $this->metadata,
+            new \PagSeguro\Resources\Factory\Request\Metadata()
         );
         
-        return $this->item;
+        return $this->metadata;
     }
 
-    public function setItems($items)
+    public function setMetadata($metadata)
     {
-        if (is_array($items)) {
+        if (is_array($metadata)) {
             $i = array();
-            foreach ($items as $key => $item) {
-                if ($item instanceof \PagSeguro\Domains\Item) {
-                    $i[$key] = $item;
+            foreach ($metadata as $key => $metadataItem) {
+                if ($metadataItem instanceof \PagSeguro\Domains\Metadata) {
+                    $i[$key] = $metadataItem;
                 } else {
-                    if (is_array($item)) {
-                        $i[$key] = new \PagSeguro\Domains\Item($item);
+                    if (is_array($metadata)) {
+                        $i[$key] = new \PagSeguro\Domains\Metadata($metadataItem);
                     }
                 }
             }
-            $this->items = $i;
+            $this->metadata = $i;
         }
     }
 
-    public function getItems()
+    public function getMetadata()
     {
-        return current($this->item);
+        return current($this->metadata);
     }
 
-    public function ItemLenght()
+    public function metadataLenght()
     {
-        return count(current($this->item));
+        return count(current($this->metadata));
     }
 }
+

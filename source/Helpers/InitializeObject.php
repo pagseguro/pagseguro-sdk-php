@@ -22,44 +22,27 @@
  *
  */
 
-namespace PagSeguro\Resources\Responsibility\Factory\Request;
-
-
-use PagSeguro\Enum\Http\Status;
-use PagSeguro\Resources\Http;
-use PagSeguro\Resources\Responsibility\Handler;
+namespace PagSeguro\Helpers;
 
 /**
- * Class Success
- * @package PagSeguro\Services\Connection\HttpMethods
+ * Class InitializeObject
+ * @package PagSeguro\Helpers
  */
-class Parameter implements Handler
-{
+class InitializeObject {
+    
     /**
-     * @var
+     * Check if $attr is started, if not instatiate it
+     * @param object $attr
+     * @param class $instantiateClass
+     * @return object from $instantiateClass
      */
-    private $successor;
-
-    /**
-     * @param $successor
-     * @return $this
-     */
-    public function successor($successor)
+    public static function initialize($attr,$instantiateClass)
     {
-        $this->successor = $successor;
-        return $this;
-    }
-
-    /**
-     * @param Http $http
-     * @param $class
-     * @return mixed
-     */
-    public function handler(Http $http, $class)
-    {
-        if ($http->getStatus() == Status::OK) {
-            return $class::success($http);
+        if (! isset($attr) || empty($attr)) {
+            $attr = new $instantiateClass;
         }
-        return $this->successor->handler($http, $class);
+        
+        return $attr;
     }
 }
+
