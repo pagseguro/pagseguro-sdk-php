@@ -32,6 +32,10 @@ use PagSeguro\Resources\Responsibility\Configuration\Environment;
 use PagSeguro\Resources\Responsibility\Configuration\Extensible;
 use PagSeguro\Resources\Responsibility\Configuration\File;
 use PagSeguro\Resources\Responsibility\Configuration\Wrapper;
+use PagSeguro\Resources\Responsibility\Notifications\Application;
+use PagSeguro\Resources\Responsibility\Notifications\PreApproval;
+use PagSeguro\Resources\Responsibility\Notifications\Transaction;
+
 
 /**
  * class Handler
@@ -71,6 +75,21 @@ class Responsibility
             )
         );
         return $wrapper->handler(null, null);
+    }
+
+    public static function notifications()
+    {
+        $transaction = new Transaction();
+        $preApproval = new PreApproval();
+        $application = new Application();
+
+        $transaction->successor(
+          $preApproval->successor(
+              $application
+          )
+        );
+
+        return $transaction->handler();
     }
 }
 

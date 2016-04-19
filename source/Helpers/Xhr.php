@@ -22,38 +22,35 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection;
-
-use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Resources\Builder;
+namespace PagSeguro\Helpers;
 
 /**
- * Class Data
- * @package PagSeguro\Services\Connection
+ * Class Xhr
+ * @package PagSeguro\Helpers
  */
-class Data
+class Xhr
 {
-    use Base\Credentials;
-    use Base\Payment;
-    use Base\Refund;
-    use Base\Cancel;
-    use Base\Notification;
 
     /**
-     * Data constructor.
-     * @param Credentials $credentials
+     * @return bool
      */
-    public function __construct(Credentials $credentials)
+    public static function hasPost()
     {
-        $this->setCredentials($credentials);
+        if (isset($_POST)) {
+            return true;
+        }
+        return false;
     }
 
     /**
-     * @param $data
-     * @return string
+     * @return bool
      */
-    public function buildHttpUrl($data)
+    public static function hasGet()
     {
-        return http_build_query($data);
+        if (isset($_GET)) {
+            return true;
+        }
+        return false;
     }
+
 }

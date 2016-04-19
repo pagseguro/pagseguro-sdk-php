@@ -22,38 +22,22 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection;
-
-use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Resources\Builder;
+namespace PagSeguro\Resources\Responsibility\Notifications;
 
 /**
- * Class Data
- * @package PagSeguro\Services\Connection
+ * Interface Handler
+ * @package PagSeguro\Resources\Responsibility\Notifications
  */
-class Data
+interface Handler
 {
-    use Base\Credentials;
-    use Base\Payment;
-    use Base\Refund;
-    use Base\Cancel;
-    use Base\Notification;
+    /**
+     * @param $next
+     * @return mixed
+     */
+    public function successor($next);
 
     /**
-     * Data constructor.
-     * @param Credentials $credentials
+     * @return mixed
      */
-    public function __construct(Credentials $credentials)
-    {
-        $this->setCredentials($credentials);
-    }
-
-    /**
-     * @param $data
-     * @return string
-     */
-    public function buildHttpUrl($data)
-    {
-        return http_build_query($data);
-    }
+    public function handler();
 }

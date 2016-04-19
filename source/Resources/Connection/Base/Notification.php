@@ -22,38 +22,21 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection;
+namespace PagSeguro\Resources\Connection\Base;
 
-use PagSeguro\Domains\Account\Credentials;
 use PagSeguro\Resources\Builder;
 
 /**
- * Class Data
- * @package PagSeguro\Services\Connection
+ * Class Payment
+ * @package PagSeguro\Services\Connection\Base
  */
-class Data
+trait Notification
 {
-    use Base\Credentials;
-    use Base\Payment;
-    use Base\Refund;
-    use Base\Cancel;
-    use Base\Notification;
-
     /**
-     * Data constructor.
-     * @param Credentials $credentials
-     */
-    public function __construct(Credentials $credentials)
-    {
-        $this->setCredentials($credentials);
-    }
-
-    /**
-     * @param $data
      * @return string
      */
-    public function buildHttpUrl($data)
+    public function buildNotificationTransactionRequestUrl()
     {
-        return http_build_query($data);
+        return Builder\Notification::getTransactionRequestUrl();
     }
 }

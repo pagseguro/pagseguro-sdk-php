@@ -44,5 +44,16 @@
         <cancel>
             <request>/v2/transactions/cancels</request>
         </cancel>
+        <notification>
+            <transaction>
+                <request>/v3/transactions/notifications</request>;
+            </transaction>
+            <application>
+                <request>v2/authorizations/notifications</request>
+            </application>
+            <pre-approval>
+                <request>v2/pre-approvals/notifications</request>
+            </pre-approval>
+        </notification>
     </services>
 </Resources>

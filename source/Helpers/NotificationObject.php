@@ -22,38 +22,24 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection;
-
-use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Resources\Builder;
+namespace PagSeguro\Helpers;
 
 /**
- * Class Data
- * @package PagSeguro\Services\Connection
+ * Class NotificationObject
+ * @package PagSeguro\Helpers
  */
-class Data
+class NotificationObject
 {
-    use Base\Credentials;
-    use Base\Payment;
-    use Base\Refund;
-    use Base\Cancel;
-    use Base\Notification;
 
     /**
-     * Data constructor.
-     * @param Credentials $credentials
+     * @return $this
      */
-    public function __construct(Credentials $credentials)
+    public static function initialize()
     {
-        $this->setCredentials($credentials);
+        $notification = new \PagSeguro\Domains\Notification();
+        $notification->setCode(trim($_POST['notificationCode']))
+                     ->setType(trim($_POST['notificationType']));
+        return $notification;
     }
 
-    /**
-     * @param $data
-     * @return string
-     */
-    public function buildHttpUrl($data)
-    {
-        return http_build_query($data);
-    }
 }

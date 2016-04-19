@@ -105,10 +105,27 @@ class Builder
     protected static function getService($url, $service, $http)
     {
         $xml = simplexml_load_file(RESOURCES);
+
         return sprintf(
             "%s/%s",
             $url,
-            current($xml->services->{$service}->{$http})
+            current(self::getProperties($xml, $service, $http))
         );
+    }
+
+    /**
+     * @param $xml
+     * @param $service
+     * @param $http
+     * @return mixed
+     */
+    private static function getProperties($xml, $service, $http)
+    {
+        $services = explode("/",$service);
+        if (isset($services[1])){
+            return $xml->services->{$services[0]}->{$services[1]}->{$http};
+        } else {
+           return $xml->services->{$service}->{$http};
+        }
     }
 }

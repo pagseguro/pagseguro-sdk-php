@@ -22,17 +22,13 @@
  *
  */
 
-namespace PagSeguro\Resources\Responsibility\Http\Methods;
-
-use PagSeguro\Enum\Http\Status;;
-use PagSeguro\Resources\Http;
-use PagSeguro\Resources\Responsibility\Handler;
+namespace PagSeguro\Resources\Responsibility\Notifications;
 
 /**
- * Class Request
- * @package PagSeguro\Services\Connection\HttpMethods
+ * Class Application
+ * @package PagSeguro\Resources\Responsibility\Notifications
  */
-class Request implements Handler
+class Application implements \PagSeguro\Resources\Responsibility\Notifications\Handler
 {
     /**
      * @var
@@ -40,26 +36,26 @@ class Request implements Handler
     private $successor;
 
     /**
-     * @param $successor
+     * @param $next
      * @return $this
      */
-    public function successor($successor)
+    public function successor($next)
     {
-        $this->successor = $successor;
+        $this->successor = $next;
         return $this;
     }
 
     /**
-     * @param Http $http
-     * @param $class
      * @return mixed
-     * @throws \Exception
      */
-    public function handler($http, $class)
+    public function handler()
     {
-        if ($http->getStatus() == Status::BAD_REQUEST) {
-            return $class::error($http);
+        if (isset($_POST['notificationCode']) &&
+            isset($_POST['notificationType']) &&
+            $_POST['notificationType'] == \PagSeguro\Enum\Notification::APPLICATION_AUTHORIZATION) {
+            $notification = \PagSeguro\Helpers\NotificationObject::initialize();
+            return $notification->getCode();
         }
-        return $this->successor->handler($http, $class);
+        throw new \InvalidArgumentException("Invalid notification parameters.");
     }
 }

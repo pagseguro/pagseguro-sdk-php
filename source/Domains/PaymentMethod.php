@@ -22,38 +22,56 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection;
-
-use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Resources\Builder;
+namespace PagSeguro\Domains;
 
 /**
- * Class Data
- * @package PagSeguro\Services\Connection
+ * Class PaymentMethod
+ * @package PagSeguro\Domains
  */
-class Data
+class PaymentMethod
 {
-    use Base\Credentials;
-    use Base\Payment;
-    use Base\Refund;
-    use Base\Cancel;
-    use Base\Notification;
+    /**
+     * @var
+     */
+    private $code;
+    /**
+     * @var
+     */
+    private $type;
 
     /**
-     * Data constructor.
-     * @param Credentials $credentials
+     * @return mixed
      */
-    public function __construct(Credentials $credentials)
+    public function getCode()
     {
-        $this->setCredentials($credentials);
+        return $this->code;
     }
 
     /**
-     * @param $data
-     * @return string
+     * @param mixed $code
+     * @return PaymentMethod
      */
-    public function buildHttpUrl($data)
+    public function setCode($code)
     {
-        return http_build_query($data);
+        $this->code = $code;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     * @return PaymentMethod
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+        return $this;
     }
 }

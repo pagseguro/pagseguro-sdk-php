@@ -22,38 +22,40 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection;
-
-use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Resources\Builder;
+namespace PagSeguro\Resources\Responsibility\Notifications;
 
 /**
- * Class Data
- * @package PagSeguro\Services\Connection
+ * Class Transaction
+ * @package PagSeguro\Resources\Responsibility\Notifications
  */
-class Data
+class Transaction implements \PagSeguro\Resources\Responsibility\Notifications\Handler
 {
-    use Base\Credentials;
-    use Base\Payment;
-    use Base\Refund;
-    use Base\Cancel;
-    use Base\Notification;
+    /**
+     * @var
+     */
+    private $successor;
 
     /**
-     * Data constructor.
-     * @param Credentials $credentials
+     * @param $next
+     * @return $this
      */
-    public function __construct(Credentials $credentials)
+    public function successor($next)
     {
-        $this->setCredentials($credentials);
+        $this->successor = $next;
+        return $this;
     }
 
     /**
-     * @param $data
-     * @return string
+     * @return mixed
      */
-    public function buildHttpUrl($data)
+    public function handler()
     {
-        return http_build_query($data);
+        if (isset($_POST['notificationCode']) &&
+            isset($_POST['notificationType']) &&
+            $_POST['notificationType'] == \PagSeguro\Enum\Notification::TRANSACTION) {
+            $notification = \PagSeguro\Helpers\NotificationObject::initialize();
+            return $notification->getCode();
+        }
+        return $this->successor->handler();
     }
 }
