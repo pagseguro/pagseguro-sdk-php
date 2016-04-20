@@ -22,24 +22,37 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Resources\Builder;
 
-use PagSeguro\Parsers\Checkout\Payment\Request;
+use PagSeguro\Resources\Builder;
 
 /**
  * Class Payment
- * @package PagSeguro\Domains\Requests
+ * @package PagSeguro\Resources\Builder
  */
-class Payment extends Request
+class Authorization extends Builder
 {
+
     /**
-     * @param $credentials
-     * @param bool $onlyCode
      * @return string
-     * @throws \Exception
      */
-    public function register($credentials, $onlyCode = false)
+    public static function getAuthorizationRequestUrl()
     {
-        return \PagSeguro\Services\Checkout\Payment::checkout($credentials, $this, $onlyCode);
+        return parent::getRequest(
+            parent::getUrl('webservice'),
+            'application/authorization'
+        );
     }
+
+    /**
+     * @return string
+     */
+    public static function getAuthorizationResponseUrl()
+    {
+        return parent::getResponse(
+            parent::getUrl('base'),
+            'application/authorization'
+        );
+    }
+
 }

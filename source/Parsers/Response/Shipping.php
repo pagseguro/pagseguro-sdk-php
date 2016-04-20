@@ -24,9 +24,9 @@
 
 namespace PagSeguro\Parsers\Response;
 
-use PagSeguro\Resources\Factory\Request\Shipping\Address;
-use PagSeguro\Resources\Factory\Request\Shipping\Cost;
-use PagSeguro\Resources\Factory\Request\Shipping\Type;
+use PagSeguro\Resources\Factory\Shipping\Address;
+use PagSeguro\Resources\Factory\Shipping\Cost;
+use PagSeguro\Resources\Factory\Shipping\Type;
 
 /**
  * Class Shipping

@@ -24,22 +24,21 @@
 
 namespace PagSeguro\Domains\Requests;
 
-use PagSeguro\Parsers\Checkout\Payment\Request;
+use PagSeguro\Domains\Requests\Application\Authorization\Request;
 
 /**
  * Class Payment
  * @package PagSeguro\Domains\Requests
  */
-class Payment extends Request
+class Authorization extends Request
 {
     /**
      * @param $credentials
-     * @param bool $onlyCode
      * @return string
      * @throws \Exception
      */
-    public function register($credentials, $onlyCode = false)
+    public function register($credentials)
     {
-        return \PagSeguro\Services\Checkout\Payment::checkout($credentials, $this, $onlyCode);
+        return \PagSeguro\Services\Application\Authorization::create($credentials, $this);
     }
 }

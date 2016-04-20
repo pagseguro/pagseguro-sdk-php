@@ -22,29 +22,36 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Enum\Authorization;
+
+use PagSeguro\Enum\Enum;
 
 /**
- * Class Request
- * @package PagSeguro\Domains\Requests
+ * Class Permissions
+ * @package PagSeguro\Enum\Authorization
  */
-class Request
+class Permissions extends Enum
 {
-    use Currency;
-    use Item;
-    use Metadata;
-    use Notification {
-        Notification::getUrl as getNotificationUrl;
-        Notification::setUrl as setNotificationUrl;
-        Notification::getUrl insteadof Redirect;
-        Notification::setUrl insteadof Redirect;
-    }
-    use Parameter;
-    use Sender;
-    use Shipping;
-    use Reference;
-    use Redirect {
-        Redirect::getUrl as getRedirectUrl;
-        Redirect::setUrl as setRedirectUrl;
-    }
+
+    /**
+     *
+     */
+    const CREATE_CHECKOUTS = "CREATE_CHECKOUTS";
+    /**
+     *
+     */
+    const RECEIVE_TRANSACTION_NOTIFICATIONS = "RECEIVE_TRANSACTION_NOTIFICATIONS";
+    /**
+     *
+     */
+    const SEARCH_TRANSACTIONS = "SEARCH_TRANSACTIONS";
+    /**
+     *
+     */
+    const MANAGE_PAYMENT_PRE_APPROVALS = "MANAGE_PAYMENT_PRE_APPROVALS";
+    /**
+     *
+     */
+    const DIRECT_PAYMENT = "DIRECT_PAYMENT";
+
 }

@@ -22,24 +22,29 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Parsers;
 
-use PagSeguro\Parsers\Checkout\Payment\Request;
+use PagSeguro\Domains\Requests\Request;
 
 /**
- * Class Payment
- * @package PagSeguro\Domains\Requests
+ * Class Basic
+ * @package PagSeguro\Parsers
  */
-class Payment extends Request
+trait Currency
 {
     /**
-     * @param $credentials
-     * @param bool $onlyCode
-     * @return string
-     * @throws \Exception
+     * @param Request $payment
+     * @param $properties
+     * @return array
      */
-    public function register($credentials, $onlyCode = false)
+    public static function getData(Request $payment, $properties)
     {
-        return \PagSeguro\Services\Checkout\Payment::checkout($credentials, $this, $onlyCode);
+
+        $data = [];
+        // currency
+        if (!is_null($payment->getCurrency())) {
+            $data[$properties::CURRENCY] = $payment->getCurrency();
+        }
+        return $data;
     }
 }

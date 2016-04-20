@@ -97,6 +97,11 @@ class Current
     const NOTIFICATION_URL = "notificationURL";
 
     /**
+     * Permissions
+     */
+    const PERMISSIONS = "permissions";
+
+    /**
      * Sender name
      */
     const SENDER_NAME = "senderName";

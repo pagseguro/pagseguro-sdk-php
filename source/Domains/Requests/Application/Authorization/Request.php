@@ -22,24 +22,29 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Domains\Requests\Application\Authorization;
 
-use PagSeguro\Parsers\Checkout\Payment\Request;
+use PagSeguro\Domains\Requests\Notification;
+use PagSeguro\Domains\Requests\Permissions;
+use PagSeguro\Domains\Requests\Reference;
+use PagSeguro\Domains\Requests\Redirect;
 
 /**
- * Class Payment
+ * Class Request
  * @package PagSeguro\Domains\Requests
  */
-class Payment extends Request
+class Request
 {
-    /**
-     * @param $credentials
-     * @param bool $onlyCode
-     * @return string
-     * @throws \Exception
-     */
-    public function register($credentials, $onlyCode = false)
-    {
-        return \PagSeguro\Services\Checkout\Payment::checkout($credentials, $this, $onlyCode);
+    use Notification {
+        Notification::getUrl as getNotificationUrl;
+        Notification::setUrl as setNotificationUrl;
+        Notification::getUrl insteadof Redirect;
+        Notification::setUrl insteadof Redirect;
+    }
+    use Permissions;
+    use Reference;
+    use Redirect {
+        Redirect::getUrl as getRedirectUrl;
+        Redirect::setUrl as setRedirectUrl;
     }
 }

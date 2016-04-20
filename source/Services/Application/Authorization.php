@@ -22,46 +22,33 @@
  *
  */
 
-namespace PagSeguro\Services\Checkout;
-
+namespace PagSeguro\Services\Application;
 
 use PagSeguro\Domains\Account\Credentials;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Responsibility;
 
-/**
- * Class Payment
- * @package PagSeguro\Services\Checkout
- */
-class Payment
+
+class Authorization
 {
 
-    /**
-     * @param \PagSeguro\Domains\Account\Credentials $credentials
-     * @param \PagSeguro\Domains\Requests\Payment $payment
-     * @param bool $onlyCode
-     * @return string
-     * @throws \Exception
-     */
-    public static function checkout(Credentials $credentials, \PagSeguro\Domains\Requests\Payment $payment, $onlyCode)
+    public static function create(Credentials $credentials, \PagSeguro\Domains\Requests\Authorization $authorization)
     {
+
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
             $http->post(
                 self::request($connection),
-                \PagSeguro\Parsers\Checkout\Request::getData($payment)
+                \PagSeguro\Parsers\Authorization\Request::getData($authorization)
             );
 
             $response = Responsibility::http(
                 $http,
-                new \PagSeguro\Parsers\Checkout\Request
+                new \PagSeguro\Parsers\Authorization\Request
             );
 
-            if ($onlyCode) {
-                return $response;
-            }
             return self::response($connection, $response);
 
         } catch (\Exception $exception) {
@@ -75,7 +62,7 @@ class Payment
      */
     private static function request(Connection\Data $connection)
     {
-        return $connection->buildPaymentRequestUrl() ."?". $connection->buildCredentialsQuery();
+        return $connection->buildAuthorizationRequestUrl() ."?". $connection->buildCredentialsQuery();
     }
 
     /**
@@ -85,6 +72,6 @@ class Payment
      */
     private static function response(Connection\Data $connection, $response)
     {
-        return $connection->buildPaymentResponseUrl() . "?code=" . $response->getCode();
+        return $connection->buildAuthorizationResponseUrl() . "?code=" . $response->getCode();
     }
 }

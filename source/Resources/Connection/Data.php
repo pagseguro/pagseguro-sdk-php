@@ -38,6 +38,7 @@ class Data
     use Base\Refund;
     use Base\Cancel;
     use Base\Notification;
+    use Base\Authorization;
 
     /**
      * Data constructor.

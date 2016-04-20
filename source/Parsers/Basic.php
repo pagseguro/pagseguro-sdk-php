@@ -37,25 +37,21 @@ trait Basic
      * @param $properties
      * @return array
      */
-    public static function getData(Request $payment, $properties)
+    public static function getData($request, $properties)
     {
-
         $data = [];
-        // currency
-        if (!is_null($payment->getCurrency())) {
-            $data[$properties::CURRENCY] = $payment->getCurrency();
-        }
+
         // reference
-        if (!is_null($payment->getReference())) {
-            $data[$properties::REFERENCE] = $payment->getReference();
+        if (!is_null($request->getReference())) {
+            $data[$properties::REFERENCE] = $request->getReference();
         }
         // redirectURL
-        if (!is_null($payment->getRedirectUrl())) {
-            $data[$properties::REDIRECT_URL] = $payment->getRedirectUrl();
+        if (!is_null($request->getRedirectUrl())) {
+            $data[$properties::REDIRECT_URL] = $request->getRedirectUrl();
         }
         // notificationURL
-        if (!is_null($payment->getNotificationUrl())) {
-            $data[$properties::NOTIFICATION_URL] = $payment->getNotificationUrl();
+        if (!is_null($request->getNotificationUrl())) {
+            $data[$properties::NOTIFICATION_URL] = $request->getNotificationUrl();
         }
         return $data;
     }

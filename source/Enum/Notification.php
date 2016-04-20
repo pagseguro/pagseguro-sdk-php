@@ -13,7 +13,7 @@ namespace PagSeguro\Enum;
  * Class Notification
  * @package PagSeguro\Enum
  */
-class Notification
+class Notification extends Enum
 {
 
     /**

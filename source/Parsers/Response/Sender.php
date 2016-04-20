@@ -55,7 +55,7 @@ trait Sender
         $phone->setAreaCode($sender->phone->areaCode)
               ->setNumber($sender->phone->number);
 
-        $senderClass = new \PagSeguro\Resources\Factory\Request\Sender();
+        $senderClass = new \PagSeguro\Resources\Factory\Sender();
         $senderClass->withParameters(
             current($sender->name),
             current($sender->email),

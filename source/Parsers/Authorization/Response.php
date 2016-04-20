@@ -22,24 +22,58 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Parsers\Authorization;
 
-use PagSeguro\Parsers\Checkout\Payment\Request;
 
 /**
- * Class Payment
- * @package PagSeguro\Domains\Requests
+ * Class Response
+ * @package PagSeguro\Parsers\Checkout
  */
-class Payment extends Request
+class Response
 {
+
     /**
-     * @param $credentials
-     * @param bool $onlyCode
-     * @return string
-     * @throws \Exception
+     * @var
      */
-    public function register($credentials, $onlyCode = false)
+    private $code;
+    /**
+     * @var
+     */
+    private $date;
+
+    /**
+     * @return string
+     */
+    public function getCode()
     {
-        return \PagSeguro\Services\Checkout\Payment::checkout($credentials, $this, $onlyCode);
+        return $this->code;
+    }
+
+    /**
+     * @param string $code
+     * @return Response
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param \DateTime $date
+     * @return Response
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+        return $this;
     }
 }

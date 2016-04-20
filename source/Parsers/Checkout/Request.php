@@ -26,6 +26,7 @@ namespace PagSeguro\Parsers\Checkout;
 
 use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Basic;
+use PagSeguro\Parsers\Currency;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Item;
 use PagSeguro\Parsers\Parser;
@@ -39,9 +40,10 @@ use PagSeguro\Resources\Http;
  * Class Payment
  * @package PagSeguro\Parsers\Checkout
  */
-class Payment extends Error implements Parser
+class Request extends Error implements Parser
 {
     use Basic;
+    use Currency;
     use Item;
     use Sender;
     use Shipping;
