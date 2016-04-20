@@ -22,40 +22,20 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection;
+require_once "../vendor/autoload.php";
 
-use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Resources\Builder;
+\PagSeguro\Library::initialize();
+\PagSeguro\Library::cmsVersion()->setName("Nome")->setRelease("1.0.0");
+\PagSeguro\Library::moduleVersion()->setName("Nome")->setRelease("1.0.0");
 
-/**
- * Class Data
- * @package PagSeguro\Services\Connection
- */
-class Data
-{
-    use Base\Authorization;
-    use Base\Cancel;
-    use Base\Credentials;
-    use Base\Notification;
-    use Base\Payment;
-    use Base\Refund;
-    use Base\Session;
+try {
 
-    /**
-     * Data constructor.
-     * @param Credentials $credentials
-     */
-    public function __construct(Credentials $credentials)
-    {
-        $this->setCredentials($credentials);
-    }
+    $sessionCode = \PagSeguro\Services\Session::create(
+        \PagSeguro\Configuration\Configure::getAccountCredentials()
+    );
 
-    /**
-     * @param $data
-     * @return string
-     */
-    public function buildHttpUrl($data)
-    {
-        return http_build_query($data);
-    }
+    echo "<strong>ID de sess&atilde;o criado: </strong>{$sessionCode->getResult()}";
+    
+} catch (Exception $e) {
+    die($e->getMessage());
 }

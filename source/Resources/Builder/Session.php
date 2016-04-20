@@ -22,40 +22,21 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection;
+namespace PagSeguro\Resources\Builder;
 
-use PagSeguro\Domains\Account\Credentials;
 use PagSeguro\Resources\Builder;
 
 /**
- * Class Data
- * @package PagSeguro\Services\Connection
+ * Class Session
+ * @package PagSeguro\Resources\Builder
  */
-class Data
+class Session extends Builder
 {
-    use Base\Authorization;
-    use Base\Cancel;
-    use Base\Credentials;
-    use Base\Notification;
-    use Base\Payment;
-    use Base\Refund;
-    use Base\Session;
-
-    /**
-     * Data constructor.
-     * @param Credentials $credentials
-     */
-    public function __construct(Credentials $credentials)
+    public static function getSessionRequestUrl()
     {
-        $this->setCredentials($credentials);
-    }
-
-    /**
-     * @param $data
-     * @return string
-     */
-    public function buildHttpUrl($data)
-    {
-        return http_build_query($data);
+        return parent::getRequest(
+            parent::getUrl('webservice'),
+            'session'
+        );
     }
 }

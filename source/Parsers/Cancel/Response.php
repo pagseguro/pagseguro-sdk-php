@@ -26,7 +26,7 @@ namespace PagSeguro\Parsers\Cancel;
 
 /**
  * Class Response
- * @package PagSeguro\Parsers\Refund
+ * @package PagSeguro\Parsers\Cancel
  */
 class Response
 {

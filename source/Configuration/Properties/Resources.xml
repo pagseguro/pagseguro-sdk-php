@@ -61,5 +61,8 @@
                 <response>v2/authorization/request.jhtml</response>;
             </authorization>
         </application>
+        <session>
+            <request>v2/sessions</request>
+        </session>
     </services>
 </Resources>

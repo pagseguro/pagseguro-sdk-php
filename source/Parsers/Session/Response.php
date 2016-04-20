@@ -22,40 +22,33 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection;
-
-use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Resources\Builder;
+namespace PagSeguro\Parsers\Session;
 
 /**
- * Class Data
- * @package PagSeguro\Services\Connection
+ * Class Response
+ *
  */
-class Data
+class Response
 {
-    use Base\Authorization;
-    use Base\Cancel;
-    use Base\Credentials;
-    use Base\Notification;
-    use Base\Payment;
-    use Base\Refund;
-    use Base\Session;
+    /**
+     * @var
+     */
+    private $result;
 
     /**
-     * Data constructor.
-     * @param Credentials $credentials
+     * @return mixed
      */
-    public function __construct(Credentials $credentials)
+    public function getResult()
     {
-        $this->setCredentials($credentials);
+        return $this->result;
     }
 
     /**
-     * @param $data
-     * @return string
+     * @param mixed $result
+     * @return Response
      */
-    public function buildHttpUrl($data)
+    public function setResult($result)
     {
-        return http_build_query($data);
+        $this->result = $result;
     }
 }
