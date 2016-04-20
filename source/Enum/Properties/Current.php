@@ -37,6 +37,16 @@ class Current
     const CURRENCY = "currency";
 
     /**
+     * Document type
+     */
+    const DOCUMENT_TYPE = "documentType";
+
+    /**
+     * Document value
+     */
+    const DOCUMENT_VALUE = "documentValue";
+
+    /**
      * Item identifier
      */
     const ITEM_ID = "itemId%s";
@@ -65,6 +75,21 @@ class Current
      * Item shipping cost
      */
     const ITEM_SHIPPING_COST = "itemShippingCost%s";
+
+    /**
+     * Metadata item key
+     */
+    const METADATA_ITEM_KEY = "metadataItemKey%s";
+
+    /**
+     * Metadata item value
+     */
+    const METADATA_ITEM_VALUE = "metadataItemValue%s";
+
+    /**
+     * Metadata item group
+     */
+    const METADATA_ITEM_GROUP = "metadataItemGroup%s";
 
     /**
      * Notification Url
@@ -175,19 +200,4 @@ class Current
      * Transaction code
      */
     const TRANSACTION_CODE = "transactionCode";
-    
-    /**
-     * Metadata item key
-     */
-    const METADATA_ITEM_KEY = "metadataItemKey%s";
-    
-    /**
-     * Metadata item value
-     */
-    const METADATA_ITEM_VALUE = "metadataItemValue%s";
-    
-    /**
-     * Metadata item group
-     */
-    const METADATA_ITEM_GROUP = "metadataItemGroup%s";
 }

@@ -22,7 +22,7 @@
  *
  */
 
-namespace PagSeguro\Resources\Factory\Request\Shipping;
+namespace PagSeguro\Resources\Factory\Shipping;
 
 use PagSeguro\Enum\Properties\Current;
 

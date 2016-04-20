@@ -19,7 +19,7 @@ $value = null;
 
 try {
 
-    $refund = \PagSeguro\Services\Refund::create(
+    $refund = \PagSeguro\Services\Transactions\Refund::create(
         \PagSeguro\Configuration\Configure::getAccountCredentials(),
         $code,
         $value

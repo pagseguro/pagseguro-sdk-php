@@ -34,7 +34,7 @@ trait Item
     {
         $this->items = InitializeObject::Initialize(
             $this->items,
-            new \PagSeguro\Resources\Factory\Request\Item()
+            new \PagSeguro\Resources\Factory\Item()
         );
         
         return $this->items;

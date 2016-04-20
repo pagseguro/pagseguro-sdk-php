@@ -22,7 +22,7 @@
  *
  */
 
-namespace PagSeguro\Resources\Factory\Request;
+namespace PagSeguro\Resources\Factory;
 
 use PagSeguro\Domains\Document;
 use PagSeguro\Domains\Phone;
@@ -35,16 +35,22 @@ use PagSeguro\Enum\Properties\Current;
 class Sender
 {
 
+    /**
+     * @var \PagSeguro\Domains\Sender
+     */
     private $sender;
 
+    /**
+     * Sender constructor.
+     */
     public function __construct()
     {
         $this->sender = new \PagSeguro\Domains\Sender();
     }
 
     /**
-     * @param Address $address
-     * @return \PagSeguro\Domains\Shipping
+     * @param \PagSeguro\Domains\Sender $sender
+     * @return \PagSeguro\Domains\Sender
      */
     public function instance(\PagSeguro\Domains\Sender $sender)
     {
@@ -58,37 +64,26 @@ class Sender
     public function withArray($array)
     {
         $properties = new Current;
-
-        $sender = new \PagSeguro\Domains\Sender;
-        $phone = new Phone;
-        $phone->setAreaCode($array[$properties::SENDER_PHONE_AREA_CODE])
-            ->setNumber($array[$properties::SENDER_PHONE_NUMBER]);
-        $document = new Document();
-        $document->setType($array['documentType'])
-            ->setIdentifier($array['documentValue']);
-
-        return $sender->setName($array[$properties::SENDER_NAME])
-            ->setEmail($array[$properties::SENDER_EMAIL])
-            ->setPhone($phone)
-            ->setDocuments($document);
+        return $this->sender->setName($array[$properties::SENDER_NAME])
+                            ->setEmail($array[$properties::SENDER_EMAIL])
+                            ->setPhone($array["phone"])
+                            ->setDocuments($array["document"]);
     }
 
+    /**
+     * @param $name
+     * @param $email
+     * @param Phone $phone
+     * @param Document $document
+     * @return \PagSeguro\Domains\Sender
+     */
     public function withParameters(
         $name,
         $email,
-        $areaCode,
-        $number,
-        $documentType,
-        $documentValue
+        Phone $phone,
+        Document $document
+
     ){
-        $phone = new Phone;
-        $phone->setAreaCode($areaCode)
-              ->setNumber($number);
-
-        $document = new Document();
-        $document->setType($documentType)
-                 ->setIdentifier($documentValue);
-
         $this->sender->setName($name)
                ->setEmail($email)
                ->setPhone($phone)

@@ -22,40 +22,36 @@
  *
  */
 
-namespace PagSeguro\Resources\Factory\Request\Shipping;
-
-use PagSeguro\Domains\ShippingCost;
+namespace PagSeguro\Parsers\Response;
 
 /**
- * Class Shipping
- * @package PagSeguro\Resources\Factory\Request
+ * Class PaymentMethod
+ * @package PagSeguro\Parsers\Response
  */
-class Cost
+trait PaymentMethod
 {
+    /**
+     * @var
+     */
+    private $paymentMethod;
 
     /**
-     * @var \PagSeguro\Domains\Shipping
+     * @return mixed
      */
-    private $shipping;
+    public function getPaymentMethod()
+    {
+        return $this->paymentMethod;
+    }
 
     /**
-     * Shipping constructor.
+     * @param $paymentMethod
+     * @return $this
      */
-    public function __construct($shipping)
+    public function setPaymentMethod($paymentMethod)
     {
-        $this->shipping = $shipping;
-    }
-
-    public function instance(ShippingCost $cost)
-    {
-        return $this->shipping->setCost($cost);
-    }
-
-    public function withParameters($cost){
-        $shipping = new ShippingCost();
-        $this->shipping->setCost(
-            $shipping->setCost($cost)
-        );
-        return $this->shipping;
+        $payment =  new \PagSeguro\Domains\PaymentMethod();
+        $payment->setType(current($paymentMethod->type))->setCode(current($paymentMethod->code));
+        $this->paymentMethod = $payment;
+        return $this;
     }
 }

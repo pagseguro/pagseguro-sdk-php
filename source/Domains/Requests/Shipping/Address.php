@@ -36,7 +36,7 @@ trait Address
 
     public function setAddress()
     {
-        $this->address = new \PagSeguro\Resources\Factory\Request\Shipping\Address($this->shipping);
+        $this->address = new \PagSeguro\Resources\Factory\Shipping\Address($this->shipping);
         return $this->address;
     }
 }

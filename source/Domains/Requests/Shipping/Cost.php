@@ -35,7 +35,7 @@ trait Cost
 
     public function setCost()
     {
-        $this->cost = new \PagSeguro\Resources\Factory\Request\Shipping\Cost($this->shipping);
+        $this->cost = new \PagSeguro\Resources\Factory\Shipping\Cost($this->shipping);
         return $this->cost;
     }
 }

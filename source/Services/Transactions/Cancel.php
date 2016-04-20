@@ -22,11 +22,12 @@
  *
  */
 
-namespace PagSeguro\Services;
+namespace PagSeguro\Services\Transactions;
 
 
 use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Parsers\Refund\Request;
+use PagSeguro\Parsers\Cancel\Request;
+use PagSeguro\Parsers\Cancel\Response;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Responsibility;
@@ -35,29 +36,29 @@ use PagSeguro\Resources\Responsibility;
  * Class Payment
  * @package PagSeguro\Services\Checkout
  */
-class Refund
+class Cancel
 {
 
+
     /**
-     * @param \PagSeguro\Domains\Account\Credentials $credentials
-     * @param \PagSeguro\Domains\Requests\Payment $payment
-     * @param bool $onlyCode
-     * @return string
+     * @param Credentials $credentials
+     * @param $code
+     * @return Response
      * @throws \Exception
      */
-    public static function create(Credentials $credentials, $code, $value = null)
+    public static function create(Credentials $credentials, $code)
     {
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
             $http->post(
                 self::request($connection),
-                Request::getData($code, $value)
+                Request::getData($code)
             );
 
             return Responsibility::http(
                 $http,
-                new \PagSeguro\Parsers\Refund\Request()
+                new \PagSeguro\Parsers\Cancel\Request()
             );
 
         } catch (\Exception $exception) {
@@ -71,6 +72,6 @@ class Refund
      */
     private static function request(Connection\Data $connection)
     {
-        return $connection->buildRefundRequestUrl() . "?" . $connection->buildCredentialsQuery();
+        return $connection->buildCancelRequestUrl() . "?" . $connection->buildCredentialsQuery();
     }
 }

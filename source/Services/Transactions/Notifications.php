@@ -67,7 +67,7 @@ class Notifications
      */
     private static function request(Connection\Data $connection)
     {
-        return $connection->buildNotificationTransactionRequestUrl() . "/".
-               Responsibility::notifications()."?" . $connection->buildCredentialsQuery();
+        return $connection->buildNotificationTransactionRequestUrl()."/".
+               Responsibility::notifications()."?".$connection->buildCredentialsQuery();
     }
 }

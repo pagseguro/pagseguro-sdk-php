@@ -22,29 +22,40 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Resources\Factory\Shipping;
+
+use PagSeguro\Domains\ShippingCost;
 
 /**
- * Class Request
- * @package PagSeguro\Domains\Requests
+ * Class Shipping
+ * @package PagSeguro\Resources\Factory\Request
  */
-class Request
+class Cost
 {
-    use Currency;
-    use Item;
-    use Metadata;
-    use Notification {
-        Notification::getUrl as getNotificationUrl;
-        Notification::setUrl as setNotificationUrl;
-        Notification::getUrl insteadof Redirect;
-        Notification::setUrl insteadof Redirect;
+
+    /**
+     * @var \PagSeguro\Domains\Shipping
+     */
+    private $shipping;
+
+    /**
+     * Shipping constructor.
+     */
+    public function __construct($shipping)
+    {
+        $this->shipping = $shipping;
     }
-    use Parameter;
-    use Sender;
-    use Shipping;
-    use Reference;
-    use Redirect {
-        Redirect::getUrl as getRedirectUrl;
-        Redirect::setUrl as setRedirectUrl;
+
+    public function instance(ShippingCost $cost)
+    {
+        return $this->shipping->setCost($cost);
+    }
+
+    public function withParameters($cost){
+        $shipping = new ShippingCost();
+        $this->shipping->setCost(
+            $shipping->setCost($cost)
+        );
+        return $this->shipping;
     }
 }

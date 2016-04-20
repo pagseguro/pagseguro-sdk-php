@@ -22,41 +22,48 @@
  *
  */
 
-namespace PagSeguro\Resources\Factory\Request\Shipping;
+namespace PagSeguro\Parsers\Response;
 
-use PagSeguro\Domains\ShippingType;
+use PagSeguro\Domains\Document;
+use PagSeguro\Domains\Phone;
 
 /**
- * Class Shipping
- * @package PagSeguro\Resources\Factory\Request
+ * Class Sender
+ * @package PagSeguro\Parsers\Response
  */
-class Type
+trait Sender
 {
-
     /**
-     * @var \PagSeguro\Domains\Shipping
+     * @var
      */
-    private $shipping;
-
+    private $sender;
     /**
-     * Shipping constructor.
+     * @return mixed
      */
-    public function __construct($shipping)
+    public function getSender()
     {
-        $this->shipping = $shipping;
+        return $this->sender;
     }
 
-    public function instance(ShippingType $type)
+    /**
+     * @param $sender
+     * @return $this
+     */
+    public function setSender($sender)
     {
-        return $this->shipping->setType($type);
-    }
+        $phone = new Phone();
+        $phone->setAreaCode($sender->phone->areaCode)
+              ->setNumber($sender->phone->number);
 
-    public function withParameters($type){
-        $shipping = new ShippingType();
-        $shipping->setType($type);
-        $this->shipping->setType(
-            $shipping
+        $senderClass = new \PagSeguro\Resources\Factory\Request\Sender();
+        $senderClass->withParameters(
+            current($sender->name),
+            current($sender->email),
+            $phone,
+            new Document()
         );
-        return $this->shipping;
+
+        $this->sender = $senderClass;
+        return $this;
     }
 }

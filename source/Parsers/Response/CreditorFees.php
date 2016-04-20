@@ -22,29 +22,39 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Parsers\Response;
 
 /**
- * Class Request
- * @package PagSeguro\Domains\Requests
+ * Class CreditorFees
+ * @package PagSeguro\Parsers\Response
  */
-class Request
+trait CreditorFees
 {
-    use Currency;
-    use Item;
-    use Metadata;
-    use Notification {
-        Notification::getUrl as getNotificationUrl;
-        Notification::setUrl as setNotificationUrl;
-        Notification::getUrl insteadof Redirect;
-        Notification::setUrl insteadof Redirect;
+
+    /**
+     * @var
+     */
+    private $creditorFees;
+
+    /**
+     * @return mixed
+     */
+    public function getCreditorFees()
+    {
+        return $this->creditorFees;
     }
-    use Parameter;
-    use Sender;
-    use Shipping;
-    use Reference;
-    use Redirect {
-        Redirect::getUrl as getRedirectUrl;
-        Redirect::setUrl as setRedirectUrl;
+
+
+    /**
+     * @param $creditorFees
+     * @return $this
+     */
+    public function setCreditorFees($creditorFees)
+    {
+        $creditor = new \PagSeguro\Domains\CreditorFees();
+        $creditor->setIntermediationRateAmount(current($creditorFees->intermediationRateAmount))
+            ->setIntermediationFeeAmount(current($creditorFees->intermediationFeeAmount));
+        $this->creditorFees = $creditor;
+        return $this;
     }
 }

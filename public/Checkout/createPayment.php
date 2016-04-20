@@ -23,6 +23,7 @@ $payment->addItems()->withParameters(
 );
 
 $payment->setCurrency("BRL");
+
 $payment->setReference("LIBPHP000001");
 
 $payment->setRedirectUrl("http://www.lojamodelo.com.br");
@@ -30,10 +31,8 @@ $payment->setRedirectUrl("http://www.lojamodelo.com.br");
 $payment->setSender()->withParameters(
     'João Comprador',
     'email@comprador.com.br',
-    '11',
-    '56273440',
-    'CPF',
-    '156.009.442-76'
+    (new \PagSeguro\Domains\Phone)->setAreaCode(11)->setNumber(56273440),
+    (new \PagSeguro\Domains\Document)->setType('CPF')->setIdentifier('156.009.442-76')
 );
 
 $payment->setShipping()->setAddress()->withParameters(
@@ -62,7 +61,6 @@ $payment->addParameter()->withParameters('itemAmount', '200.00')->index(3);
 
 //Add items by parameter using an array
 $payment->addParameter()->withArray(['notificationURL', 'http://www.lojamodelo.com.br/nofitication']);
-
 
 $payment->setRedirectUrl("http://www.lojamodelo.com.br");
 $payment->setNotificationUrl("http://www.lojamodelo.com.br/nofitication");
