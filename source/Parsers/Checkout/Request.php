@@ -61,7 +61,7 @@ class Request extends Error implements Parser
         return array_merge(
             $data,
             Basic::getData($payment, $properties),
-//            Currency::getData($payment, $properties),
+            Currency::getData($payment, $properties),
             Item::getData($payment, $properties),
             Sender::getData($payment, $properties),
             Shipping::getData($payment, $properties),
