@@ -22,40 +22,37 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection;
+namespace PagSeguro\Parsers\Session;
 
-use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Resources\Builder;
+use PagSeguro\Enum\Properties\Current;
+use PagSeguro\Parsers\Error;
+use PagSeguro\Parsers\Parser;
+use PagSeguro\Resources\Http;
 
 /**
- * Class Data
- * @package PagSeguro\Services\Connection
+ * Request class
  */
-class Data
-{
-    use Base\Authorization;
-    use Base\Cancel;
-    use Base\Credentials;
-    use Base\Notification;
-    use Base\Payment;
-    use Base\Refund;
-    use Base\Session;
-
+class Request extends Error implements Parser
+{   
     /**
-     * Data constructor.
-     * @param Credentials $credentials
+     * @param \PagSeguro\Resources\Http $http
+     * @return Response
      */
-    public function __construct(Credentials $credentials)
+    public static function success(Http $http)
     {
-        $this->setCredentials($credentials);
+        $xml = simplexml_load_string($http->getResponse());
+        $result = new \PagSeguro\Parsers\Session\Response();
+        $result->setResult(current($xml));
+        return $result;
     }
-
+    
     /**
-     * @param $data
-     * @return string
+     * @param \PagSeguro\Resources\Http $http
+     * @return \PagSeguro\Domains\Error
      */
-    public function buildHttpUrl($data)
+    public static function error(Http $http)
     {
-        return http_build_query($data);
+        $error = parent::error($http);
+        return $error;
     }
 }
