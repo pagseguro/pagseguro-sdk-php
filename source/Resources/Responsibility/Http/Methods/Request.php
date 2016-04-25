@@ -58,7 +58,8 @@ class Request implements Handler
     public function handler($http, $class)
     {
         if ($http->getStatus() == Status::BAD_REQUEST) {
-            return $class::error($http);
+            $error = $class::error($http);
+            throw new \Exception($error->getMessage(), $error->getCode());
         }
         return $this->successor->handler($http, $class);
     }

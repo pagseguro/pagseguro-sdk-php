@@ -24,7 +24,7 @@
 
 namespace PagSeguro\Domains\Requests;
 
-use PagSeguro\Parsers\Checkout\Payment\Request;
+use PagSeguro\Domains\Requests\Checkout\Payment\Request;
 
 /**
  * Class Payment

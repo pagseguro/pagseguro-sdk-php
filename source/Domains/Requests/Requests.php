@@ -22,29 +22,12 @@
  *
  */
 
-namespace PagSeguro\Parsers;
-
-use PagSeguro\Domains\Requests\Requests;
+namespace PagSeguro\Domains\Requests;
 
 /**
- * Class Basic
- * @package PagSeguro\Parsers
+ * Interface Requests
+ * @package PagSeguro\Domains\Requests
  */
-trait Currency
+interface Requests
 {
-    /**
-     * @param Requests $request
-     * @param $properties
-     * @return array
-     */
-    public static function getData(Requests $request, $properties)
-    {
-
-        $data = [];
-        // currency
-        if (!is_null($request->getCurrency())) {
-            $data[$properties::CURRENCY] = $request->getCurrency();
-        }
-        return $data;
-    }
 }

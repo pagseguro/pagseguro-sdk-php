@@ -46,6 +46,7 @@ class Payment
      */
     public static function checkout(Credentials $credentials, \PagSeguro\Domains\Requests\Payment $payment, $onlyCode)
     {
+
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();

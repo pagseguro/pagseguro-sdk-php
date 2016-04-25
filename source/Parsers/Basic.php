@@ -24,7 +24,7 @@
 
 namespace PagSeguro\Parsers;
 
-use PagSeguro\Domains\Requests\Request;
+use PagSeguro\Domains\Requests\Requests;
 
 /**
  * Class Basic
@@ -33,11 +33,11 @@ use PagSeguro\Domains\Requests\Request;
 trait Basic
 {
     /**
-     * @param Request $payment
+     * @param Requests $request
      * @param $properties
      * @return array
      */
-    public static function getData($request, $properties)
+    public static function getData(Requests $request, $properties)
     {
         $data = [];
 

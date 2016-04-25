@@ -58,8 +58,8 @@ class Unauthorized implements Handler
     public function handler($http, $class)
     {
         if ($http->getStatus() == Status::UNAUTHORIZED) {
-            $response = $class::error($http);
-            throw new \Exception($response->getMessage(), $response->getCode());
+            $error = $class::error($http);
+            throw new \Exception($error->getMessage(), $error->getCode());
         }
         return $this->successor->handler($http, $class);
     }

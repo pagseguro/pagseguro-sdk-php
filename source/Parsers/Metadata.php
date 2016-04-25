@@ -25,11 +25,9 @@
 
 namespace PagSeguro\Parsers;
 
-use PagSeguro\Domains\Requests\Request;
+use PagSeguro\Domains\Requests\Requests;
 use PagSeguro\Helpers\StringFormat;
-use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Enum\Metadata\Description;
-use PagSeguro\Enum\Metadata\Format;
 
 /**
  * Parser for the Metadata
@@ -37,11 +35,17 @@ use PagSeguro\Enum\Metadata\Format;
  */
 trait Metadata
 {
-    public static function getData(Request $payment, $properties)
+
+    /**
+     * @param Requests $request
+     * @param $properties
+     * @return array
+     */
+    public static function getData(Requests $request, $properties)
     {
         $data = [];
-        $metadata = $payment->getMetadata();
-        if ($payment->metadataLenght() > 0) {
+        $metadata = $request->getMetadata();
+        if ($request->metadataLenght() > 0) {
             $i = 0;
 
             foreach ($metadata as $key => $value) {

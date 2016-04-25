@@ -24,10 +24,7 @@
 
 namespace PagSeguro\Parsers;
 
-
-use PagSeguro\Domains\Requests\Request;
-use PagSeguro\Helpers\Currency;
-use PagSeguro\Enum\Properties\Current;
+use PagSeguro\Domains\Requests\Requests;
 
 /**
  * Class Item
@@ -36,15 +33,15 @@ use PagSeguro\Enum\Properties\Current;
 trait Item
 {
     /**
-     * @param Request $payment
+     * @param Requests $request
      * @param $properties
      * @return array
      */
-    public static function getData(Request $payment, $properties)
+    public static function getData(Requests $request, $properties)
     {
         $data = [];
-        $items = $payment->getItems();
-        if ($payment->ItemLenght() > 0) {
+        $items = $request->getItems();
+        if ($request->ItemLenght() > 0) {
             $i = 0;
 
             foreach ($items as $key => $value) {
@@ -59,14 +56,14 @@ trait Item
                     $data[sprintf($properties::ITEM_QUANTITY, $i)] = $items[$key]->getQuantity();
                 }
                 if ($items[$key]->getAmount() != null) {
-                    $amount = Currency::toDecimal($items[$key]->getAmount());
+                    $amount = \PagSeguro\Helpers\Currency::toDecimal($items[$key]->getAmount());
                     $data[sprintf($properties::ITEM_AMOUNT, $i)] = $amount;
                 }
                 if ($items[$key]->getWeight() != null) {
                     $data[sprintf($properties::ITEM_WEIGHT, $i)] = $items[$key]->getWeight();
                 }
                 if ($items[$key]->getShippingCost() != null) {
-                    $data[sprintf($properties::ITEM_SHIPPING_COST, $i)] = Currency::toDecimal(
+                    $data[sprintf($properties::ITEM_SHIPPING_COST, $i)] = \PagSeguro\Helpers\Currency::toDecimal(
                         $items[$key]->getShippingCost()
                     );
                 }
