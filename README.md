@@ -66,11 +66,12 @@ Caso tenha dúvidas ou precise de suporte, acesse nosso [fórum].
 Changelog
 ---------
 
-3.0.1
+3.0.0
+ - Implementado serviço de modelo de aplicações.
+ - Implementado serviço de criação de sessão.
  - Implementado serviço de estorno.
  - Implementado serviço de cancelamento.
  - Implementado serviço de notificações.
-3.0.0
  - Atualização do código da biblioteca, aderindo ao uso de *namespaces*.
  - Refatoração do código base.
  - Implementado serviço de pagamento.
