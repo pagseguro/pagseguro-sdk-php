@@ -9,8 +9,8 @@ require_once "../../vendor/autoload.php";
 try {
 
     if (\PagSeguro\Helpers\Xhr::hasPost()) {
-        $transaction = \PagSeguro\Services\Transactions\Notifications::check(
-            \PagSeguro\Configuration\Configure::getAccountCredentials()
+        $transaction = \PagSeguro\Services\Application\Notification::check(
+            \PagSeguro\Configuration\Configure::getApplicationCredentials()
         );
     } else {
         throw new \InvalidArgumentException($_POST);

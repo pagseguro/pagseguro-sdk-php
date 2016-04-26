@@ -22,7 +22,7 @@
  *
  */
 
-namespace PagSeguro\Services\Transactions;
+namespace PagSeguro\Services\Application;
 
 use PagSeguro\Domains\Account\Credentials;
 use PagSeguro\Resources\Connection;
@@ -33,7 +33,7 @@ use PagSeguro\Resources\Responsibility;
  * Class Notifications
  * @package PagSeguro\Services\Transactions
  */
-class Notifications
+class Notification
 {
 
     /**
@@ -53,7 +53,7 @@ class Notifications
 
             return Responsibility::http(
                 $http,
-                new \PagSeguro\Parsers\Notifications\Request
+                new \PagSeguro\Parsers\Authorization\Notification\Request
             );
 
         } catch (\Exception $exception) {
@@ -67,7 +67,7 @@ class Notifications
      */
     private static function request(Connection\Data $connection)
     {
-        return $connection->buildNotificationTransactionRequestUrl()."/".
+        return $connection->buildNotificationAuthorizationRequestUrl()."/".
                Responsibility::notifications()."?".$connection->buildCredentialsQuery();
     }
 }
