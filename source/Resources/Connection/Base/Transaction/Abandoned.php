@@ -22,35 +22,21 @@
  *
  */
 
-namespace PagSeguro\Parsers\Cancel;
+namespace PagSeguro\Resources\Connection\Base\Transaction;
+
+use PagSeguro\Resources\Builder;
 
 /**
- * Class Response
- * @package PagSeguro\Parsers\Cancel
+ * Class Payment
+ * @package PagSeguro\Services\Connection\Base
  */
-class Response
+trait Abandoned
 {
-
     /**
-     * @var
+     * @return string
      */
-    private $result;
-
-    /**
-     * @return mixed
-     */
-    public function getResult()
+    public function buildAbandonedRequestUrl()
     {
-        return $this->result;
+        return Builder\Transaction\Abandoned::getAbandonedRequestUrl();
     }
-
-    /**
-     * @param mixed $result
-     * @return Response
-     */
-    public function setResult($result)
-    {
-        $this->result = $result;
-    }
-
 }

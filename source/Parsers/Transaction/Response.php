@@ -22,12 +22,12 @@
  *
  */
 
-namespace PagSeguro\Parsers\Notifications;
+namespace PagSeguro\Parsers\Transaction;
 
-/**
- * Class Response
- * @package PagSeguro\Parsers\Refund
- */
+    /**
+     * Class Response
+     * @package PagSeguro\Parsers\Refund
+     */
 /**
  * Class Response
  * @package PagSeguro\Parsers\Notifications

@@ -40,6 +40,8 @@ class Data
     use Base\Payment;
     use Base\Refund;
     use Base\Session;
+    use Base\Transaction\Abandoned;
+    use Base\Transaction\Search;
 
     /**
      * Data constructor.

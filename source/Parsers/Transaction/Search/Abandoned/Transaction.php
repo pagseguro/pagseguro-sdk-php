@@ -22,38 +22,59 @@
  *
  */
 
-namespace PagSeguro\Parsers\Response;
+namespace PagSeguro\Parsers\Transaction\Search\Abandoned;
+
+use PagSeguro\Parsers\Transaction\Search\Transactions;
 
 /**
- * Class PaymentMethod
- * @package PagSeguro\Parsers\Response
+ * Class Transaction
+ * @package PagSeguro\Parsers\Transaction\Search
  */
-trait PaymentMethod
+class Transaction extends Transactions
 {
+
     /**
      * @var
      */
-    private $paymentMethod;
+    private $recoveryCode;
+    /**
+     * @var
+     */
+    private $grossAmount;
 
     /**
      * @return mixed
      */
-    public function getPaymentMethod()
+    public function getGrossAmount()
     {
-        return $this->paymentMethod;
+        return $this->grossAmount;
     }
 
     /**
-     * @param $paymentMethod
-     * @return $this
+     * @param mixed $grossAmount
+     * @return Transaction
      */
-    public function setPaymentMethod($paymentMethod)
+    public function setGrossAmount($grossAmount)
     {
-        if ($paymentMethod) {
-            $payment = new \PagSeguro\Domains\PaymentMethod();
-            $payment->setType(current($paymentMethod->type))->setCode(current($paymentMethod->code));
-            $this->paymentMethod = $payment;
-        }
+        $this->grossAmount = $grossAmount;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRecoveryCode()
+    {
+        return $this->recoveryCode;
+    }
+
+    /**
+     * @param mixed $recoveryCode
+     * @return Transaction
+     */
+    public function setRecoveryCode($recoveryCode)
+    {
+        $this->recoveryCode = $recoveryCode;
         return $this;
     }
 }

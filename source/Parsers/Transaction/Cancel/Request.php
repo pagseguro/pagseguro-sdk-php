@@ -22,11 +22,11 @@
  *
  */
 
-namespace PagSeguro\Parsers\Notifications;
+namespace PagSeguro\Parsers\Transaction\Cancel;
 
+use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Parser;
-use PagSeguro\Parsers\Transaction\Response;
 use PagSeguro\Resources\Http;
 
 /**
@@ -36,6 +36,23 @@ use PagSeguro\Resources\Http;
 class Request extends Error implements Parser
 {
 
+
+    /**
+     * @param $code
+     * @param $value
+     * @return array
+     */
+    public static function getData($code)
+    {
+        $data = [];
+        $properties = new Current;
+
+        if (!is_null($code)) {
+            $data[$properties::TRANSACTION_CODE] = $code;
+        }
+        return $data;
+    }
+
     /**
      * @param \PagSeguro\Resources\Http $http
      * @return Response
@@ -43,27 +60,9 @@ class Request extends Error implements Parser
     public static function success(Http $http)
     {
         $xml = simplexml_load_string($http->getResponse());
-
-        $response = new Response();
-        $response->setDate(current($xml->date))
-                 ->setCode(current($xml->code))
-                 ->setReference(current($xml->reference))
-                 ->setType(current($xml->type))
-                 ->setStatus(current($xml->status))
-                 ->setLastEventDate(current($xml->lastEventDate))
-                 ->setPaymentMethod($xml->paymentMethod)
-                 ->setGrossAmount(current($xml->grossAmount))
-                 ->setDiscountAmount(current($xml->discountAmount))
-                 ->setCreditorFees($xml->creditorFees)
-                 ->setNetAmount(current($xml->netAmount))
-                 ->setExtraAmount(current($xml->extraAmount))
-                 ->setEscrowEndDate(current($xml->escrowEndDate))
-                 ->setInstallmentCount(current($xml->installmentCount))
-                 ->setItemCount(current($xml->itemCount))
-                 ->setItems($xml->items)
-                 ->setSender($xml->sender)
-                 ->setShipping($xml->shipping);
-        return $response;
+        $result = new \PagSeguro\Parsers\Cancel\Response();
+        $result->setResult(current($xml));
+        return $result;
     }
 
     /**

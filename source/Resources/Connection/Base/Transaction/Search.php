@@ -22,38 +22,21 @@
  *
  */
 
-namespace PagSeguro\Parsers\Response;
+namespace PagSeguro\Resources\Connection\Base\Transaction;
+
+use PagSeguro\Resources\Builder;
 
 /**
- * Class PaymentMethod
- * @package PagSeguro\Parsers\Response
+ * Class Payment
+ * @package PagSeguro\Services\Connection\Base
  */
-trait PaymentMethod
+trait Search
 {
     /**
-     * @var
+     * @return string
      */
-    private $paymentMethod;
-
-    /**
-     * @return mixed
-     */
-    public function getPaymentMethod()
+    public function buildSearchRequestUrl()
     {
-        return $this->paymentMethod;
-    }
-
-    /**
-     * @param $paymentMethod
-     * @return $this
-     */
-    public function setPaymentMethod($paymentMethod)
-    {
-        if ($paymentMethod) {
-            $payment = new \PagSeguro\Domains\PaymentMethod();
-            $payment->setType(current($paymentMethod->type))->setCode(current($paymentMethod->code));
-            $this->paymentMethod = $payment;
-        }
-        return $this;
+        return Builder\Transaction\Search::getSearchRequestUrl();
     }
 }

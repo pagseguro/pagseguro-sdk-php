@@ -22,12 +22,11 @@
  *
  */
 
-namespace PagSeguro\Services\Transactions;
+namespace PagSeguro\Services\Transactions\Search;
 
 
 use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Parsers\Transaction\Cancel\Request;
-use PagSeguro\Parsers\Transaction\Cancel\Response;
+use PagSeguro\Parsers\Transaction\Search\Code\Request;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Responsibility;
@@ -36,24 +35,22 @@ use PagSeguro\Resources\Responsibility;
  * Class Payment
  * @package PagSeguro\Services\Checkout
  */
-class Cancel
+class Code
 {
 
-
     /**
-     * @param Credentials $credentials
+     * @param \PagSeguro\Domains\Account\Credentials $credentials
      * @param $code
-     * @return Response
+     * @return string
      * @throws \Exception
      */
-    public static function create(Credentials $credentials, $code)
+    public static function search(Credentials $credentials, $code)
     {
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
-            $http->post(
-                self::request($connection),
-                Request::getData($code)
+            $http->get(
+                self::request($connection, $code)
             );
 
             return Responsibility::http(
@@ -70,8 +67,13 @@ class Cancel
      * @param Connection\Data $connection
      * @return string
      */
-    private static function request(Connection\Data $connection)
+    private static function request(Connection\Data $connection, $code)
     {
-        return $connection->buildCancelRequestUrl() . "?" . $connection->buildCredentialsQuery();
+        return sprintf(
+            "%1s/%2s/?%3s",
+            $connection->buildSearchRequestUrl(),
+            $code,
+            $connection->buildCredentialsQuery()
+        );
     }
 }

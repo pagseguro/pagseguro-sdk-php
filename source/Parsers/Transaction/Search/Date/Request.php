@@ -22,11 +22,12 @@
  *
  */
 
-namespace PagSeguro\Parsers\Refund;
+namespace PagSeguro\Parsers\Transaction\Search\Date;
 
 use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Parser;
+use PagSeguro\Parsers\Transaction\Search\Date\Response;
 use PagSeguro\Resources\Http;
 
 /**
@@ -36,28 +37,6 @@ use PagSeguro\Resources\Http;
 class Request extends Error implements Parser
 {
 
-
-    /**
-     * @param $code
-     * @param $value
-     * @return array
-     */
-    public static function getData($code, $value)
-    {
-        $data = [];
-        $properties = new Current;
-
-        if (!is_null($code)) {
-            $data[$properties::TRANSACTION_CODE] = $code;
-        }
-
-        if (!is_null($value)) {
-            $data[$properties::REFUND_VALUE] = $value;
-        }
-
-        return $data;
-    }
-
     /**
      * @param \PagSeguro\Resources\Http $http
      * @return Response
@@ -65,9 +44,14 @@ class Request extends Error implements Parser
     public static function success(Http $http)
     {
         $xml = simplexml_load_string($http->getResponse());
-        $result = new \PagSeguro\Parsers\Refund\Response();
-        $result->setResult(current($xml));
-        return $result;
+
+        $response = new Response();
+        $response->setDate(current($xml->date))
+            ->setTransactions(current($xml->transactions))
+            ->setResultsInThisPage(current($xml->resultsInThisPage))
+            ->setCurrentPage(current($xml->currentPage))
+            ->setTotalPages(current($xml->totalPages));
+        return $response;
     }
 
     /**

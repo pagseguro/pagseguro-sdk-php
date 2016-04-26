@@ -22,38 +22,35 @@
  *
  */
 
-namespace PagSeguro\Parsers\Response;
+namespace PagSeguro\Parsers\Transaction\Refund;
 
 /**
- * Class PaymentMethod
- * @package PagSeguro\Parsers\Response
+ * Class Response
+ * @package PagSeguro\Parsers\Refund
  */
-trait PaymentMethod
+class Response
 {
+
     /**
      * @var
      */
-    private $paymentMethod;
+    private $result;
 
     /**
      * @return mixed
      */
-    public function getPaymentMethod()
+    public function getResult()
     {
-        return $this->paymentMethod;
+        return $this->result;
     }
 
     /**
-     * @param $paymentMethod
-     * @return $this
+     * @param mixed $result
+     * @return Response
      */
-    public function setPaymentMethod($paymentMethod)
+    public function setResult($result)
     {
-        if ($paymentMethod) {
-            $payment = new \PagSeguro\Domains\PaymentMethod();
-            $payment->setType(current($paymentMethod->type))->setCode(current($paymentMethod->code));
-            $this->paymentMethod = $payment;
-        }
-        return $this;
+        $this->result = $result;
     }
+
 }

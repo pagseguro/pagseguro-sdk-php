@@ -22,11 +22,11 @@
  *
  */
 
-namespace PagSeguro\Parsers\Refund;
+namespace PagSeguro\Parsers\Transaction\Cancel;
 
 /**
  * Class Response
- * @package PagSeguro\Parsers\Refund
+ * @package PagSeguro\Parsers\Cancel
  */
 class Response
 {

@@ -22,11 +22,10 @@
  *
  */
 
-namespace PagSeguro\Services\Transactions;
-
+namespace PagSeguro\Services\Transactions\Search;
 
 use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Parsers\Transaction\Refund\Request;
+use PagSeguro\Parsers\Transaction\Search\Abandoned\Request;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Responsibility;
@@ -35,24 +34,31 @@ use PagSeguro\Resources\Responsibility;
  * Class Payment
  * @package PagSeguro\Services\Checkout
  */
-class Refund
+class Abandoned
 {
 
     /**
      * @param \PagSeguro\Domains\Account\Credentials $credentials
-     * @param \PagSeguro\Domains\Requests\Payment $payment
-     * @param bool $onlyCode
+     * @param $initial
+     * @param $final
+     * @param $max
+     * @param $page
      * @return string
      * @throws \Exception
      */
-    public static function create(Credentials $credentials, $code, $value = null)
-    {
+    public static function search(
+        Credentials $credentials,
+        $initial,
+        $final = null,
+        $max = null,
+        $page = null
+    ) {
+
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
-            $http->post(
-                self::request($connection),
-                Request::getData($code, $value)
+            $http->get(
+                self::request($connection, self::toArray($initial, $final, $max, $page))
             );
 
             return Responsibility::http(
@@ -67,10 +73,36 @@ class Refund
 
     /**
      * @param Connection\Data $connection
+     * @param $params
      * @return string
      */
-    private static function request(Connection\Data $connection)
+    private static function request(Connection\Data $connection, $params)
     {
-        return $connection->buildRefundRequestUrl() . "?" . $connection->buildCredentialsQuery();
+        return sprintf(
+            "%1s/abandoned/?%2s&initialDate=%3s%4s%5s%6s",
+            $connection->buildAbandonedRequestUrl(),
+            $connection->buildCredentialsQuery(),
+            $params["initial_date"],
+            !isset($params["final_date"]) ?: sprintf("&finalDate=%s", $params["final_date"]),
+            !isset($params["max_per_page"]) ?: sprintf("&maxPageResults=%s", $params["max_per_page"]),
+            !isset($params["page"]) ?: sprintf("&page=%s", $params["page"])
+        );
+    }
+
+    /**
+     * @param $initial
+     * @param $final
+     * @param $max
+     * @param $pages
+     * @return array
+     */
+    private static function toArray($initial, $final, $max, $pages)
+    {
+        return [
+            'initial_date' => $initial,
+            'final_date' => $final,
+            'max_per_page' => $max,
+            'page' => $pages,
+        ];
     }
 }
