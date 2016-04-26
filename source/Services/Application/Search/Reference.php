@@ -48,7 +48,7 @@ class Reference
     public static function search(
         Credentials $credentials,
         $reference,
-        $options
+        array $options
     ) {
 
         try {

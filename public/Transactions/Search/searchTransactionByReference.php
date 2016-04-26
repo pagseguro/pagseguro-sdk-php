@@ -4,10 +4,12 @@ require_once "../../../vendor/autoload.php";
 
 \PagSeguro\Library::initialize();
 
-$initialDate = '2016-04-01T14:55';
-$finalDate = '2016-04-25T14:44';
-$pageNumber = 1; //Optional
-$maxPageResults = 20; //Optional
+$options = [
+    'initial_date' => '2016-04-01T14:55',
+    'final_date' => '2016-04-24T09:55', //Optional
+    'page' => 1, //Optional
+    'max_per_page' => 20, //Optional
+];
 
 $reference = "LIBPHP000001";
 
@@ -16,10 +18,7 @@ try {
     $response = \PagSeguro\Services\Transactions\Search\Reference::search(
         \PagSeguro\Configuration\Configure::getAccountCredentials(),
         $reference,
-        $initialDate,
-        $finalDate,
-        $maxPageResults,
-        $pageNumber
+        $options
     );
 
     var_dump($response);

@@ -46,7 +46,7 @@ class Date
      */
     public static function search(
         Credentials $credentials,
-        $options
+        array $options
     ) {
 
         try {
