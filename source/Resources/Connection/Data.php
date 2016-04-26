@@ -34,6 +34,10 @@ use PagSeguro\Resources\Builder;
 class Data
 {
     use Base\Authorization;
+    use Base\Authorization\Search {
+        Base\Authorization\Search::buildSearchRequestUrl as buildAuthorizationSearchRequestUrl;
+        Base\Authorization\Search::buildSearchRequestUrl insteadof Base\Transaction\Search;
+    }
     use Base\Cancel;
     use Base\Credentials;
     use Base\Notification;
@@ -41,7 +45,10 @@ class Data
     use Base\Refund;
     use Base\Session;
     use Base\Transaction\Abandoned;
-    use Base\Transaction\Search;
+    use Base\Transaction\Search {
+        Base\Transaction\Search::buildSearchRequestUrl as buildTransactionSearchRequestUrl;
+        Base\Transaction\Search::buildSearchRequestUrl insteadof Base\Authorization\Search;
+    }
 
     /**
      * Data constructor.

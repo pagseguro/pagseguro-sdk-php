@@ -102,6 +102,26 @@ class Current
     const PERMISSIONS = "permissions";
 
     /**
+     * Search initial date
+     */
+    const SEARCH_INITIAL_DATE = "initialDate";
+
+    /**
+     * Search final date
+     */
+    const SEARCH_FINAL_DATE = "finalDate";
+
+    /**
+     * Search max results per page
+     */
+    const SEARCH_MAX_RESULTS_PER_PAGE = "maxPageResults";
+
+    /**
+     * Search page qty
+     */
+    const SEARCH_PAGE = "page";
+
+    /**
      * Sender name
      */
     const SENDER_NAME = "senderName";

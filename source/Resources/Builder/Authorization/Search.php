@@ -22,29 +22,26 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection\Base;
+namespace PagSeguro\Resources\Builder\Authorization;
 
 use PagSeguro\Resources\Builder;
 
 /**
  * Class Payment
- * @package PagSeguro\Services\Connection\Base
+ * @package PagSeguro\Resources\Builder
  */
-trait Notification
+class Search extends Builder
 {
-    /**
-     * @return string
-     */
-    public function buildNotificationTransactionRequestUrl()
-    {
-        return Builder\Notification::getTransactionRequestUrl();
-    }
 
     /**
      * @return string
      */
-    public function buildNotificationAuthorizationRequestUrl()
+    public static function getSearchRequestUrl()
     {
-        return Builder\Notification::getAuthorizationRequestUrl();
+
+        return parent::getRequest(
+            parent::getUrl('webservice'),
+            'application/search'
+        );
     }
 }

@@ -41,6 +41,10 @@ class ApplicationCredentials implements Credentials
      * @var
      */
     private $appKey;
+    /**
+     * @var
+     */
+    private $authorizationCode;
 
 
     /**
@@ -97,13 +101,32 @@ class ApplicationCredentials implements Credentials
     }
 
     /**
+     * @return mixed
+     */
+    public function getAuthorizationCode()
+    {
+        return $this->authorizationCode;
+    }
+
+    /**
+     * @param mixed $authorizationCode
+     * @return ApplicationCredentials
+     */
+    public function setAuthorizationCode($authorizationCode)
+    {
+        $this->authorizationCode = $authorizationCode;
+        return $this;
+    }
+
+    /**
      * @return array
      */
     public function getAttributesMap()
     {
         return [
             'appId' => $this->getAppId(),
-            'appKey' => $this->getAppKey()
+            'appKey' => $this->getAppKey(),
+            'authorizationCode' => $this->getAuthorizationCode()
         ];
     }
 

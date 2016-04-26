@@ -80,7 +80,7 @@ class Date
     {
         return sprintf(
             "%1s/?%2s&initialDate=%3s%4s%5s%6s",
-            $connection->buildSearchRequestUrl(),
+            $connection->buildTransactionSearchRequestUrl(),
             $connection->buildCredentialsQuery(),
             $params["initial_date"],
             !isset($params["final_date"]) ?: sprintf("&finalDate=%s", $params["final_date"]),

@@ -22,10 +22,11 @@
  *
  */
 
-namespace PagSeguro\Services\Transactions\Search;
+namespace PagSeguro\Services\Application\Search;
 
 use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Parsers\Transaction\Search\Date\Request;
+use PagSeguro\Enum\Properties\Current;
+use PagSeguro\Parsers\Authorization\Search\Date\Request;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Responsibility;
@@ -34,33 +35,25 @@ use PagSeguro\Resources\Responsibility;
  * Class Payment
  * @package PagSeguro\Services\Checkout
  */
-class Reference
+class Date
 {
 
     /**
      * @param \PagSeguro\Domains\Account\Credentials $credentials
-     * @param $reference
-     * @param $initial
-     * @param $final
-     * @param $max
-     * @param $page
+     * @param $options
      * @return string
      * @throws \Exception
      */
     public static function search(
         Credentials $credentials,
-        $reference,
-        $initial,
-        $final = null,
-        $max = null,
-        $page = null
+        $options
     ) {
 
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
             $http->get(
-                self::request($connection, self::toArray($reference, $initial, $final, $max, $page))
+                self::request($connection, $options)
             );
 
             return Responsibility::http(
@@ -81,33 +74,13 @@ class Reference
     private static function request(Connection\Data $connection, $params)
     {
         return sprintf(
-            "%1s/?%2s&reference=%3s&initialDate=%4s%5s%6s%7s",
-            $connection->buildTransactionSearchRequestUrl(),
+            "%1s/?%2s&%3s%4s%5s%6s",
+            $connection->buildAuthorizationSearchRequestUrl(),
             $connection->buildCredentialsQuery(),
-            $params["reference"],
-            $params["initial_date"],
-            !isset($params["final_date"]) ?: sprintf("&finalDate=%s", $params["final_date"]),
-            !isset($params["max_per_page"]) ?: sprintf("&maxPageResults=%s", $params["max_per_page"]),
-            !isset($params["page"]) ?: sprintf("&page=%s", $params["page"])
+            sprintf("&%s=%s", Current::SEARCH_INITIAL_DATE, $params["initial_date"]),
+            !isset($params["final_date"]) ?: sprintf("&%s=%s", Current::SEARCH_FINAL_DATE, $params["final_date"]),
+            !isset($params["max_per_page"]) ?: sprintf("&%s=%s", Current::SEARCH_MAX_RESULTS_PER_PAGE, $params["max_per_page"]),
+            !isset($params["page"]) ?: sprintf("&%s=%s", Current::SEARCH_PAGE, $params["page"])
         );
-    }
-
-    /**
-     * @param $reference
-     * @param $initial
-     * @param $final
-     * @param $max
-     * @param $pages
-     * @return array
-     */
-    private static function toArray($reference, $initial, $final, $max, $pages)
-    {
-        return [
-            'reference' => $reference,
-            'initial_date' => $initial,
-            'final_date' => $final,
-            'max_per_page' => $max,
-            'page' => $pages,
-        ];
     }
 }

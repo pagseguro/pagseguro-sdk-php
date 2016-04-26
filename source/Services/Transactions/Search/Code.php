@@ -71,7 +71,7 @@ class Code
     {
         return sprintf(
             "%1s/%2s/?%3s",
-            $connection->buildSearchRequestUrl(),
+            $connection->buildTransactionSearchRequestUrl(),
             $code,
             $connection->buildCredentialsQuery()
         );

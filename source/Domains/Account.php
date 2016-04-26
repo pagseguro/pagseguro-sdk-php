@@ -22,29 +22,35 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection\Base;
+namespace PagSeguro\Domains;
 
-use PagSeguro\Resources\Builder;
 
 /**
- * Class Payment
- * @package PagSeguro\Services\Connection\Base
+ * Class Account
+ * @package PagSeguro\Domains
  */
-trait Notification
+class Account
 {
     /**
-     * @return string
+     * @var
      */
-    public function buildNotificationTransactionRequestUrl()
+    private $publicKey;
+
+    /**
+     * @return mixed
+     */
+    public function getPublicKey()
     {
-        return Builder\Notification::getTransactionRequestUrl();
+        return $this->publicKey;
     }
 
     /**
-     * @return string
+     * @param mixed $publicKey
      */
-    public function buildNotificationAuthorizationRequestUrl()
+    public function setPublicKey($publicKey)
     {
-        return Builder\Notification::getAuthorizationRequestUrl();
+        $this->publicKey = $publicKey;
     }
+
+
 }

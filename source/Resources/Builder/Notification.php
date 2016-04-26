@@ -43,4 +43,15 @@ class Notification extends Builder
             'notification/transaction'
         );
     }
+
+    /**
+     * @return string
+     */
+    public static function getAuthorizationRequestUrl()
+    {
+        return parent::getRequest(
+            parent::getUrl('webservice'),
+            'notification/application'
+        );
+    }
 }
