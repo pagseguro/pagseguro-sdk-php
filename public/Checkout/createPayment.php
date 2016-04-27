@@ -65,10 +65,37 @@ $payment->addParameter()->withArray(['notificationURL', 'http://www.lojamodelo.c
 $payment->setRedirectUrl("http://www.lojamodelo.com.br");
 $payment->setNotificationUrl("http://www.lojamodelo.com.br/nofitication");
 
+//Add discount
+$payment->addPaymentMethod()->withParameters(
+    PagSeguro\Enum\PaymentMethod\Group::CREDIT_CARD,
+    PagSeguro\Enum\PaymentMethod\Config\Keys::DISCOUNT_PERCENT,
+    10.00 // (float) Percent
+);
+
+//Add installments with no interest
+$payment->addPaymentMethod()->withParameters(
+    PagSeguro\Enum\PaymentMethod\Group::CREDIT_CARD,
+    PagSeguro\Enum\PaymentMethod\Config\Keys::MAX_INSTALLMENTS_NO_INTEREST,
+    2 // (int) qty of installment
+);
+
+//Add a limit for installment
+$payment->addPaymentMethod()->withParameters(
+    PagSeguro\Enum\PaymentMethod\Group::CREDIT_CARD,
+    PagSeguro\Enum\PaymentMethod\Config\Keys::MAX_INSTALLMENTS_LIMIT,
+    6 // (int) qty of installment
+);
+
 try {
+
+    /**
+     * @todo For checkout with application use:
+     * \PagSeguro\Configuration\Configure::getApplicationCredentials()->setAuthorizationCode("FD3AF1B214EC40F0B0A6745D041BF50D")
+     */
     $result = $payment->register(
         \PagSeguro\Configuration\Configure::getAccountCredentials()
     );
+
     echo "<h2>Criando requisi&ccedil;&atilde;o de pagamento</h2>"
         . "<p>URL do pagamento: <strong>$result</strong></p>"
         . "<p><a title=\"URL do pagamento\" href=\"$result\" target=\_blank\">Ir para URL do pagamento.</a></p>";

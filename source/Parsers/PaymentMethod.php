@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 2007-2016 [PagSeguro Internet Ltda.]
  *
@@ -28,35 +27,38 @@ namespace PagSeguro\Parsers;
 use PagSeguro\Domains\Requests\Requests;
 
 /**
- * Description of Parameter
+ * Parser for the Payment Method
  *
  */
-trait Parameter
+trait PaymentMethod
 {
 
     /**
      * @param Requests $request
+     * @param $properties
      * @return array
      */
-    public static function getData(Requests $request)
+    public static function getData(Requests $request, $properties)
     {
         $data = [];
-        $parameter = $request->getParameter();
-        if ($request->parameterLenght() > 0) {
+        $paymentMethod = $request->getPaymentMethod();
+        if ($request->paymentMethodLenght() > 0) {
             $i = 0;
 
-            foreach ($parameter as $key => $value) {
+            foreach ($paymentMethod as $key => $value) {
                 $i++;
-                if (!is_null($parameter[$key]->getKey())) {
-                    if (!is_null($parameter[$key]->getIndex())) {
-                        $data[sprintf("%s%s", $parameter[$key]->getKey(), $parameter[$key]->getIndex())] = 
-                            $parameter[$key]->getValue();
-                    } else {
-                        $data[$parameter[$key]->getKey()] = $parameter[$key]->getValue();
-                    }
+                if (!is_null($paymentMethod[$key]->getGroup())) {
+                    $data[sprintf($properties::PAYMENT_METHOD_GROUP, $i)] = $paymentMethod[$key]->getGroup();
+                }
+                if (!is_null($paymentMethod[$key]->getKey())) {
+                    $data[sprintf($properties::PAYMENT_METHOD_CONFIG_KEY, $i, 1)] = $paymentMethod[$key]->getKey();
+                }
+                if (!is_null($paymentMethod[$key]->getValue())) {
+                    $data[sprintf($properties::PAYMENT_METHOD_CONFIG_VALUE, $i, 1)] = \PagSeguro\Helpers\Currency::toDecimal($paymentMethod[$key]->getValue());
                 }
             }
         }
         return $data;
     }
 }
+

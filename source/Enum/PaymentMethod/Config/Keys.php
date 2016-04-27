@@ -22,38 +22,26 @@
  *
  */
 
-namespace PagSeguro\Parsers\Response;
+namespace PagSeguro\Enum\PaymentMethod\Config;
 
 /**
- * Class PaymentMethod
- * @package PagSeguro\Parsers\Response
+ * Class Keys
+ * @package PagSeguro\Enum\PaymentMethod\Config
  */
-trait PaymentMethod
+class Keys
 {
     /**
-     * @var
+     * Add a discount percent
      */
-    private $paymentMethod;
+    const DISCOUNT_PERCENT = "DISCOUNT_PERCENT";
 
     /**
-     * @return mixed
+     * Max installments with no interest
      */
-    public function getPaymentMethod()
-    {
-        return $this->paymentMethod;
-    }
+    const MAX_INSTALLMENTS_NO_INTEREST = "MAX_INSTALLMENTS_NO_INTEREST";
 
     /**
-     * @param $paymentMethod
-     * @return $this
+     * Installment limit
      */
-    public function setPaymentMethod($paymentMethod)
-    {
-        if ($paymentMethod) {
-            $payment = new \PagSeguro\Domains\Response\PaymentMethod();
-            $payment->setType(current($paymentMethod->type))->setCode(current($paymentMethod->code));
-            $this->paymentMethod = $payment;
-        }
-        return $this;
-    }
+    const MAX_INSTALLMENTS_LIMIT = "MAX_INSTALLMENTS_LIMIT";
 }

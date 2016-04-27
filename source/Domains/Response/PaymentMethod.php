@@ -22,8 +22,7 @@
  *
  */
 
-namespace PagSeguro\Domains;
-
+namespace PagSeguro\Domains\Response;
 
 /**
  * Class PaymentMethod
@@ -34,67 +33,45 @@ class PaymentMethod
     /**
      * @var
      */
-    private $group;
+    private $code;
     /**
      * @var
      */
-    private $key;
-    /**
-     * @var
-     */
-    private $value;
+    private $type;
 
     /**
      * @return mixed
      */
-    public function getGroup()
+    public function getCode()
     {
-        return $this->group;
+        return $this->code;
     }
 
     /**
-     * @param mixed $group
+     * @param mixed $code
      * @return PaymentMethod
      */
-    public function setGroup($group)
+    public function setCode($code)
     {
-        $this->group = $group;
+        $this->code = $code;
         return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getKey()
+    public function getType()
     {
-        return $this->key;
+        return $this->type;
     }
 
     /**
-     * @param mixed $key
+     * @param mixed $type
      * @return PaymentMethod
      */
-    public function setKey($key)
+    public function setType($type)
     {
-        $this->key = $key;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getValue()
-    {
-        return $this->value;
-    }
-
-    /**
-     * @param mixed $value
-     * @return PaymentMethod
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
+        $this->type = $type;
         return $this;
     }
 }
