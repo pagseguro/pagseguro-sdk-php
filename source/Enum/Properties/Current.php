@@ -47,6 +47,21 @@ class Current
     const DOCUMENT_VALUE = "documentValue";
 
     /**
+     * Installment amount
+     */
+    const INSTALLMENT_AMOUNT = "amount";
+
+    /**
+     * Installment card brand
+     */
+    const INSTALLMENT_CARD_BRAND = "cardBrand";
+
+    /**
+     * Installment max installment No interest
+     */
+    const INSTALLMENT_MAX_INSTALLMENT_NO_INTEREST = "maxInstallmentNoInterest";
+    
+    /**
      * Item identifier
      */
     const ITEM_ID = "itemId%s";

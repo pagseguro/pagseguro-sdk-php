@@ -43,9 +43,10 @@ class Session
             $connection = new Connection\Data($credentials);
             $http = new Http();
             $http->post(self::request($connection));
+
             return Responsibility::http(
                     $http,
-                    new \PagSeguro\Parsers\Session\Request()
+                    new Request()
             );
             
         } catch (Exception $exc) {

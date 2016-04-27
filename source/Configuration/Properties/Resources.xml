@@ -67,6 +67,9 @@
         <session>
             <request>v2/sessions</request>
         </session>
+        <installment>
+            <request>v2/installments</request>
+    	</installment>
         <transaction>
             <search>
                 <request>v3/transactions</request>

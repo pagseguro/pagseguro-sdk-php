@@ -40,6 +40,7 @@ class Data
     }
     use Base\Cancel;
     use Base\Credentials;
+    use Base\Installment;
     use Base\Notification;
     use Base\Payment;
     use Base\Refund;
