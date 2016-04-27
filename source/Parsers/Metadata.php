@@ -50,16 +50,16 @@ trait Metadata
 
             foreach ($metadata as $key => $value) {
                 $i++;
-                if ($metadata[$key]->getKey() != null) {
+                if (!is_null($metadata[$key]->getKey())) {
                     $data[sprintf($properties::METADATA_ITEM_KEY, $i)] = $metadata[$key]->getKey();
                 }
-                if ($metadata[$key]->getValue() != null) {
+                if (!is_null($metadata[$key]->getValue())) {
                     $data[sprintf($properties::METADATA_ITEM_VALUE, $i)] = self::formatKeyValue(
                         $metadata[$key]->getKey(),
                         $metadata[$key]->getValue()
                     );
                 }
-                if ($metadata[$key]->getGroup() != null) {
+                if (!is_null($metadata[$key]->getGroup())) {
                     $data[sprintf($properties::METADATA_ITEM_GROUP, $i)] = $metadata[$key]->getGroup();
                 }
             }

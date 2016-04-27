@@ -22,38 +22,16 @@
  *
  */
 
-namespace PagSeguro\Parsers\Response;
+namespace PagSeguro\Enum\PaymentMethod\Config;
 
 /**
- * Class PaymentMethod
- * @package PagSeguro\Parsers\Response
+ * Class Keys
+ * @package PagSeguro\Enum\PaymentMethod\Config
  */
-trait PaymentMethod
+class Keys
 {
     /**
-     * @var
+     * Add a discount percent
      */
-    private $paymentMethod;
-
-    /**
-     * @return mixed
-     */
-    public function getPaymentMethod()
-    {
-        return $this->paymentMethod;
-    }
-
-    /**
-     * @param $paymentMethod
-     * @return $this
-     */
-    public function setPaymentMethod($paymentMethod)
-    {
-        if ($paymentMethod) {
-            $payment = new \PagSeguro\Domains\Response\PaymentMethod();
-            $payment->setType(current($paymentMethod->type))->setCode(current($paymentMethod->code));
-            $this->paymentMethod = $payment;
-        }
-        return $this;
-    }
+    const DISCOUNT_PERCENT = "DISCOUNT_PERCENT";
 }

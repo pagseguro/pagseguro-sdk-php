@@ -97,6 +97,21 @@ class Current
     const NOTIFICATION_URL = "notificationURL";
 
     /**
+     * Payment method group
+     */
+    const PAYMENT_METHOD_GROUP = "paymentMethodGroup%s";
+
+    /**
+     * Payment method config key
+     */
+    const PAYMENT_METHOD_CONFIG_KEY = "paymentMethodConfigKey%s_%s";
+
+    /**
+     * Payment method config value
+     */
+    const PAYMENT_METHOD_CONFIG_VALUE = "paymentMethodConfigValue%s_%s";
+
+    /**
      * Permissions
      */
     const PERMISSIONS = "permissions";

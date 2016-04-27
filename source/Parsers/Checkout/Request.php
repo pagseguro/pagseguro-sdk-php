@@ -30,6 +30,7 @@ use PagSeguro\Parsers\Currency;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Item;
 use PagSeguro\Parsers\Parser;
+use PagSeguro\Parsers\PaymentMethod;
 use PagSeguro\Parsers\Sender;
 use PagSeguro\Parsers\Shipping;
 use PagSeguro\Parsers\Metadata;
@@ -49,6 +50,7 @@ class Request extends Error implements Parser
     use Shipping;
     use Metadata;
     use Parameter;
+    use PaymentMethod;
 
     /**
      * @param \PagSeguro\Domains\Requests\Payment $payment
@@ -66,7 +68,8 @@ class Request extends Error implements Parser
             Sender::getData($payment, $properties),
             Shipping::getData($payment, $properties),
             Metadata::getData($payment, $properties),
-            Parameter::getData($payment)
+            Parameter::getData($payment),
+            PaymentMethod::getData($payment, $properties)
         );
     }
 

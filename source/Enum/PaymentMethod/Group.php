@@ -22,38 +22,33 @@
  *
  */
 
-namespace PagSeguro\Parsers\Response;
+namespace PagSeguro\Enum\PaymentMethod;
 
 /**
- * Class PaymentMethod
- * @package PagSeguro\Parsers\Response
+ * Class Group
+ * @package PagSeguro\Enum\PaymentMethod
  */
-trait PaymentMethod
+class Group
 {
-    /**
-     * @var
-     */
-    private $paymentMethod;
 
     /**
-     * @return mixed
+     *
      */
-    public function getPaymentMethod()
-    {
-        return $this->paymentMethod;
-    }
-
+    const CREDIT_CARD = "CREDIT_CARD";
     /**
-     * @param $paymentMethod
-     * @return $this
+     *
      */
-    public function setPaymentMethod($paymentMethod)
-    {
-        if ($paymentMethod) {
-            $payment = new \PagSeguro\Domains\Response\PaymentMethod();
-            $payment->setType(current($paymentMethod->type))->setCode(current($paymentMethod->code));
-            $this->paymentMethod = $payment;
-        }
-        return $this;
-    }
+    const BOLETO = "BOLETO";
+    /**
+     *
+     */
+    const EFT = "EFT";
+    /**
+     *
+     */
+    const BALANCE = "BALANCE";
+    /**
+     *
+     */
+    const DEPOSIT = "DEPOSIT";
 }
