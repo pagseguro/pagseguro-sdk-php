@@ -28,7 +28,7 @@ use PagSeguro\Helpers\InitializeObject;
 
 trait PaymentMethod
 {
-    private $paymentMethod;
+    private $paymentMethod = array();
     
     public function addPaymentMethod()
     {

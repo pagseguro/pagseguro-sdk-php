@@ -10,8 +10,8 @@ require_once "../../vendor/autoload.php";
 <!DOCTYPE html>
 <html>
 	<head>
-        <?php if(\PagSeguro\Configuration\Configure::getEnvironment() == "sandbox"): ?>
-	<!--Para integração em ambiente de testes no Sandbox use este link-->
+        <?php if(\PagSeguro\Configuration\Configure::getEnvironment()->getEnvironment() == "sandbox"): ?>
+	    <!--Para integração em ambiente de testes no Sandbox use este link-->
 		<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
 	    <?php else: ?>
         <!--Para integração em ambiente de produção use este link-->
