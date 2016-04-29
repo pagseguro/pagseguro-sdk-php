@@ -22,7 +22,7 @@
  *
  */
 
-namespace PagSeguro\Domains\Response;
+namespace PagSeguro\Domains\Responses;
 
 /**
  * Class PaymentMethod

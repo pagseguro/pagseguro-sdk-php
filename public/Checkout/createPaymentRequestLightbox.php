@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html>
-	<head>
-	<!--Para integração em ambiente de testes no Sandbox use este link-->
-		<!--<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>-->
-	<!--Para integração em ambiente de produção use este link-->
-		<!--<script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>-->
-	</head>
-</html>
-
 <?php
 
 require_once "../../vendor/autoload.php";
@@ -15,6 +5,22 @@ require_once "../../vendor/autoload.php";
 \PagSeguro\Library::initialize();
 \PagSeguro\Library::cmsVersion()->setName("Nome")->setRelease("1.0.0");
 \PagSeguro\Library::moduleVersion()->setName("Nome")->setRelease("1.0.0");
+
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+        <?php if(\PagSeguro\Configuration\Configure::getEnvironment() == "sandbox"): ?>
+	<!--Para integração em ambiente de testes no Sandbox use este link-->
+		<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+	    <?php else: ?>
+        <!--Para integração em ambiente de produção use este link-->
+		<script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+        <?php endif; ?>
+    </head>
+</html>
+
+<?php
 
 $payment = new \PagSeguro\Domains\Requests\Payment();
 
