@@ -24,6 +24,8 @@ $payment->addItems()->withParameters(
 
 $payment->setCurrency("BRL");
 
+$payment->setExtraAmount(11.5);
+
 $payment->setReference("LIBPHP000001");
 
 $payment->setRedirectUrl("http://www.lojamodelo.com.br");

@@ -35,6 +35,11 @@ class Current
      * Currency
      */
     const CURRENCY = "currency";
+    
+    /**
+     * Currency extra amount (optional)
+     */
+    const CURRENCY_EXTRA_AMOUNT = "extraAmount";
 
     /**
      * Document type
@@ -130,6 +135,11 @@ class Current
      * Permissions
      */
     const PERMISSIONS = "permissions";
+    
+    /**
+     * Receiver email
+     */
+    const RECEIVER_EMAIL = 'receiverEmail';
 
     /**
      * Search initial date
