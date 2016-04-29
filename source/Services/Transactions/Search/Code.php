@@ -24,7 +24,6 @@
 
 namespace PagSeguro\Services\Transactions\Search;
 
-
 use PagSeguro\Domains\Account\Credentials;
 use PagSeguro\Parsers\Transaction\Search\Code\Request;
 use PagSeguro\Resources\Connection;
@@ -57,7 +56,6 @@ class Code
                 $http,
                 new Request
             );
-
         } catch (\Exception $exception) {
             throw $exception;
         }

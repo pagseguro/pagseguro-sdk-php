@@ -61,4 +61,3 @@ trait PaymentMethod
         return $data;
     }
 }
-

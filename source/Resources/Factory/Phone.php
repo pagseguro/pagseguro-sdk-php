@@ -69,7 +69,8 @@ class Phone
      * @param $number
      * @return \PagSeguro\Domains\Phone
      */
-    public function withParameters($areaCode, $number){
+    public function withParameters($areaCode, $number)
+    {
         $this->phone->setAreaCode($areaCode)
                     ->setNumber($number);
         return $this->phone;

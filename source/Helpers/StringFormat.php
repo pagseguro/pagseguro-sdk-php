@@ -72,7 +72,6 @@ class StringFormat
      */
     public static function truncateValue($string, $limit, $endchars = '...')
     {
-
         if (!is_array($string) && !is_object($string)) {
             $stringLength = strlen($string);
             $endcharsLength = strlen($endchars);
@@ -84,5 +83,4 @@ class StringFormat
         }
         return $string;
     }
-    
 }

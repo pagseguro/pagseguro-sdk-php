@@ -48,7 +48,6 @@ class Date
         Credentials $credentials,
         array $options
     ) {
-
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
@@ -60,7 +59,6 @@ class Date
                 $http,
                 new Request
             );
-
         } catch (\Exception $exception) {
             throw $exception;
         }

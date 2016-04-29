@@ -24,7 +24,6 @@
 
 namespace PagSeguro\Domains;
 
-
 /**
  * Class Document
  * @package PagSeguro\Domains

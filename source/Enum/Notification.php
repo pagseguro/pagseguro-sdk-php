@@ -8,7 +8,6 @@
 
 namespace PagSeguro\Enum;
 
-
 /**
  * Class Notification
  * @package PagSeguro\Enum
@@ -28,5 +27,4 @@ class Notification extends Enum
      *
      */
     const PRE_APPROVAL = "preApproval";
-
 }

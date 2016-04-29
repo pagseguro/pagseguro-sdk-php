@@ -76,7 +76,6 @@ trait Item
     public function setItems($items)
     {
         foreach ($items->item as $value) {
-
             $this->addItems()->withParameters(
                 current($value->id),
                 current($value->description),
@@ -100,5 +99,4 @@ trait Item
         );
         return $this->items;
     }
-
 }

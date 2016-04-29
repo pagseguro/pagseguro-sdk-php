@@ -24,7 +24,6 @@
 
 namespace PagSeguro\Services\Transactions;
 
-
 use PagSeguro\Domains\Account\Credentials;
 use PagSeguro\Parsers\Transaction\Cancel\Request;
 use PagSeguro\Parsers\Transaction\Cancel\Response;
@@ -60,7 +59,6 @@ class Cancel
                 $http,
                 new Request
             );
-
         } catch (\Exception $exception) {
             throw $exception;
         }

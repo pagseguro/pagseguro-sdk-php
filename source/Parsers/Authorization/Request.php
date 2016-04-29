@@ -37,7 +37,7 @@ use PagSeguro\Resources\Http;
 class Request extends Error implements Parser
 {
 
-    Use Basic;
+    use Basic;
 
 
     /**

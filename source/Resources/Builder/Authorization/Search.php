@@ -38,7 +38,6 @@ class Search extends Builder
      */
     public static function getSearchRequestUrl()
     {
-
         return parent::getRequest(
             parent::getUrl('webservice'),
             'application/search'

@@ -38,7 +38,7 @@ class Wrapper implements Handler
 
     public function handler($action, $class)
     {
-        if ( class_exists('ConfigWrapper')) {
+        if (class_exists('ConfigWrapper')) {
             $configWrapper = new \ConfigWrapper;
             return array_merge(
                 \PagSeguro\Helpers\Wrapper::environment($configWrapper),

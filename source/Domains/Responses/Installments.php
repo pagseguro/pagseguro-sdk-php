@@ -54,7 +54,7 @@ class Installments
             if (is_object($installments)) {
                 $this->addInstallment($installments);
             } else {
-                foreach ($installments as $installment){
+                foreach ($installments as $installment) {
                     $this->addInstallment($installment);
                 }
             }

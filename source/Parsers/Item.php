@@ -70,6 +70,5 @@ trait Item
             }
         }
         return $data;
-
     }
 }

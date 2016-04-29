@@ -7,7 +7,6 @@ require_once "../../vendor/autoload.php";
 \PagSeguro\Library::moduleVersion()->setName("Nome")->setRelease("1.0.0");
 
 try {
-
     if (\PagSeguro\Helpers\Xhr::hasPost()) {
         $transaction = \PagSeguro\Services\Application\Notification::check(
             \PagSeguro\Configuration\Configure::getApplicationCredentials()
@@ -17,7 +16,6 @@ try {
     }
 
     var_dump($transaction);
-
 } catch (Exception $e) {
     die($e->getMessage());
 }

@@ -53,7 +53,6 @@ class Reference
         $reference,
         array $options
     ) {
-
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
@@ -65,7 +64,6 @@ class Reference
                 $http,
                 new Request
             );
-
         } catch (\Exception $exception) {
             throw $exception;
         }

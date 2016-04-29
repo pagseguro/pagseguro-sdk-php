@@ -48,7 +48,6 @@ class Abandoned
         Credentials $credentials,
         array $options
     ) {
-
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
@@ -60,7 +59,6 @@ class Abandoned
                 $http,
                 new Request
             );
-
         } catch (\Exception $exception) {
             throw $exception;
         }

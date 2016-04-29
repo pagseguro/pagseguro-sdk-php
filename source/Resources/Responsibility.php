@@ -36,7 +36,6 @@ use PagSeguro\Resources\Responsibility\Notifications\Application;
 use PagSeguro\Resources\Responsibility\Notifications\PreApproval;
 use PagSeguro\Resources\Responsibility\Notifications\Transaction;
 
-
 /**
  * class Handler
  * @package PagSeguro\Services\Connection\Responsibility
@@ -92,4 +91,3 @@ class Responsibility
         return $transaction->handler();
     }
 }
-

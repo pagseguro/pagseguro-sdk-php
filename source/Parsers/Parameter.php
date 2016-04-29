@@ -49,7 +49,7 @@ trait Parameter
                 $i++;
                 if (!is_null($parameter[$key]->getKey())) {
                     if (!is_null($parameter[$key]->getIndex())) {
-                        $data[sprintf("%s%s", $parameter[$key]->getKey(), $parameter[$key]->getIndex())] = 
+                        $data[sprintf("%s%s", $parameter[$key]->getKey(), $parameter[$key]->getIndex())] =
                             $parameter[$key]->getValue();
                     } else {
                         $data[$parameter[$key]->getKey()] = $parameter[$key]->getValue();

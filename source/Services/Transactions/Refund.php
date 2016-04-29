@@ -24,7 +24,6 @@
 
 namespace PagSeguro\Services\Transactions;
 
-
 use PagSeguro\Domains\Account\Credentials;
 use PagSeguro\Parsers\Transaction\Refund\Request;
 use PagSeguro\Resources\Connection;
@@ -59,7 +58,6 @@ class Refund
                 $http,
                 new Request
             );
-
         } catch (\Exception $exception) {
             throw $exception;
         }

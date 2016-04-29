@@ -24,7 +24,6 @@
 
 namespace PagSeguro\Domains;
 
-
 /**
  * Class Account
  * @package PagSeguro\Domains
@@ -51,6 +50,4 @@ class Account
     {
         $this->publicKey = $publicKey;
     }
-
-
 }

@@ -29,13 +29,11 @@ use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Responsibility;
 
-
 class Authorization
 {
 
     public static function create(Credentials $credentials, \PagSeguro\Domains\Requests\Authorization $authorization)
     {
-
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
@@ -50,7 +48,6 @@ class Authorization
             );
 
             return self::response($connection, $response);
-
         } catch (\Exception $exception) {
             throw $exception;
         }

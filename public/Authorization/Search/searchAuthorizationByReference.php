@@ -14,7 +14,6 @@ $options = [
 $reference = "REF123";
 
 try {
-
     $response = \PagSeguro\Services\Application\Search\Reference::search(
         \PagSeguro\Configuration\Configure::getApplicationCredentials(),
         $reference,
@@ -22,7 +21,6 @@ try {
     );
 
     var_dump($response);
-
 } catch (Exception $e) {
     die($e->getMessage());
 }

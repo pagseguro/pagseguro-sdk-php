@@ -51,7 +51,6 @@ trait Permissions
     public function setPermissions(array $permissions)
     {
         if (is_array($permissions)) {
-
             foreach ($permissions as $key => $permission) {
                 $this->increment($permission);
             }

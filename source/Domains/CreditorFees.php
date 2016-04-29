@@ -74,5 +74,4 @@ class CreditorFees
         $this->intermediationRateAmount = $intermediationRateAmount;
         return $this;
     }
-
 }

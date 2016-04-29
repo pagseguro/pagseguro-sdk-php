@@ -52,5 +52,4 @@ class Xhr
         }
         return false;
     }
-
 }

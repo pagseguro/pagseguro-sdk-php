@@ -24,7 +24,6 @@
 
 namespace PagSeguro\Services\Checkout;
 
-
 use PagSeguro\Domains\Account\Credentials;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
@@ -46,7 +45,6 @@ class Payment
      */
     public static function checkout(Credentials $credentials, \PagSeguro\Domains\Requests\Payment $payment, $onlyCode)
     {
-
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
@@ -64,7 +62,6 @@ class Payment
                 return $response;
             }
             return self::response($connection, $response);
-
         } catch (\Exception $exception) {
             throw $exception;
         }

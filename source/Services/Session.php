@@ -48,7 +48,6 @@ class Session
                     $http,
                     new Request()
             );
-            
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }

@@ -57,7 +57,6 @@ class Instance implements Handler
     public function handler($instance, $class)
     {
         if ($instance instanceof $class) {
-
         }
     }
 }

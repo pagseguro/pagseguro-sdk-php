@@ -12,14 +12,12 @@ $options = [
 ];
 
 try {
-
     $response = \PagSeguro\Services\Application\Search\Date::search(
         \PagSeguro\Configuration\Configure::getApplicationCredentials(),
         $options
     );
 
     var_dump($response);
-
 } catch (Exception $e) {
     die($e->getMessage());
 }

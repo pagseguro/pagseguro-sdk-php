@@ -56,7 +56,7 @@ class PaymentMethod
         $group,
         $key,
         $value
-    ){
+    ) {
         $paymentMethod = new \PagSeguro\Domains\PaymentMethod();
         $paymentMethod->setKey($key)
             ->setValue($value)

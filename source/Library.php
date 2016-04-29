@@ -43,7 +43,7 @@ class Library
     /**
      * @var
      */
-    static private $module;
+    private static $module;
 
     /**
      * @throws \Exception

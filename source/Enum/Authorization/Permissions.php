@@ -53,5 +53,4 @@ class Permissions extends Enum
      *
      */
     const DIRECT_PAYMENT = "DIRECT_PAYMENT";
-
 }

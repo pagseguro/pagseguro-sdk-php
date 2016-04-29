@@ -51,7 +51,8 @@ class Cost
         return $this->shipping->setCost($cost);
     }
 
-    public function withParameters($cost){
+    public function withParameters($cost)
+    {
         $shipping = new ShippingCost();
         $this->shipping->setCost(
             $shipping->setCost($cost)

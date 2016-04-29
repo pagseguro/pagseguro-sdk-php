@@ -144,5 +144,4 @@ trait Currency
         $this->netAmount = $netAmount;
         return $this;
     }
-
 }

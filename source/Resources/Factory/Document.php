@@ -72,7 +72,8 @@ class Document
      * @param $identifier
      * @return \PagSeguro\Domains\Document
      */
-    public function withParameters($type, $identifier){
+    public function withParameters($type, $identifier)
+    {
         $this->document->setType($type)
                        ->setIdentifier($identifier);
         return $this->document;

@@ -23,8 +23,8 @@
  */
 
 namespace PagSeguro\Resources;
-use PagSeguro\Configuration\Configure;
 
+use PagSeguro\Configuration\Configure;
 
 /**
  * Class Builder
@@ -121,11 +121,11 @@ class Builder
      */
     private static function getProperties($xml, $service, $http)
     {
-        $services = explode("/",$service);
-        if (isset($services[1])){
+        $services = explode("/", $service);
+        if (isset($services[1])) {
             return $xml->services->{$services[0]}->{$services[1]}->{$http};
         } else {
-           return $xml->services->{$service}->{$http};
+            return $xml->services->{$service}->{$http};
         }
     }
 }

@@ -101,5 +101,4 @@ class Transaction extends Transactions
         $this->status = $status;
         return $this;
     }
-
 }

@@ -24,7 +24,6 @@
 
 namespace PagSeguro\Parsers\Authorization;
 
-
 /**
  * Class Response
  * @package PagSeguro\Parsers\Checkout

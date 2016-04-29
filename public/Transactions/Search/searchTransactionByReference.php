@@ -14,7 +14,6 @@ $options = [
 $reference = "LIBPHP000001";
 
 try {
-
     $response = \PagSeguro\Services\Transactions\Search\Reference::search(
         \PagSeguro\Configuration\Configure::getAccountCredentials(),
         $reference,
@@ -22,7 +21,6 @@ try {
     );
 
     var_dump($response);
-
 } catch (Exception $e) {
     die($e->getMessage());
 }

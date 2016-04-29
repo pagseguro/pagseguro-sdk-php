@@ -24,7 +24,6 @@
 
 namespace PagSeguro\Domains;
 
-
 /**
  * Class PaymentMethod
  * @package PagSeguro\Domains

@@ -54,5 +54,4 @@ class Authorization extends Builder
             'application/authorization'
         );
     }
-
 }

@@ -51,7 +51,8 @@ class Type
         return $this->shipping->setType($type);
     }
 
-    public function withParameters($type){
+    public function withParameters($type)
+    {
         $shipping = new ShippingType();
         $shipping->setType($type);
         $this->shipping->setType(

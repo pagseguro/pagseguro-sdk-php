@@ -54,7 +54,6 @@ trait Shipping
      */
     public function setShipping($shipping)
     {
-
         $shippingClass = new \PagSeguro\Domains\Shipping();
 
         $shippingAddress = new Address($shippingClass);
@@ -67,7 +66,7 @@ trait Shipping
             current($shipping->address->postalCode),
             current($shipping->address->city),
             current($shipping->address->state),
-            current( $shipping->address->country)
+            current($shipping->address->country)
         );
 
         $shippingType = new Type($shippingClass);
@@ -79,5 +78,4 @@ trait Shipping
         $this->shipping = $shippingClass;
         return $this;
     }
-
 }

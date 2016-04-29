@@ -24,7 +24,7 @@
 
 namespace PagSeguro\Parsers\Transaction;
 
-    /**
+/**
      * Class Response
      * @package PagSeguro\Parsers\Refund
      */
@@ -195,5 +195,4 @@ class Response
         $this->type = $type;
         return $this;
     }
-
 }

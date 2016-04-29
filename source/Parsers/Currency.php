@@ -40,7 +40,6 @@ trait Currency
      */
     public static function getData(Requests $request, $properties)
     {
-
         $data = [];
         // currency
         if (!is_null($request->getCurrency())) {

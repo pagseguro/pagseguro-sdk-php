@@ -41,5 +41,4 @@ class NotificationObject
                      ->setType(trim($_POST['notificationType']));
         return $notification;
     }
-
 }

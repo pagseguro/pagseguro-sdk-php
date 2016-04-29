@@ -12,7 +12,6 @@ require_once "../../vendor/autoload.php";
 $code = "9948DBE4-499B-4A14-BDCF-501C67DEBAA1";
 
 try {
-
     $cancel = \PagSeguro\Services\Transactions\Cancel::create(
         \PagSeguro\Configuration\Configure::getAccountCredentials(),
         $code

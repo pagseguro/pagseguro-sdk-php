@@ -76,5 +76,4 @@ class Notification
         $this->type = $type;
         return $this;
     }
-
 }

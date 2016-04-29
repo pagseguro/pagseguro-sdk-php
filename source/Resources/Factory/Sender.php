@@ -83,7 +83,7 @@ class Sender
         Phone $phone,
         Document $document
 
-    ){
+    ) {
         $this->sender->setName($name)
                ->setEmail($email)
                ->setPhone($phone)

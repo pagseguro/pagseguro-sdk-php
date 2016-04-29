@@ -29,7 +29,7 @@ namespace PagSeguro\Domains;
  *
  * @package PagSeguro\Domains
  */
-class Metadata 
+class Metadata
 {
     /**
      * Metadata key 
@@ -41,31 +41,37 @@ class Metadata
     private $value;
     /**
      * Metadata group
-     */        
+     */
     private $group;
     
-    public function getKey() {
+    public function getKey()
+    {
         return $this->key;
     }
 
-    public function setKey($key) {
+    public function setKey($key)
+    {
         $this->key = $key;
         return $this;
     }
-    public function getValue() {
+    public function getValue()
+    {
         return $this->value;
     }
 
-    public function setValue($value) {
+    public function setValue($value)
+    {
         $this->value = $value;
         return $this;
     }
 
-    public function getGroup() {
+    public function getGroup()
+    {
         return $this->group;
     }
 
-    public function setGroup($group) {
+    public function setGroup($group)
+    {
         $this->group = $group;
         return $this;
     }

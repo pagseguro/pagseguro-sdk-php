@@ -67,4 +67,3 @@ trait PaymentMethod
         return count($this->paymentMethod);
     }
 }
-

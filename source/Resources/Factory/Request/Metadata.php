@@ -30,7 +30,7 @@ use PagSeguro\Enum\Properties\Current;
  * Class Metadata
  * @package PagSeguro\Resources\Factory\Request
  */
-class Metadata 
+class Metadata
 {
     private $metadata;
 
@@ -61,7 +61,7 @@ class Metadata
         $key,
         $value,
         $group = null
-    ){
+    ) {
         $metadata = new \PagSeguro\Domains\Metadata();
         $metadata->setKey($key)
             ->setValue($value)

@@ -24,7 +24,6 @@
 
 namespace PagSeguro\Services\Application\Search;
 
-
 use PagSeguro\Domains\Account\Credentials;
 use PagSeguro\Parsers\Authorization\Search\Code\Request;
 use PagSeguro\Resources\Connection;
@@ -57,7 +56,6 @@ class Code
                 $http,
                 new Request
             );
-
         } catch (\Exception $exception) {
             throw $exception;
         }
@@ -69,7 +67,6 @@ class Code
      */
     private static function request(Connection\Data $connection, $code)
     {
-
         return sprintf(
             "%1s/%2s/?%3s",
             $connection->buildAuthorizationSearchRequestUrl(),

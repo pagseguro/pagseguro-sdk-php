@@ -43,7 +43,6 @@ class Notification
      */
     public static function check(Credentials $credentials)
     {
-
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
@@ -55,7 +54,6 @@ class Notification
                 $http,
                 new \PagSeguro\Parsers\Authorization\Notification\Request
             );
-
         } catch (\Exception $exception) {
             throw $exception;
         }

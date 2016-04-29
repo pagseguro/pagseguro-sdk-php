@@ -33,7 +33,7 @@ use PagSeguro\Resources\Http;
  * Class Installment
  */
 class Request extends Error implements Parser
-{    
+{
     /**
      * @param Http $http
      * @return \PagSeguro\Parsers\Installment\Response

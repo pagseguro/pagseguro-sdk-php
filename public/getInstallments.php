@@ -42,7 +42,6 @@ try {
 
     echo "<pre>";
     print_r($result->getInstallments());
-    
 } catch (Exception $e) {
     die($e->getMessage());
 }

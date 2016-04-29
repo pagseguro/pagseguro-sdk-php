@@ -96,7 +96,7 @@ class Address
         $city,
         $state,
         $country
-    ){
+    ) {
         $address = new \PagSeguro\Domains\Address();
         $address->setPostalCode($postalCode)
                 ->setStreet($street)

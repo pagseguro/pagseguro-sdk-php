@@ -10,7 +10,7 @@ require_once "../../vendor/autoload.php";
 <!DOCTYPE html>
 <html>
 	<head>
-        <?php if(\PagSeguro\Configuration\Configure::getEnvironment()->getEnvironment() == "sandbox"): ?>
+        <?php if (\PagSeguro\Configuration\Configure::getEnvironment()->getEnvironment() == "sandbox"): ?>
 	    <!--Para integração em ambiente de testes no Sandbox use este link-->
 		<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
 	    <?php else: ?>
@@ -90,7 +90,6 @@ try {
     echo "<h2>Criando requisi&ccedil;&atilde;o de pagamento. Aguarde...</h2>"
         . "<p>C&oacute;digo da transa&ccedil;&atilde;o: <strong>" . $result->getCode() . "</strong></p>"
         . "<script>PagSeguroLightbox('".$result->getCode()."');</script>";
-
 } catch (Exception $e) {
     die($e->getMessage());
 }

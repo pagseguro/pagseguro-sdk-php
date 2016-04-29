@@ -67,7 +67,7 @@ class Item
         $amount,
         $weight = null,
         $shippingCost = null
-    ){
+    ) {
         $item = new \PagSeguro\Domains\Item();
         $item->setId($id)
             ->setAmount($amount)

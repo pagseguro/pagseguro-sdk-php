@@ -49,5 +49,4 @@ trait Currency
     {
         return $this->extraAmount;
     }
-
 }

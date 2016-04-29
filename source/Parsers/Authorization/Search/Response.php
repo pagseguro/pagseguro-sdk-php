@@ -23,6 +23,7 @@
  */
 
 namespace PagSeguro\Parsers\Authorization\Search;
+
 use PagSeguro\Domains\Account;
 use PagSeguro\Domains\Permission;
 
@@ -137,7 +138,6 @@ class Response
 
     private function addPermission($parameter)
     {
-
         $permission = new Permission();
         $permission->setCode(current($parameter->code))
                    ->setStatus(current($parameter->status))

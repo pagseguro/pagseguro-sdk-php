@@ -19,14 +19,12 @@ $authorization->addPermission(\PagSeguro\Enum\Authorization\Permissions::MANAGE_
 $authorization->addPermission(\PagSeguro\Enum\Authorization\Permissions::DIRECT_PAYMENT);
 
 try {
-
     $response = $authorization->register(
         \PagSeguro\Configuration\Configure::getApplicationCredentials()
     );
     echo "<h2>Criando requisi&ccedil;&atilde;o de authorização</h2>"
         . "<p>URL do pagamento: <strong>$response</strong></p>"
         . "<p><a title=\"URL de Autorização\" href=\"$response\" target=\_blank\">Ir para URL de authorização.</a></p>";
-
 } catch (Exception $e) {
     die($e->getMessage());
 }

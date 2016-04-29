@@ -104,4 +104,3 @@ trait Metadata
         return array_search(strtolower($itemDescription), array_map('strtolower', Description::getList()));
     }
 }
-

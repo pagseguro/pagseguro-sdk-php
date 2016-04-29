@@ -28,14 +28,14 @@ class Installment
      * @return Pagseguro\Domains\Responses\Installments
      * @throws \Exception
      */
-    public static function create(Credentials $credentials, $params) {
+    public static function create(Credentials $credentials, $params)
+    {
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
             $http->get(self::request($connection, $params));
 
             return Responsibility::http($http, new Request());
-
         } catch (\Exception $exception) {
             throw $exception;
         }
