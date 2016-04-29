@@ -45,8 +45,8 @@ class Session
             $http->post(self::request($connection));
 
             return Responsibility::http(
-                    $http,
-                    new Request()
+                $http,
+                new Request()
             );
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();

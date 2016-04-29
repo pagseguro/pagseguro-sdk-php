@@ -38,14 +38,14 @@ $payment->setSender()->withParameters(
 );
 
 $payment->setShipping()->setAddress()->withParameters(
-    '01452002',
     'Av. Brig. Faria Lima',
     '1384',
-    'apto. 114',
     'Jardim Paulistano',
+    '01452002',
     'São Paulo',
     'SP',
-    'BRA'
+    'BRA',
+    'apto. 114'
 );
 $payment->setShipping()->setCost()->withParameters(20.00);
 $payment->setShipping()->setType()->withParameters(\PagSeguro\Enum\Shipping\Type::SEDEX);
@@ -92,7 +92,8 @@ try {
 
     /**
      * @todo For checkout with application use:
-     * \PagSeguro\Configuration\Configure::getApplicationCredentials()->setAuthorizationCode("FD3AF1B214EC40F0B0A6745D041BF50D")
+     * \PagSeguro\Configuration\Configure::getApplicationCredentials()
+     *  ->setAuthorizationCode("FD3AF1B214EC40F0B0A6745D041BF50D")
      */
     $result = $payment->register(
         \PagSeguro\Configuration\Configure::getAccountCredentials()

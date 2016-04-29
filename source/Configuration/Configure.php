@@ -47,8 +47,9 @@ class Configure
 
         $accountCredentials = new AccountCredentials;
         $accountCredentials->setEmail($configuration['credentials']['email'])
-                           ->setToken(
-                               $configuration['credentials']['token']['environment'][$configuration['environment']]);
+                            ->setToken(
+                                $configuration['credentials']['token']['environment'][$configuration['environment']]
+                            );
 
         return $accountCredentials;
     }

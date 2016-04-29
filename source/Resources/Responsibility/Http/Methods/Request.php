@@ -26,7 +26,6 @@ namespace PagSeguro\Resources\Responsibility\Http\Methods;
 
 use PagSeguro\Enum\Http\Status;
 
-;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Responsibility\Handler;
 

@@ -54,7 +54,8 @@ trait PaymentMethod
                     $data[sprintf($properties::PAYMENT_METHOD_CONFIG_KEY, $i, 1)] = $paymentMethod[$key]->getKey();
                 }
                 if (!is_null($paymentMethod[$key]->getValue())) {
-                    $data[sprintf($properties::PAYMENT_METHOD_CONFIG_VALUE, $i, 1)] = \PagSeguro\Helpers\Currency::toDecimal($paymentMethod[$key]->getValue());
+                    $data[sprintf($properties::PAYMENT_METHOD_CONFIG_VALUE, $i, 1)] =
+                        \PagSeguro\Helpers\Currency::toDecimal($paymentMethod[$key]->getValue());
                 }
             }
         }

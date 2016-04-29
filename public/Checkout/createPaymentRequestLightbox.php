@@ -9,13 +9,19 @@ require_once "../../vendor/autoload.php";
 ?>
 <!DOCTYPE html>
 <html>
-	<head>
-        <?php if (\PagSeguro\Configuration\Configure::getEnvironment()->getEnvironment() == "sandbox"): ?>
-	    <!--Para integração em ambiente de testes no Sandbox use este link-->
-		<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
-	    <?php else: ?>
+    <head>
+        <?php if (\PagSeguro\Configuration\Configure::getEnvironment()->getEnvironment() == "sandbox") : ?>
+            <!--Para integração em ambiente de testes no Sandbox use este link-->
+                <script
+                    type="text/javascript"
+                    src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js">
+                </script>
+        <?php else : ?>
         <!--Para integração em ambiente de produção use este link-->
-		<script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+                <script
+                    type="text/javascript"
+                    src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js">
+                </script>
         <?php endif; ?>
     </head>
 </html>
@@ -51,14 +57,14 @@ $payment->setSender()->withParameters(
 );
 
 $payment->setShipping()->setAddress()->withParameters(
-    '01452002',
     'Av. Brig. Faria Lima',
     '1384',
-    'apto. 114',
     'Jardim Paulistano',
+    '01452002',
     'São Paulo',
     'SP',
-    'BRA'
+    'BRA',
+    'apto. 114'
 );
 $payment->setShipping()->setCost()->withParameters(20.00);
 $payment->setShipping()->setType()->withParameters(\PagSeguro\Enum\Shipping\Type::SEDEX);
@@ -84,7 +90,8 @@ $payment->setNotificationUrl("http://www.lojamodelo.com.br/nofitication");
 try {
     $onlyCheckoutCode = true;
     $result = $payment->register(
-        \PagSeguro\Configuration\Configure::getAccountCredentials(), $onlyCheckoutCode
+        \PagSeguro\Configuration\Configure::getAccountCredentials(),
+        $onlyCheckoutCode
     );
 
     echo "<h2>Criando requisi&ccedil;&atilde;o de pagamento. Aguarde...</h2>"

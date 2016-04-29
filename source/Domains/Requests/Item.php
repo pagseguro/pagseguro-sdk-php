@@ -62,7 +62,7 @@ trait Item
         return current($this->items);
     }
 
-    public function ItemLenght()
+    public function itemLenght()
     {
         return count(current($this->items));
     }

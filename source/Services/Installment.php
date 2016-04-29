@@ -54,8 +54,14 @@ class Installment
             $connection->buildInstallmentRequestUrl(),
             $connection->buildCredentialsQuery(),
             sprintf("&%s=%s", Current::INSTALLMENT_AMOUNT, Currency::toDecimal($params['amount'])),
-            !isset($params['card_brand']) ?: sprintf("&%s=%s", Current::INSTALLMENT_CARD_BRAND, $params['card_brand']),
-            !isset($params['max_installment_no_interest']) ?: sprintf("&%s=%s", Current::INSTALLMENT_MAX_INSTALLMENT_NO_INTEREST, $params['max_installment_no_interest'])
+            !isset($params['card_brand']) ?:
+                sprintf("&%s=%s", Current::INSTALLMENT_CARD_BRAND, $params['card_brand']),
+            !isset($params['max_installment_no_interest']) ?:
+                sprintf(
+                    "&%s=%s",
+                    Current::INSTALLMENT_MAX_INSTALLMENT_NO_INTEREST,
+                    $params['max_installment_no_interest']
+                )
         );
     }
 }

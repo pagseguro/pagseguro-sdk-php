@@ -41,7 +41,7 @@ trait Item
     {
         $data = [];
         $items = $request->getItems();
-        if ($request->ItemLenght() > 0) {
+        if ($request->itemLenght() > 0) {
             $i = 0;
 
             foreach ($items as $key => $value) {

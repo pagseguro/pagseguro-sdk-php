@@ -90,12 +90,12 @@ class Address
     public function withParameters(
         $street,
         $number,
-        $complement = null,
         $district,
         $postalCode,
         $city,
         $state,
-        $country
+        $country,
+        $complement = null
     ) {
         $address = new \PagSeguro\Domains\Address();
         $address->setPostalCode($postalCode)

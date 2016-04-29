@@ -83,9 +83,9 @@ class Responsibility
         $application = new Application();
 
         $transaction->successor(
-          $preApproval->successor(
-              $application
-          )
+            $preApproval->successor(
+                $application
+            )
         );
 
         return $transaction->handler();

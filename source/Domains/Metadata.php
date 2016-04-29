@@ -32,7 +32,7 @@ namespace PagSeguro\Domains;
 class Metadata
 {
     /**
-     * Metadata key 
+     * Metadata key
      */
     private $key;
     /**
