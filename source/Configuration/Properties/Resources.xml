@@ -34,15 +34,49 @@
         </webservice>
     </path>
     <services>
+        <application>
+            <authorization>
+                <request>v2/authorizations/request</request>;
+                <response>v2/authorization/request.jhtml</response>;
+            </authorization>
+            <search>
+                <request>v2/authorizations</request>
+            </search>
+        </application>
+        <cancel>
+            <request>v2/transactions/cancels</request>
+        </cancel>
+        <notification>
+            <application>
+                <request>v2/authorizations/notifications</request>
+            </application>
+            <pre-approval>
+                <request>v2/pre-approvals/notifications</request>
+            </pre-approval>
+            <transaction>
+                <request>v3/transactions/notifications</request>;
+            </transaction>
+        </notification>
         <payment>
             <request>v2/checkout</request>
             <response>v2/checkout/payment.html</response>
         </payment>
         <refund>
-            <request>/v2/transactions/refunds</request>
+            <request>v2/transactions/refunds</request>
         </refund>
-        <cancel>
-            <request>/v2/transactions/cancels</request>
-        </cancel>
+        <session>
+            <request>v2/sessions</request>
+        </session>
+        <installment>
+            <request>v2/installments</request>
+    	</installment>
+        <transaction>
+            <search>
+                <request>v3/transactions</request>
+            </search>
+            <abandoned>
+                <request>v2/transactions</request>
+            </abandoned>
+        </transaction>
     </services>
 </Resources>

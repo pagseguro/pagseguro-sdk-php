@@ -24,8 +24,7 @@
 
 namespace PagSeguro\Parsers;
 
-use PagSeguro\Domains\Requests\Request;
-use PagSeguro\Enum\Properties\Current;
+use PagSeguro\Domains\Requests\Requests;
 
 /**
  * Class Sender
@@ -34,44 +33,44 @@ use PagSeguro\Enum\Properties\Current;
 trait Sender
 {
     /**
-     * @param Request $payment
+     * @param Requests $request
      * @param $properties
      * @return array
      */
-    public static function getData(Request $payment, $properties)
+    public static function getData(Requests $request, $properties)
     {
         $data = [];
         // sender
-        if (!is_null($payment->getSender())) {
-            if (!is_null($payment->getSender()->getName())) {
-                $data[$properties::SENDER_NAME] = $payment->getSender()->getName();
+        if (!is_null($request->getSender())) {
+            if (!is_null($request->getSender()->getName())) {
+                $data[$properties::SENDER_NAME] = $request->getSender()->getName();
             }
-            if (!is_null($payment->getSender()->getEmail())) {
-                $data[$properties::SENDER_EMAIL] = $payment->getSender()->getEmail();
+            if (!is_null($request->getSender()->getEmail())) {
+                $data[$properties::SENDER_EMAIL] = $request->getSender()->getEmail();
             }
             // phone
-            if (!is_null($payment->getSender()->getPhone())) {
-                array($data, self::phone($payment, $properties));
+            if (!is_null($request->getSender()->getPhone())) {
+                array($data, self::phone($request, $properties));
             }
             // documents
-            if (!is_null($payment->getSender()->getDocuments())) {
-                array($data, self::documents($payment, $properties));
+            if (!is_null($request->getSender()->getDocuments())) {
+                array($data, self::documents($request, $properties));
             }
-            if (!is_null($payment->getSender()->getIP())) {
-                $data[$properties::SENDER_IP] = $payment->sender()->get()->getIP();
+            if (!is_null($request->getSender()->getIP())) {
+                $data[$properties::SENDER_IP] = $request->sender()->get()->getIP();
             }
         }
         return $data;
     }
 
-    private static function phone($payment, $properties)
+    private static function phone($request, $properties)
     {
         $data = [];
-        if (!is_null($payment->getSender()->getPhone()->getAreaCode())) {
-            $data[$properties::SENDER_PHONE_AREA_CODE] = $payment->getSender()->getPhone()->getAreaCode();
+        if (!is_null($request->getSender()->getPhone()->getAreaCode())) {
+            $data[$properties::SENDER_PHONE_AREA_CODE] = $request->getSender()->getPhone()->getAreaCode();
         }
-        if (!is_null($payment->getSender()->getPhone()->getNumber())) {
-            $data[$properties::SENDER_PHONE_NUMBER] = $payment->getSender()->getPhone()->getNumber();
+        if (!is_null($request->getSender()->getPhone()->getNumber())) {
+            $data[$properties::SENDER_PHONE_NUMBER] = $request->getSender()->getPhone()->getNumber();
         }
         return $data;
     }

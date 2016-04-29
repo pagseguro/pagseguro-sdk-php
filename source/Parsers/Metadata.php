@@ -25,11 +25,9 @@
 
 namespace PagSeguro\Parsers;
 
-use PagSeguro\Domains\Requests\Request;
+use PagSeguro\Domains\Requests\Requests;
 use PagSeguro\Helpers\StringFormat;
-use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Enum\Metadata\Description;
-use PagSeguro\Enum\Metadata\Format;
 
 /**
  * Parser for the Metadata
@@ -37,25 +35,31 @@ use PagSeguro\Enum\Metadata\Format;
  */
 trait Metadata
 {
-    public static function getData(Request $payment, $properties)
+
+    /**
+     * @param Requests $request
+     * @param $properties
+     * @return array
+     */
+    public static function getData(Requests $request, $properties)
     {
         $data = [];
-        $metadata = $payment->getMetadata();
-        if ($payment->metadataLenght() > 0) {
+        $metadata = $request->getMetadata();
+        if ($request->metadataLenght() > 0) {
             $i = 0;
 
             foreach ($metadata as $key => $value) {
                 $i++;
-                if ($metadata[$key]->getKey() != null) {
+                if (!is_null($metadata[$key]->getKey())) {
                     $data[sprintf($properties::METADATA_ITEM_KEY, $i)] = $metadata[$key]->getKey();
                 }
-                if ($metadata[$key]->getValue() != null) {
+                if (!is_null($metadata[$key]->getValue())) {
                     $data[sprintf($properties::METADATA_ITEM_VALUE, $i)] = self::formatKeyValue(
                         $metadata[$key]->getKey(),
                         $metadata[$key]->getValue()
                     );
                 }
-                if ($metadata[$key]->getGroup() != null) {
+                if (!is_null($metadata[$key]->getGroup())) {
                     $data[sprintf($properties::METADATA_ITEM_GROUP, $i)] = $metadata[$key]->getGroup();
                 }
             }
@@ -76,18 +80,18 @@ trait Metadata
         $value = StringFormat::formatString($value, 100, '');
 
         switch ($key) {
-             case self::getKeyByDescription('CPF do passageiro'):
-                 return StringFormat::getOnlyNumbers($value);
-                 break;
-             case  self::getKeyByDescription('Tempo no jogo em dias'):
-                 return StringFormat::getOnlyNumbers($value);
-                 break;
-             case  self::getKeyByDescription('Celular de recarga'):
-                 return StringFormat::getOnlyNumbers($value);
-                 break;
-             default:
-                 return $value;
-         }
+            case self::getKeyByDescription('CPF do passageiro'):
+                return StringFormat::getOnlyNumbers($value);
+                break;
+            case self::getKeyByDescription('Tempo no jogo em dias'):
+                return StringFormat::getOnlyNumbers($value);
+                break;
+            case self::getKeyByDescription('Celular de recarga'):
+                return StringFormat::getOnlyNumbers($value);
+                break;
+            default:
+                return $value;
+        }
     }
     
     /***
@@ -100,4 +104,3 @@ trait Metadata
         return array_search(strtolower($itemDescription), array_map('strtolower', Description::getList()));
     }
 }
-

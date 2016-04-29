@@ -27,7 +27,9 @@ namespace PagSeguro\Domains\Requests;
 trait Currency
 {
     private $currency;
-
+    
+    private $extraAmount;
+        
     public function setCurrency($currency)
     {
         $this->currency = $currency;
@@ -36,5 +38,15 @@ trait Currency
     public function getCurrency()
     {
         return $this->currency;
+    }
+    
+    public function setExtraAmount($extraAmount)
+    {
+        $this->extraAmount = $extraAmount;
+    }
+    
+    public function getExtraAmount()
+    {
+        return $this->extraAmount;
     }
 }

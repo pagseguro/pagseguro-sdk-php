@@ -23,6 +23,9 @@ $payment->addItems()->withParameters(
 );
 
 $payment->setCurrency("BRL");
+
+$payment->setExtraAmount(11.5);
+
 $payment->setReference("LIBPHP000001");
 
 $payment->setRedirectUrl("http://www.lojamodelo.com.br");
@@ -30,21 +33,19 @@ $payment->setRedirectUrl("http://www.lojamodelo.com.br");
 $payment->setSender()->withParameters(
     'João Comprador',
     'email@comprador.com.br',
-    '11',
-    '56273440',
-    'CPF',
-    '156.009.442-76'
+    (new \PagSeguro\Domains\Phone)->setAreaCode(11)->setNumber(56273440),
+    (new \PagSeguro\Domains\Document)->setType('CPF')->setIdentifier('156.009.442-76')
 );
 
 $payment->setShipping()->setAddress()->withParameters(
-    '01452002',
     'Av. Brig. Faria Lima',
     '1384',
-    'apto. 114',
     'Jardim Paulistano',
+    '01452002',
     'São Paulo',
     'SP',
-    'BRA'
+    'BRA',
+    'apto. 114'
 );
 $payment->setShipping()->setCost()->withParameters(20.00);
 $payment->setShipping()->setType()->withParameters(\PagSeguro\Enum\Shipping\Type::SEDEX);
@@ -63,14 +64,41 @@ $payment->addParameter()->withParameters('itemAmount', '200.00')->index(3);
 //Add items by parameter using an array
 $payment->addParameter()->withArray(['notificationURL', 'http://www.lojamodelo.com.br/nofitication']);
 
-
 $payment->setRedirectUrl("http://www.lojamodelo.com.br");
 $payment->setNotificationUrl("http://www.lojamodelo.com.br/nofitication");
 
+//Add discount
+$payment->addPaymentMethod()->withParameters(
+    PagSeguro\Enum\PaymentMethod\Group::CREDIT_CARD,
+    PagSeguro\Enum\PaymentMethod\Config\Keys::DISCOUNT_PERCENT,
+    10.00 // (float) Percent
+);
+
+//Add installments with no interest
+$payment->addPaymentMethod()->withParameters(
+    PagSeguro\Enum\PaymentMethod\Group::CREDIT_CARD,
+    PagSeguro\Enum\PaymentMethod\Config\Keys::MAX_INSTALLMENTS_NO_INTEREST,
+    2 // (int) qty of installment
+);
+
+//Add a limit for installment
+$payment->addPaymentMethod()->withParameters(
+    PagSeguro\Enum\PaymentMethod\Group::CREDIT_CARD,
+    PagSeguro\Enum\PaymentMethod\Config\Keys::MAX_INSTALLMENTS_LIMIT,
+    6 // (int) qty of installment
+);
+
 try {
+
+    /**
+     * @todo For checkout with application use:
+     * \PagSeguro\Configuration\Configure::getApplicationCredentials()
+     *  ->setAuthorizationCode("FD3AF1B214EC40F0B0A6745D041BF50D")
+     */
     $result = $payment->register(
         \PagSeguro\Configuration\Configure::getAccountCredentials()
     );
+
     echo "<h2>Criando requisi&ccedil;&atilde;o de pagamento</h2>"
         . "<p>URL do pagamento: <strong>$result</strong></p>"
         . "<p><a title=\"URL do pagamento\" href=\"$result\" target=\_blank\">Ir para URL do pagamento.</a></p>";

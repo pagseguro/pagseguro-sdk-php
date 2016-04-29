@@ -31,7 +31,6 @@
 
 namespace PagSeguro\Helpers;
 
-
 class Wrapper
 {
     public static function environment($config)

@@ -25,7 +25,7 @@
 
 namespace PagSeguro\Parsers;
 
-use PagSeguro\Domains\Requests\Request;
+use PagSeguro\Domains\Requests\Requests;
 
 /**
  * Description of Parameter
@@ -33,18 +33,23 @@ use PagSeguro\Domains\Requests\Request;
  */
 trait Parameter
 {
-    public static function getData(Request $payment)
+
+    /**
+     * @param Requests $request
+     * @return array
+     */
+    public static function getData(Requests $request)
     {
         $data = [];
-        $parameter = $payment->getParameter();
-        if ($payment->parameterLenght() > 0) {
+        $parameter = $request->getParameter();
+        if ($request->parameterLenght() > 0) {
             $i = 0;
 
             foreach ($parameter as $key => $value) {
                 $i++;
-                if ($parameter[$key]->getKey() != null) {
-                    if ($parameter[$key]->getIndex() != null) {
-                        $data[sprintf("%s%s", $parameter[$key]->getKey(), $parameter[$key]->getIndex())] = 
+                if (!is_null($parameter[$key]->getKey())) {
+                    if (!is_null($parameter[$key]->getIndex())) {
+                        $data[sprintf("%s%s", $parameter[$key]->getKey(), $parameter[$key]->getIndex())] =
                             $parameter[$key]->getValue();
                     } else {
                         $data[$parameter[$key]->getKey()] = $parameter[$key]->getValue();

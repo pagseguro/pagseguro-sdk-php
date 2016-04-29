@@ -31,7 +31,6 @@
 
 namespace PagSeguro\Domains;
 
-
 class Environment
 {
     /**

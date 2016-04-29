@@ -24,8 +24,7 @@
 
 namespace PagSeguro\Parsers;
 
-use PagSeguro\Domains\Requests\Request;
-use PagSeguro\Helpers\Currency;
+use PagSeguro\Domains\Requests\Requests;
 
 /**
  * Class Shipping
@@ -34,86 +33,88 @@ use PagSeguro\Helpers\Currency;
 trait Shipping
 {
     /**
-     * @param Request $payment
+     * @param Requests $request
      * @param $properties
      * @return array
      */
-    public static function getData(Request $payment, $properties)
+    public static function getData(Requests $request, $properties)
     {
         $data = [];
         // shipping
-        if (!is_null($payment->getShipping())) {
+        if (!is_null($request->getShipping())) {
             // type
-            if (!is_null($payment->getShipping()->getType())) {
-                array_merge($data, self::type($payment, $properties));
+            if (!is_null($request->getShipping()->getType())) {
+                array_merge($data, self::type($request, $properties));
             }
             // cost
-            if (!is_null($payment->getShipping()->getCost())) {
-                array_merge($data, self::cost($payment, $properties));
+            if (!is_null($request->getShipping()->getCost())) {
+                array_merge($data, self::cost($request, $properties));
             }
             // address
-            if (!is_null($payment->getShipping()->getAddress())) {
-                array_merge($data, self::address($payment, $properties));
+            if (!is_null($request->getShipping()->getAddress())) {
+                array_merge($data, self::address($request, $properties));
             }
         }
         return $data;
     }
 
     /**
-     * @param $payment
+     * @param $request
      * @param $properties
      * @return float|string
      */
-    private static function cost($payment, $properties)
+    private static function cost($request, $properties)
     {
         $data = [];
-        $data[$properties::SHIPPING_COST] = Currency::toDecimal($payment->getShipping()->getCost()->getCost());
+        $data[$properties::SHIPPING_COST] = \PagSeguro\Helpers\Currency::toDecimal(
+            $request->getShipping()->getCost()->getCost()
+        );
         return $data;
     }
 
     /**
-     * @param $payment
+     * @param $request
      * @param $properties
      * @return mixed
      */
-    private static function type($payment, $properties)
+    private static function type($request, $properties)
     {
         $data = [];
-        $data[$properties::SHIPPING_TYPE] = $payment->getShipping()->getType()->getType();
+        $data[$properties::SHIPPING_TYPE] = $request->getShipping()->getType()->getType();
         return $data;
     }
 
     /**
-     * @param $payment
+     * @param $request
      * @param $properties
      * @return array
      */
-    private static function address($payment, $properties)
+    private static function address($request, $properties)
     {
         $data = [];
-        if (!is_null($payment->getShipping()->getAddress()->getStreet())) {
-            $data[$properties::SHIPPING_ADDRESS_STREET] = $payment->getShipping()->getAddress()->getStreet();
+        if (!is_null($request->getShipping()->getAddress()->getStreet())) {
+            $data[$properties::SHIPPING_ADDRESS_STREET] = $request->getShipping()->getAddress()->getStreet();
         }
-        if (!is_null($payment->getShipping()->getAddress()->getNumber())) {
-            $data[$properties::SHIPPING_ADDRESS_NUMBER] = $payment->getShipping()->getAddress()->getNumber();
+        if (!is_null($request->getShipping()->getAddress()->getNumber())) {
+            $data[$properties::SHIPPING_ADDRESS_NUMBER] = $request->getShipping()->getAddress()->getNumber();
         }
-        if (!is_null($payment->getShipping()->getAddress()->getComplement())) {
-            $data[$properties::SHIPPING_ADDRESS_COMPLEMENT] = $payment->getShipping()->getAddress()->getComplement();
+        if (!is_null($request->getShipping()->getAddress()->getComplement())) {
+            $data[$properties::SHIPPING_ADDRESS_COMPLEMENT] = $request->getShipping()->getAddress()->getComplement();
         }
-        if (!is_null($payment->getShipping()->getAddress()->getCity())) {
-            $data[$properties::SHIPPING_ADDRESS_CITY] = $payment->getShipping()->getAddress()->getCity();
+        if (!is_null($request->getShipping()->getAddress()->getCity())) {
+            $data[$properties::SHIPPING_ADDRESS_CITY] = $request->getShipping()->getAddress()->getCity();
         }
-        if (!is_null($payment->getShipping()->getAddress()->getState())) {
-            $data[$properties::SHIPPING_ADDRESS_STATE] = $payment->getShipping()->getAddress()->getState();
+        if (!is_null($request->getShipping()->getAddress()->getState())) {
+            $data[$properties::SHIPPING_ADDRESS_STATE] = $request->getShipping()->getAddress()->getState();
         }
-        if (!is_null($payment->getShipping()->getAddress()->getDistrict())) {
-            $data[$properties::SHIPPING_ADDRESS_DISTRICT] = $payment->getShipping()->getAddress()->getDistrict();
+        if (!is_null($request->getShipping()->getAddress()->getDistrict())) {
+            $data[$properties::SHIPPING_ADDRESS_DISTRICT] = $request->getShipping()->getAddress()->getDistrict();
         }
-        if (!is_null($payment->getShipping()->getAddress()->getPostalCode())) {
-            $data[$properties::SHIPPING_ADDRESS_POSTAL_CODE] = $payment->getShipping()->getAddress()->getPostalCode();
+        if (!is_null($request->getShipping()->getAddress()->getPostalCode())) {
+            $data[$properties::SHIPPING_ADDRESS_POSTAL_CODE] = $request->getShipping()->getAddress()->getPostalCode();
         }
-        if (!is_null($payment->getShipping()->getAddress()->getCountry())) {
-            $data[$properties::SHIPPING_ADDRESS_COUNTRY] = $payment->getShipping()->getAddress()->getCountry();
+        if (!is_null($request->getShipping()->getAddress()->getCountry())) {
+            $data[$properties::SHIPPING_ADDRESS_COUNTRY] = $request->getShipping()->getAddress()->getCountry();
         }
         return $data;
     }

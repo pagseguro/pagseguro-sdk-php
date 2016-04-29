@@ -39,11 +39,11 @@ class Library
     /**
      *
      */
-    const VERSION = "3.0.0";
+    const VERSION = "3.0.1";
     /**
      * @var
      */
-    static private $module;
+    private static $module;
 
     /**
      * @throws \Exception

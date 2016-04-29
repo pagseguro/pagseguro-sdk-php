@@ -24,7 +24,6 @@
 
 namespace PagSeguro\Services\Checkout;
 
-
 use PagSeguro\Domains\Account\Credentials;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
@@ -51,19 +50,18 @@ class Payment
             $http = new Http();
             $http->post(
                 self::request($connection),
-                \PagSeguro\Parsers\Checkout\Payment::getData($payment)
+                \PagSeguro\Parsers\Checkout\Request::getData($payment)
             );
 
             $response = Responsibility::http(
                 $http,
-                new \PagSeguro\Parsers\Checkout\Payment()
+                new \PagSeguro\Parsers\Checkout\Request
             );
 
             if ($onlyCode) {
                 return $response;
             }
             return self::response($connection, $response);
-
         } catch (\Exception $exception) {
             throw $exception;
         }

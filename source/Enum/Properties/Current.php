@@ -35,7 +35,37 @@ class Current
      * Currency
      */
     const CURRENCY = "currency";
+    
+    /**
+     * Currency extra amount (optional)
+     */
+    const CURRENCY_EXTRA_AMOUNT = "extraAmount";
 
+    /**
+     * Document type
+     */
+    const DOCUMENT_TYPE = "documentType";
+
+    /**
+     * Document value
+     */
+    const DOCUMENT_VALUE = "documentValue";
+
+    /**
+     * Installment amount
+     */
+    const INSTALLMENT_AMOUNT = "amount";
+
+    /**
+     * Installment card brand
+     */
+    const INSTALLMENT_CARD_BRAND = "cardBrand";
+
+    /**
+     * Installment max installment No interest
+     */
+    const INSTALLMENT_MAX_INSTALLMENT_NO_INTEREST = "maxInstallmentNoInterest";
+    
     /**
      * Item identifier
      */
@@ -67,9 +97,69 @@ class Current
     const ITEM_SHIPPING_COST = "itemShippingCost%s";
 
     /**
+     * Metadata item key
+     */
+    const METADATA_ITEM_KEY = "metadataItemKey%s";
+
+    /**
+     * Metadata item value
+     */
+    const METADATA_ITEM_VALUE = "metadataItemValue%s";
+
+    /**
+     * Metadata item group
+     */
+    const METADATA_ITEM_GROUP = "metadataItemGroup%s";
+
+    /**
      * Notification Url
      */
     const NOTIFICATION_URL = "notificationURL";
+
+    /**
+     * Payment method group
+     */
+    const PAYMENT_METHOD_GROUP = "paymentMethodGroup%s";
+
+    /**
+     * Payment method config key
+     */
+    const PAYMENT_METHOD_CONFIG_KEY = "paymentMethodConfigKey%s_%s";
+
+    /**
+     * Payment method config value
+     */
+    const PAYMENT_METHOD_CONFIG_VALUE = "paymentMethodConfigValue%s_%s";
+
+    /**
+     * Permissions
+     */
+    const PERMISSIONS = "permissions";
+    
+    /**
+     * Receiver email
+     */
+    const RECEIVER_EMAIL = 'receiverEmail';
+
+    /**
+     * Search initial date
+     */
+    const SEARCH_INITIAL_DATE = "initialDate";
+
+    /**
+     * Search final date
+     */
+    const SEARCH_FINAL_DATE = "finalDate";
+
+    /**
+     * Search max results per page
+     */
+    const SEARCH_MAX_RESULTS_PER_PAGE = "maxPageResults";
+
+    /**
+     * Search page qty
+     */
+    const SEARCH_PAGE = "page";
 
     /**
      * Sender name
@@ -175,19 +265,4 @@ class Current
      * Transaction code
      */
     const TRANSACTION_CODE = "transactionCode";
-    
-    /**
-     * Metadata item key
-     */
-    const METADATA_ITEM_KEY = "metadataItemKey%s";
-    
-    /**
-     * Metadata item value
-     */
-    const METADATA_ITEM_VALUE = "metadataItemValue%s";
-    
-    /**
-     * Metadata item group
-     */
-    const METADATA_ITEM_GROUP = "metadataItemGroup%s";
 }

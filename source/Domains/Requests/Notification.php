@@ -28,11 +28,13 @@ trait Notification
 {
     private $nUrl;
     
-    function getUrl() {
+    public function getUrl()
+    {
         return $this->nUrl;
     }
 
-    function setUrl($url) {
+    public function setUrl($url)
+    {
         $this->nUrl = $url;
     }
 }

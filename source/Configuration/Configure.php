@@ -25,6 +25,7 @@
 namespace PagSeguro\Configuration;
 
 use PagSeguro\Domains\AccountCredentials;
+use PagSeguro\Domains\ApplicationCredentials;
 use PagSeguro\Domains\Charset;
 use PagSeguro\Domains\Environment;
 use PagSeguro\Domains\Log;
@@ -46,18 +47,29 @@ class Configure
 
         $accountCredentials = new AccountCredentials;
         $accountCredentials->setEmail($configuration['credentials']['email'])
-                           ->setToken(
-                               $configuration['credentials']['token']['environment'][$configuration['environment']]);
+                            ->setToken(
+                                $configuration['credentials']['token']['environment'][$configuration['environment']]
+                            );
 
         return $accountCredentials;
     }
 
     /**
-     * @throws \Exception
+     * @return ApplicationCredentials
      */
     public static function getApplicationCredentials()
     {
-        throw new \Exception ("Not implemented yet");
+        $configuration = Responsibility::configuration();
+
+        $appCredentials = new ApplicationCredentials;
+        $appCredentials->setAppId(
+            $configuration['credentials']['appId']['environment'][$configuration['environment']]
+        );
+        $appCredentials->setAppKey(
+            $configuration['credentials']['appKey']['environment'][$configuration['environment']]
+        );
+
+        return $appCredentials;
     }
 
     /**

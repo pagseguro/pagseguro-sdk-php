@@ -24,7 +24,7 @@
 
 namespace PagSeguro\Parsers;
 
-use PagSeguro\Domains\Requests\Request;
+use PagSeguro\Domains\Requests\Requests;
 
 /**
  * Class Basic
@@ -33,29 +33,25 @@ use PagSeguro\Domains\Requests\Request;
 trait Basic
 {
     /**
-     * @param Request $payment
+     * @param Requests $request
      * @param $properties
      * @return array
      */
-    public static function getData(Request $payment, $properties)
+    public static function getData(Requests $request, $properties)
     {
-
         $data = [];
-        // currency
-        if (!is_null($payment->getCurrency())) {
-            $data[$properties::CURRENCY] = $payment->getCurrency();
-        }
+
         // reference
-        if (!is_null($payment->getReference())) {
-            $data[$properties::REFERENCE] = $payment->getReference();
+        if (!is_null($request->getReference())) {
+            $data[$properties::REFERENCE] = $request->getReference();
         }
         // redirectURL
-        if (!is_null($payment->getRedirectUrl())) {
-            $data[$properties::REDIRECT_URL] = $payment->getRedirectUrl();
+        if (!is_null($request->getRedirectUrl())) {
+            $data[$properties::REDIRECT_URL] = $request->getRedirectUrl();
         }
         // notificationURL
-        if (!is_null($payment->getNotificationUrl())) {
-            $data[$properties::NOTIFICATION_URL] = $payment->getNotificationUrl();
+        if (!is_null($request->getNotificationUrl())) {
+            $data[$properties::NOTIFICATION_URL] = $request->getNotificationUrl();
         }
         return $data;
     }

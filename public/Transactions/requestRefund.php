@@ -18,8 +18,7 @@ $code = "0B64FD7B4F9641378E9C9462982A8B95";
 $value = null;
 
 try {
-
-    $refund = \PagSeguro\Services\Refund::create(
+    $refund = \PagSeguro\Services\Transactions\Refund::create(
         \PagSeguro\Configuration\Configure::getAccountCredentials(),
         $code,
         $value

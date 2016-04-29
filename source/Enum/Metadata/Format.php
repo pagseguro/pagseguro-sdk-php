@@ -28,7 +28,7 @@ use PagSeguro\Enum\Enum;
 
 /**
  * Class Format
- * 
+ *
  * Describes each format expected by each parameter of the metadata
  *
  * @package PagSeguro\Enum\Metadata

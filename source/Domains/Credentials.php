@@ -24,7 +24,6 @@
 
 namespace PagSeguro\Domains;
 
-
 class Credentials
 {
     /**

@@ -28,16 +28,16 @@ use PagSeguro\Helpers\InitializeObject;
 
 trait Item
 {
-    private $item;
+    private $items;
 
     public function addItems()
     {
-        $this->item = InitializeObject::Initialize(
-            $this->item,
-            new \PagSeguro\Resources\Factory\Request\Item()
+        $this->items = InitializeObject::Initialize(
+            $this->items,
+            new \PagSeguro\Resources\Factory\Item()
         );
         
-        return $this->item;
+        return $this->items;
     }
 
     public function setItems($items)
@@ -59,11 +59,11 @@ trait Item
 
     public function getItems()
     {
-        return current($this->item);
+        return current($this->items);
     }
 
-    public function ItemLenght()
+    public function itemLenght()
     {
-        return count(current($this->item));
+        return count(current($this->items));
     }
 }

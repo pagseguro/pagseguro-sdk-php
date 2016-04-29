@@ -24,7 +24,6 @@
 
 namespace PagSeguro\Domains;
 
-
 /**
  * Class ShippingCost
  * @package PagSeguro\Domains

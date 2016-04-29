@@ -26,7 +26,7 @@ namespace PagSeguro\Domains\Requests;
 
 use PagSeguro\Helpers\InitializeObject;
 
-trait Metadata 
+trait Metadata
 {
     private $metadata;
     
@@ -67,4 +67,3 @@ trait Metadata
         return count(current($this->metadata));
     }
 }
-

@@ -54,6 +54,9 @@ class Sender
      */
     private $ip;
 
+    /**
+     * Sender constructor.
+     */
     public function __construct()
     {
         return $this;
@@ -104,9 +107,10 @@ class Sender
     }
 
     /**
+     * @param Phone $phone
      * @return Sender
      */
-    public function setPhone($phone)
+    public function setPhone(Phone $phone)
     {
         $this->phone = $phone;
         return $this;
@@ -121,12 +125,12 @@ class Sender
     }
 
     /**
-     * @param string $documents
-     * @return Sender
+     * @param Document $document
+     * @return $this
      */
-    public function setDocuments($documents)
+    public function setDocuments(Document $document)
     {
-        $this->documents = $documents;
+        $this->documents[] = $document;
         return $this;
     }
 

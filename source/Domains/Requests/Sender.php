@@ -30,7 +30,7 @@ trait Sender
 
     public function setSender()
     {
-        $this->sender = new \PagSeguro\Resources\Factory\Request\Sender();
+        $this->sender = new \PagSeguro\Resources\Factory\Sender();
         return $this->sender;
     }
 

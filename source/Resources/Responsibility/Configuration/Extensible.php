@@ -45,7 +45,7 @@ class Extensible implements Handler
 
     public function handler($action, $class)
     {
-        if ( file_exists(CONFIG) ) {
+        if (file_exists(CONFIG)) {
             return array_merge(
                 $this->environment(),
                 $this->credentials(),
@@ -114,5 +114,4 @@ class Extensible implements Handler
             ]
         ];
     }
-
 }

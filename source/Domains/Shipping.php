@@ -8,7 +8,6 @@
 
 namespace PagSeguro\Domains;
 
-
 class Shipping
 {
 

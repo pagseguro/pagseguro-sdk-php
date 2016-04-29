@@ -30,11 +30,13 @@ trait Redirect
 {
     private $rUrl;
     
-    function getUrl() {
+    public function getUrl()
+    {
         return $this->rUrl;
     }
 
-    function setUrl($url) {
+    public function setUrl($url)
+    {
         $this->rUrl = $url;
     }
 }
