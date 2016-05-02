@@ -29,9 +29,14 @@ trait Shipping
     private $shipping;
     private $adapter;
 
-    public function setShipping()
+    public function __construct()
     {
         $this->shipping = new \PagSeguro\Domains\Shipping();
+    }
+
+    public function setShipping()
+    {
+
         $this->adapter = new \PagSeguro\Domains\Requests\Adapter\Shipping($this->shipping);
         return $this->adapter;
     }

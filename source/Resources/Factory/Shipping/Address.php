@@ -40,6 +40,7 @@ class Address
 
     /**
      * Shipping constructor.
+     * @param $shipping
      */
     public function __construct($shipping)
     {
@@ -47,7 +48,7 @@ class Address
     }
 
     /**
-     * @param Address $address
+     * @param \PagSeguro\Domains\Addres $address
      * @return \PagSeguro\Domains\Shipping
      */
     public function instance(\PagSeguro\Domains\Address $address)
@@ -73,7 +74,7 @@ class Address
                 ->setState($array[$properties::SHIPPING_ADDRESS_STATE])
                 ->setCountry($array[$properties::SHIPPING_ADDRESS_COUNTRY]);
         $this->shipping->setAddress($address);
-        return $this->shipping->getAddress();
+        return $this->shipping;
     }
 
     /**
