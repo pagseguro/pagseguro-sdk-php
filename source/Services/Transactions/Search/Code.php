@@ -28,6 +28,7 @@ use PagSeguro\Domains\Account\Credentials;
 use PagSeguro\Parsers\Transaction\Search\Code\Request;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
+use PagSeguro\Resources\Log\Logger;
 use PagSeguro\Resources\Responsibility;
 
 /**
@@ -45,18 +46,26 @@ class Code
      */
     public static function search(Credentials $credentials, $code)
     {
+
+        Logger::info("Begin", ['service' => 'Transactions.Search.Code']);
+
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
+            Logger::info(sprintf("GET: %s", self::request($connection, $code)), ['service' => 'Transactions.Search.Code']);
             $http->get(
                 self::request($connection, $code)
             );
 
-            return Responsibility::http(
+            $response = Responsibility::http(
                 $http,
                 new Request
             );
+
+            Logger::info(sprintf("Date: %s, Code: %s", $response->getDate(), $response->getCode()), ['service' => 'Transactions.Search.Code']);
+            return $response;
         } catch (\Exception $exception) {
+            Logger::error($exception->getMessage(), ['service' => 'Transactions.Search.Code']);
             throw $exception;
         }
     }

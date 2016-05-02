@@ -14,6 +14,7 @@ use PagSeguro\Helpers\Currency;
 use PagSeguro\Parsers\Installment\Request;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
+use PagSeguro\Resources\Log\Logger;
 use PagSeguro\Resources\Responsibility;
 
 /**
@@ -30,13 +31,22 @@ class Installment
      */
     public static function create(Credentials $credentials, $params)
     {
+        Logger::info("Begin", ['service' => 'Installment']);
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
+            Logger::info(sprintf("GET: %s", self::request($connection, $params)), ['service' => 'Installment']);
             $http->get(self::request($connection, $params));
 
-            return Responsibility::http($http, new Request());
+            $response = Responsibility::http(
+                $http,
+                new Request
+            );
+
+            return $response;
+
         } catch (\Exception $exception) {
+            Logger::error($exception->getMessage(), ['service' => 'Installment']);
             throw $exception;
         }
     }
