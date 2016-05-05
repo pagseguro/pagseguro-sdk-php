@@ -7,9 +7,7 @@
       "email": "edison.junior@s2it.com.br"
     }
   ],
-  "require": {
-	"phpunit/phpunit": "*"
-  },
+  "require": {},
   "autoload": {
     "psr-4": {
       "PagSeguro\\": "source/"
