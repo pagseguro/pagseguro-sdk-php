@@ -22,49 +22,21 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Domains\Requests\Sender;
 
-/**
- * Class Sender
- * @package PagSeguro\Domains\Requests
- */
-trait Sender
+trait Address
 {
 
-    /**
-     * @var
-     */
-    private $sender;
-    /**
-     * @var
-     */
-    private $adapter;
+    private $address;
 
-    /**
-     * @return Adapter\Sender
-     */
-    public function setSender()
+    public function getAddress()
     {
-        $this->instance();
-        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\Sender($this->sender);
-        return $this->adapter;
+        return current($this->address);
     }
 
-    /**
-     * @return \PagSeguro\Domains\Sender
-     */
-    public function getSender()
+    public function setAddress()
     {
-        return $this->sender;
-    }
-
-    /**
-     * Instanciate a new sender
-     */
-    private function instance()
-    {
-        if (empty($this->sender) || !isset($this->sender) || is_null($this->sender)) {
-            $this->sender = new \PagSeguro\Domains\Sender();
-        }
+        $this->address = new \PagSeguro\Resources\Factory\Sender\Address($this->sender);
+        return $this->address;
     }
 }

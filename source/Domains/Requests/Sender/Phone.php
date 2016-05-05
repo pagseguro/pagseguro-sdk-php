@@ -22,49 +22,21 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Domains\Requests\Sender;
 
-/**
- * Class Sender
- * @package PagSeguro\Domains\Requests
- */
-trait Sender
+trait Phone
 {
 
-    /**
-     * @var
-     */
-    private $sender;
-    /**
-     * @var
-     */
-    private $adapter;
+    private $phone;
 
-    /**
-     * @return Adapter\Sender
-     */
-    public function setSender()
+    public function getPhone()
     {
-        $this->instance();
-        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\Sender($this->sender);
-        return $this->adapter;
+        return current($this->phone);
     }
 
-    /**
-     * @return \PagSeguro\Domains\Sender
-     */
-    public function getSender()
+    public function setPhone()
     {
-        return $this->sender;
-    }
-
-    /**
-     * Instanciate a new sender
-     */
-    private function instance()
-    {
-        if (empty($this->sender) || !isset($this->sender) || is_null($this->sender)) {
-            $this->sender = new \PagSeguro\Domains\Sender();
-        }
+        $this->phone = new \PagSeguro\Resources\Factory\Sender\Phone($this->sender);
+        return $this->phone;
     }
 }

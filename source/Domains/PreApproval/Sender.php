@@ -22,49 +22,36 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Domains\PreApproval;
+
 
 /**
  * Class Sender
- * @package PagSeguro\Domains\Requests
+ * @package PagSeguro\Domains
  */
-trait Sender
+class Sender extends \PagSeguro\Domains\Sender
 {
 
     /**
      * @var
      */
-    private $sender;
-    /**
-     * @var
-     */
-    private $adapter;
+    private $address;
 
     /**
-     * @return Adapter\Sender
+     * @return mixed
      */
-    public function setSender()
+    public function getAddress()
     {
-        $this->instance();
-        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\Sender($this->sender);
-        return $this->adapter;
+        return $this->address;
     }
 
     /**
-     * @return \PagSeguro\Domains\Sender
+     * @param mixed $address
+     * @return Sender
      */
-    public function getSender()
+    public function setAddress($address)
     {
-        return $this->sender;
-    }
-
-    /**
-     * Instanciate a new sender
-     */
-    private function instance()
-    {
-        if (empty($this->sender) || !isset($this->sender) || is_null($this->sender)) {
-            $this->sender = new \PagSeguro\Domains\Sender();
-        }
+        $this->address = $address;
+        return $this;
     }
 }

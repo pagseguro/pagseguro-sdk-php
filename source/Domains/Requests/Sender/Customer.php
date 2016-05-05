@@ -22,49 +22,44 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Domains\Requests\Sender;
 
-/**
- * Class Sender
- * @package PagSeguro\Domains\Requests
- */
-trait Sender
+trait Customer
 {
-
     /**
-     * @var
+     * @return mixed
      */
-    private $sender;
-    /**
-     * @var
-     */
-    private $adapter;
-
-    /**
-     * @return Adapter\Sender
-     */
-    public function setSender()
+    public function getEmail()
     {
-        $this->instance();
-        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\Sender($this->sender);
-        return $this->adapter;
+        return $this->sender->email;
     }
 
     /**
-     * @return \PagSeguro\Domains\Sender
+     * @param mixed $email
+     * @return Customer
      */
-    public function getSender()
+    public function setEmail($email)
     {
-        return $this->sender;
+        $this->sender->setEmail($email);
+        return $this;
     }
 
     /**
-     * Instanciate a new sender
+     * @return mixed
      */
-    private function instance()
+    public function getName()
     {
-        if (empty($this->sender) || !isset($this->sender) || is_null($this->sender)) {
-            $this->sender = new \PagSeguro\Domains\Sender();
-        }
+        return $this->sender->name;
     }
+
+    /**
+     * @param mixed $name
+     * @return Customer
+     */
+    public function setName($name)
+    {
+        $this->sender->setName($name);
+        return $this;
+    }
+
 }

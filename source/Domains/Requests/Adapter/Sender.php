@@ -22,53 +22,25 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Domains\Requests\Adapter;
 
-/**
- * Class Currency
- * @package PagSeguro\Domains\Requests
- */
-trait Currency
+use PagSeguro\Domains\Requests\Sender\Address;
+use PagSeguro\Domains\Requests\Sender\Customer;
+use PagSeguro\Domains\Requests\Sender\Document;
+use PagSeguro\Domains\Requests\Sender\Phone;
+
+
+class Sender
 {
-    /**
-     * @var
-     */
-    private $currency;
+    use Address;
+    use Customer;
+    use Document;
+    use Phone;
 
-    /**
-     * @var
-     */
-    private $extraAmount;
+    private $sender;
 
-    /**
-     * @param $currency
-     */
-    public function setCurrency($currency)
+    public function __construct($sender)
     {
-        $this->currency = $currency;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCurrency()
-    {
-        return $this->currency;
-    }
-
-    /**
-     * @param $extraAmount
-     */
-    public function setExtraAmount($extraAmount)
-    {
-        $this->extraAmount = $extraAmount;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getExtraAmount()
-    {
-        return $this->extraAmount;
+        $this->sender = $sender;
     }
 }
