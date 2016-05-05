@@ -25,6 +25,8 @@
 namespace PagSeguro\Parsers;
 
 use PagSeguro\Domains\Requests\Requests;
+use PagSeguro\Helpers\Characters;
+use PagSeguro\Helpers\Mask;
 
 /**
  * Class Sender
@@ -50,11 +52,11 @@ trait Sender
             }
             // phone
             if (!is_null($request->getSender()->getPhone())) {
-                array($data, self::phone($request, $properties));
+                $data = array_merge($data, self::phone($request, $properties));
             }
             // documents
             if (!is_null($request->getSender()->getDocuments())) {
-                array($data, self::documents($request, $properties));
+                $data = array_merge($data, self::documents($request, $properties));
             }
             if (!is_null($request->getSender()->getIP())) {
                 $data[$properties::SENDER_IP] = $request->sender()->get()->getIP();
@@ -83,8 +85,8 @@ trait Sender
             foreach ($documents as $document) {
                 if (!is_null($document)) {
                     $document->getType() == "CPF" ?
-                        $data[$properties::SENDER_DOCUMENT_CPF] = $document->getIdentifier() :
-                        $data[$properties::SENDER_DOCUMENT_CNPJ] = $document->getIdentifier();
+                        $data[$properties::SENDER_DOCUMENT_CPF] = Characters::hasSpecialChars($document->getIdentifier()) :
+                        $data[$properties::SENDER_DOCUMENT_CNPJ] = Characters::hasSpecialChars($document->getIdentifier());
                 }
             }
         }

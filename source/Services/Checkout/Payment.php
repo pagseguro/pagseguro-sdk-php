@@ -25,6 +25,8 @@
 namespace PagSeguro\Services\Checkout;
 
 use PagSeguro\Domains\Account\Credentials;
+use PagSeguro\Helpers\Crypto;
+use PagSeguro\Helpers\Mask;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Log\Logger;
@@ -51,6 +53,11 @@ class Payment
             $connection = new Connection\Data($credentials);
             $http = new Http();
             Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'Checkout']);
+            Logger::info(sprintf(
+                "Params: %s",
+                json_encode(Crypto::encrypt(\PagSeguro\Parsers\Checkout\Request::getData($payment)))),
+                ['service' => 'Checkout']
+            );
             $http->post(
                 self::request($connection),
                 \PagSeguro\Parsers\Checkout\Request::getData($payment)

@@ -22,23 +22,25 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests\Adapter;
+namespace PagSeguro\Helpers;
 
-use PagSeguro\Domains\Requests\Shipping\Address;
-use PagSeguro\Domains\Requests\Shipping\Type;
-use PagSeguro\Domains\Requests\Shipping\Cost;
 
-class Shipping
+class Crypto
 {
-    use Address;
-    use Cost;
-    use Type;
 
-    private $shipping;
+    private static $list = [
+        "senderPhone" => array("phone", \PagSeguro\Enum\Mask::PHONE),
+        "senderCPF" => array("cpf", \PagSeguro\Enum\Mask::CPF)
+    ];
 
-    public function __construct($shipping)
+    public static function encrypt($parameters)
     {
-        $this->shipping = $shipping;
+        foreach (self::$list as $param => $value) {
+            if (array_key_exists($param, $parameters)) {
+                $parameters[$param] = Mask::{current($value)}($parameters[$param], ["type" => end($value)]);
+            }
+        }
+        return $parameters;
     }
 
 }

@@ -52,6 +52,11 @@ class Cancel
             $connection = new Connection\Data($credentials);
             $http = new Http();
             Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'Cancel']);
+            Logger::info(sprintf(
+                "Params: %s",
+                json_encode(Crypto::encrypt(Request::getData($code)))),
+                ['service' => 'Cancel']
+            );
             $http->post(
                 self::request($connection),
                 Request::getData($code)

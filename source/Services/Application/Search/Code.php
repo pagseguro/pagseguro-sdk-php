@@ -59,7 +59,6 @@ class Code
                 $http,
                 new Request
             );
-            var_dump($response);
             Logger::info(sprintf("Creation Date: %s, Code: %s", $response->getCreationDate(), $response->getCode()), ['service' => 'Application.Search.Code']);
             return $response;
         } catch (\Exception $exception) {

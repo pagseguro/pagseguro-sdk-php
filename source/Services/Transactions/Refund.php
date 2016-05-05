@@ -25,6 +25,7 @@
 namespace PagSeguro\Services\Transactions;
 
 use PagSeguro\Domains\Account\Credentials;
+use PagSeguro\Helpers\Crypto;
 use PagSeguro\Parsers\Transaction\Refund\Request;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
@@ -52,6 +53,11 @@ class Refund
             $connection = new Connection\Data($credentials);
             $http = new Http();
             Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'Refund']);
+            Logger::info(sprintf(
+                "Params: %s",
+                json_encode(Crypto::encrypt(Request::getData($code, $value)))),
+                ['service' => 'Refund']
+            );
             $http->post(
                 self::request($connection),
                 Request::getData($code, $value)

@@ -22,23 +22,35 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests\Adapter;
+namespace PagSeguro\Helpers;
 
-use PagSeguro\Domains\Requests\Shipping\Address;
-use PagSeguro\Domains\Requests\Shipping\Type;
-use PagSeguro\Domains\Requests\Shipping\Cost;
 
-class Shipping
+class Characters
 {
-    use Address;
-    use Cost;
-    use Type;
 
-    private $shipping;
+    /**
+     *
+     */
+    const PATTERN = "/[^a-z0-9]/";
 
-    public function __construct($shipping)
+    /**
+     * @param $subject
+     * @return bool|string
+     */
+    public static function hasSpecialChars($subject)
     {
-        $this->shipping = $shipping;
+        if (preg_match(self::PATTERN, $subject)) {
+            return self::removeSpecialChars($subject);
+        }
+        return $subject;
     }
 
+    /**
+     * @param $subject
+     * @return string
+     */
+    public static function removeSpecialChars($subject)
+    {
+        return preg_replace(self::PATTERN, null, $subject);
+    }
 }

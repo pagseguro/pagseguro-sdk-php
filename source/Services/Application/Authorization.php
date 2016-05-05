@@ -25,6 +25,7 @@
 namespace PagSeguro\Services\Application;
 
 use PagSeguro\Domains\Account\Credentials;
+use PagSeguro\Helpers\Crypto;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Log\Logger;
@@ -40,6 +41,11 @@ class Authorization
             $connection = new Connection\Data($credentials);
             $http = new Http();
             Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'Authorization']);
+            Logger::info(sprintf(
+                "Params: %s",
+                json_encode(Crypto::encrypt(\PagSeguro\Parsers\Authorization\Request::getData($authorization)))),
+                ['service' => 'Checkout']
+            );
             $http->post(
                 self::request($connection),
                 \PagSeguro\Parsers\Authorization\Request::getData($authorization)

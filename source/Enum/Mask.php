@@ -22,23 +22,36 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests\Adapter;
+namespace PagSeguro\Enum;
 
-use PagSeguro\Domains\Requests\Shipping\Address;
-use PagSeguro\Domains\Requests\Shipping\Type;
-use PagSeguro\Domains\Requests\Shipping\Cost;
-
-class Shipping
+/**
+ * Class Mask
+ * @package PagSeguro\Enum
+ */
+class Mask extends Enum
 {
-    use Address;
-    use Cost;
-    use Type;
+    /**
+     * Mask for CPF
+     */
+    const CPF = "999.***.***-**";
 
-    private $shipping;
+    /**
+     * Mask for RG
+     */
+    const RG = "99.999.***-**";
 
-    public function __construct($shipping)
-    {
-        $this->shipping = $shipping;
-    }
+    /**
+     * Mask for Birth Date
+     */
+    const BIRTH_DATE = "**/**/9999";
 
+    /**
+     * Mask for Phone
+     */
+    const PHONE = "(**) 9999-****";
+
+    /**
+     * Mask for Mobile
+     */
+    const MOBILE = "(**) 99999-****";
 }

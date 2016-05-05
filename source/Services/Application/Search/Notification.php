@@ -59,7 +59,6 @@ class Notification
                 $http,
                 new Request
             );
-            var_dump($response);
             Logger::info(sprintf("Creation Date: %s, Code: %s", $response->getCreationDate(), $response->getCode()), ['service' => 'Application.Search.Notification']);
             return $response;
         } catch (\Exception $exception) {
