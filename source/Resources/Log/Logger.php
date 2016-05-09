@@ -160,7 +160,8 @@ class Logger implements LoggerInterface
      */
     public static function log($level, $message, array $context = array())
     {
-        if (self::active() === false) {
+
+        if (!self::active()) {
             return false;
         }
 

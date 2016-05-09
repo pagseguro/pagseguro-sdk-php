@@ -101,7 +101,7 @@ class Configure
     {
         $configuration = Responsibility::configuration();
         $log = new Log;
-        $log->setActive($configuration['log']['active'])
+        $log->setActive($configuration['log']['active'] === "false" ? false : true)
             ->setLocation($configuration['log']['location']);
         return $log;
     }
