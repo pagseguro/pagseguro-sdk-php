@@ -60,7 +60,7 @@ class Request extends Error implements Parser
     public static function success(Http $http)
     {
         $xml = simplexml_load_string($http->getResponse());
-        $result = new \PagSeguro\Parsers\Cancel\Response();
+        $result = new \PagSeguro\Parsers\Transaction\Cancel\Response();
         $result->setResult(current($xml));
         return $result;
     }

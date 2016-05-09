@@ -25,6 +25,7 @@
 namespace PagSeguro\Services\Transactions;
 
 use PagSeguro\Domains\Account\Credentials;
+use PagSeguro\Helpers\Crypto;
 use PagSeguro\Parsers\Transaction\Cancel\Request;
 use PagSeguro\Parsers\Transaction\Cancel\Response;
 use PagSeguro\Resources\Connection;
