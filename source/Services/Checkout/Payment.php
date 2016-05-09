@@ -25,8 +25,11 @@
 namespace PagSeguro\Services\Checkout;
 
 use PagSeguro\Domains\Account\Credentials;
+use PagSeguro\Helpers\Crypto;
+use PagSeguro\Helpers\Mask;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
+use PagSeguro\Resources\Log\Logger;
 use PagSeguro\Resources\Responsibility;
 
 /**
@@ -45,9 +48,16 @@ class Payment
      */
     public static function checkout(Credentials $credentials, \PagSeguro\Domains\Requests\Payment $payment, $onlyCode)
     {
+        Logger::info("Begin", ['service' => 'Checkout']);
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
+            Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'Checkout']);
+            Logger::info(sprintf(
+                "Params: %s",
+                json_encode(Crypto::encrypt(\PagSeguro\Parsers\Checkout\Request::getData($payment)))),
+                ['service' => 'Checkout']
+            );
             $http->post(
                 self::request($connection),
                 \PagSeguro\Parsers\Checkout\Request::getData($payment)
@@ -59,10 +69,13 @@ class Payment
             );
 
             if ($onlyCode) {
+                Logger::info(sprintf("Code: %s", current($response)), ['service' => 'Checkout']);
                 return $response;
             }
+            Logger::info(sprintf("Checkout URL: %s", self::response($connection, $response)), ['service' => 'Checkout']);
             return self::response($connection, $response);
         } catch (\Exception $exception) {
+            Logger::error($exception->getMessage(), ['service' => 'Session']);
             throw $exception;
         }
     }

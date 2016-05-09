@@ -22,27 +22,22 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Domains\Requests\Sender;
 
-trait Shipping
+trait Document
 {
-    private $shipping;
-    private $adapter;
 
-    public function __construct()
+    private $document;
+
+    public function getDocument()
     {
-        $this->shipping = new \PagSeguro\Domains\Shipping();
+        return current($this->document);
     }
 
-    public function setShipping()
+    public function setDocument()
     {
-
-        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\Shipping($this->shipping);
-        return $this->adapter;
+        $this->document = new \PagSeguro\Resources\Factory\Sender\Document($this->sender);
+        return $this->document;
     }
 
-    public function getShipping()
-    {
-        return $this->shipping;
-    }
 }

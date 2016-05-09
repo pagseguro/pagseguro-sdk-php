@@ -49,11 +49,16 @@ $payment->setReference("LIBPHP000001");
 
 $payment->setRedirectUrl("http://www.lojamodelo.com.br");
 
-$payment->setSender()->withParameters(
-    'João Comprador',
-    'email@comprador.com.br',
-    (new \PagSeguro\Domains\Phone)->setAreaCode(11)->setNumber(56273440),
-    (new \PagSeguro\Domains\Document)->setType('CPF')->setIdentifier('156.009.442-76')
+// Set your customer information.
+$payment->setSender()->setName('João Comprador');
+$payment->setSender()->setEmail('email@comprador.com.br');
+$payment->setSender()->setPhone()->withParameters(
+    11,
+    56273440
+);
+$payment->setSender()->setDocument()->withParameters(
+    'CPF',
+    '156.009.442-76'
 );
 
 $payment->setShipping()->setAddress()->withParameters(

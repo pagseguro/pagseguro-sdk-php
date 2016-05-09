@@ -24,18 +24,47 @@
 
 namespace PagSeguro\Domains\Requests;
 
+/**
+ * Class Sender
+ * @package PagSeguro\Domains\Requests
+ */
 trait Sender
 {
-    private $sender;
 
+    /**
+     * @var
+     */
+    private $sender;
+    /**
+     * @var
+     */
+    private $adapter;
+
+    /**
+     * @return Adapter\Sender
+     */
     public function setSender()
     {
-        $this->sender = new \PagSeguro\Resources\Factory\Sender();
+        $this->instance();
+        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\Sender($this->sender);
+        return $this->adapter;
+    }
+
+    /**
+     * @return \PagSeguro\Domains\Sender
+     */
+    public function getSender()
+    {
         return $this->sender;
     }
 
-    public function getSender()
+    /**
+     * Instanciate a new sender
+     */
+    private function instance()
     {
-        return current($this->sender);
+        if (empty($this->sender) || !isset($this->sender) || is_null($this->sender)) {
+            $this->sender = new \PagSeguro\Domains\Sender();
+        }
     }
 }

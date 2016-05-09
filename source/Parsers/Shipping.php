@@ -44,15 +44,15 @@ trait Shipping
         if (!is_null($request->getShipping())) {
             // type
             if (!is_null($request->getShipping()->getType())) {
-                array_merge($data, self::type($request, $properties));
+                $data = array_merge($data, self::type($request, $properties));
             }
             // cost
             if (!is_null($request->getShipping()->getCost())) {
-                array_merge($data, self::cost($request, $properties));
+                $data = array_merge($data, self::cost($request, $properties));
             }
             // address
             if (!is_null($request->getShipping()->getAddress())) {
-                array_merge($data, self::address($request, $properties));
+                $data = array_merge($data, self::address($request, $properties));
             }
         }
         return $data;

@@ -22,27 +22,36 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Domains\PreApproval;
 
-trait Shipping
+
+/**
+ * Class Sender
+ * @package PagSeguro\Domains
+ */
+class Sender extends \PagSeguro\Domains\Sender
 {
-    private $shipping;
-    private $adapter;
 
-    public function __construct()
+    /**
+     * @var
+     */
+    private $address;
+
+    /**
+     * @return mixed
+     */
+    public function getAddress()
     {
-        $this->shipping = new \PagSeguro\Domains\Shipping();
+        return $this->address;
     }
 
-    public function setShipping()
+    /**
+     * @param mixed $address
+     * @return Sender
+     */
+    public function setAddress($address)
     {
-
-        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\Shipping($this->shipping);
-        return $this->adapter;
-    }
-
-    public function getShipping()
-    {
-        return $this->shipping;
+        $this->address = $address;
+        return $this;
     }
 }

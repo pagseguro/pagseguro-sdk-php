@@ -22,7 +22,7 @@
  *
  */
 
-namespace PagSeguro\Resources\Factory\Shipping;
+namespace PagSeguro\Resources\Factory\Sender;
 
 use PagSeguro\Enum\Properties\Current;
 
@@ -36,15 +36,15 @@ class Address
     /**
      * @var \PagSeguro\Domains\Shipping
      */
-    private $shipping;
+    private $sender;
 
     /**
      * Shipping constructor.
      * @param $shipping
      */
-    public function __construct($shipping)
+    public function __construct($sender)
     {
-        $this->shipping = $shipping;
+        $this->sender = $sender;
     }
 
     /**
@@ -53,8 +53,8 @@ class Address
      */
     public function instance(\PagSeguro\Domains\Address $address)
     {
-        $this->shipping->setAddress($address);
-        return $this->shipping;
+        $this->sender->setAddress($address);
+        return $this->sender;
     }
 
     /**
@@ -73,8 +73,8 @@ class Address
                 ->setCity($array[$properties::SHIPPING_ADDRESS_NUMBER])
                 ->setState($array[$properties::SHIPPING_ADDRESS_STATE])
                 ->setCountry($array[$properties::SHIPPING_ADDRESS_COUNTRY]);
-        $this->shipping->setAddress($address);
-        return $this->shipping;
+        $this->sender->setAddress($address);
+        return $this->sender;
     }
 
     /**
@@ -107,7 +107,7 @@ class Address
                 ->setCity($city)
                 ->setState($state)
                 ->setCountry($country);
-        $this->shipping->setAddress($address);
-        return $this->shipping;
+        $this->sender->setAddress($address);
+        return $this->sender;
     }
 }

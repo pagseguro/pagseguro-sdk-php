@@ -45,10 +45,9 @@ class Enum extends BaseEnum
      */
     public static function getType($key)
     {
-        $declared = parent::getConstants();
-        if (array_key_exists($key, $declared)) {
-            $reflection = new \ReflectionClass(get_called_class());
-            return $reflection->getConstant($key);
+        $declared = self::getList();
+        if (array_search($key, $declared)) {
+            return array_search($key, $declared);
         } else {
             return false;
         }

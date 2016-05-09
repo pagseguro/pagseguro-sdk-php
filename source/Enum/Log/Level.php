@@ -21,28 +21,53 @@
  * @license   http://www.apache.org/licenses/LICENSE-2.0
  *
  */
+namespace PagSeguro\Enum\Log;
 
-namespace PagSeguro\Domains\Requests;
+use PagSeguro\Enum\Enum;
 
-trait Shipping
+/**
+ * Describes log levels.
+ * @package PagSeguro\Enum\Log
+ */
+class Level extends Enum
 {
-    private $shipping;
-    private $adapter;
+    /**
+     *
+     */
+    const EMERGENCY = 'emergency';
 
-    public function __construct()
-    {
-        $this->shipping = new \PagSeguro\Domains\Shipping();
-    }
+    /**
+     *
+     */
+    const ALERT     = 'alert';
 
-    public function setShipping()
-    {
+    /**
+     *
+     */
+    const CRITICAL  = 'critical';
 
-        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\Shipping($this->shipping);
-        return $this->adapter;
-    }
+    /**
+     *
+     */
+    const ERROR     = 'error';
 
-    public function getShipping()
-    {
-        return $this->shipping;
-    }
+    /**
+     *
+     */
+    const WARNING   = 'warning';
+
+    /**
+     *
+     */
+    const NOTICE    = 'notice';
+
+    /**
+     *
+     */
+    const INFO      = 'info';
+
+    /**
+     *
+     */
+    const DEBUG     = 'debug';
 }

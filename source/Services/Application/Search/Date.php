@@ -29,6 +29,7 @@ use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Authorization\Search\Date\Request;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
+use PagSeguro\Resources\Log\Logger;
 use PagSeguro\Resources\Responsibility;
 
 /**
@@ -49,17 +50,23 @@ class Date
         array $options
     ) {
         try {
+            Logger::info("Begin", ['service' => 'Application.Search.Date']);
             $connection = new Connection\Data($credentials);
             $http = new Http();
+            Logger::info(sprintf("GET: %s", self::request($connection, $options)), ['service' => 'Application.Search.Date']);
             $http->get(
                 self::request($connection, $options)
             );
 
-            return Responsibility::http(
+            $response = Responsibility::http(
                 $http,
                 new Request
             );
+
+            Logger::info(sprintf("Date: %s, Results in this page: %s, Total pages: %s", $response->getDate(), $response->getResultsInThisPage(), $response->getTotalPages()), ['service' => 'Application.Search.Date']);
+            return $response;
         } catch (\Exception $exception) {
+            Logger::error($exception->getMessage(), ['service' => 'Application.Search.Date']);
             throw $exception;
         }
     }

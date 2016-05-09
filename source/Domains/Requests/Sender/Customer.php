@@ -22,27 +22,44 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Domains\Requests\Sender;
 
-trait Shipping
+trait Customer
 {
-    private $shipping;
-    private $adapter;
-
-    public function __construct()
+    /**
+     * @return mixed
+     */
+    public function getEmail()
     {
-        $this->shipping = new \PagSeguro\Domains\Shipping();
+        return $this->sender->email;
     }
 
-    public function setShipping()
+    /**
+     * @param mixed $email
+     * @return Customer
+     */
+    public function setEmail($email)
     {
-
-        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\Shipping($this->shipping);
-        return $this->adapter;
+        $this->sender->setEmail($email);
+        return $this;
     }
 
-    public function getShipping()
+    /**
+     * @return mixed
+     */
+    public function getName()
     {
-        return $this->shipping;
+        return $this->sender->name;
     }
+
+    /**
+     * @param mixed $name
+     * @return Customer
+     */
+    public function setName($name)
+    {
+        $this->sender->setName($name);
+        return $this;
+    }
+
 }

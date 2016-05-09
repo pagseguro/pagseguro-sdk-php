@@ -25,8 +25,10 @@
 namespace PagSeguro\Services\Application;
 
 use PagSeguro\Domains\Account\Credentials;
+use PagSeguro\Helpers\Crypto;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
+use PagSeguro\Resources\Log\Logger;
 use PagSeguro\Resources\Responsibility;
 
 class Authorization
@@ -34,9 +36,16 @@ class Authorization
 
     public static function create(Credentials $credentials, \PagSeguro\Domains\Requests\Authorization $authorization)
     {
+        Logger::info("Begin", ['service' => 'Authorization']);
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
+            Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'Authorization']);
+            Logger::info(sprintf(
+                "Params: %s",
+                json_encode(Crypto::encrypt(\PagSeguro\Parsers\Authorization\Request::getData($authorization)))),
+                ['service' => 'Checkout']
+            );
             $http->post(
                 self::request($connection),
                 \PagSeguro\Parsers\Authorization\Request::getData($authorization)
@@ -46,9 +55,10 @@ class Authorization
                 $http,
                 new \PagSeguro\Parsers\Authorization\Request
             );
-
+            Logger::info(sprintf("Authorization URL: %s", self::response($connection, $response)), ['service' => 'Authorization']);
             return self::response($connection, $response);
         } catch (\Exception $exception) {
+            Logger::error($exception->getMessage(), ['service' => 'Authorization']);
             throw $exception;
         }
     }

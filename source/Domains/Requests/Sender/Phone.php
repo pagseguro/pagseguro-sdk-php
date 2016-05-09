@@ -22,27 +22,21 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Domains\Requests\Sender;
 
-trait Shipping
+trait Phone
 {
-    private $shipping;
-    private $adapter;
 
-    public function __construct()
+    private $phone;
+
+    public function getPhone()
     {
-        $this->shipping = new \PagSeguro\Domains\Shipping();
+        return current($this->phone);
     }
 
-    public function setShipping()
+    public function setPhone()
     {
-
-        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\Shipping($this->shipping);
-        return $this->adapter;
-    }
-
-    public function getShipping()
-    {
-        return $this->shipping;
+        $this->phone = new \PagSeguro\Resources\Factory\Sender\Phone($this->sender);
+        return $this->phone;
     }
 }

@@ -29,6 +29,7 @@ use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Transaction\Search\Date\Request;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
+use PagSeguro\Resources\Log\Logger;
 use PagSeguro\Resources\Responsibility;
 
 /**
@@ -53,18 +54,24 @@ class Reference
         $reference,
         array $options
     ) {
+        Logger::info("Begin", ['service' => 'Transactions.Search.Reference']);
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
+            Logger::info(sprintf("GET: %s", self::request($connection, $reference, $options)), ['service' => 'Transactions.Search.Reference']);
             $http->get(
                 self::request($connection, $reference, $options)
             );
 
-            return Responsibility::http(
+            $response = Responsibility::http(
                 $http,
                 new Request
             );
+
+            Logger::info(sprintf("Date: %s, Results in this page: %s, Total pages: %s", $response->getDate(), $response->getResultsInThisPage(), $response->getTotalPages()), ['service' => 'Transactions.Search.Reference']);
+            return $response;
         } catch (\Exception $exception) {
+            Logger::error($exception->getMessage(), ['service' => 'Transactions.Search.Reference']);
             throw $exception;
         }
     }

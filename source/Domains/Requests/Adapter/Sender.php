@@ -22,27 +22,25 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Domains\Requests\Adapter;
 
-trait Shipping
+use PagSeguro\Domains\Requests\Sender\Address;
+use PagSeguro\Domains\Requests\Sender\Customer;
+use PagSeguro\Domains\Requests\Sender\Document;
+use PagSeguro\Domains\Requests\Sender\Phone;
+
+
+class Sender
 {
-    private $shipping;
-    private $adapter;
+    use Address;
+    use Customer;
+    use Document;
+    use Phone;
 
-    public function __construct()
+    private $sender;
+
+    public function __construct($sender)
     {
-        $this->shipping = new \PagSeguro\Domains\Shipping();
-    }
-
-    public function setShipping()
-    {
-
-        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\Shipping($this->shipping);
-        return $this->adapter;
-    }
-
-    public function getShipping()
-    {
-        return $this->shipping;
+        $this->sender = $sender;
     }
 }
