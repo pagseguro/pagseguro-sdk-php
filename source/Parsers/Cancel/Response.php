@@ -22,37 +22,34 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection\Base;
-
-use PagSeguro\Resources\Builder;
+namespace PagSeguro\Parsers\Cancel;
 
 /**
- * Class Payment
- * @package PagSeguro\Services\Connection\Base
+ * Class Response
+ * @package PagSeguro\Parsers\Cancel
  */
-trait Notification
+class Response
 {
+
     /**
-     * @return string
+     * @var
      */
-    public function buildNotificationTransactionRequestUrl()
+    private $result;
+
+    /**
+     * @return mixed
+     */
+    public function getResult()
     {
-        return Builder\Notification::getTransactionRequestUrl();
+        return $this->result;
     }
 
     /**
-     * @return string
+     * @param mixed $result
+     * @return Response
      */
-    public function buildNotificationAuthorizationRequestUrl()
+    public function setResult($result)
     {
-        return Builder\Notification::getAuthorizationRequestUrl();
-    }
-
-    /**
-     * @return string
-     */
-    public function buildNotificationPreApprovalRequestUrl()
-    {
-        return Builder\Notification::getPreApprovalRequestUrl();
+        $this->result = $result;
     }
 }

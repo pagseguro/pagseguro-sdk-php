@@ -8,7 +8,7 @@ require_once "../../vendor/autoload.php";
 
 try {
     if (\PagSeguro\Helpers\Xhr::hasPost()) {
-        $response = \PagSeguro\Services\Transactions\Notification::check(
+        $response = \PagSeguro\Services\PreApproval\Notification::check(
             \PagSeguro\Configuration\Configure::getAccountCredentials()
         );
     } else {

@@ -22,36 +22,21 @@
  *
  */
 
-namespace PagSeguro\Resources\Builder;
+namespace PagSeguro\Resources\Connection\Base\PreApproval;
 
 use PagSeguro\Resources\Builder;
 
 /**
  * Class Payment
- * @package PagSeguro\Resources\Builder
+ * @package PagSeguro\Services\Connection\Base
  */
-class Authorization extends Builder
+trait Cancel
 {
-
     /**
      * @return string
      */
-    public static function getAuthorizationRequestUrl()
+    public function buildPreApprovalCancelUrl()
     {
-        return parent::getRequest(
-            parent::getUrl('webservice'),
-            'application/authorization'
-        );
-    }
-
-    /**
-     * @return string
-     */
-    public static function getAuthorizationResponseUrl()
-    {
-        return parent::getResponse(
-            parent::getUrl('base'),
-            'application/authorization'
-        );
+        return Builder\PreApproval\Cancel::getPreApprovalCancelUrl();
     }
 }

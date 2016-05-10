@@ -135,7 +135,62 @@ class Current
      * Permissions
      */
     const PERMISSIONS = "permissions";
-    
+
+    /**
+     * Pre Approval Charge
+     */
+    const PRE_APPROVAL_CHARGE = "preApprovalCharge";
+
+    /**
+     * Pre Approval Name
+     */
+    const PRE_APPROVAL_NAME = "preApprovalName";
+
+    /**
+     * Pre Approval Details
+     */
+    const PRE_APPROVAL_DETAILS = "preApprovalDetails";
+
+    /**
+     * Pre Approval Amount Per Payment
+     */
+    const PRE_APPROVAL_AMOUNT_PER_PAYMENT = "preApprovalAmountPerPayment";
+
+    /**
+     * Pre Approval Max Amount Per Payment
+     */
+    const PRE_APPROVAL_MAX_AMOUNT_PER_PAYMENT = "preApprovalMaxAmountPerPayment";
+
+    /**
+     * Pre Approval Period
+     */
+    const PRE_APPROVAL_PERIOD = "preApprovalPeriod";
+
+    /**
+     * Pre Approval Max Payments Per Period
+     */
+    const PRE_APPROVAL_MAX_PAYMENTS_PER_PERIOD = "preApprovalMaxPaymentsPerPeriod";
+
+    /**
+     * Pre Approval Max Amount Per Period
+     */
+    const PRE_APPROVAL_MAX_AMOUNT_PER_PERIOD = "preApprovalMaxAmountPerPeriod";
+
+    /**
+     * Pre Approval Initial Date
+     */
+    const PRE_APPROVAL_INITIAL_DATE = "preApprovalInitialDate";
+
+    /**
+     * Pre Approval Final Date
+     */
+    const PRE_APPROVAL_FINAL_DATE = "preApprovalFinalDate";
+
+    /**
+     * Pre Approval Max Total Amount
+     */
+    const PRE_APPROVAL_MAX_TOTAL_AMOUNT = "preApprovalMaxTotalAmount";
+
     /**
      * Receiver email
      */

@@ -22,34 +22,25 @@
  *
  */
 
-namespace PagSeguro\Parsers\Transaction\Cancel;
+namespace PagSeguro\Resources\Builder\Transaction;
+
+use PagSeguro\Resources\Builder;
 
 /**
- * Class Response
- * @package PagSeguro\Parsers\Cancel
+ * Class Payment
+ * @package PagSeguro\Resources\Builder
  */
-class Response
+class Cancel extends Builder
 {
 
     /**
-     * @var
+     * @return string
      */
-    private $result;
-
-    /**
-     * @return mixed
-     */
-    public function getResult()
+    public static function getCancelRequestUrl()
     {
-        return $this->result;
-    }
-
-    /**
-     * @param mixed $result
-     * @return Response
-     */
-    public function setResult($result)
-    {
-        $this->result = $result;
+        return parent::getRequest(
+            parent::getUrl('webservice'),
+            'cancel'
+        );
     }
 }

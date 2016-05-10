@@ -22,56 +22,45 @@
  *
  */
 
-namespace PagSeguro\Services\Transactions;
+namespace PagSeguro\Services\PreApproval;
 
 use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Helpers\Crypto;
-use PagSeguro\Parsers\Cancel\Request;
-use PagSeguro\Parsers\Cancel\Response;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Log\Logger;
 use PagSeguro\Resources\Responsibility;
 
 /**
- * Class Payment
- * @package PagSeguro\Services\Checkout
+ * Class Notifications
+ * @package PagSeguro\Services\Transactions
  */
-class Cancel
+class Notification
 {
 
     /**
      * @param Credentials $credentials
-     * @param $code
-     * @return Response
+     * @return mixed
      * @throws \Exception
      */
-    public static function create(Credentials $credentials, $code)
+    public static function check(Credentials $credentials)
     {
-        Logger::info("Begin", ['service' => 'Cancel']);
+        Logger::info("Begin", ['service' => 'PreApproval.Notification']);
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
-            Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'Cancel']);
-            Logger::info(sprintf(
-                "Params: %s",
-                json_encode(Crypto::encrypt(Request::getData($code)))),
-                ['service' => 'Cancel']
-            );
-            $http->post(
-                self::request($connection),
-                Request::getData($code)
+            Logger::info(sprintf("GET: %s", self::request($connection)), ['service' => 'PreApproval.Notification']);
+            $http->get(
+                self::request($connection)
             );
 
             $response = Responsibility::http(
                 $http,
-                new Request
+                new \PagSeguro\Parsers\PreApproval\Notification\Request
             );
-
-            Logger::info(sprintf("Result: %s", current($response)), ['service' => 'Cancel']);
+            Logger::info(sprintf("Date: %s, Code: %s", $response->getDate(), $response->getCode()), ['service' => 'PreApproval.Notification']);
             return $response;
         } catch (\Exception $exception) {
-            Logger::error($exception->getMessage(), ['service' => 'Cancel']);
+            Logger::error($exception->getMessage(), ['service' => 'PreApproval.Notification']);
             throw $exception;
         }
     }
@@ -82,6 +71,7 @@ class Cancel
      */
     private static function request(Connection\Data $connection)
     {
-        return $connection->buildCancelRequestUrl() . "?" . $connection->buildCredentialsQuery();
+        return $connection->buildNotificationPreApprovalRequestUrl()."/".
+               Responsibility::notifications()."/?".$connection->buildCredentialsQuery();
     }
 }

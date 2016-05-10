@@ -33,22 +33,24 @@ use PagSeguro\Resources\Builder;
  */
 class Data
 {
-    use Base\Authorization;
-    use Base\Authorization\Search {
-        Base\Authorization\Search::buildSearchRequestUrl as buildAuthorizationSearchRequestUrl;
-        Base\Authorization\Search::buildSearchRequestUrl insteadof Base\Transaction\Search;
+    use Base\Application\Authorization;
+    use Base\Application\Authorization\Search {
+        Base\Application\Authorization\Search::buildSearchRequestUrl as buildAuthorizationSearchRequestUrl;
+        Base\Application\Authorization\Search::buildSearchRequestUrl insteadof Base\Transaction\Search;
     }
-    use Base\Cancel;
+    use Base\Checkout\Payment;
     use Base\Credentials;
     use Base\Installment;
     use Base\Notification;
-    use Base\Payment;
+    use Base\PreApproval\Cancel;
+    use Base\PreApproval\Payment;
     use Base\Refund;
     use Base\Session;
     use Base\Transaction\Abandoned;
+    use Base\Transaction\Cancel;
     use Base\Transaction\Search {
         Base\Transaction\Search::buildSearchRequestUrl as buildTransactionSearchRequestUrl;
-        Base\Transaction\Search::buildSearchRequestUrl insteadof Base\Authorization\Search;
+        Base\Transaction\Search::buildSearchRequestUrl insteadof Base\Application\Authorization\Search;
     }
 
     /**

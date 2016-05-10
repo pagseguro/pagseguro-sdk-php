@@ -22,29 +22,49 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection\Base;
-
-use PagSeguro\Resources\Builder;
+namespace PagSeguro\Domains\Requests\PreApproval;
 
 /**
- * Class Payment
- * @package PagSeguro\Services\Connection\Base
+ * Class Sender
+ * @package PagSeguro\Domains\Requests
  */
-trait Payment
+trait Sender
 {
+
     /**
-     * @return string
+     * @var
      */
-    public function buildPaymentRequestUrl()
+    private $sender;
+    /**
+     * @var
+     */
+    private $adapter;
+
+    /**
+     * @return \PagSeguro\Domains\Requests\Adapter\Sender
+     */
+    public function setSender()
     {
-        return Builder\Payment::getPaymentRequestUrl();
+        $this->instance();
+        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\Sender($this->sender);
+        return $this->adapter;
     }
 
     /**
-     * @return string
+     * @return \PagSeguro\Domains\PreApproval\Sender
      */
-    public function buildPaymentResponseUrl()
+    public function getSender()
     {
-        return Builder\Payment::getPaymentResponseUrl();
+        return $this->sender;
+    }
+
+    /**
+     * Instanciate a new sender
+     */
+    private function instance()
+    {
+        if (empty($this->sender) || !isset($this->sender) || is_null($this->sender)) {
+            $this->sender = new \PagSeguro\Domains\PreApproval\Sender();
+        }
     }
 }

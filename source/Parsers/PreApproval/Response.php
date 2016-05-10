@@ -22,21 +22,57 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection\Base\Authorization;
-
-use PagSeguro\Resources\Builder;
+namespace PagSeguro\Parsers\PreApproval;
 
 /**
- * Class Payment
- * @package PagSeguro\Services\Connection\Base
+ * Class Response
+ * @package PagSeguro\Parsers\Checkout
  */
-trait Search
+class Response
 {
+
+    /**
+     * @var
+     */
+    private $code;
+    /**
+     * @var
+     */
+    private $date;
+
     /**
      * @return string
      */
-    public function buildSearchRequestUrl()
+    public function getCode()
     {
-        return Builder\Authorization\Search::getSearchRequestUrl();
+        return $this->code;
+    }
+
+    /**
+     * @param string $code
+     * @return Response
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param \DateTime $date
+     * @return Response
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+        return $this;
     }
 }

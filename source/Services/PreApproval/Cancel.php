@@ -22,10 +22,9 @@
  *
  */
 
-namespace PagSeguro\Services\Transactions;
+namespace PagSeguro\Services\PreApproval;
 
 use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Helpers\Crypto;
 use PagSeguro\Parsers\Cancel\Request;
 use PagSeguro\Parsers\Cancel\Response;
 use PagSeguro\Resources\Connection;
@@ -48,40 +47,42 @@ class Cancel
      */
     public static function create(Credentials $credentials, $code)
     {
-        Logger::info("Begin", ['service' => 'Cancel']);
+        Logger::info("Begin", ['service' => 'PreApproval.Cancel']);
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
-            Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'Cancel']);
-            Logger::info(sprintf(
-                "Params: %s",
-                json_encode(Crypto::encrypt(Request::getData($code)))),
+            Logger::info(sprintf("GET: %s", self::request($connection, $code)), ['service' => 'PreApproval.Cancel']);
+            Logger::info(
+                sprintf("Params: %s",$code),
                 ['service' => 'Cancel']
             );
-            $http->post(
-                self::request($connection),
-                Request::getData($code)
-            );
+
+            $http->get(self::request($connection, $code));
 
             $response = Responsibility::http(
                 $http,
                 new Request
             );
 
-            Logger::info(sprintf("Result: %s", current($response)), ['service' => 'Cancel']);
+            Logger::info(sprintf("Result: %s", current($response)), ['service' => 'PreApproval.Cancel']);
             return $response;
         } catch (\Exception $exception) {
-            Logger::error($exception->getMessage(), ['service' => 'Cancel']);
+            Logger::error($exception->getMessage(), ['service' => 'PreApproval.Cancel']);
             throw $exception;
         }
     }
 
     /**
      * @param Connection\Data $connection
+     * @param $code
      * @return string
      */
-    private static function request(Connection\Data $connection)
+    private static function request(Connection\Data $connection, $code)
     {
-        return $connection->buildCancelRequestUrl() . "?" . $connection->buildCredentialsQuery();
+        return sprintf("%s/%s/?%s",
+            $connection->buildPreApprovalCancelUrl(),
+            $code,
+            $connection->buildCredentialsQuery()
+        );
     }
 }

@@ -22,56 +22,43 @@
  *
  */
 
-namespace PagSeguro\Services\Transactions;
+namespace PagSeguro\Services\PreApproval;
 
 use PagSeguro\Domains\Account\Credentials;
 use PagSeguro\Helpers\Crypto;
-use PagSeguro\Parsers\Cancel\Request;
-use PagSeguro\Parsers\Cancel\Response;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Log\Logger;
 use PagSeguro\Resources\Responsibility;
 
-/**
- * Class Payment
- * @package PagSeguro\Services\Checkout
- */
-class Cancel
+class Payment
 {
 
-    /**
-     * @param Credentials $credentials
-     * @param $code
-     * @return Response
-     * @throws \Exception
-     */
-    public static function create(Credentials $credentials, $code)
+    public static function create(Credentials $credentials, \PagSeguro\Domains\Requests\PreApproval $preApproval)
     {
-        Logger::info("Begin", ['service' => 'Cancel']);
+        Logger::info("Begin", ['service' => 'PreApproval']);
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
-            Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'Cancel']);
+            Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'PreApproval']);
             Logger::info(sprintf(
                 "Params: %s",
-                json_encode(Crypto::encrypt(Request::getData($code)))),
-                ['service' => 'Cancel']
+                json_encode(Crypto::encrypt(\PagSeguro\Parsers\PreApproval\Request::getData($preApproval)))),
+                ['service' => 'PreApproval']
             );
             $http->post(
                 self::request($connection),
-                Request::getData($code)
+                \PagSeguro\Parsers\PreApproval\Request::getData($preApproval)
             );
 
             $response = Responsibility::http(
                 $http,
-                new Request
+                new \PagSeguro\Parsers\PreApproval\Request
             );
-
-            Logger::info(sprintf("Result: %s", current($response)), ['service' => 'Cancel']);
-            return $response;
+            Logger::info(sprintf("PreApproval URL: %s", self::response($connection, $response)), ['service' => 'PreApproval']);
+            return self::response($connection, $response);
         } catch (\Exception $exception) {
-            Logger::error($exception->getMessage(), ['service' => 'Cancel']);
+            Logger::error($exception->getMessage(), ['service' => 'PreApproval']);
             throw $exception;
         }
     }
@@ -82,6 +69,17 @@ class Cancel
      */
     private static function request(Connection\Data $connection)
     {
-        return $connection->buildCancelRequestUrl() . "?" . $connection->buildCredentialsQuery();
+        return $connection->buildPreApprovalRequestUrl() ."?". $connection->buildCredentialsQuery();
     }
+
+    /**
+     * @param Connection\Data $connection
+     * @param $response
+     * @return string
+     */
+    private static function response(Connection\Data $connection, $response)
+    {
+        return $connection->buildPreApprovalResponseUrl() ."?code=". $response->getCode();
+    }
+
 }

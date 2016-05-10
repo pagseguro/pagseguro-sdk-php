@@ -22,37 +22,36 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection\Base;
+namespace PagSeguro\Resources\Builder\Checkout;
 
 use PagSeguro\Resources\Builder;
 
 /**
  * Class Payment
- * @package PagSeguro\Services\Connection\Base
+ * @package PagSeguro\Resources\Builder
  */
-trait Notification
+class Payment extends Builder
 {
+
     /**
      * @return string
      */
-    public function buildNotificationTransactionRequestUrl()
+    public static function getPaymentRequestUrl()
     {
-        return Builder\Notification::getTransactionRequestUrl();
+        return parent::getRequest(
+            parent::getUrl('webservice'),
+            'payment'
+        );
     }
 
     /**
      * @return string
      */
-    public function buildNotificationAuthorizationRequestUrl()
+    public static function getPaymentResponseUrl()
     {
-        return Builder\Notification::getAuthorizationRequestUrl();
-    }
-
-    /**
-     * @return string
-     */
-    public function buildNotificationPreApprovalRequestUrl()
-    {
-        return Builder\Notification::getPreApprovalRequestUrl();
+        return parent::getResponse(
+            parent::getUrl('base'),
+            'payment'
+        );
     }
 }

@@ -22,7 +22,7 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection\Base;
+namespace PagSeguro\Resources\Connection\Base\PreApproval;
 
 use PagSeguro\Resources\Builder;
 
@@ -30,29 +30,21 @@ use PagSeguro\Resources\Builder;
  * Class Payment
  * @package PagSeguro\Services\Connection\Base
  */
-trait Notification
+trait Payment
 {
     /**
      * @return string
      */
-    public function buildNotificationTransactionRequestUrl()
+    public function buildPreApprovalRequestUrl()
     {
-        return Builder\Notification::getTransactionRequestUrl();
+        return Builder\PreApproval\Payment::getPreApprovalRequestUrl();
     }
 
     /**
      * @return string
      */
-    public function buildNotificationAuthorizationRequestUrl()
+    public function buildPreApprovalResponseUrl()
     {
-        return Builder\Notification::getAuthorizationRequestUrl();
-    }
-
-    /**
-     * @return string
-     */
-    public function buildNotificationPreApprovalRequestUrl()
-    {
-        return Builder\Notification::getPreApprovalRequestUrl();
+        return Builder\PreApproval\Payment::getPreApprovalResponseUrl();
     }
 }

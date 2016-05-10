@@ -54,4 +54,15 @@ class Notification extends Builder
             'notification/application'
         );
     }
+
+    /**
+     * @return string
+     */
+    public static function getPreApprovalRequestUrl()
+    {
+        return parent::getRequest(
+            parent::getUrl('webservice'),
+            'notification/preApproval'
+        );
+    }
 }

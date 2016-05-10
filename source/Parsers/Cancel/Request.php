@@ -22,7 +22,7 @@
  *
  */
 
-namespace PagSeguro\Parsers\Transaction\Cancel;
+namespace PagSeguro\Parsers\Cancel;
 
 use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Error;
@@ -60,7 +60,7 @@ class Request extends Error implements Parser
     public static function success(Http $http)
     {
         $xml = simplexml_load_string($http->getResponse());
-        $result = new \PagSeguro\Parsers\Transaction\Cancel\Response();
+        $result = new \PagSeguro\Parsers\Cancel\Response();
         $result->setResult(current($xml));
         return $result;
     }

@@ -22,7 +22,7 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection\Base;
+namespace PagSeguro\Resources\Connection\Base\Checkout;
 
 use PagSeguro\Resources\Builder;
 
@@ -30,29 +30,21 @@ use PagSeguro\Resources\Builder;
  * Class Payment
  * @package PagSeguro\Services\Connection\Base
  */
-trait Notification
+trait Payment
 {
     /**
      * @return string
      */
-    public function buildNotificationTransactionRequestUrl()
+    public function buildPaymentRequestUrl()
     {
-        return Builder\Notification::getTransactionRequestUrl();
+        return Builder\Checkout\Payment::getPaymentRequestUrl();
     }
 
     /**
      * @return string
      */
-    public function buildNotificationAuthorizationRequestUrl()
+    public function buildPaymentResponseUrl()
     {
-        return Builder\Notification::getAuthorizationRequestUrl();
-    }
-
-    /**
-     * @return string
-     */
-    public function buildNotificationPreApprovalRequestUrl()
-    {
-        return Builder\Notification::getPreApprovalRequestUrl();
+        return Builder\Checkout\Payment::getPaymentResponseUrl();
     }
 }

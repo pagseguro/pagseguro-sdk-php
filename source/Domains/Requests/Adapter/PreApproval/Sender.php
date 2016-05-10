@@ -22,29 +22,24 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection\Base;
+namespace PagSeguro\Domains\Requests\Adapter\PreApproval;
 
-use PagSeguro\Resources\Builder;
+use PagSeguro\Domains\Requests\Sender\Address;
+use PagSeguro\Domains\Requests\Sender\Customer;
+use PagSeguro\Domains\Requests\Sender\Document;
+use PagSeguro\Domains\Requests\Sender\Phone;
 
-/**
- * Class Payment
- * @package PagSeguro\Services\Connection\Base
- */
-trait Authorization
+
+class Sender
 {
-    /**
-     * @return string
-     */
-    public function buildAuthorizationRequestUrl()
-    {
-        return Builder\Authorization::getAuthorizationRequestUrl();
-    }
+    use Address;
+    use Customer;
+    use Phone;
 
-    /**
-     * @return string
-     */
-    public function buildAuthorizationResponseUrl()
+    private $sender;
+
+    public function __construct($sender)
     {
-        return Builder\Authorization::getAuthorizationResponseUrl();
+        $this->sender = $sender;
     }
 }

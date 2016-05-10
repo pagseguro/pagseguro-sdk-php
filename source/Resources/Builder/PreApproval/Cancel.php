@@ -22,37 +22,25 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection\Base;
+namespace PagSeguro\Resources\Builder\PreApproval;
 
 use PagSeguro\Resources\Builder;
 
 /**
  * Class Payment
- * @package PagSeguro\Services\Connection\Base
+ * @package PagSeguro\Resources\Builder
  */
-trait Notification
+class Cancel extends Builder
 {
-    /**
-     * @return string
-     */
-    public function buildNotificationTransactionRequestUrl()
-    {
-        return Builder\Notification::getTransactionRequestUrl();
-    }
 
     /**
      * @return string
      */
-    public function buildNotificationAuthorizationRequestUrl()
+    public static function getPreApprovalCancelUrl()
     {
-        return Builder\Notification::getAuthorizationRequestUrl();
-    }
-
-    /**
-     * @return string
-     */
-    public function buildNotificationPreApprovalRequestUrl()
-    {
-        return Builder\Notification::getPreApprovalRequestUrl();
+        return parent::getRequest(
+            parent::getUrl('webservice'),
+            'preApproval/cancel'
+        );
     }
 }

@@ -22,37 +22,21 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection\Base;
+namespace PagSeguro\Domains\Requests;
 
-use PagSeguro\Resources\Builder;
+use PagSeguro\Domains\Requests\Adapter\Url;
 
-/**
- * Class Payment
- * @package PagSeguro\Services\Connection\Base
- */
-trait Notification
+trait Review
 {
-    /**
-     * @return string
-     */
-    public function buildNotificationTransactionRequestUrl()
+    private $wUrl;
+    
+    public function getUrl()
     {
-        return Builder\Notification::getTransactionRequestUrl();
+        return $this->wUrl;
     }
 
-    /**
-     * @return string
-     */
-    public function buildNotificationAuthorizationRequestUrl()
+    public function setUrl($url)
     {
-        return Builder\Notification::getAuthorizationRequestUrl();
-    }
-
-    /**
-     * @return string
-     */
-    public function buildNotificationPreApprovalRequestUrl()
-    {
-        return Builder\Notification::getPreApprovalRequestUrl();
+        $this->wUrl = $url;
     }
 }

@@ -22,25 +22,21 @@
  *
  */
 
-namespace PagSeguro\Resources\Builder\Authorization;
+namespace PagSeguro\Resources\Connection\Base\Transaction;
 
 use PagSeguro\Resources\Builder;
 
 /**
  * Class Payment
- * @package PagSeguro\Resources\Builder
+ * @package PagSeguro\Services\Connection\Base
  */
-class Search extends Builder
+trait Cancel
 {
-
     /**
      * @return string
      */
-    public static function getSearchRequestUrl()
+    public function buildCancelRequestUrl()
     {
-        return parent::getRequest(
-            parent::getUrl('webservice'),
-            'application/search'
-        );
+        return Builder\Transaction\Cancel::getCancelRequestUrl();
     }
 }

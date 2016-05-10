@@ -22,7 +22,7 @@
  *
  */
 
-namespace PagSeguro\Resources\Builder;
+namespace PagSeguro\Resources\Builder\Application;
 
 use PagSeguro\Resources\Builder;
 
@@ -30,28 +30,28 @@ use PagSeguro\Resources\Builder;
  * Class Payment
  * @package PagSeguro\Resources\Builder
  */
-class Payment extends Builder
+class Authorization extends Builder
 {
 
     /**
      * @return string
      */
-    public static function getPaymentRequestUrl()
+    public static function getAuthorizationRequestUrl()
     {
         return parent::getRequest(
             parent::getUrl('webservice'),
-            'payment'
+            'application/authorization'
         );
     }
 
     /**
      * @return string
      */
-    public static function getPaymentResponseUrl()
+    public static function getAuthorizationResponseUrl()
     {
         return parent::getResponse(
             parent::getUrl('base'),
-            'payment'
+            'application/authorization'
         );
     }
 }
