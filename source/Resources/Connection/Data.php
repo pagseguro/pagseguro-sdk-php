@@ -44,14 +44,19 @@ class Data
     use Base\Installment;
     use Base\Notification;
     use Base\PreApproval\Cancel;
+    use Base\PreApproval\Charge;
     use Base\PreApproval\Payment;
+    use Base\PreApproval\Search {
+        Base\PreApproval\Search::buildSearchRequestUrl as buildPreApprovalSearchRequestUrl;
+        Base\PreApproval\Search::buildSearchRequestUrl insteadof Base\Application\Authorization\Search;
+    }
     use Base\Refund;
     use Base\Session;
     use Base\Transaction\Abandoned;
     use Base\Transaction\Cancel;
     use Base\Transaction\Search {
         Base\Transaction\Search::buildSearchRequestUrl as buildTransactionSearchRequestUrl;
-        Base\Transaction\Search::buildSearchRequestUrl insteadof Base\Application\Authorization\Search;
+        Base\Transaction\Search::buildSearchRequestUrl insteadof Base\PreApproval\Search;
     }
 
     /**

@@ -22,24 +22,39 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests\Adapter;
+namespace PagSeguro\Domains\Requests\PreApproval;
 
-use PagSeguro\Domains\Requests\Sender\Address;
-use PagSeguro\Domains\Requests\Sender\Customer;
-use PagSeguro\Domains\Requests\Sender\Document;
-use PagSeguro\Domains\Requests\Sender\Phone;
+use PagSeguro\Domains\Requests\PreApproval\Charge\Request;
 
-
-class Sender
+class Charge extends Request
 {
-    use Customer;
-    use Document;
-    use Phone;
 
-    private $sender;
+    private $code;
 
-    public function __construct($sender)
+    /**
+     * @return mixed
+     */
+    public function getCode()
     {
-        $this->sender = $sender;
+        return $this->code;
     }
+
+    /**
+     * @param mixed $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * @param $credentials
+     * @return string
+     * @throws \Exception
+     */
+    public function register($credentials)
+    {
+        return \PagSeguro\Services\PreApproval\Charge::create($credentials, $this);
+    }
+
 }

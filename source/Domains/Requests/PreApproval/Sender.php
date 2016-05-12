@@ -46,7 +46,7 @@ trait Sender
     public function setSender()
     {
         $this->instance();
-        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\Sender($this->sender);
+        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\PreApproval\Sender($this->sender);
         return $this->adapter;
     }
 

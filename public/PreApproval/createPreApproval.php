@@ -35,10 +35,7 @@ $preApproval->setSender()->setPhone()->withParameters(
     11,
     56273440
 );
-$preApproval->setSender()->setDocument()->withParameters(
-    'CPF',
-    '156.009.442-76'
-);
+
 $preApproval->setSender()->setAddress()->withParameters(
     '01452002',
     'Av. Brig. Faria Lima',
@@ -61,7 +58,7 @@ $preApproval->setPreApproval()->setAmountPerPayment('100.00');
 $preApproval->setPreApproval()->setMaxAmountPerPeriod('200.00');
 $preApproval->setPreApproval()->setPeriod('Monthly');
 $preApproval->setPreApproval()->setMaxTotalAmount('2400.00');
-$preApproval->setPreApproval()->setInitialDate('2016-05-09T00:00:00');
+$preApproval->setPreApproval()->setInitialDate('2016-05-12T00:00:00');
 $preApproval->setPreApproval()->setFinalDate('2018-05-07T00:00:00');
 
 $preApproval->setRedirectUrl("http://www.lojateste.com.br/redirect");

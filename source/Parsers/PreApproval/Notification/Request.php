@@ -29,7 +29,7 @@ use PagSeguro\Domains\Phone;
 use PagSeguro\Domains\PreApproval\Sender;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Parser;
-use PagSeguro\Parsers\PreApproval\Search\Response;
+use PagSeguro\Parsers\PreApproval\Search\Code\Response;
 use PagSeguro\Resources\Http;
 
 /**

@@ -12,12 +12,12 @@ require_once "../../vendor/autoload.php";
 $code = "DF7EB0AC9999333CC4379F82114239AB";
 
 try {
-    $cancel = \PagSeguro\Services\PreApproval\Cancel::create(
+    $response = \PagSeguro\Services\PreApproval\Cancel::create(
         \PagSeguro\Configuration\Configure::getAccountCredentials(),
         $code
     );
 
-    var_dump($cancel);
+    var_dump($response);
 } catch (Exception $e) {
     die($e->getMessage());
 }

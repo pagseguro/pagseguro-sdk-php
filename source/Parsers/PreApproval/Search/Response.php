@@ -39,7 +39,6 @@ class Response
     private $reference;
     private $lastEventDate;
     private $charge;
-    private $sender;
 
     /**
      * @return mixed
@@ -146,24 +145,6 @@ class Response
     public function setReference($reference)
     {
         $this->reference = $reference;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSender()
-    {
-        return $this->sender;
-    }
-
-    /**
-     * @param mixed $sender
-     * @return Response
-     */
-    public function setSender($sender)
-    {
-        $this->sender = $sender;
         return $this;
     }
 

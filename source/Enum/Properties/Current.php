@@ -147,6 +147,11 @@ class Current
     const PERMISSIONS = "permissions";
 
     /**
+     * Pre Approval Code
+     */
+    const PRE_APPROVAL_CODE = "preApprovalCode";
+
+    /**
      * Pre Approval Charge
      */
     const PRE_APPROVAL_CHARGE = "preApprovalCharge";
