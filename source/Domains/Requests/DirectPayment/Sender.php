@@ -22,47 +22,33 @@
  *
  */
 
-namespace PagSeguro\Parsers\Response;
+namespace PagSeguro\Domains\Requests\DirectPayment;
 
-use PagSeguro\Domains\Document;
-use PagSeguro\Domains\Phone;
-
-/**
- * Class Sender
- * @package PagSeguro\Parsers\Response
- */
 trait Sender
 {
-    /**
-     * @var
-     */
     private $sender;
-    /**
-     * @return mixed
-     */
+    private $adapter;
+    
+    public function setSender()
+    {
+        $this->instance();
+        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\DirectPayment\Sender($this->sender);
+        return $this->adapter;
+        
+    }
+
     public function getSender()
     {
         return $this->sender;
     }
-
+    
     /**
-     * @param $sender
-     * @return $this
+     * Instanciate a new sender
      */
-    public function setSender($sender)
+    private function instance()
     {
-        $phone = new Phone();
-        $phone->setAreaCode(current($sender->phone->areaCode))
-              ->setNumber(current($sender->phone->number));
-
-        $senderClass = new \PagSeguro\Resources\Factory\Sender();
-        $this->sender = $senderClass->withParameters(
-            current($sender->name),
-            current($sender->email),
-            $phone,
-            new Document()
-        );
-
-        return $this;
+        if (empty($this->sender) || !isset($this->sender) || is_null($this->sender)) {
+            $this->sender = new \PagSeguro\Domains\DirectPayment\Sender();
+        }
     }
 }

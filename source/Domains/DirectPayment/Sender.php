@@ -22,47 +22,67 @@
  *
  */
 
-namespace PagSeguro\Parsers\Response;
-
-use PagSeguro\Domains\Document;
-use PagSeguro\Domains\Phone;
+namespace PagSeguro\Domains\DirectPayment;
 
 /**
- * Class Sender
- * @package PagSeguro\Parsers\Response
+ * Direct Payment Sender
+ *
+ * @package PagSeguro\Domains\Requests\DirectPayment
  */
-trait Sender
+class Sender extends \PagSeguro\Domains\Sender
 {
     /**
      * @var
      */
-    private $sender;
+    private $ip;
+    
     /**
-     * @return mixed
+     * @var
      */
-    public function getSender()
+    private $hash;
+    
+    /**
+     * Sender constructor.
+     */
+    public function __construct()
     {
-        return $this->sender;
+        parent::__construct();
+        return $this;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getIp()
+    {
+        return $this->ip;
     }
 
     /**
-     * @param $sender
-     * @return $this
+     * @param string $ip
+     * @return Sender
      */
-    public function setSender($sender)
+    public function setIp($ip)
     {
-        $phone = new Phone();
-        $phone->setAreaCode(current($sender->phone->areaCode))
-              ->setNumber(current($sender->phone->number));
+        $this->ip = $ip;
+        return $this;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getHash()
+    {
+        return $this->hash;
+    }
 
-        $senderClass = new \PagSeguro\Resources\Factory\Sender();
-        $this->sender = $senderClass->withParameters(
-            current($sender->name),
-            current($sender->email),
-            $phone,
-            new Document()
-        );
-
+    /**
+     * @param string $ip
+     * @return Sender
+     */
+    public function setHash($hash)
+    {
+        $this->hash = $hash;
         return $this;
     }
 }

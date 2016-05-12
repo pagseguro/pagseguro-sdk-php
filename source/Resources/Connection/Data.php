@@ -40,6 +40,7 @@ class Data
     }
     use Base\Checkout\Payment;
     use Base\Credentials;
+    use Base\DirectPayment\DirectPayment;
     use Base\Installment;
     use Base\Notification;
     use Base\PreApproval\Cancel;
