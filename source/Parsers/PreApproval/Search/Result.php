@@ -22,13 +22,13 @@
  *
  */
 
-namespace PagSeguro\Parsers\Transaction\Search\Date;
+namespace PagSeguro\Parsers\PreApproval\Search;
 
 /**
  * Class Response
  * @package PagSeguro\Parsers\Transaction\Search\Date
  */
-class Response
+class Result
 {
     /**
      * @var
@@ -41,7 +41,7 @@ class Response
     /**
      * @var
      */
-    private $transactions;
+    private $preApprovals;
     /**
      * @var
      */
@@ -126,23 +126,23 @@ class Response
     /**
      * @return mixed
      */
-    public function getTransactions()
+    public function getPreApprovals()
     {
-        return $this->transactions;
+        return $this->preApprovals;
     }
 
     /**
-     * @param mixed $transactions
+     * @param mixed $preApprovals
      * @return Response
      */
-    public function setTransactions($transactions)
+    public function setPreApprovals($preApprovals)
     {
-        if ($transactions) {
-            if (is_object($transactions)) {
-                self::addTransaction($transactions);
+        if ($preApprovals) {
+            if (is_object($preApprovals)) {
+                self::addPreApproval($preApprovals);
             } else {
-                foreach ($transactions as $transaction) {
-                    self::addTransaction($transaction);
+                foreach ($preApprovals as $preApproval) {
+                    self::addPreApproval($preApproval);
                 }
             }
         }
@@ -150,23 +150,20 @@ class Response
     }
 
     /**
-     * @param $transaction
+     * @param $preApproval
      */
-    private function addTransaction($transaction)
+    private function addPreApproval($preApproval)
     {
-        $response = new Transaction();
-        $response->setDate(current($transaction->date))
-            ->setCode(current($transaction->code))
-            ->setReference(current($transaction->reference))
-            ->setType(current($transaction->type))
-            ->setStatus(current($transaction->status))
-            ->setLastEventDate(current($transaction->lastEventDate))
-            ->setPaymentMethod($transaction->paymentMethod)
-            ->setGrossAmount(current($transaction->grossAmount))
-            ->setDiscountAmount(current($transaction->discountAmount))
-            ->setNetAmount(current($transaction->netAmount))
-            ->setExtraAmount(current($transaction->extraAmount))
-            ->setCancellationSource(current($transaction->cancellationSource));
-        $this->transactions[] = $response;
+        $response = new Response();
+        $response->setName(current($preApproval->name))
+            ->setCode(current($preApproval->code))
+            ->setDate(current($preApproval->date))
+            ->setTracker(current($preApproval->tracker))
+            ->setStatus(current($preApproval->status))
+            ->setReference(current($preApproval->reference))
+            ->setLastEventDate(current($preApproval->lastEventDate))
+            ->setCharge(current($preApproval->charge));
+
+        $this->preApprovals[] = $response;
     }
 }

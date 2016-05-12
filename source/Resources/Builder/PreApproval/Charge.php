@@ -22,24 +22,36 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests\Adapter;
+namespace PagSeguro\Resources\Builder\PreApproval;
 
-use PagSeguro\Domains\Requests\Sender\Address;
-use PagSeguro\Domains\Requests\Sender\Customer;
-use PagSeguro\Domains\Requests\Sender\Document;
-use PagSeguro\Domains\Requests\Sender\Phone;
+use PagSeguro\Resources\Builder;
 
-
-class Sender
+/**
+ * Class Payment
+ * @package PagSeguro\Resources\Builder
+ */
+class Charge extends Builder
 {
-    use Customer;
-    use Document;
-    use Phone;
 
-    private $sender;
-
-    public function __construct($sender)
+    /**
+     * @return string
+     */
+    public static function getPreApprovalChargeRequestUrl()
     {
-        $this->sender = $sender;
+        return parent::getRequest(
+            parent::getUrl('webservice'),
+            'preApproval/charge'
+        );
+    }
+
+    /**
+     * @return string
+     */
+    public static function getPreApprovalResponseUrl()
+    {
+        return parent::getResponse(
+            parent::getUrl('base'),
+            'preApproval'
+        );
     }
 }

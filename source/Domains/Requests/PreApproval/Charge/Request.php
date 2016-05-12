@@ -22,24 +22,28 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests\Adapter;
+namespace PagSeguro\Domains\Requests\PreApproval\Charge;
 
-use PagSeguro\Domains\Requests\Sender\Address;
-use PagSeguro\Domains\Requests\Sender\Customer;
-use PagSeguro\Domains\Requests\Sender\Document;
-use PagSeguro\Domains\Requests\Sender\Phone;
+use PagSeguro\Domains\Requests\Currency;
+use PagSeguro\Domains\Requests\Item;
+use PagSeguro\Domains\Requests\Metadata;
+use PagSeguro\Domains\Requests\Notification;
+use PagSeguro\Domains\Requests\Parameter;
+use PagSeguro\Domains\Requests\PaymentMethod;
+use PagSeguro\Domains\Requests\Requests;
+use PagSeguro\Domains\Requests\Review;
+//use PagSeguro\Domains\Requests\Sender;
+use PagSeguro\Domains\Requests\Shipping;
+use PagSeguro\Domains\Requests\Reference;
+use PagSeguro\Domains\Requests\Redirect;
 
-
-class Sender
+/**
+ * Class Request
+ * @package PagSeguro\Domains\Requests
+ */
+class Request implements Requests
 {
-    use Customer;
-    use Document;
-    use Phone;
+    use Reference;
+    use Item;
 
-    private $sender;
-
-    public function __construct($sender)
-    {
-        $this->sender = $sender;
-    }
 }

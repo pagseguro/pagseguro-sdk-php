@@ -87,6 +87,9 @@
             <charge>
                 <request>v2/pre-approvals/payment</request>
             </charge>
+            <search>
+                <request>v2/pre-approvals</request>
+            </search>
         </preApproval>
     </services>
 </Resources>

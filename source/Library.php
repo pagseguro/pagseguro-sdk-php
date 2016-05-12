@@ -57,6 +57,8 @@ class Library
         define('RESOURCES', CONFIG_PATH."Properties/Resources.xml");
         //Validates for cUrl and SimpleXml.
         self::validate();
+        //Garbage Collection
+        gc_enable();
     }
 
     /**

@@ -22,24 +22,22 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests\Adapter;
+namespace PagSeguro\Resources\Connection\Base\PreApproval;
 
-use PagSeguro\Domains\Requests\Sender\Address;
-use PagSeguro\Domains\Requests\Sender\Customer;
-use PagSeguro\Domains\Requests\Sender\Document;
-use PagSeguro\Domains\Requests\Sender\Phone;
+use PagSeguro\Resources\Builder;
 
-
-class Sender
+/**
+ * Class Payment
+ * @package PagSeguro\Services\Connection\Base
+ */
+trait Charge
 {
-    use Customer;
-    use Document;
-    use Phone;
-
-    private $sender;
-
-    public function __construct($sender)
+    /**
+     * @return string
+     */
+    public function buildPreApprovalChargeRequestUrl()
     {
-        $this->sender = $sender;
+        return Builder\PreApproval\Charge::getPreApprovalChargeRequestUrl();
     }
+
 }

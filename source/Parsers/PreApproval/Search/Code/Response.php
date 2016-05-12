@@ -22,24 +22,37 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests\Adapter;
-
-use PagSeguro\Domains\Requests\Sender\Address;
-use PagSeguro\Domains\Requests\Sender\Customer;
-use PagSeguro\Domains\Requests\Sender\Document;
-use PagSeguro\Domains\Requests\Sender\Phone;
+namespace PagSeguro\Parsers\PreApproval\Search\Code;
 
 
-class Sender
+/**
+ * Class Response
+ * @package PagSeguro\Parsers\PreApproval\Search\Code
+ */
+class Response extends \PagSeguro\Parsers\PreApproval\Search\Response
 {
-    use Customer;
-    use Document;
-    use Phone;
 
+    /**
+     * @var
+     */
     private $sender;
 
-    public function __construct($sender)
+    /**
+     * @return mixed
+     */
+    public function getSender()
+    {
+        return $this->sender;
+    }
+
+    /**
+     * @param mixed $sender
+     * @return Response
+     */
+    public function setSender($sender)
     {
         $this->sender = $sender;
+        return $this;
     }
+
 }
