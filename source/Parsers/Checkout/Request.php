@@ -25,6 +25,7 @@
 namespace PagSeguro\Parsers\Checkout;
 
 use PagSeguro\Enum\Properties\Current;
+use PagSeguro\Parsers\Accepted;
 use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Currency;
 use PagSeguro\Parsers\Error;
@@ -45,6 +46,7 @@ use PagSeguro\Resources\Http;
  */
 class Request extends Error implements Parser
 {
+    use Accepted;
     use Basic;
     use Currency;
     use Item;
@@ -66,6 +68,7 @@ class Request extends Error implements Parser
         $properties = new Current;
         return array_merge(
             $data,
+            Accepted::getData($payment, $properties),
             Basic::getData($payment, $properties),
             Currency::getData($payment, $properties),
             Item::getData($payment, $properties),

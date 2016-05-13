@@ -30,6 +30,7 @@ use PagSeguro\Domains\Requests\Metadata;
 use PagSeguro\Domains\Requests\Notification;
 use PagSeguro\Domains\Requests\Parameter;
 use PagSeguro\Domains\Requests\PaymentMethod;
+use PagSeguro\Domains\Requests\PaymentMethod\Accepted;
 use PagSeguro\Domains\Requests\PreApproval\PreApproval;
 use PagSeguro\Domains\Requests\Requests;
 use PagSeguro\Domains\Requests\Review;
@@ -45,6 +46,11 @@ use PagSeguro\Domains\Requests\Redirect;
  */
 class Request implements Requests
 {
+    use Accepted {
+        Accepted::accept as acceptPaymentMethod;
+        Accepted::exclude as excludePaymentMethod;
+        Accepted::getAttributeMap as acceptedPaymentMethods;
+    }
     use Currency;
     use Item;
     use Metadata;

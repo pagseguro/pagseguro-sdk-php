@@ -32,6 +32,16 @@ class Current
 {
 
     /**
+     * Accept Payment Method Group
+     */
+    const ACCEPT_PAYMENT_METHOD_GROUP = "acceptPaymentMethodGroup";
+
+    /**
+     * Accept Payment Method Name
+     */
+    const ACCEPT_PAYMENT_METHOD_NAME = "acceptPaymentMethodName";
+
+    /**
      * Currency
      */
     const CURRENCY = "currency";
@@ -60,6 +70,16 @@ class Current
      * Document value
      */
     const DOCUMENT_VALUE = "documentValue";
+
+    /**
+     * Exclude Payment Method Group
+     */
+    const EXCLUDE_PAYMENT_METHOD_GROUP = "excludePaymentMethodGroup";
+
+    /**
+     * Exclude Payment Method Name
+     */
+    const EXCLUDE_PAYMENT_METHOD_NAME = "excludePaymentMethodName";
 
     /**
      * Installment amount
