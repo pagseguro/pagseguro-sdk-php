@@ -41,7 +41,6 @@ $payment->setSender()->setDocument()->withParameters(
     'CPF',
     '156.009.442-76'
 );
-
 $payment->setShipping()->setAddress()->withParameters(
     'Av. Brig. Faria Lima',
     '1384',
@@ -52,6 +51,7 @@ $payment->setShipping()->setAddress()->withParameters(
     'BRA',
     'apto. 114'
 );
+
 $payment->setShipping()->setCost()->withParameters(20.00);
 $payment->setShipping()->setType()->withParameters(\PagSeguro\Enum\Shipping\Type::SEDEX);
 
@@ -61,38 +61,31 @@ $payment->addMetadata()->withParameters('GAME_NAME', 'DOTA');
 $payment->addMetadata()->withParameters('PASSENGER_PASSPORT', '23456', 1);
 
 //Add items by parameter
-//On index, you have to pass in parameter: total items plus one.
 $payment->addParameter()->withParameters('itemId', '0003')->index(3);
-$payment->addParameter()->withParameters('itemDescription', 'Notebook Amarelo')->index(3);
+$payment->addParameter()->withParameters('itemDescription', 'Notebook Rosa')->index(3);
 $payment->addParameter()->withParameters('itemQuantity', '1')->index(3);
-$payment->addParameter()->withParameters('itemAmount', '200.00')->index(31);
+$payment->addParameter()->withParameters('itemAmount', '200.00')->index(3);
 
 //Add items by parameter using an array
 $payment->addParameter()->withArray(['notificationURL', 'http://www.lojamodelo.com.br/nofitication']);
 
+/***
+ * Pre Approval information
+ */
+$payment->setPreApproval()->setCharge('manual');
+$payment->setPreApproval()->setName("Seguro contra roubo do Notebook Prata");
+$payment->setPreApproval()->setDetails("Todo dia 30 será cobrado o valor de R100,00 referente ao seguro contra
+            roubo do Notebook Prata.");
+$payment->setPreApproval()->setAmountPerPayment('100.00');
+$payment->setPreApproval()->setMaxAmountPerPeriod('200.00');
+$payment->setPreApproval()->setPeriod('Monthly');
+$payment->setPreApproval()->setMaxTotalAmount('2400.00');
+$payment->setPreApproval()->setInitialDate('2016-05-13T00:00:00');
+$payment->setPreApproval()->setFinalDate('2018-05-07T00:00:00');
+
 $payment->setRedirectUrl("http://www.lojamodelo.com.br");
 $payment->setNotificationUrl("http://www.lojamodelo.com.br/nofitication");
-
-//Add discount
-$payment->addPaymentMethod()->withParameters(
-    PagSeguro\Enum\PaymentMethod\Group::CREDIT_CARD,
-    PagSeguro\Enum\PaymentMethod\Config\Keys::DISCOUNT_PERCENT,
-    10.00 // (float) Percent
-);
-
-//Add installments with no interest
-$payment->addPaymentMethod()->withParameters(
-    PagSeguro\Enum\PaymentMethod\Group::CREDIT_CARD,
-    PagSeguro\Enum\PaymentMethod\Config\Keys::MAX_INSTALLMENTS_NO_INTEREST,
-    2 // (int) qty of installment
-);
-
-//Add a limit for installment
-$payment->addPaymentMethod()->withParameters(
-    PagSeguro\Enum\PaymentMethod\Group::CREDIT_CARD,
-    PagSeguro\Enum\PaymentMethod\Config\Keys::MAX_INSTALLMENTS_LIMIT,
-    6 // (int) qty of installment
-);
+$payment->setReviewUrl("http://www.lojateste.com.br/review");
 
 try {
 

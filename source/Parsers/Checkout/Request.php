@@ -31,6 +31,7 @@ use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Item;
 use PagSeguro\Parsers\Parser;
 use PagSeguro\Parsers\PaymentMethod;
+use PagSeguro\Parsers\PreApproval;
 use PagSeguro\Parsers\Sender;
 use PagSeguro\Parsers\Shipping;
 use PagSeguro\Parsers\Metadata;
@@ -46,6 +47,7 @@ class Request extends Error implements Parser
     use Basic;
     use Currency;
     use Item;
+    use PreApproval;
     use Sender;
     use Shipping;
     use Metadata;
@@ -65,6 +67,7 @@ class Request extends Error implements Parser
             Basic::getData($payment, $properties),
             Currency::getData($payment, $properties),
             Item::getData($payment, $properties),
+            PreApproval::getData($payment, $properties),
             Sender::getData($payment, $properties),
             Shipping::getData($payment, $properties),
             Metadata::getData($payment, $properties),

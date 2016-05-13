@@ -22,21 +22,29 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Domains\Requests\PreApproval;
 
-use PagSeguro\Domains\Requests\PreApproval\Request;
 
-class PreApproval extends Request
+trait PreApproval
 {
+    private $preApproval;
 
     /**
-     * @param $credentials
-     * @return string
-     * @throws \Exception
+     * @return \PagSeguro\Domains\PreApproval
      */
-    public function register($credentials)
+    public function getPreApproval()
     {
-        return \PagSeguro\Services\PreApproval\Payment::create($credentials, $this);
+        return $this->preApproval;
     }
 
+    /**
+     * @return \PagSeguro\Domains\PreApproval
+     */
+    public function setPreApproval()
+    {
+        if (empty($this->preApproval ) || !isset($this->preApproval ) || is_null($this->preApproval )) {
+            $this->preApproval = new \PagSeguro\Domains\PreApproval();
+        }
+        return $this->preApproval;
+    }
 }

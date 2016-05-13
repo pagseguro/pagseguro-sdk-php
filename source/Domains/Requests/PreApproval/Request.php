@@ -32,7 +32,6 @@ use PagSeguro\Domains\Requests\Parameter;
 use PagSeguro\Domains\Requests\PaymentMethod;
 use PagSeguro\Domains\Requests\Requests;
 use PagSeguro\Domains\Requests\Review;
-//use PagSeguro\Domains\Requests\Sender;
 use PagSeguro\Domains\Requests\Shipping;
 use PagSeguro\Domains\Requests\Reference;
 use PagSeguro\Domains\Requests\Redirect;
@@ -44,6 +43,7 @@ use PagSeguro\Domains\Requests\Redirect;
 class Request implements Requests
 {
     use Currency;
+    use PreApproval;
     use Sender;
     use Shipping;
     use Reference;
