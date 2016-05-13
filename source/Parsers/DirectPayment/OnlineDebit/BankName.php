@@ -32,6 +32,12 @@ use PagSeguro\Domains\Requests\Requests;
  */
 trait BankName
 {
+
+    /**
+     * @param Requests $request
+     * @param $properties
+     * @return array
+     */
     public static function getData(Requests $request, $properties)
     {
         $data = [];

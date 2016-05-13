@@ -31,6 +31,7 @@ use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Log\Logger;
 use PagSeguro\Resources\Responsibility;
+use PagSeguro\Parsers\DirectPayment\Boleto\Request;
 
 /**
  * Class Payment
@@ -42,7 +43,6 @@ class Boleto
     /**
      * @param \PagSeguro\Domains\Account\Credentials $credentials
      * @param \PagSeguro\Domains\Requests\DirectPayment\Boleto $payment
-     * @param bool $onlyCode
      * @return string
      * @throws \Exception
      */
@@ -55,20 +55,23 @@ class Boleto
             Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'DirectPayment.Boleto']);
             Logger::info(sprintf(
                 "Params: %s",
-                json_encode(Crypto::encrypt(\PagSeguro\Parsers\DirectPayment\Boleto\Request::getData($payment)))),
+                json_encode(Crypto::encrypt(Request::getData($payment)))),
                 ['service' => 'Checkout']
             );
             $http->post(
                 self::request($connection),
-                \PagSeguro\Parsers\DirectPayment\Boleto\Request::getData($payment)
+                Request::getData($payment)
             );
 
             $response = Responsibility::http(
                 $http,
-                new \PagSeguro\Parsers\DirectPayment\Boleto\Request
+                new Request
             );
 
-            Logger::info(sprintf("Boleto Payment Link URL: %s", $response->getPaymentLink()), ['service' => 'DirectPayment.Boleto']);
+            Logger::info(
+                sprintf("Boleto Payment Link URL: %s", $response->getPaymentLink()),
+                    ['service' => 'DirectPayment.Boleto']
+            );
 
             return $response;
         } catch (\Exception $exception) {

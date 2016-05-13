@@ -33,14 +33,30 @@ use PagSeguro\Domains\Requests\DirectPayment\OnlineDebit\Request;
 class OnlineDebit extends Request
 {
     /**
-     * Name of the bank
-     * @var bankName
+     * @var string bank name
      */
-    private $bankName;    
+    private $bankName;
+
+    /**
+     * @return string bank name
+     */
+    public function getBankName()
+    {
+        return $this->bankName;
+    }
+
+    /**
+     * @param $bankName
+     * @return $this
+     */
+    public function setBankName($bankName)
+    {
+        $this->bankName = $bankName;
+        return $this;
+    }
     
     /**
      * @param $credentials
-     * @param bool $onlyCode
      * @return string
      * @throws \Exception
      */
@@ -48,16 +64,4 @@ class OnlineDebit extends Request
     {
         return \PagSeguro\Services\DirectPayment\OnlineDebit::checkout($credentials, $this);
     }
-        
-    public function getBankName()
-    {
-        return $this->bankName;
-    }
-
-    public function setBankName($bankName)
-    {
-        $this->bankName = $bankName;
-        return $this;
-    }
-
 }

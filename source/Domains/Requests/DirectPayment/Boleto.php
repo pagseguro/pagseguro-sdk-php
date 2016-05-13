@@ -34,7 +34,6 @@ class Boleto extends Request
 {
     /**
      * @param $credentials
-     * @param bool $onlyCode
      * @return string
      * @throws \Exception
      */

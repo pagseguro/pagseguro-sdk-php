@@ -31,7 +31,6 @@ namespace PagSeguro\Parsers\DirectPayment\OnlineDebit;
 trait Method
 {
     /**
-     * @param Requests $request
      * @param $properties
      * @return array
      */

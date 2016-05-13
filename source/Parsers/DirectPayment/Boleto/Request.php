@@ -32,7 +32,6 @@ namespace PagSeguro\Parsers\DirectPayment\Boleto;
 use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Currency;
-use PagSeguro\Parsers\DirectPayment\Boleto\Method;
 use PagSeguro\Parsers\DirectPayment\Mode;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Item;

@@ -32,7 +32,7 @@ class Charge extends Request
     private $code;
 
     /**
-     * @return mixed
+     * @return string code
      */
     public function getCode()
     {
@@ -40,7 +40,7 @@ class Charge extends Request
     }
 
     /**
-     * @param mixed $code
+     * @param string $code
      */
     public function setCode($code)
     {

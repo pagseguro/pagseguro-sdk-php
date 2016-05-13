@@ -25,15 +25,13 @@
 namespace PagSeguro\Parsers\DirectPayment\OnlineDebit;
 
 /**
- * Request from the Boleto direct payment
- *
+ * Request from the Online debit direct payment
  * @package PagSeguro\Parsers\DirectPayment\OnlineDebit
  */
 use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Currency;
 use PagSeguro\Parsers\DirectPayment\Mode;
-use PagSeguro\Parsers\DirectPayment\OnlineDebit\Method;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Item;
 use PagSeguro\Parsers\Parser;
@@ -46,7 +44,7 @@ use PagSeguro\Parsers\Transaction\Response;
 
 /**
  * Class Payment
- * @package PagSeguro\Parsers\DirectPayment\Boleto
+ * @package PagSeguro\Parsers\DirectPayment\OnlineDebit
  */
 class Request extends Error implements Parser
 {

@@ -31,8 +31,6 @@ use PagSeguro\Domains\Requests\Notification;
 use PagSeguro\Domains\Requests\Parameter;
 use PagSeguro\Domains\Requests\PaymentMethod;
 use PagSeguro\Domains\Requests\Requests;
-use PagSeguro\Domains\Requests\Review;
-//use PagSeguro\Domains\Requests\Sender;
 use PagSeguro\Domains\Requests\Shipping;
 use PagSeguro\Domains\Requests\Reference;
 use PagSeguro\Domains\Requests\Redirect;
@@ -45,5 +43,4 @@ class Request implements Requests
 {
     use Reference;
     use Item;
-
 }

@@ -27,6 +27,7 @@ namespace PagSeguro\Services\DirectPayment;
 use PagSeguro\Domains\Account\Credentials;
 use PagSeguro\Helpers\Crypto;
 use PagSeguro\Helpers\Mask;
+use PagSeguro\Parsers\DirectPayment\OnlineDebit\Request;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Log\Logger;
@@ -41,7 +42,6 @@ class OnlineDebit
     /**
      * @param \PagSeguro\Domains\Account\Credentials $credentials
      * @param \PagSeguro\Domains\Requests\DirectPayment\OnlineDebit $payment
-     * @param bool $onlyCode
      * @return string
      * @throws \Exception
      */
@@ -54,20 +54,23 @@ class OnlineDebit
             Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'DirectPayment.OnlineDebit']);
             Logger::info(sprintf(
                 "Params: %s",
-                json_encode(Crypto::encrypt(\PagSeguro\Parsers\DirectPayment\OnlineDebit\Request::getData($payment)))),
+                json_encode(Crypto::encrypt(Request::getData($payment)))),
                 ['service' => 'Checkout']
             );
             $http->post(
                 self::request($connection),
-                \PagSeguro\Parsers\DirectPayment\OnlineDebit\Request::getData($payment)
+                Request::getData($payment)
             );
 
             $response = Responsibility::http(
                 $http,
-                new \PagSeguro\Parsers\DirectPayment\OnlineDebit\Request
+                new Request
             );
 
-            Logger::info(sprintf("Online Debit Payment Link URL: %s", $response->getPaymentLink()), ['service' => 'DirectPayment.OnlineDebit']);
+            Logger::info(
+                sprintf("Online Debit Payment Link URL: %s", $response->getPaymentLink()),
+                ['service' => 'DirectPayment.OnlineDebit']
+            );
 
             return $response;
         } catch (\Exception $exception) {

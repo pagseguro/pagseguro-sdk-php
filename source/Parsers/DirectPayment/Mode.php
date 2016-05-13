@@ -41,7 +41,7 @@ trait Mode
     {
 
         $data = [];
-        // currency
+        // Payment mode
         if (!is_null($request->getMode())) {
             $data[$properties::DIRECT_PAYMENT_MODE] = $request->getMode();
         }

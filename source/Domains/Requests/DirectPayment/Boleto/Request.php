@@ -35,10 +35,9 @@ use PagSeguro\Domains\Requests\Reference;
 use PagSeguro\Domains\Requests\Requests;
 use PagSeguro\Domains\Requests\Shipping;
 
-
 /**
  * Class Request
- * @package PagSeguro\Domains\Requests\DirectPayment\Boleto
+ * @package PagSeguro\Domains\Requests\DirectPayment\OnlineDebit
  */
 class Request implements Requests
 {
