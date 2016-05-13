@@ -22,22 +22,24 @@
  *
  */
 
-namespace PagSeguro\Parsers\DirectPayment\Boleto;
+namespace PagSeguro\Parsers\DirectPayment\OnlineDebit;
+
+use PagSeguro\Domains\Requests\Requests;
 
 /**
- * Class Moede
- * @package PagSeguro\Parsers\DirectPayment
+ * Description of BankName
+ * @package PagSeguro\Parsers\DirectPayment\OnlineDebit
  */
-trait Method
+trait BankName
 {
-    /**
-     * @param Requests $request
-     * @param $properties
-     * @return array
-     */
-    public static function getData($properties)
+    public static function getData(Requests $request, $properties)
     {
-        $data[$properties::DIRECT_PAYMENT_METHOD] = \PagSeguro\Enum\DirectPayment\Method::BOLETO;
+        $data = [];
+        
+        if (!is_null($request->getBankName())) {
+            $data[$properties::ONLINE_DEBIT_BANK_NAME] = $request->getBankName();
+        }
+        
         return $data;
     }
 }

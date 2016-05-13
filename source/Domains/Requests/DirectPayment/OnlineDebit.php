@@ -22,45 +22,42 @@
  *
  */
 
-namespace PagSeguro\Parsers\Response;
+namespace PagSeguro\Domains\Requests\DirectPayment;
 
-use PagSeguro\Domains\Document;
-use PagSeguro\Domains\Phone;
+use PagSeguro\Domains\Requests\DirectPayment\OnlineDebit\Request;
 
 /**
- * Class Sender
- * @package PagSeguro\Parsers\Response
+ * Class Payment
+ * @package PagSeguro\Domains\Requests\DirectPayment
  */
-trait Sender
+class OnlineDebit extends Request
 {
     /**
-     * @var
+     * Name of the bank
+     * @var bankName
      */
-    private $sender;
+    private $bankName;    
+    
     /**
-     * @return mixed
+     * @param $credentials
+     * @param bool $onlyCode
+     * @return string
+     * @throws \Exception
      */
-    public function getSender()
+    public function register($credentials)
     {
-        return $this->sender;
+        return \PagSeguro\Services\DirectPayment\OnlineDebit::checkout($credentials, $this);
+    }
+        
+    public function getBankName()
+    {
+        return $this->bankName;
     }
 
-    /**
-     * @param $sender
-     * @return $this
-     */
-    public function setSender($sender)
+    public function setBankName($bankName)
     {
-        $phone = new Phone();
-        $phone->setAreaCode(current($sender->phone->areaCode))
-              ->setNumber(current($sender->phone->number));
-
-        $senderClass = new \PagSeguro\Domains\Sender();
-        $this->sender = $senderClass->setName(current($sender->name))
-            ->setEmail(current($sender->email))
-            ->setPhone($phone)
-            ->setDocuments(new Document());
-
+        $this->bankName = $bankName;
         return $this;
     }
+
 }

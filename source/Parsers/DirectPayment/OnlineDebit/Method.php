@@ -22,7 +22,7 @@
  *
  */
 
-namespace PagSeguro\Parsers\DirectPayment\Boleto;
+namespace PagSeguro\Parsers\DirectPayment\OnlineDebit;
 
 /**
  * Class Moede
@@ -37,7 +37,7 @@ trait Method
      */
     public static function getData($properties)
     {
-        $data[$properties::DIRECT_PAYMENT_METHOD] = \PagSeguro\Enum\DirectPayment\Method::BOLETO;
+        $data[$properties::DIRECT_PAYMENT_METHOD] = \PagSeguro\Enum\DirectPayment\Method::ONLINE_DEBIT;
         return $data;
     }
 }

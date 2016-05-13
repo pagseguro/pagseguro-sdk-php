@@ -125,6 +125,11 @@ class Current
      * Notification Url
      */
     const NOTIFICATION_URL = "notificationURL";
+    
+    /**
+     * The bank name for online debit
+     */
+    const ONLINE_DEBIT_BANK_NAME = 'bankName';
 
     /**
      * Payment method group
