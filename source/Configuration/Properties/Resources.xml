@@ -91,5 +91,8 @@
                 <request>v2/pre-approvals</request>
             </search>
         </preApproval>
+        <directPayment>
+            <request>v2/transactions</request>
+        </directPayment>
     </services>
 </Resources>

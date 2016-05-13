@@ -40,6 +40,16 @@ class Current
      * Currency extra amount (optional)
      */
     const CURRENCY_EXTRA_AMOUNT = "extraAmount";
+    
+    /**
+     * Direct Payment Method
+     */
+    const DIRECT_PAYMENT_METHOD = "paymentMethod";
+
+    /**
+     * Direct Payment Mode
+     */
+    const DIRECT_PAYMENT_MODE = "paymentMode";
 
     /**
      * Document type
@@ -230,6 +240,16 @@ class Current
      * Sender email
      */
     const SENDER_EMAIL = "senderEmail";
+    
+    /**
+     * Sender hash
+     */
+    const SENDER_HASH = "senderHash";
+    
+    /**
+     * Sender ip number
+     */
+    const SENDER_IP = "senderIp";
 
     /**
      *  Sender area code
@@ -250,11 +270,6 @@ class Current
      * Sender CNPJ
      */
     const SENDER_DOCUMENT_CNPJ = "senderCNPJ";
-
-    /**
-     *  Sender IP
-     */
-    const SENDER_IP = "ip";
 
     /**
      * Shipping type

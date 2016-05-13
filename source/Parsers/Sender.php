@@ -58,8 +58,13 @@ trait Sender
             if (!is_null($request->getSender()->getDocuments())) {
                 $data = array_merge($data, self::documents($request, $properties));
             }
-            if (!is_null($request->getSender()->getIP())) {
-                $data[$properties::SENDER_IP] = $request->sender()->get()->getIP();
+            // ip (only used in direct payments)
+            if (method_exists($request->getSender(), 'getIp') && !is_null($request->getSender()->getIp())) {
+                $data[$properties::SENDER_IP] = $request->getSender()->getIp();
+            }
+            // hash (only used in direct payments)
+            if (method_exists($request->getSender(), 'getHash') && !is_null($request->getSender()->getHash())) {
+                $data[$properties::SENDER_HASH] = $request->getSender()->getHash();
             }
         }
         return $data;

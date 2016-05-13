@@ -22,47 +22,25 @@
  *
  */
 
-namespace PagSeguro\Parsers\Response;
+namespace PagSeguro\Domains\Requests\Sender;
 
-use PagSeguro\Domains\Document;
-use PagSeguro\Domains\Phone;
-
-/**
- * Class Sender
- * @package PagSeguro\Parsers\Response
- */
-trait Sender
+trait Hash
 {
-    /**
-     * @var
-     */
-    private $sender;
     /**
      * @return mixed
      */
-    public function getSender()
+    public function getHash()
     {
-        return $this->sender;
+        return $this->sender->hash;
     }
 
     /**
-     * @param $sender
-     * @return $this
+     * @param mixed $email
+     * @return Customer
      */
-    public function setSender($sender)
+    public function setHash($hash)
     {
-        $phone = new Phone();
-        $phone->setAreaCode(current($sender->phone->areaCode))
-              ->setNumber(current($sender->phone->number));
-
-        $senderClass = new \PagSeguro\Resources\Factory\Sender();
-        $this->sender = $senderClass->withParameters(
-            current($sender->name),
-            current($sender->email),
-            $phone,
-            new Document()
-        );
-
+        $this->sender->setHash($hash);
         return $this;
     }
 }

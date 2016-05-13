@@ -22,47 +22,25 @@
  *
  */
 
-namespace PagSeguro\Parsers\Response;
+namespace PagSeguro\Domains\Requests\Sender;
 
-use PagSeguro\Domains\Document;
-use PagSeguro\Domains\Phone;
-
-/**
- * Class Sender
- * @package PagSeguro\Parsers\Response
- */
-trait Sender
+trait Ip
 {
-    /**
-     * @var
-     */
-    private $sender;
     /**
      * @return mixed
      */
-    public function getSender()
+    public function getIp()
     {
-        return $this->sender;
+        return $this->sender->ip;
     }
 
     /**
-     * @param $sender
-     * @return $this
+     * @param mixed $email
+     * @return Customer
      */
-    public function setSender($sender)
+    public function setIp($ip)
     {
-        $phone = new Phone();
-        $phone->setAreaCode(current($sender->phone->areaCode))
-              ->setNumber(current($sender->phone->number));
-
-        $senderClass = new \PagSeguro\Resources\Factory\Sender();
-        $this->sender = $senderClass->withParameters(
-            current($sender->name),
-            current($sender->email),
-            $phone,
-            new Document()
-        );
-
+        $this->sender->setIp($ip);
         return $this;
     }
 }

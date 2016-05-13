@@ -22,47 +22,25 @@
  *
  */
 
-namespace PagSeguro\Parsers\Response;
+namespace PagSeguro\Resources\Builder\DirectPayment;
 
-use PagSeguro\Domains\Document;
-use PagSeguro\Domains\Phone;
+use PagSeguro\Resources\Builder;
 
 /**
- * Class Sender
- * @package PagSeguro\Parsers\Response
+ * Class Payment
+ * @package PagSeguro\Resources\Builder
  */
-trait Sender
+class DirectPayment extends Builder
 {
-    /**
-     * @var
-     */
-    private $sender;
-    /**
-     * @return mixed
-     */
-    public function getSender()
-    {
-        return $this->sender;
-    }
 
     /**
-     * @param $sender
-     * @return $this
+     * @return string
      */
-    public function setSender($sender)
+    public static function getDirectPaymentRequestUrl()
     {
-        $phone = new Phone();
-        $phone->setAreaCode(current($sender->phone->areaCode))
-              ->setNumber(current($sender->phone->number));
-
-        $senderClass = new \PagSeguro\Resources\Factory\Sender();
-        $this->sender = $senderClass->withParameters(
-            current($sender->name),
-            current($sender->email),
-            $phone,
-            new Document()
+        return parent::getRequest(
+            parent::getUrl('webservice'),
+            'directPayment'
         );
-
-        return $this;
     }
 }

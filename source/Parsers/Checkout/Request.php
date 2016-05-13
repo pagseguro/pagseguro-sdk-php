@@ -36,6 +36,7 @@ use PagSeguro\Parsers\Sender;
 use PagSeguro\Parsers\Shipping;
 use PagSeguro\Parsers\Metadata;
 use PagSeguro\Parsers\Parameter;
+use PagSeguro\Parsers\ReceiverEmail;
 use PagSeguro\Resources\Http;
 
 /**
@@ -51,6 +52,7 @@ class Request extends Error implements Parser
     use Sender;
     use Shipping;
     use Metadata;
+    use ReceiverEmail;
     use Parameter;
     use PaymentMethod;
 
@@ -72,7 +74,8 @@ class Request extends Error implements Parser
             Shipping::getData($payment, $properties),
             Metadata::getData($payment, $properties),
             Parameter::getData($payment),
-            PaymentMethod::getData($payment, $properties)
+            PaymentMethod::getData($payment, $properties),
+            ReceiverEmail::getData($payment, $properties)
         );
     }
 
