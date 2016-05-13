@@ -24,43 +24,27 @@
 
 namespace PagSeguro\Parsers\Response;
 
-use PagSeguro\Domains\Document;
-use PagSeguro\Domains\Phone;
-
 /**
  * Class Sender
  * @package PagSeguro\Parsers\Response
  */
-trait Sender
+trait RecoveryCode
 {
     /**
      * @var
      */
-    private $sender;
-    /**
-     * @return mixed
-     */
-    public function getSender()
+    private $recoveryCode;
+    
+    public function getRecoveryCode()
     {
-        return $this->sender;
+        return $this->recoveryCode;
     }
 
-    /**
-     * @param $sender
-     * @return $this
-     */
-    public function setSender($sender)
+    public function setRecoveryCode($recoveryCode)
     {
-        $phone = new Phone();
-        $phone->setAreaCode(current($sender->phone->areaCode))
-              ->setNumber(current($sender->phone->number));
-
-        $senderClass = new \PagSeguro\Domains\Sender();
-        $this->sender = $senderClass->setName(current($sender->name))
-            ->setEmail(current($sender->email))
-            ->setPhone($phone)
-            ->setDocuments(new Document());
-
+        $this->recoveryCode = $recoveryCode;
         return $this;
     }
+
+
 }

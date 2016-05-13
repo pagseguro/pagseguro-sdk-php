@@ -22,18 +22,18 @@
  *
  */
 
-namespace PagSeguro\Parsers\DirectPayment\Boleto;
+namespace PagSeguro\Parsers\DirectPayment\OnlineDebit;
 
 /**
  * Request from the Boleto direct payment
  *
- * @package PagSeguro\Parsers\DirectPayment\Boleto
+ * @package PagSeguro\Parsers\DirectPayment\OnlineDebit
  */
 use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Currency;
-use PagSeguro\Parsers\DirectPayment\Boleto\Method;
 use PagSeguro\Parsers\DirectPayment\Mode;
+use PagSeguro\Parsers\DirectPayment\OnlineDebit\Method;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Item;
 use PagSeguro\Parsers\Parser;
@@ -50,6 +50,7 @@ use PagSeguro\Parsers\Transaction\Response;
  */
 class Request extends Error implements Parser
 {
+    use BankName;
     use Basic;
     use Currency;
     use Item;
@@ -60,23 +61,24 @@ class Request extends Error implements Parser
     use Shipping;
 
     /**
-     * @param \PagSeguro\Domains\Requests\DirectPayment\Boleto $boleto
+     * @param \PagSeguro\Domains\Requests\DirectPayment\OnlineDebit $onlineDebit
      * @return array
      */
-    public static function getData(\PagSeguro\Domains\Requests\DirectPayment\Boleto $boleto)
+    public static function getData(\PagSeguro\Domains\Requests\DirectPayment\OnlineDebit $onlineDebit)
     {
         $data = [];
         $properties = new Current;
         return array_merge(
             $data,
-            Basic::getData($boleto, $properties),
-            Currency::getData($boleto, $properties),
-            Item::getData($boleto, $properties),
+            BankName::getData($onlineDebit, $properties),
+            Basic::getData($onlineDebit, $properties),
+            Currency::getData($onlineDebit, $properties),
+            Item::getData($onlineDebit, $properties),
             Method::getData($properties),
-            Mode::getData($boleto, $properties),
-            ReceiverEmail::getData($boleto, $properties),
-            Sender::getData($boleto, $properties),
-            Shipping::getData($boleto, $properties)
+            Mode::getData($onlineDebit, $properties),
+            ReceiverEmail::getData($onlineDebit, $properties),
+            Sender::getData($onlineDebit, $properties),
+            Shipping::getData($onlineDebit, $properties)
         );
     }
 
@@ -91,6 +93,7 @@ class Request extends Error implements Parser
         return (new Response)->setDate(current($xml->date))
             ->setCode(current($xml->code))
             ->setReference(current($xml->reference))
+            ->setRecoveryCode(current($xml->recoveryCode))
             ->setType(current($xml->type))
             ->setStatus(current($xml->status))
             ->setLastEventDate(current($xml->lastEventDate))

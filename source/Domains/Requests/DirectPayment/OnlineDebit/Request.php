@@ -22,7 +22,7 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests\DirectPayment\Boleto;
+namespace PagSeguro\Domains\Requests\DirectPayment\OnlineDebit;
 
 use PagSeguro\Domains\Requests\Currency;
 use PagSeguro\Domains\Requests\DirectPayment\Mode;
