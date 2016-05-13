@@ -47,4 +47,12 @@ trait Notification
     {
         return Builder\Notification::getAuthorizationRequestUrl();
     }
+
+    /**
+     * @return string
+     */
+    public function buildNotificationPreApprovalRequestUrl()
+    {
+        return Builder\Notification::getPreApprovalRequestUrl();
+    }
 }

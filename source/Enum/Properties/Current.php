@@ -32,6 +32,16 @@ class Current
 {
 
     /**
+     * Accept Payment Method Group
+     */
+    const ACCEPT_PAYMENT_METHOD_GROUP = "acceptPaymentMethodGroup";
+
+    /**
+     * Accept Payment Method Name
+     */
+    const ACCEPT_PAYMENT_METHOD_NAME = "acceptPaymentMethodName";
+
+    /**
      * Currency
      */
     const CURRENCY = "currency";
@@ -40,6 +50,16 @@ class Current
      * Currency extra amount (optional)
      */
     const CURRENCY_EXTRA_AMOUNT = "extraAmount";
+    
+    /**
+     * Direct Payment Method
+     */
+    const DIRECT_PAYMENT_METHOD = "paymentMethod";
+
+    /**
+     * Direct Payment Mode
+     */
+    const DIRECT_PAYMENT_MODE = "paymentMode";
 
     /**
      * Document type
@@ -50,6 +70,16 @@ class Current
      * Document value
      */
     const DOCUMENT_VALUE = "documentValue";
+
+    /**
+     * Exclude Payment Method Group
+     */
+    const EXCLUDE_PAYMENT_METHOD_GROUP = "excludePaymentMethodGroup";
+
+    /**
+     * Exclude Payment Method Name
+     */
+    const EXCLUDE_PAYMENT_METHOD_NAME = "excludePaymentMethodName";
 
     /**
      * Installment amount
@@ -115,6 +145,11 @@ class Current
      * Notification Url
      */
     const NOTIFICATION_URL = "notificationURL";
+    
+    /**
+     * The bank name for online debit
+     */
+    const ONLINE_DEBIT_BANK_NAME = 'bankName';
 
     /**
      * Payment method group
@@ -135,7 +170,67 @@ class Current
      * Permissions
      */
     const PERMISSIONS = "permissions";
-    
+
+    /**
+     * Pre Approval Code
+     */
+    const PRE_APPROVAL_CODE = "preApprovalCode";
+
+    /**
+     * Pre Approval Charge
+     */
+    const PRE_APPROVAL_CHARGE = "preApprovalCharge";
+
+    /**
+     * Pre Approval Name
+     */
+    const PRE_APPROVAL_NAME = "preApprovalName";
+
+    /**
+     * Pre Approval Details
+     */
+    const PRE_APPROVAL_DETAILS = "preApprovalDetails";
+
+    /**
+     * Pre Approval Amount Per Payment
+     */
+    const PRE_APPROVAL_AMOUNT_PER_PAYMENT = "preApprovalAmountPerPayment";
+
+    /**
+     * Pre Approval Max Amount Per Payment
+     */
+    const PRE_APPROVAL_MAX_AMOUNT_PER_PAYMENT = "preApprovalMaxAmountPerPayment";
+
+    /**
+     * Pre Approval Period
+     */
+    const PRE_APPROVAL_PERIOD = "preApprovalPeriod";
+
+    /**
+     * Pre Approval Max Payments Per Period
+     */
+    const PRE_APPROVAL_MAX_PAYMENTS_PER_PERIOD = "preApprovalMaxPaymentsPerPeriod";
+
+    /**
+     * Pre Approval Max Amount Per Period
+     */
+    const PRE_APPROVAL_MAX_AMOUNT_PER_PERIOD = "preApprovalMaxAmountPerPeriod";
+
+    /**
+     * Pre Approval Initial Date
+     */
+    const PRE_APPROVAL_INITIAL_DATE = "preApprovalInitialDate";
+
+    /**
+     * Pre Approval Final Date
+     */
+    const PRE_APPROVAL_FINAL_DATE = "preApprovalFinalDate";
+
+    /**
+     * Pre Approval Max Total Amount
+     */
+    const PRE_APPROVAL_MAX_TOTAL_AMOUNT = "preApprovalMaxTotalAmount";
+
     /**
      * Receiver email
      */
@@ -170,6 +265,16 @@ class Current
      * Sender email
      */
     const SENDER_EMAIL = "senderEmail";
+    
+    /**
+     * Sender hash
+     */
+    const SENDER_HASH = "senderHash";
+    
+    /**
+     * Sender ip number
+     */
+    const SENDER_IP = "senderIp";
 
     /**
      *  Sender area code
@@ -190,11 +295,6 @@ class Current
      * Sender CNPJ
      */
     const SENDER_DOCUMENT_CNPJ = "senderCNPJ";
-
-    /**
-     *  Sender IP
-     */
-    const SENDER_IP = "ip";
 
     /**
      * Shipping type

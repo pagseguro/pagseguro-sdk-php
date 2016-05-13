@@ -49,6 +49,10 @@ trait Currency
     /**
      * @var
      */
+    private $feeAmount;
+    /**
+     * @var
+     */
     private $grossAmount;
     /**
      * @var
@@ -106,6 +110,24 @@ trait Currency
     public function setExtraAmount($extraAmount)
     {
         $this->extraAmount = $extraAmount;
+        return $this;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getFeeAmount()
+    {
+        return $this->feeAmount;
+    }
+
+    /**
+     * @param $extraAmount
+     * @return $this
+     */
+    public function setFeeAmount($feeAmount)
+    {
+        $this->feeAmount = $feeAmount;
         return $this;
     }
 

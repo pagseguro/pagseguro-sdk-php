@@ -50,9 +50,9 @@
             <application>
                 <request>v2/authorizations/notifications</request>
             </application>
-            <pre-approval>
+            <preApproval>
                 <request>v2/pre-approvals/notifications</request>
-            </pre-approval>
+            </preApproval>
             <transaction>
                 <request>v3/transactions/notifications</request>;
             </transaction>
@@ -78,5 +78,21 @@
                 <request>v2/transactions</request>
             </abandoned>
         </transaction>
+        <preApproval>
+            <request>v2/pre-approvals/request</request>
+            <response>v2/pre-approvals/request.html</response>
+            <cancel>
+                <request>v2/pre-approvals/cancel</request>
+            </cancel>
+            <charge>
+                <request>v2/pre-approvals/payment</request>
+            </charge>
+            <search>
+                <request>v2/pre-approvals</request>
+            </search>
+        </preApproval>
+        <directPayment>
+            <request>v2/transactions</request>
+        </directPayment>
     </services>
 </Resources>

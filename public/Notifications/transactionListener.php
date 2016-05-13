@@ -8,14 +8,14 @@ require_once "../../vendor/autoload.php";
 
 try {
     if (\PagSeguro\Helpers\Xhr::hasPost()) {
-        $transaction = \PagSeguro\Services\Transactions\Notification::check(
+        $response = \PagSeguro\Services\Transactions\Notification::check(
             \PagSeguro\Configuration\Configure::getAccountCredentials()
         );
     } else {
         throw new \InvalidArgumentException($_POST);
     }
 
-    var_dump($transaction);
+    var_dump($response);
 } catch (Exception $e) {
     die($e->getMessage());
 }

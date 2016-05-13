@@ -52,4 +52,22 @@ class Xhr
         }
         return false;
     }
+
+    /**
+     * @return integer|null
+     */
+    public static function getInputCode()
+    {
+        return filter_input(INPUT_POST, 'notificationCode', FILTER_SANITIZE_NUMBER_FLOAT) !== null ?
+            filter_input(INPUT_POST, 'notificationCode', FILTER_SANITIZE_NUMBER_FLOAT) : null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public static function getInputType()
+    {
+        return filter_input(INPUT_POST, 'notificationType', FILTER_SANITIZE_STRING) !== null ?
+            filter_input(INPUT_POST, 'notificationType', FILTER_SANITIZE_STRING) : null;
+    }
 }

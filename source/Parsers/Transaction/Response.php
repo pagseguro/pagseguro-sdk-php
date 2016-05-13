@@ -25,15 +25,19 @@
 namespace PagSeguro\Parsers\Transaction;
 
 /**
-     * Class Response
-     * @package PagSeguro\Parsers\Refund
-     */
-/**
  * Class Response
  * @package PagSeguro\Parsers\Notifications
  */
 class Response
 {
+    use \PagSeguro\Parsers\Response\Currency;
+    use \PagSeguro\Parsers\Response\CreditorFees;
+    use \PagSeguro\Parsers\Response\Item;
+    use \PagSeguro\Parsers\Response\PaymentMethod;
+    use \PagSeguro\Parsers\Response\RecoveryCode;
+    use \PagSeguro\Parsers\Response\Sender;
+    use \PagSeguro\Parsers\Response\Shipping;
+    
     /**
      * @var
      */
@@ -62,14 +66,34 @@ class Response
      * @var
      */
     private $installmentCount;
+    
+    private $cancelationSource;
+    
+    private $paymentLink;
 
-    use \PagSeguro\Parsers\Response\Currency;
-    use \PagSeguro\Parsers\Response\CreditorFees;
-    use \PagSeguro\Parsers\Response\Item;
-    use \PagSeguro\Parsers\Response\PaymentMethod;
-    use \PagSeguro\Parsers\Response\Sender;
-    use \PagSeguro\Parsers\Response\Shipping;
+    public function getCancelationSource()
+    {
+        return $this->cancelationSource;
+    }
+    
+    public function setCancelationSource($cancelationSource)
+    {
+        $this->cancelationSource = $cancelationSource;
+        return $this;
+    }
+    
+    public function getPaymentLink()
+    {
+        return $this->paymentLink;
+    }
 
+    public function setPaymentLink($paymentLink)
+    {
+        $this->paymentLink = $paymentLink;
+        return $this;
+    }
+
+        
     /**
      * @return mixed
      */

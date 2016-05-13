@@ -32,7 +32,6 @@ use PagSeguro\Domains\Requests\Sender\Phone;
 
 class Sender
 {
-    use Address;
     use Customer;
     use Document;
     use Phone;

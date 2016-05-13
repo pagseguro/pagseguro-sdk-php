@@ -23,6 +23,7 @@
  */
 
 namespace PagSeguro\Resources\Responsibility\Notifications;
+use PagSeguro\Helpers\Xhr;
 
 /**
  * Class Transaction
@@ -50,9 +51,9 @@ class Transaction implements \PagSeguro\Resources\Responsibility\Notifications\H
      */
     public function handler()
     {
-        if (isset($_POST['notificationCode']) &&
-            isset($_POST['notificationType']) &&
-            $_POST['notificationType'] == \PagSeguro\Enum\Notification::TRANSACTION) {
+        if (!is_null(Xhr::getInputCode()) and
+            !is_null(Xhr::getInputType()) and
+            Xhr::getInputType() == \PagSeguro\Enum\Notification::TRANSACTION) {
             $notification = \PagSeguro\Helpers\NotificationObject::initialize();
             return $notification->getCode();
         }

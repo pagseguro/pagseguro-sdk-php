@@ -49,10 +49,6 @@ class Sender
      * @var
      */
     private $documents;
-    /**
-     * @var
-     */
-    private $ip;
 
     /**
      * Sender constructor.
@@ -147,23 +143,5 @@ class Sender
                 $this->documents[] = $document;
             }
         }
-    }
-
-    /**
-     * @return string
-     */
-    public function getIp()
-    {
-        return $this->ip;
-    }
-
-    /**
-     * @param string $ip
-     * @return Sender
-     */
-    public function setIp($ip)
-    {
-        $this->ip = $ip;
-        return $this;
     }
 }

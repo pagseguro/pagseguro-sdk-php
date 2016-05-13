@@ -25,16 +25,19 @@
 namespace PagSeguro\Parsers\Checkout;
 
 use PagSeguro\Enum\Properties\Current;
+use PagSeguro\Parsers\Accepted;
 use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Currency;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Item;
 use PagSeguro\Parsers\Parser;
 use PagSeguro\Parsers\PaymentMethod;
+use PagSeguro\Parsers\PreApproval;
 use PagSeguro\Parsers\Sender;
 use PagSeguro\Parsers\Shipping;
 use PagSeguro\Parsers\Metadata;
 use PagSeguro\Parsers\Parameter;
+use PagSeguro\Parsers\ReceiverEmail;
 use PagSeguro\Resources\Http;
 
 /**
@@ -43,12 +46,15 @@ use PagSeguro\Resources\Http;
  */
 class Request extends Error implements Parser
 {
+    use Accepted;
     use Basic;
     use Currency;
     use Item;
+    use PreApproval;
     use Sender;
     use Shipping;
     use Metadata;
+    use ReceiverEmail;
     use Parameter;
     use PaymentMethod;
 
@@ -62,14 +68,17 @@ class Request extends Error implements Parser
         $properties = new Current;
         return array_merge(
             $data,
+            Accepted::getData($payment, $properties),
             Basic::getData($payment, $properties),
             Currency::getData($payment, $properties),
             Item::getData($payment, $properties),
+            PreApproval::getData($payment, $properties),
             Sender::getData($payment, $properties),
             Shipping::getData($payment, $properties),
             Metadata::getData($payment, $properties),
             Parameter::getData($payment),
-            PaymentMethod::getData($payment, $properties)
+            PaymentMethod::getData($payment, $properties),
+            ReceiverEmail::getData($payment, $properties)
         );
     }
 

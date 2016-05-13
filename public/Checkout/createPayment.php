@@ -61,8 +61,9 @@ $payment->addMetadata()->withParameters('GAME_NAME', 'DOTA');
 $payment->addMetadata()->withParameters('PASSENGER_PASSPORT', '23456', 1);
 
 //Add items by parameter
+//On index, you have to pass in parameter: total items plus one.
 $payment->addParameter()->withParameters('itemId', '0003')->index(3);
-$payment->addParameter()->withParameters('itemDescription', 'Notebook Rosa')->index(3);
+$payment->addParameter()->withParameters('itemDescription', 'Notebook Amarelo')->index(3);
 $payment->addParameter()->withParameters('itemQuantity', '1')->index(3);
 $payment->addParameter()->withParameters('itemAmount', '200.00')->index(3);
 
@@ -92,6 +93,16 @@ $payment->addPaymentMethod()->withParameters(
     PagSeguro\Enum\PaymentMethod\Config\Keys::MAX_INSTALLMENTS_LIMIT,
     6 // (int) qty of installment
 );
+
+// Add a group and/or payment methods name
+$payment->acceptPaymentMethod()->groups(
+    \PagSeguro\Enum\PaymentMethod\Group::CREDIT_CARD,
+    \PagSeguro\Enum\PaymentMethod\Group::BALANCE
+);
+$payment->acceptPaymentMethod()->name(\PagSeguro\Enum\PaymentMethod\Name::DEBITO_ITAU);
+// Remove a group and/or payment methods name
+$payment->excludePaymentMethod()->group(\PagSeguro\Enum\PaymentMethod\Group::BOLETO);
+
 
 try {
 
