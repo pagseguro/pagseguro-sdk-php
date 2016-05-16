@@ -24,6 +24,8 @@
 
 namespace PagSeguro\Domains\Requests\DirectPayment;
 
+use PagSeguro\Helpers\InitializeObject;
+
 trait Sender
 {
     private $sender;
@@ -31,7 +33,7 @@ trait Sender
     
     public function setSender()
     {
-        $this->instance();
+        $this->sender =  InitializeObject::initialize($this->sender, '\PagSeguro\Domains\DirectPayment\Sender');
         $this->adapter = new \PagSeguro\Domains\Requests\Adapter\DirectPayment\Sender($this->sender);
         return $this->adapter;
         
@@ -40,15 +42,5 @@ trait Sender
     public function getSender()
     {
         return $this->sender;
-    }
-    
-    /**
-     * Instanciate a new sender
-     */
-    private function instance()
-    {
-        if (empty($this->sender) || !isset($this->sender) || is_null($this->sender)) {
-            $this->sender = new \PagSeguro\Domains\DirectPayment\Sender();
-        }
     }
 }

@@ -24,19 +24,16 @@
 
 namespace PagSeguro\Domains\Requests;
 
+use PagSeguro\Helpers\InitializeObject;
+
 trait Billing
 {
     private $billing;
     private $adapter;
 
-    public function __construct()
-    {
-        $this->billing = new \PagSeguro\Domains\DirectPayment\CreditCard\Billing();
-    }
-
     public function setBilling()
     {
-
+        $this->billing = InitializeObject::initialize($this->billing, '\PagSeguro\Domains\Requests\Adapter\DirectPayment\Billing');
         $this->adapter = new \PagSeguro\Domains\Requests\Adapter\DirectPayment\Billing($this->billing);
         return $this->adapter;
     }

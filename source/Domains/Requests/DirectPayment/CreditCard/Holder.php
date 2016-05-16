@@ -23,6 +23,7 @@
  */
 
 namespace PagSeguro\Domains\Requests;
+use PagSeguro\Helpers\InitializeObject;
 
 /**
  * Class Sender
@@ -46,7 +47,7 @@ trait Holder
      */
     public function setHolder()
     {
-        $this->instance();
+        $this->holder = InitializeObject::initialize($this->holder, '\PagSeguro\Domains\DirectPayment\CreditCard\Holder');
         $this->holder = new \PagSeguro\Domains\Requests\Adapter\DirectPayment\Holder($this->holder);
         return $this->adapter;
     }
@@ -57,15 +58,5 @@ trait Holder
     public function getHolder()
     {
         return $this->holder;
-    }
-
-    /**
-     * Instanciate a new sender
-     */
-    private function instance()
-    {
-        if (empty($this->holder) || !isset($this->holder) || is_null($this->holder)) {
-            $this->holder = new \PagSeguro\Domains\DirectPayment\CreditCard\Holder();
-        }
     }
 }
