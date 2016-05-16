@@ -36,7 +36,7 @@ class Authorization extends Builder
     /**
      * @return string
      */
-    public static function getAuthorizationRequestUrl()
+    public static function getRequestUrl()
     {
         return parent::getRequest(
             parent::getUrl('webservice'),
@@ -47,7 +47,7 @@ class Authorization extends Builder
     /**
      * @return string
      */
-    public static function getAuthorizationResponseUrl()
+    public static function getResponseUrl()
     {
         return parent::getResponse(
             parent::getUrl('base'),

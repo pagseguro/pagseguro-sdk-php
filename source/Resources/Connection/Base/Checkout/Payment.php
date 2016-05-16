@@ -37,7 +37,7 @@ trait Payment
      */
     public function buildPaymentRequestUrl()
     {
-        return Builder\Checkout\Payment::getPaymentRequestUrl();
+        return Builder\Checkout\Payment::getRequestUrl();
     }
 
     /**
@@ -45,6 +45,6 @@ trait Payment
      */
     public function buildPaymentResponseUrl()
     {
-        return Builder\Checkout\Payment::getPaymentResponseUrl();
+        return Builder\Checkout\Payment::getResponseUrl();
     }
 }

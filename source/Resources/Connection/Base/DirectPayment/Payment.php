@@ -22,25 +22,21 @@
  *
  */
 
-namespace PagSeguro\Resources\Builder\DirectPayment;
+namespace PagSeguro\Resources\Connection\Base\DirectPayment;
 
 use PagSeguro\Resources\Builder;
 
 /**
  * Class Payment
- * @package PagSeguro\Resources\Builder
+ * @package PagSeguro\Services\Connection\Base
  */
-class DirectPayment extends Builder
+trait Payment
 {
-
     /**
      * @return string
      */
-    public static function getDirectPaymentRequestUrl()
+    public function buildDirectPaymentRequestUrl()
     {
-        return parent::getRequest(
-            parent::getUrl('webservice'),
-            'directPayment'
-        );
+        return Builder\DirectPayment\Payment::getRequestUrl();
     }
 }

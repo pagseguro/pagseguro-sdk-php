@@ -37,7 +37,7 @@ trait Authorization
      */
     public function buildAuthorizationRequestUrl()
     {
-        return Builder\Application\Authorization::getAuthorizationRequestUrl();
+        return Builder\Application\Authorization::getRequestUrl();
     }
 
     /**
@@ -45,6 +45,6 @@ trait Authorization
      */
     public function buildAuthorizationResponseUrl()
     {
-        return Builder\Application\Authorization::getAuthorizationResponseUrl();
+        return Builder\Application\Authorization::getResponseUrl();
     }
 }

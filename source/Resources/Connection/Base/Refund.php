@@ -37,6 +37,6 @@ trait Refund
      */
     public function buildRefundRequestUrl()
     {
-        return Builder\Refund::getRefundRequestUrl();
+        return Builder\Refund::getRequestUrl();
     }
 }

@@ -36,7 +36,7 @@ class Cancel extends Builder
     /**
      * @return string
      */
-    public static function getCancelRequestUrl()
+    public static function getCancelUrl()
     {
         return parent::getRequest(
             parent::getUrl('webservice'),

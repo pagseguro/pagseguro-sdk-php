@@ -37,7 +37,7 @@ trait Charge
      */
     public function buildPreApprovalChargeRequestUrl()
     {
-        return Builder\PreApproval\Charge::getPreApprovalChargeRequestUrl();
+        return Builder\PreApproval\Charge::getRequestUrl();
     }
 
 }
