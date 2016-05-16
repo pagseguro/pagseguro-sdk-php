@@ -89,21 +89,4 @@ class Abandoned
             !isset($params["page"]) ?: sprintf("&%s=%s", Current::SEARCH_PAGE, $params["page"])
         );
     }
-
-    /**
-     * @param $initial
-     * @param $final
-     * @param $max
-     * @param $pages
-     * @return array
-     */
-    private static function toArray($initial, $final, $max, $pages)
-    {
-        return [
-            'initial_date' => $initial,
-            'final_date' => $final,
-            'max_per_page' => $max,
-            'page' => $pages,
-        ];
-    }
 }

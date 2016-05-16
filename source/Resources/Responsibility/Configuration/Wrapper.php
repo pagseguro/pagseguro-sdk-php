@@ -47,6 +47,6 @@ class Wrapper implements Handler
                 \PagSeguro\Helpers\Wrapper::log($configWrapper)
             );
         }
-        return $this->successor->handler(null, null);
+        return $this->successor->handler($action, $class);
     }
 }

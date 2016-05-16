@@ -29,14 +29,11 @@ use PagSeguro\Helpers\InitializeObject;
 trait Sender
 {
     private $sender;
-    private $adapter;
-    
+
     public function setSender()
     {
         $this->sender =  InitializeObject::initialize($this->sender, '\PagSeguro\Domains\DirectPayment\Sender');
-        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\DirectPayment\Sender($this->sender);
-        return $this->adapter;
-        
+        return new \PagSeguro\Domains\Requests\Adapter\DirectPayment\Sender($this->sender);
     }
 
     public function getSender()

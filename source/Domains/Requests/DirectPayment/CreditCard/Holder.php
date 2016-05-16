@@ -38,18 +38,12 @@ trait Holder
     private $holder;
 
     /**
-     * @var
-     */
-    private $adapter;
-
-    /**
      * @return Adapter\Sender
      */
     public function setHolder()
     {
         $this->holder = InitializeObject::initialize($this->holder, '\PagSeguro\Domains\DirectPayment\CreditCard\Holder');
-        $this->holder = new \PagSeguro\Domains\Requests\Adapter\DirectPayment\Holder($this->holder);
-        return $this->adapter;
+        return new \PagSeguro\Domains\Requests\Adapter\DirectPayment\Holder($this->holder);
     }
 
     /**

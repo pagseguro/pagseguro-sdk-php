@@ -47,17 +47,17 @@ trait Parameter
     public function setParameter($parameter)
     {
         if (is_array($parameter)) {
-            $i = array();
+            $arr = array();
             foreach ($parameter as $key => $parameterItem) {
                 if ($parameterItem instanceof \PagSeguro\Domains\Parameter) {
-                    $i[$key] = $parameterItem;
+                    $arr[$key] = $parameterItem;
                 } else {
                     if (is_array($parameter)) {
-                        $i[$key] = new \PagSeguro\Domains\Parameter($parameterItem);
+                        $arr[$key] = new \PagSeguro\Domains\Parameter($parameterItem);
                     }
                 }
             }
-            $this->parameter = $i;
+            $this->parameter = $arr;
         }
     }
 

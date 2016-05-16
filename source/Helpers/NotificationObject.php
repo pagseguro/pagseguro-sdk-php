@@ -37,8 +37,8 @@ class NotificationObject
     public static function initialize()
     {
         $notification = new \PagSeguro\Domains\Notification();
-        $notification->setCode(trim($_POST['notificationCode']))
-                     ->setType(trim($_POST['notificationType']));
+        $notification->setCode(Xhr::getInputCode())
+                     ->setType(Xhr::getInputType());
         return $notification;
     }
 }

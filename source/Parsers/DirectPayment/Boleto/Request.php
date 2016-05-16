@@ -29,7 +29,7 @@ namespace PagSeguro\Parsers\DirectPayment\Boleto;
  *
  * @package PagSeguro\Parsers\DirectPayment\Boleto
  */
-use PagSeguro\Enum\Properties\Current;
+use PagSeguro\Enum\Properties\BackwardCompatibility;
 use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Currency;
 use PagSeguro\Parsers\DirectPayment\Mode;
@@ -65,7 +65,7 @@ class Request extends Error implements Parser
     public static function getData(\PagSeguro\Domains\Requests\DirectPayment\Boleto $boleto)
     {
         $data = [];
-        $properties = new Current;
+        $properties = new BackwardCompatibility();
         return array_merge(
             $data,
             Basic::getData($boleto, $properties),
@@ -75,8 +75,21 @@ class Request extends Error implements Parser
             Mode::getData($boleto, $properties),
             ReceiverEmail::getData($boleto, $properties),
             Sender::getData($boleto, $properties),
-            Shipping::getData($boleto, $properties)
+            Shipping::getData($boleto, $properties),
+            self::split($boleto, $properties)
         );
+    }
+
+    private static function split($request, $properties)
+    {
+        $data = [
+            $properties::PRIMARY_RECEIVER_PUBLIC_KEY => "PUBF0944ADDDD844957ABA278D8645A52C3",
+            sprintf($properties::RECEIVER_PUBLIC_KEY, 1) => "PUBF0944ADDDD844957ABA278D8645A52C3",
+            sprintf($properties::RECEIVER_SPLIT_AMOUNT, 1) => \PagSeguro\Helpers\Currency::toDecimal("200.00"),
+            sprintf($properties::RECEIVER_SPLIT_RATE_PERCENT, 1) => \PagSeguro\Helpers\Currency::toDecimal("10.00"),
+            sprintf($properties::RECEIVER_SPLIT_FEE_PERCENT, 1) => \PagSeguro\Helpers\Currency::toDecimal("0.00")
+        ];
+        return $data;
     }
 
     /**

@@ -48,6 +48,6 @@ class File implements Handler
                 \PagSeguro\Helpers\Wrapper::log($wrapper)
             );
         }
-        return $this->successor->handler(null, null);
+        return $this->successor->handler($action, $class);
     }
 }

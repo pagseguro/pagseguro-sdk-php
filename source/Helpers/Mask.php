@@ -150,34 +150,22 @@ class Mask
     }
 
     /**
-     * @param $subject
-     * @return bool|string
-     */
-    private static function removePrefix($subject)
-    {
-        if ($subject) {
-            return substr($subject, 2);
-        }
-        return false;
-    }
-
-    /**
-     * @param $val
+     * @param $value
      * @param $mask
      * @return string
      */
-    private static function mask($val, $mask)
+    private static function mask($value, $mask)
     {
         $maskared = '';
-        $k = 0;
-        for ($i = 0; $i <= strlen($mask)-1; $i++)
+        $key = 0;
+        for ($count = 0; $count <= strlen($mask)-1; $count++)
         {
-            if ($mask[$i] == '#') {
-                if(isset($val[$k]))
-                    $maskared .= $val[$k++];
+            if ($mask[$count] == '#') {
+                if(isset($value[$key]))
+                    $maskared .= $value[$key++];
             } else {
-                if(isset($mask[$i]))
-                    $maskared .= $mask[$i];
+                if(isset($mask[$count]))
+                    $maskared .= $mask[$count];
             }
         }
         return $maskared;

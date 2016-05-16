@@ -29,13 +29,11 @@ use PagSeguro\Helpers\InitializeObject;
 trait Billing
 {
     private $billing;
-    private $adapter;
 
     public function setBilling()
     {
         $this->billing = InitializeObject::initialize($this->billing, '\PagSeguro\Domains\Requests\Adapter\DirectPayment\Billing');
-        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\DirectPayment\Billing($this->billing);
-        return $this->adapter;
+        return new \PagSeguro\Domains\Requests\Adapter\DirectPayment\Billing($this->billing);
     }
 
     public function getBilling()

@@ -37,10 +37,6 @@ trait Sender
      * @var
      */
     private $sender;
-    /**
-     * @var
-     */
-    private $adapter;
 
     /**
      * @return Adapter\Sender
@@ -48,8 +44,7 @@ trait Sender
     public function setSender()
     {
         $this->sender = InitializeObject::initialize($this->sender, '\PagSeguro\Domains\Sender');
-        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\Sender($this->sender);
-        return $this->adapter;
+        return new \PagSeguro\Domains\Requests\Adapter\Sender($this->sender);
     }
 
     /**

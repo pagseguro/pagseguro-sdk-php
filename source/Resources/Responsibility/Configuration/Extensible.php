@@ -45,6 +45,7 @@ class Extensible implements Handler
 
     public function handler($action, $class)
     {
+        unset($action, $class);
         if (file_exists(CONFIG)) {
             return array_merge(
                 $this->environment(),

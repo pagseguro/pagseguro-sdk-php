@@ -23,6 +23,7 @@
  */
 
 namespace PagSeguro\Domains\Requests\PreApproval;
+
 use PagSeguro\Helpers\InitializeObject;
 
 /**
@@ -36,10 +37,6 @@ trait Sender
      * @var
      */
     private $sender;
-    /**
-     * @var
-     */
-    private $adapter;
 
     /**
      * @return \PagSeguro\Domains\Requests\Adapter\Sender
@@ -47,8 +44,7 @@ trait Sender
     public function setSender()
     {
         $this->sender = InitializeObject::initialize($this->sender, '\PagSeguro\Domains\PreApproval\Sender');
-        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\PreApproval\Sender($this->sender);
-        return $this->adapter;
+        return new \PagSeguro\Domains\Requests\Adapter\PreApproval\Sender($this->sender);
     }
 
     /**
