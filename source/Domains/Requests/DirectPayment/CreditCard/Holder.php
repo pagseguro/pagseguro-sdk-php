@@ -22,7 +22,9 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests;
+namespace PagSeguro\Domains\Requests\DirectPayment\CreditCard;
+
+use PagSeguro\Helpers\InitializeObject;
 
 /**
  * Class Sender
@@ -30,25 +32,18 @@ namespace PagSeguro\Domains\Requests;
  */
 trait Holder
 {
-
     /**
      * @var
      */
     private $holder;
 
     /**
-     * @var
-     */
-    private $adapter;
-
-    /**
-     * @return Adapter\Sender
+     * @return \PagSeguro\Domains\Requests\Adapter\DirectPayment\Holder
      */
     public function setHolder()
     {
-        $this->instance();
-        $this->holder = new \PagSeguro\Domains\Requests\Adapter\DirectPayment\Holder($this->holder);
-        return $this->adapter;
+        $this->holder = InitializeObject::initialize($this->holder, '\PagSeguro\Domains\DirectPayment\CreditCard\Holder');
+        return new \PagSeguro\Domains\Requests\Adapter\DirectPayment\Holder($this->holder);
     }
 
     /**
@@ -57,15 +52,5 @@ trait Holder
     public function getHolder()
     {
         return $this->holder;
-    }
-
-    /**
-     * Instanciate a new sender
-     */
-    private function instance()
-    {
-        if (empty($this->holder) || !isset($this->holder) || is_null($this->holder)) {
-            $this->holder = new \PagSeguro\Domains\DirectPayment\CreditCard\Holder();
-        }
     }
 }

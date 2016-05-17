@@ -22,27 +22,23 @@
  *
  */
 
-namespace PagSeguro\Helpers;
+namespace PagSeguro\Domains\Requests\DirectPayment;
+
+use PagSeguro\Domains\Requests\DirectPayment\CreditCard\Request;
 
 /**
- * Class InitializeObject
- * @package PagSeguro\Helpers
+ * Class Payment
+ * @package PagSeguro\Domains\Requests\DirectPayment
  */
-class InitializeObject
-{
-    
+class CreditCard extends Request
+{   
     /**
-     * Check if $attr is started, if not instatiate it
-     * @param object $attr
-     * @param class $instantiateClass
-     * @return object from $instantiateClass
+     * @param $credentials
+     * @return string
+     * @throws \Exception
      */
-    public static function initialize($attr, $instantiateClass)
+    public function register($credentials)
     {
-        if (! isset($attr) || empty($attr) || is_null($attr)) {
-            $attr = new $instantiateClass;
-        }
-        
-        return $attr;
+        return \PagSeguro\Services\DirectPayment\CreditCard::checkout($credentials, $this);
     }
 }

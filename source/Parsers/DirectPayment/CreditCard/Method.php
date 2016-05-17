@@ -22,27 +22,21 @@
  *
  */
 
-namespace PagSeguro\Helpers;
+namespace PagSeguro\Parsers\DirectPayment\CreditCard;
 
 /**
- * Class InitializeObject
- * @package PagSeguro\Helpers
+ * Class Moede
+ * @package PagSeguro\Parsers\DirectPayment\CreditCard
  */
-class InitializeObject
+trait Method
 {
-    
     /**
-     * Check if $attr is started, if not instatiate it
-     * @param object $attr
-     * @param class $instantiateClass
-     * @return object from $instantiateClass
+     * @param $properties
+     * @return array
      */
-    public static function initialize($attr, $instantiateClass)
+    public static function getData($properties)
     {
-        if (! isset($attr) || empty($attr) || is_null($attr)) {
-            $attr = new $instantiateClass;
-        }
-        
-        return $attr;
+        $data[$properties::DIRECT_PAYMENT_METHOD] = \PagSeguro\Enum\DirectPayment\Method::CREDIT_CARD;
+        return $data;
     }
 }

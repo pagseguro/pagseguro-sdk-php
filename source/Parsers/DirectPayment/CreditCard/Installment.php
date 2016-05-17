@@ -22,27 +22,36 @@
  *
  */
 
-namespace PagSeguro\Helpers;
+namespace PagSeguro\Parsers\DirectPayment\CreditCard;
+
+use PagSeguro\Domains\Requests\Requests;
+use PagSeguro\Helpers\Currency;
 
 /**
- * Class InitializeObject
- * @package PagSeguro\Helpers
+ * Class Installment
+ * @package PagSeguro\Parsers\DirectPayment\CreditCard
  */
-class InitializeObject
+trait Installment
 {
-    
     /**
-     * Check if $attr is started, if not instatiate it
-     * @param object $attr
-     * @param class $instantiateClass
-     * @return object from $instantiateClass
+     * @param Requests $request
+     * @param $properties
+     * @return array
      */
-    public static function initialize($attr, $instantiateClass)
+    public static function getData(Requests $request, $properties)
     {
-        if (! isset($attr) || empty($attr) || is_null($attr)) {
-            $attr = new $instantiateClass;
+        $data = [];
+        $installment = current($request->getInstallment());
+
+        // quantity
+        if (!is_null($installment->getQuantity())) {
+            $data[$properties::INSTALLMENT_QUANTITY] = $installment->getQuantity();
         }
-        
-        return $attr;
+        // value
+        if (!is_null($installment->getValue())) {
+            $data[$properties::INSTALLMENT_VALUE] = Currency::toDecimal($installment->getValue());
+        }
+
+        return $data;
     }
 }

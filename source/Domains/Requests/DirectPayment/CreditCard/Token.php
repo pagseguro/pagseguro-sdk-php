@@ -22,27 +22,25 @@
  *
  */
 
-namespace PagSeguro\Helpers;
+namespace PagSeguro\Domains\Requests\DirectPayment\CreditCard;
 
 /**
- * Class InitializeObject
- * @package PagSeguro\Helpers
+ * Domain request class of Token
+ *
+ * @package PagSeguro\Domains\Requests\DirectPayment\CreditCard
  */
-class InitializeObject
+trait Token
 {
+    private $token;
     
-    /**
-     * Check if $attr is started, if not instatiate it
-     * @param object $attr
-     * @param class $instantiateClass
-     * @return object from $instantiateClass
-     */
-    public static function initialize($attr, $instantiateClass)
+    public function getToken()
     {
-        if (! isset($attr) || empty($attr) || is_null($attr)) {
-            $attr = new $instantiateClass;
-        }
-        
-        return $attr;
+        return $this->token;
+    }
+
+    public function setToken($token)
+    {
+        $this->token = $token;
+        return $this;
     }
 }

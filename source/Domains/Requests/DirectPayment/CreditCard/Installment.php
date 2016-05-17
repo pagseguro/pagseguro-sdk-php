@@ -22,27 +22,25 @@
  *
  */
 
-namespace PagSeguro\Helpers;
+namespace PagSeguro\Domains\Requests\DirectPayment\CreditCard;
 
 /**
- * Class InitializeObject
- * @package PagSeguro\Helpers
+ * Description of Installment
+ *
+ * @package \PagSeguro\Domains\Requests\DirectPayment\CreditCard
  */
-class InitializeObject
+trait Installment
 {
+    private $installment;
     
-    /**
-     * Check if $attr is started, if not instatiate it
-     * @param object $attr
-     * @param class $instantiateClass
-     * @return object from $instantiateClass
-     */
-    public static function initialize($attr, $instantiateClass)
+    public function getInstallment()
     {
-        if (! isset($attr) || empty($attr) || is_null($attr)) {
-            $attr = new $instantiateClass;
-        }
-        
-        return $attr;
+        return $this->installment;
+    }
+
+    public function setInstallment()
+    {
+        $this->installment = new \PagSeguro\Resources\Factory\Request\DirectPayment\CreditCard\Installment();
+        return $this->installment;
     }
 }

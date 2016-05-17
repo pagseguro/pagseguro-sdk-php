@@ -22,7 +22,7 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests\DirectPayment\CreditCard;
+namespace PagSeguro\Domains\Requests\DirectPayment\CreditCard\Holder;
 
 trait Document
 {

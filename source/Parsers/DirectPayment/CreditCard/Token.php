@@ -22,27 +22,29 @@
  *
  */
 
-namespace PagSeguro\Helpers;
+namespace PagSeguro\Parsers\DirectPayment\CreditCard;
+
+use PagSeguro\Domains\Requests\Requests;
 
 /**
- * Class InitializeObject
- * @package PagSeguro\Helpers
+ * Class Moede
+ * @package PagSeguro\Parsers\DirectPayment\CreditCard
  */
-class InitializeObject
+trait Token
 {
-    
     /**
-     * Check if $attr is started, if not instatiate it
-     * @param object $attr
-     * @param class $instantiateClass
-     * @return object from $instantiateClass
+     * @param Requests $request
+     * @param $properties
+     * @return array
      */
-    public static function initialize($attr, $instantiateClass)
+    public static function getData(Requests $request, $properties)
     {
-        if (! isset($attr) || empty($attr) || is_null($attr)) {
-            $attr = new $instantiateClass;
+        $data = [];
+        // quantity
+        if (!is_null($request->getToken())) {
+            $data[$properties::CREDIT_CARD_TOKEN] = $request->getToken();
         }
-        
-        return $attr;
+
+        return $data;
     }
 }

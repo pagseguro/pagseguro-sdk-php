@@ -22,27 +22,37 @@
  *
  */
 
-namespace PagSeguro\Helpers;
+namespace PagSeguro\Domains\DirectPayment\CreditCard;
 
 /**
- * Class InitializeObject
- * @package PagSeguro\Helpers
+ * Description of Installment
+ *
+ * @package PagSeguro\Domains\DirectPayment\CreditCard
  */
-class InitializeObject
+class Installment
 {
+    private $quantity;
+    private $value;
     
-    /**
-     * Check if $attr is started, if not instatiate it
-     * @param object $attr
-     * @param class $instantiateClass
-     * @return object from $instantiateClass
-     */
-    public static function initialize($attr, $instantiateClass)
+    public function getQuantity()
     {
-        if (! isset($attr) || empty($attr) || is_null($attr)) {
-            $attr = new $instantiateClass;
-        }
-        
-        return $attr;
+        return $this->quantity;
+    }
+
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+        return $this;
+    }
+
+    public function setValue($value)
+    {
+        $this->value = $value;
+        return $this;
     }
 }

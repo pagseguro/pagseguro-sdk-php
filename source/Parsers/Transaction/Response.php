@@ -32,6 +32,7 @@ class Response
 {
     use \PagSeguro\Parsers\Response\Currency;
     use \PagSeguro\Parsers\Response\CreditorFees;
+    use \PagSeguro\Parsers\Response\GatewaySystem;
     use \PagSeguro\Parsers\Response\Item;
     use \PagSeguro\Parsers\Response\PaymentMethod;
     use \PagSeguro\Parsers\Response\RecoveryCode;
