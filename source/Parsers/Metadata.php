@@ -46,25 +46,24 @@ trait Metadata
         $data = [];
         $metadata = $request->getMetadata();
         if ($request->metadataLenght() > 0) {
-            $i = 0;
+            $count = 0;
 
             foreach ($metadata as $key => $value) {
-                $i++;
+                $count++;
                 if (!is_null($metadata[$key]->getKey())) {
-                    $data[sprintf($properties::METADATA_ITEM_KEY, $i)] = $metadata[$key]->getKey();
+                    $data[sprintf($properties::METADATA_ITEM_KEY, $count)] = $metadata[$key]->getKey();
                 }
                 if (!is_null($metadata[$key]->getValue())) {
-                    $data[sprintf($properties::METADATA_ITEM_VALUE, $i)] = self::formatKeyValue(
+                    $data[sprintf($properties::METADATA_ITEM_VALUE, $count)] = self::formatKeyValue(
                         $metadata[$key]->getKey(),
                         $metadata[$key]->getValue()
                     );
                 }
                 if (!is_null($metadata[$key]->getGroup())) {
-                    $data[sprintf($properties::METADATA_ITEM_GROUP, $i)] = $metadata[$key]->getGroup();
+                    $data[sprintf($properties::METADATA_ITEM_GROUP, $count)] = $metadata[$key]->getGroup();
                 }
             }
         }
-
         return $data;
     }
     

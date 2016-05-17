@@ -43,17 +43,17 @@ trait PaymentMethod
     public function setPaymentMethod($paymentMethod)
     {
         if (is_array($paymentMethod)) {
-            $i = array();
+            $arr = array();
             foreach ($paymentMethod as $key => $method) {
                 if ($method instanceof \PagSeguro\Domains\PaymentMethod) {
-                    $i[$key] = $method;
+                    $arr[$key] = $method;
                 } else {
                     if (is_array($paymentMethod)) {
-                        $i[$key] = new \PagSeguro\Domains\PaymentMethod($method);
+                        $arr[$key] = new \PagSeguro\Domains\PaymentMethod($method);
                     }
                 }
             }
-            $this->paymentMethod = $i;
+            $this->paymentMethod = $arr;
         }
     }
 

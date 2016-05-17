@@ -32,7 +32,7 @@ use PagSeguro\Resources\Builder;
  */
 class Session extends Builder
 {
-    public static function getSessionRequestUrl()
+    public static function getRequestUrl()
     {
         return parent::getRequest(
             parent::getUrl('webservice'),

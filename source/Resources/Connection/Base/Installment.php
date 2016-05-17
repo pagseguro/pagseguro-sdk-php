@@ -37,6 +37,6 @@ trait Installment
      */
     public function buildInstallmentRequestUrl()
     {
-        return Builder\Installment::getInstallmentRequestUrl();
+        return Builder\Installment::getRequestUrl();
     }
 }

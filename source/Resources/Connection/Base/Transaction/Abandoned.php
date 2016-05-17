@@ -37,6 +37,6 @@ trait Abandoned
      */
     public function buildAbandonedRequestUrl()
     {
-        return Builder\Transaction\Abandoned::getAbandonedRequestUrl();
+        return Builder\Transaction\Abandoned::getRequestUrl();
     }
 }

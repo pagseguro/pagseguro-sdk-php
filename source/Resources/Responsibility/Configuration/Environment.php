@@ -59,7 +59,7 @@ class Environment implements Handler
                 $this->log()
             );
         }
-        return $this->successor->handler(null, null);
+        return $this->successor->handler($action, $class);
     }
 
     private function environment()

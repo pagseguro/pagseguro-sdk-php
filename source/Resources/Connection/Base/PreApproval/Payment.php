@@ -37,7 +37,7 @@ trait Payment
      */
     public function buildPreApprovalRequestUrl()
     {
-        return Builder\PreApproval\Payment::getPreApprovalRequestUrl();
+        return Builder\PreApproval\Payment::getRequestUrl();
     }
 
     /**
@@ -45,6 +45,6 @@ trait Payment
      */
     public function buildPreApprovalResponseUrl()
     {
-        return Builder\PreApproval\Payment::getPreApprovalResponseUrl();
+        return Builder\PreApproval\Payment::getResponseUrl();
     }
 }

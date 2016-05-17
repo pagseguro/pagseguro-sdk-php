@@ -37,6 +37,6 @@ trait Session
      */
     public function buildSessionRequestUrl()
     {
-        return Builder\Session::getSessionRequestUrl();
+        return Builder\Session::getRequestUrl();
     }
 }

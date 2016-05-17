@@ -60,6 +60,6 @@ class Enum extends BaseEnum
     public static function getValue($value)
     {
         $values = array_values(parent::getConstants());
-        return in_array($value, $values, $strict = true);
+        return in_array($value, $values, true);
     }
 }

@@ -24,6 +24,8 @@
 
 namespace PagSeguro\Domains\Requests;
 
+use PagSeguro\Helpers\InitializeObject;
+
 /**
  * Class Sender
  * @package PagSeguro\Domains\Requests
@@ -35,19 +37,14 @@ trait Sender
      * @var
      */
     private $sender;
-    /**
-     * @var
-     */
-    private $adapter;
 
     /**
      * @return Adapter\Sender
      */
     public function setSender()
     {
-        $this->instance();
-        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\Sender($this->sender);
-        return $this->adapter;
+        $this->sender = InitializeObject::initialize($this->sender, '\PagSeguro\Domains\Sender');
+        return new \PagSeguro\Domains\Requests\Adapter\Sender($this->sender);
     }
 
     /**
@@ -58,13 +55,4 @@ trait Sender
         return $this->sender;
     }
 
-    /**
-     * Instanciate a new sender
-     */
-    private function instance()
-    {
-        if (empty($this->sender) || !isset($this->sender) || is_null($this->sender)) {
-            $this->sender = new \PagSeguro\Domains\Sender();
-        }
-    }
 }

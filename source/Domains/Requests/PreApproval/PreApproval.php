@@ -25,6 +25,8 @@
 namespace PagSeguro\Domains\Requests\PreApproval;
 
 
+use PagSeguro\Helpers\InitializeObject;
+
 trait PreApproval
 {
     private $preApproval;
@@ -42,9 +44,7 @@ trait PreApproval
      */
     public function setPreApproval()
     {
-        if (empty($this->preApproval ) || !isset($this->preApproval ) || is_null($this->preApproval )) {
-            $this->preApproval = new \PagSeguro\Domains\PreApproval();
-        }
+        $this->preApproval = InitializeObject::initialize($this->preApproval, '\PagSeguro\Domains\PreApproval');
         return $this->preApproval;
     }
 }

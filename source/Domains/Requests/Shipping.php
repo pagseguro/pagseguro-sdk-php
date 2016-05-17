@@ -27,7 +27,6 @@ namespace PagSeguro\Domains\Requests;
 trait Shipping
 {
     private $shipping;
-    private $adapter;
 
     public function __construct()
     {
@@ -36,9 +35,7 @@ trait Shipping
 
     public function setShipping()
     {
-
-        $this->adapter = new \PagSeguro\Domains\Requests\Adapter\Shipping($this->shipping);
-        return $this->adapter;
+        return new \PagSeguro\Domains\Requests\Adapter\Shipping($this->shipping);
     }
 
     public function getShipping()

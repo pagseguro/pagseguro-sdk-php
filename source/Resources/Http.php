@@ -132,6 +132,7 @@ class Http
                 CURLOPT_HTTPGET => true
             );
         }
+
         $options = array(
             CURLOPT_HTTPHEADER => array(
                 "Content-Type: application/x-www-form-urlencoded; charset=" . $charset,

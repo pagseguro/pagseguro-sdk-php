@@ -26,6 +26,8 @@ namespace PagSeguro\Domains\Requests\DirectPayment\CreditCard;
 
 use PagSeguro\Helpers\InitializeObject;
 
+use PagSeguro\Helpers\InitializeObject;
+
 trait Billing
 {
     private $billing;

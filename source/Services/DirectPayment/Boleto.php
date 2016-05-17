@@ -58,6 +58,8 @@ class Boleto
                 json_encode(Crypto::encrypt(Request::getData($payment)))),
                 ['service' => 'Checkout']
             );
+
+            var_dump(self::request($connection), http_build_query(Request::getData($payment)));
             $http->post(
                 self::request($connection),
                 Request::getData($payment)

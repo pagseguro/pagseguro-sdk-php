@@ -36,7 +36,7 @@ class Payment extends Builder
     /**
      * @return string
      */
-    public static function getPaymentRequestUrl()
+    public static function getRequestUrl()
     {
         return parent::getRequest(
             parent::getUrl('webservice'),
@@ -47,7 +47,7 @@ class Payment extends Builder
     /**
      * @return string
      */
-    public static function getPaymentResponseUrl()
+    public static function getResponseUrl()
     {
         return parent::getResponse(
             parent::getUrl('base'),

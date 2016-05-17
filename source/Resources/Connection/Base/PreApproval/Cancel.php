@@ -37,6 +37,6 @@ trait Cancel
      */
     public function buildPreApprovalCancelUrl()
     {
-        return Builder\PreApproval\Cancel::getPreApprovalCancelUrl();
+        return Builder\PreApproval\Cancel::getCancelUrl();
     }
 }
