@@ -30,6 +30,7 @@ namespace PagSeguro\Parsers\DirectPayment\Boleto;
  * @package PagSeguro\Parsers\DirectPayment\Boleto
  */
 use PagSeguro\Enum\Properties\BackwardCompatibility;
+use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Currency;
 use PagSeguro\Parsers\DirectPayment\Mode;
@@ -40,7 +41,7 @@ use PagSeguro\Parsers\ReceiverEmail;
 use PagSeguro\Parsers\Sender;
 use PagSeguro\Parsers\Shipping;
 use PagSeguro\Resources\Http;
-use PagSeguro\Parsers\Transaction\Response;
+use PagSeguro\Parsers\Transaction\Boleto\Response;
 
 
 /**
@@ -65,7 +66,7 @@ class Request extends Error implements Parser
     public static function getData(\PagSeguro\Domains\Requests\DirectPayment\Boleto $boleto)
     {
         $data = [];
-        $properties = new BackwardCompatibility();
+        $properties = new Current();
         return array_merge(
             $data,
             Basic::getData($boleto, $properties),
@@ -75,8 +76,8 @@ class Request extends Error implements Parser
             Mode::getData($boleto, $properties),
             ReceiverEmail::getData($boleto, $properties),
             Sender::getData($boleto, $properties),
-            Shipping::getData($boleto, $properties),
-            self::split($boleto, $properties)
+            Shipping::getData($boleto, $properties)
+            //self::split($boleto, $properties)
         );
     }
 

@@ -22,30 +22,24 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests\DirectPayment\CreditCard;
+namespace PagSeguro\Parsers\Response;
 
-use PagSeguro\Helpers\InitializeObject;
-
-trait Billing
+/**
+ * Class Sender
+ * @package PagSeguro\Parsers\Response
+ */
+trait PaymentLink
 {
-    private $billing;
-
-    /**
-     * 
-     * @return \PagSeguro\Domains\Requests\Adapter\DirectPayment\Billing
-     */
-    public function setBilling()
-    {
-        $this->billing = InitializeObject::initialize($this->billing, '\PagSeguro\Domains\DirectPayment\CreditCard\Billing');
-        return new \PagSeguro\Domains\Requests\Adapter\DirectPayment\Billing($this->billing);
-    }
+    private $paymentLink;
     
-    /**
-     * 
-     * @return billing
-     */
-    public function getBilling()
+    public function getPaymentLink()
     {
-        return $this->billing;
+        return $this->paymentLink;
+    }
+
+    public function setPaymentLink($paymentLink)
+    {
+        $this->paymentLink = $paymentLink;
+        return $this;
     }
 }

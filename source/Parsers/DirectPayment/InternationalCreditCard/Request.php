@@ -22,7 +22,7 @@
  *
  */
 
-namespace PagSeguro\Parsers\DirectPayment\CreditCard;
+namespace PagSeguro\Parsers\DirectPayment\InternationalCreditCard;
 
 /**
  * Request from the Credit Card direct payment
@@ -31,9 +31,8 @@ namespace PagSeguro\Parsers\DirectPayment\CreditCard;
 use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Currency;
-use PagSeguro\Parsers\DirectPayment\CreditCard\Billing;
-use PagSeguro\Parsers\DirectPayment\CreditCard\Holder;
 use PagSeguro\Parsers\DirectPayment\CreditCard\Installment;
+use PagSeguro\Parsers\DirectPayment\CreditCard\Method;
 use PagSeguro\Parsers\DirectPayment\CreditCard\Token;
 use PagSeguro\Parsers\DirectPayment\Mode;
 use PagSeguro\Parsers\Error;
@@ -41,9 +40,8 @@ use PagSeguro\Parsers\Item;
 use PagSeguro\Parsers\Parser;
 use PagSeguro\Parsers\ReceiverEmail;
 use PagSeguro\Parsers\Sender;
-use PagSeguro\Parsers\Shipping;
 use PagSeguro\Resources\Http;
-use PagSeguro\Parsers\Transaction\CreditCard\Response;
+use PagSeguro\Parsers\Transaction\InternationalCreditCard\Response;
 
 
 /**
@@ -54,36 +52,32 @@ class Request extends Error implements Parser
 {
     use Basic;
     use Currency;
-    use Holder;
     use Installment;
     use Item;
     use Method;
     use Mode;
     use ReceiverEmail;
     use Sender;
-    use Shipping;
+    use Token;
 
     /**
      * @param \PagSeguro\Domains\Requests\DirectPayment\CreditCard $creditCard
      * @return array
      */
-    public static function getData(\PagSeguro\Domains\Requests\DirectPayment\CreditCard $creditCard)
+    public static function getData(\PagSeguro\Domains\Requests\Requests $creditCard)
     {
         $data = [];
         $properties = new Current;
         return array_merge(
             $data,
             Basic::getData($creditCard, $properties),
-            Billing::getData($creditCard, $properties),
             Currency::getData($creditCard, $properties),
-            Holder::getData($creditCard, $properties),
             Installment::getData($creditCard, $properties),
             Item::getData($creditCard, $properties),
             Method::getData($properties),
             Mode::getData($creditCard, $properties),
             ReceiverEmail::getData($creditCard, $properties),
             Sender::getData($creditCard, $properties),
-            Shipping::getData($creditCard, $properties),
             Token::getData($creditCard, $properties)
         );
     }
@@ -96,26 +90,26 @@ class Request extends Error implements Parser
     {
         $xml = simplexml_load_string($http->getResponse());
 
-        return (new Response)->setCancelationSource(current($xml->cancelationSource))
+        return (new Response)->setDate(current($xml->date))
             ->setCode(current($xml->code))
-            ->setDate(current($xml->date))
+            ->setReference(current($xml->reference))
+            ->setRecoveryCode(current($xml->recoveryCode))
+            ->setType(current($xml->type))
+            ->setStatus(current($xml->status))
+            ->setLastEventDate(current($xml->lastEventDate))
+            ->setCancelationSource(current($xml->cancelationSource))
+            ->setPaymentMethod($xml->paymentMethod)
+            ->setGrossAmount(current($xml->grossAmount))
             ->setDiscountAmount(current($xml->discountAmount))
+            ->setFeeAmount(current($xml->feeAmount))
+            ->setNetAmount(current($xml->netAmount))
             ->setExtraAmount(current($xml->extraAmount))
             ->setEscrowEndDate(current($xml->escrowEndDate))
-            ->setFeeAmount(current($xml->feeAmount))
-            ->setGatewaySystem($xml->gatewaySystem)
-            ->setGrossAmount(current($xml->grossAmount))
             ->setInstallmentCount(current($xml->installmentCount))
             ->setItemCount(current($xml->itemCount))
             ->setItems($xml->items)
-            ->setLastEventDate(current($xml->lastEventDate))
-            ->setNetAmount(current($xml->netAmount))
-            ->setPaymentMethod($xml->paymentMethod)
-            ->setReference(current($xml->reference))
             ->setSender($xml->sender)
-            ->setShipping($xml->shipping)
-            ->setStatus(current($xml->status))
-            ->setType(current($xml->type));
+            ->setGatewaySystem($xml->gatewaySystem);
     }
 
     /**

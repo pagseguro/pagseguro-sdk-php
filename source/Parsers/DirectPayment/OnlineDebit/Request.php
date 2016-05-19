@@ -39,7 +39,7 @@ use PagSeguro\Parsers\ReceiverEmail;
 use PagSeguro\Parsers\Sender;
 use PagSeguro\Parsers\Shipping;
 use PagSeguro\Resources\Http;
-use PagSeguro\Parsers\Transaction\Response;
+use PagSeguro\Parsers\Transaction\OnlineDebit\Response;
 
 
 /**

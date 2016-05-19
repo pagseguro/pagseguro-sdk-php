@@ -22,19 +22,20 @@
  *
  */
 
-namespace PagSeguro\Parsers\Transaction;
+namespace PagSeguro\Parsers\Transaction\InternationalCreditCard;
 
 /**
  * Class Response
- * @package PagSeguro\Parsers\Transaction
+ * @package PagSeguro\Parsers\Transaction\InternationalCreditCard
  */
 class Response
 {
     use \PagSeguro\Parsers\Response\Currency;
+    use \PagSeguro\Parsers\Response\GatewaySystem;
     use \PagSeguro\Parsers\Response\Item;
     use \PagSeguro\Parsers\Response\PaymentMethod;
+    use \PagSeguro\Parsers\Response\RecoveryCode;
     use \PagSeguro\Parsers\Response\Sender;
-    use \PagSeguro\Parsers\Response\Shipping;
     
     /**
      * @var

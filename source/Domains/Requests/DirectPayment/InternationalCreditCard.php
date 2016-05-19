@@ -22,30 +22,24 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests\DirectPayment\CreditCard;
+namespace PagSeguro\Domains\Requests\DirectPayment;
 
-use PagSeguro\Helpers\InitializeObject;
+use PagSeguro\Domains\Requests\DirectPayment\InternationalCreditCard\Request;
 
-trait Billing
-{
-    private $billing;
-
+/**
+ * Class International Credit Card
+ * @package PagSeguro\Domains\Requests\DirectPayment
+ */
+class InternationalCreditCard extends Request
+{   
     /**
-     * 
-     * @return \PagSeguro\Domains\Requests\Adapter\DirectPayment\Billing
+     * Register a checkout using international credit card
+     * @param $credentials
+     * @return mixed
+     * @throws \Exception
      */
-    public function setBilling()
+    public function register($credentials)
     {
-        $this->billing = InitializeObject::initialize($this->billing, '\PagSeguro\Domains\DirectPayment\CreditCard\Billing');
-        return new \PagSeguro\Domains\Requests\Adapter\DirectPayment\Billing($this->billing);
-    }
-    
-    /**
-     * 
-     * @return billing
-     */
-    public function getBilling()
-    {
-        return $this->billing;
+        return \PagSeguro\Services\DirectPayment\InternationalCreditCard::checkout($credentials, $this);
     }
 }
