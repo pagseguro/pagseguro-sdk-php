@@ -12,11 +12,6 @@ $boleto = new \PagSeguro\Domains\Requests\DirectPayment\Boleto();
 // Set the Payment Mode for this payment request
 $boleto->setMode('DEFAULT');
 
-/**
- * @todo Change the receiver Email
- */
-//$boleto->setReceiverEmail('vendedor@lojamodelo.com.br'); 
-
 // Set the currency
 $boleto->setCurrency("BRL");
 
@@ -38,10 +33,8 @@ $boleto->addItems()->withParameters(
 
 // Set a reference code for this payment request. It is useful to identify this payment
 // in future notifications.
-$boleto->setReference("LIBPHP000001-boleto");
+$boleto->setReference("LIBPHP000001");
 
-//set extra amount
-$boleto->setExtraAmount(11.5);
 
 // Set your customer information.
 // If you using SANDBOX you must use an email @sandbox.pagseguro.com.br
@@ -74,15 +67,25 @@ $boleto->setShipping()->setAddress()->withParameters(
     'apto. 114'
 );
 
+// Add a primary receiver for split this payment request
+$boleto->setSplit()->setPrimaryReceiver("PUBBD8F184FEE144EADA6DA746D61FAA688");
+
+// Add an receiver for split this payment request
+$boleto->setSplit()->addReceiver()->withParameters(
+    'PUBF0944ADDDD844957ABA278D8645A52C3',
+    200.00,
+    20,
+    0
+);
+
 try {
     //Get the crendentials and register the boleto payment
     $result = $boleto->register(
-        \PagSeguro\Configuration\Configure::getAccountCredentials()
+        \PagSeguro\Configuration\Configure::getApplicationCredentials()
     );
 
     echo "<pre>";
     print_r($result);
 } catch (Exception $e) {
-    echo "</br> <strong>";
     die($e->getMessage());
 }

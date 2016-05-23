@@ -22,19 +22,31 @@
  *
  */
 
-namespace PagSeguro\Parsers\Transaction\OnlineDebit;
+namespace PagSeguro\Domains\Requests\Adapter;
 
-use PagSeguro\Parsers\Response\Application;
-use PagSeguro\Parsers\Response\CreditorFees;
+use PagSeguro\Domains\Requests\Split\Primary;
+use PagSeguro\Domains\Requests\Split\Receiver;
 
 /**
- * Class Response
- * @package PagSeguro\Parsers\Transaction\OnlineDebit
+ * Class Split
+ * @package PagSeguro\Domains\Requests\Adapter
  */
-class Response extends \PagSeguro\Parsers\Transaction\Response
+class Split
 {
-    use Application;
-    use CreditorFees;
-    use \PagSeguro\Parsers\Response\PaymentLink;
-    use \PagSeguro\Parsers\Response\RecoveryCode;
+    use Receiver;
+    use Primary;
+
+    /**
+     * @var
+     */
+    private $split;
+
+    /**
+     * Split constructor.
+     * @param $split
+     */
+    public function __construct($split)
+    {
+        $this->split = $split;
+    }
 }

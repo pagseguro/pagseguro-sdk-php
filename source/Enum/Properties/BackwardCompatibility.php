@@ -42,6 +42,86 @@ class BackwardCompatibility
     const APP_KEY = "appKey";
 
     /**
+     * Shipping address street
+     */
+    const BILLING_ADDRESS_STREET = "billingAddress.street";
+
+    /**
+     * Shipping address number
+     */
+    const BILLING_ADDRESS_NUMBER = "billingAddress.number";
+
+    /**
+     * Shipping address complement
+     */
+    const BILLING_ADDRESS_COMPLEMENT = "billingAddress.complement";
+
+    /**
+     *  Shipping address city
+     */
+    const BILLING_ADDRESS_CITY = "billingAddress.city";
+
+    /**
+     *  Shipping address state
+     */
+    const BILLING_ADDRESS_STATE = "billingAddress.state";
+
+    /**
+     *  Shipping address district
+     */
+    const BILLING_ADDRESS_DISTRICT = "billingAddress.district";
+
+    /**
+     * Shipping address postal code
+     */
+    const BILLING_ADDRESS_POSTAL_CODE = "billingAddress.postalCode";
+
+    /**
+     *  Shipping address country
+     */
+    const BILLING_ADDRESS_COUNTRY = "billingAddress.country";
+
+    /**
+     *  Currency
+     */
+    const CURRENCY = "currency";
+
+    /**
+     *  Extra amount
+     */
+    const CURRENCY_EXTRA_AMOUNT = "extraAmount";
+
+    /**
+     * Credit card holder name for credit card direct payment
+     */
+    const CREDIT_CARD_HOLDER_NAME = 'creditCard.holder.name';
+
+    /**
+     * Credit card holder birth date for credit card direct payment
+     */
+    const CREDIT_CARD_HOLDER_BIRTH_DATE = 'creditCard.holder.birthDate';
+
+    /**
+     * Credit card holder cpf for credit card direct payment
+     */
+    const CREDIT_CARD_HOLDER_CPF = 'creditCard.holder.CPF';
+
+    /**
+     * Credit card holder area code for credit card direct payment
+     */
+    const CREDIT_CARD_HOLDER_AREA_CODE = 'creditCard.holder.areaCode';
+
+    /**
+     * Credit card holder phone for credit card direct payment
+     */
+    const CREDIT_CARD_HOLDER_PHONE = 'creditCard.holder.phone';
+
+    /**
+     * Credit card token for credit card direct payment
+     */
+    const CREDIT_CARD_TOKEN = "creditCard.token";
+
+    /**
      *  Payment mode
      */
     const DIRECT_PAYMENT_MODE = "payment.mode";
@@ -52,9 +132,19 @@ class BackwardCompatibility
     const DIRECT_PAYMENT_METHOD = "payment.method";
 
     /**
-     *  Currency
+     * Installment quantity for credit card payment
      */
-    const CURRENCY = "currency";
+    const INSTALLMENT_QUANTITY = "installment.quantity";
+
+    /**
+     * Installment value for credit card payment
+     */
+    const INSTALLMENT_VALUE = "installment.value";
+
+    /**
+     * Installment no interest installment quantity for credit card payment
+     */
+    const INSTALLMENT_NO_INTEREST_INSTALLMENT_QUANTITY = "installment.noInterestInstallmentQuantity=";
 
     /**
      *  Item id
@@ -80,6 +170,36 @@ class BackwardCompatibility
      *  NOtification URL
      */
     const NOTIFICATION_URL = "notificationURL";
+
+    /**
+     *  Bank name
+     */
+    const ONLINE_DEBIT_BANK_NAME = "bank.name";
+
+    /**
+     * Receiver email
+     */
+    const RECEIVER_EMAIL = 'receiver.email';
+
+    /**
+     *  Receiver public key
+     */
+    const RECEIVER_PUBLIC_KEY = "receiver[%s].publicKey";
+
+    /**
+     *  Receiver split amount
+     */
+    const RECEIVER_SPLIT_AMOUNT = "receiver[%s].split.amount";
+
+    /**
+     *  Receiver split rate percent
+     */
+    const RECEIVER_SPLIT_RATE_PERCENT = "receiver[%s].split.ratePercent";
+
+    /**
+     *  Receiver split fee percent
+     */
+    const RECEIVER_SPLIT_FEE_PERCENT = "receiver[%s].split.feePercent";
 
     /**
      *  Reference
@@ -180,24 +300,4 @@ class BackwardCompatibility
      *  Primary Key
      */
     const PRIMARY_RECEIVER_PUBLIC_KEY = "primaryReceiver.publicKey";
-
-    /**
-     *  Receiver public key
-     */
-    const RECEIVER_PUBLIC_KEY = "receiver[%s].publicKey";
-
-    /**
-     *  Receiver split amount
-     */
-    const RECEIVER_SPLIT_AMOUNT = "receiver[%s].split.amount";
-
-    /**
-     *  Receiver split rate percent
-     */
-    const RECEIVER_SPLIT_RATE_PERCENT = "receiver[%s].split.ratePercent";
-
-    /**
-     *  Receiver split fee percent
-     */
-    const RECEIVER_SPLIT_FEE_PERCENT = "receiver[%s].split.feePercent";
 }

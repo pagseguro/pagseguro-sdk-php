@@ -22,19 +22,27 @@
  *
  */
 
-namespace PagSeguro\Parsers\Transaction\OnlineDebit;
-
-use PagSeguro\Parsers\Response\Application;
-use PagSeguro\Parsers\Response\CreditorFees;
+namespace PagSeguro\Domains\Requests\Split;
 
 /**
- * Class Response
- * @package PagSeguro\Parsers\Transaction\OnlineDebit
+ * Class Receiver
+ * @package PagSeguro\Domains\Requests\Split
  */
-class Response extends \PagSeguro\Parsers\Transaction\Response
+trait Primary
 {
-    use Application;
-    use CreditorFees;
-    use \PagSeguro\Parsers\Response\PaymentLink;
-    use \PagSeguro\Parsers\Response\RecoveryCode;
+    /**
+     * @return mixed
+     */
+    public function getPrimaryReceiver()
+    {
+        return $this->split->primaryReceiver;
+    }
+
+    /**
+     * @param mixed $primaryReceiver
+     */
+    public function setPrimaryReceiver($primaryReceiver)
+    {
+        $this->split->setPrimaryReceiver($primaryReceiver);
+    }
 }

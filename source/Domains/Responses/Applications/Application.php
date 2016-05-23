@@ -22,77 +22,80 @@
  *
  */
 
-namespace PagSeguro\Domains;
+namespace PagSeguro\Domains\Responses\Applications;
 
-class Shipping
+/**
+ * Class Application
+ * @package PagSeguro\Domains\Responses\Applications
+ */
+class Application
 {
-
-    /***
-     * Shipping address
-     * @see Address
+    /**
+     * @var
      */
-    private $address;
-    /***
-     * Shipping type. See the ShippingType class for a list of known shipping types.
-     * @see ShippingType
+    private $id;
+    /**
+     * @var
      */
-    private $type;
-    /***
-     * Shipping cost.
+    private $name;
+    /**
+     * @var
      */
-    private $cost;
+    private $role;
 
     /**
-     * @return Address
+     * @return mixed
      */
-    public function getAddress()
+    public function getId()
     {
-        return $this->address;
+        return $this->id;
     }
 
     /**
-     * @param Address $address
-     * @return Shipping
+     * @param mixed $id
+     * @return Application
      */
-    public function setAddress($address)
+    public function setId($id)
     {
-        $this->address = $address;
+        $this->id = $id;
         return $this;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getCost()
+    public function getName()
     {
-        return $this->cost;
+        return $this->name;
     }
 
     /**
-     * @param string $cost
-     * @return Shipping
+     * @param mixed $name
+     * @return Application
      */
-    public function setCost($cost)
+    public function setName($name)
     {
-        $this->cost = $cost;
+        $this->name = $name;
         return $this;
     }
 
     /**
-     * @return ShippingType
+     * @return mixed
      */
-    public function getType()
+    public function getRole()
     {
-        return $this->type;
+        return $this->role;
     }
 
     /**
-     * @param ShippingType $type
-     * @return Shipping
+     * @param mixed $role
+     * @return Application
      */
-    public function setType($type)
+    public function setRole($role)
     {
-        $this->type = $type;
+        $this->role = $role;
         return $this;
     }
+
+
 }

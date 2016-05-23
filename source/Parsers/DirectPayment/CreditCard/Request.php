@@ -28,6 +28,7 @@ namespace PagSeguro\Parsers\DirectPayment\CreditCard;
  * Request from the Credit Card direct payment
  * @package PagSeguro\Parsers\DirectPayment\CreditCard
  */
+use PagSeguro\Enum\Properties\BackwardCompatibility;
 use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Currency;
@@ -42,6 +43,7 @@ use PagSeguro\Parsers\Parser;
 use PagSeguro\Parsers\ReceiverEmail;
 use PagSeguro\Parsers\Sender;
 use PagSeguro\Parsers\Shipping;
+use PagSeguro\Parsers\Split;
 use PagSeguro\Resources\Http;
 use PagSeguro\Parsers\Transaction\CreditCard\Response;
 
@@ -69,8 +71,9 @@ class Request extends Error implements Parser
      */
     public static function getData(\PagSeguro\Domains\Requests\DirectPayment\CreditCard $creditCard)
     {
+
         $data = [];
-        $properties = new Current;
+        $properties = new BackwardCompatibility();
         return array_merge(
             $data,
             Basic::getData($creditCard, $properties),
@@ -84,7 +87,8 @@ class Request extends Error implements Parser
             ReceiverEmail::getData($creditCard, $properties),
             Sender::getData($creditCard, $properties),
             Shipping::getData($creditCard, $properties),
-            Token::getData($creditCard, $properties)
+            Token::getData($creditCard, $properties),
+            Split::getData($creditCard, $properties)
         );
     }
 
@@ -115,6 +119,8 @@ class Request extends Error implements Parser
             ->setSender($xml->sender)
             ->setShipping($xml->shipping)
             ->setStatus(current($xml->status))
+            ->setCreditorFees($xml->creditorFees)
+            ->setApplication($xml->applications)
             ->setType(current($xml->type));
     }
 

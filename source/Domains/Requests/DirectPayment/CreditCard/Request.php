@@ -26,9 +26,7 @@ namespace PagSeguro\Domains\Requests\DirectPayment\CreditCard;
 
 use PagSeguro\Domains\Requests\Currency;
 use PagSeguro\Domains\Requests\DirectPayment\CreditCard\Billing;
-use PagSeguro\Domains\Requests\DirectPayment\CreditCard\Installment;
 use PagSeguro\Domains\Requests\DirectPayment\CreditCard\Holder;
-use PagSeguro\Domains\Requests\DirectPayment\CreditCard\Token;
 use PagSeguro\Domains\Requests\DirectPayment\Mode;
 use PagSeguro\Domains\Requests\DirectPayment\Sender;
 use PagSeguro\Domains\Requests\Item;
@@ -38,6 +36,7 @@ use PagSeguro\Domains\Requests\Redirect;
 use PagSeguro\Domains\Requests\Reference;
 use PagSeguro\Domains\Requests\Requests;
 use PagSeguro\Domains\Requests\Shipping;
+use PagSeguro\Domains\Requests\Split;
 
 
 /**
@@ -61,6 +60,7 @@ class Request implements Requests
     use ReceiverEmail;
     use Sender;
     use Shipping;
+    use Split;
     use Reference;
     use Redirect {
         Redirect::getUrl as getRedirectUrl;

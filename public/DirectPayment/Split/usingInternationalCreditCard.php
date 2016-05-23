@@ -22,7 +22,7 @@
  *
  */
 
-require_once "../../vendor/autoload.php";
+require_once "../../../vendor/autoload.php";
 
 \PagSeguro\Library::initialize();
 \PagSeguro\Library::cmsVersion()->setName("Nome")->setRelease("1.0.0");
@@ -82,16 +82,28 @@ $internationalCreditCard->setSender()->setHash('a2fd31b1024da2100d490d338aa3e2ad
 $internationalCreditCard->setSender()->setIp('127.0.0.0');
 
 // Set credit card token
-$internationalCreditCard->setToken('ef35fdd9b3b84c7db0c1de132649f2c0');
+$internationalCreditCard->setToken('5a0573d3f03143f29415793c285513ec');
 
 // Set the installment quantity and value (could be obtained using the Installments 
 // service, that have an example here in \public\getInstallments.php)
 $internationalCreditCard->setInstallment()->withParameters(1, '30.00');
 
+
+// Add a primary receiver for split this payment request
+$internationalCreditCard->setSplit()->setPrimaryReceiver("PUBBD8F184FEE144EADA6DA746D61FAA688");
+
+// Add an receiver for split this payment request
+$internationalCreditCard->setSplit()->addReceiver()->withParameters(
+    'PUBF0944ADDDD844957ABA278D8645A52C3',
+    20.00,
+    20,
+    0
+);
+
 try {
     //Get the crendentials and register the boleto payment
     $result = $internationalCreditCard->register(
-        \PagSeguro\Configuration\Configure::getAccountCredentials()
+        \PagSeguro\Configuration\Configure::getApplicationCredentials()
     );
     echo "<pre>";
     print_r($result);

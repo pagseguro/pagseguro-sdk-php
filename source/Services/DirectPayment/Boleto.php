@@ -46,8 +46,7 @@ class Boleto
      * @return string
      * @throws \Exception
      */
-    public static function checkout(Credentials $credentials, \PagSeguro\Domains\Requests\DirectPayment\Boleto $payment)
-    {
+    public static function checkout(Credentials $credentials, \PagSeguro\Domains\Requests\DirectPayment\Boleto $payment){
         Logger::info("Begin", ['service' => 'DirectPayment.Boleto']);
         try {
             $connection = new Connection\Data($credentials);
@@ -59,7 +58,6 @@ class Boleto
                 ['service' => 'Checkout']
             );
 
-            var_dump(self::request($connection), http_build_query(Request::getData($payment)));
             $http->post(
                 self::request($connection),
                 Request::getData($payment)

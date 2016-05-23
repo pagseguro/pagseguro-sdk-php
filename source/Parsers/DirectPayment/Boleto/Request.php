@@ -30,7 +30,6 @@ namespace PagSeguro\Parsers\DirectPayment\Boleto;
  * @package PagSeguro\Parsers\DirectPayment\Boleto
  */
 use PagSeguro\Enum\Properties\BackwardCompatibility;
-use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Currency;
 use PagSeguro\Parsers\DirectPayment\Mode;
@@ -40,6 +39,7 @@ use PagSeguro\Parsers\Parser;
 use PagSeguro\Parsers\ReceiverEmail;
 use PagSeguro\Parsers\Sender;
 use PagSeguro\Parsers\Shipping;
+use PagSeguro\Parsers\Split;
 use PagSeguro\Resources\Http;
 use PagSeguro\Parsers\Transaction\Boleto\Response;
 
@@ -66,7 +66,9 @@ class Request extends Error implements Parser
     public static function getData(\PagSeguro\Domains\Requests\DirectPayment\Boleto $boleto)
     {
         $data = [];
-        $properties = new Current();
+
+        $properties = new BackwardCompatibility();
+
         return array_merge(
             $data,
             Basic::getData($boleto, $properties),
@@ -75,22 +77,10 @@ class Request extends Error implements Parser
             Method::getData($properties),
             Mode::getData($boleto, $properties),
             ReceiverEmail::getData($boleto, $properties),
+            Split::getData($boleto, $properties),
             Sender::getData($boleto, $properties),
             Shipping::getData($boleto, $properties)
-            //self::split($boleto, $properties)
         );
-    }
-
-    private static function split($request, $properties)
-    {
-        $data = [
-            $properties::PRIMARY_RECEIVER_PUBLIC_KEY => "PUBF0944ADDDD844957ABA278D8645A52C3",
-            sprintf($properties::RECEIVER_PUBLIC_KEY, 1) => "PUBF0944ADDDD844957ABA278D8645A52C3",
-            sprintf($properties::RECEIVER_SPLIT_AMOUNT, 1) => \PagSeguro\Helpers\Currency::toDecimal("200.00"),
-            sprintf($properties::RECEIVER_SPLIT_RATE_PERCENT, 1) => \PagSeguro\Helpers\Currency::toDecimal("10.00"),
-            sprintf($properties::RECEIVER_SPLIT_FEE_PERCENT, 1) => \PagSeguro\Helpers\Currency::toDecimal("0.00")
-        ];
-        return $data;
     }
 
     /**
@@ -108,6 +98,7 @@ class Request extends Error implements Parser
             ->setStatus(current($xml->status))
             ->setLastEventDate(current($xml->lastEventDate))
             ->setCancelationSource(current($xml->cancelationSource))
+            ->setCreditorFees($xml->creditorFees)
             ->setPaymentLink(current($xml->paymentLink))
             ->setPaymentMethod($xml->paymentMethod)
             ->setGrossAmount(current($xml->grossAmount))
@@ -120,7 +111,8 @@ class Request extends Error implements Parser
             ->setItemCount(current($xml->itemCount))
             ->setItems($xml->items)
             ->setSender($xml->sender)
-            ->setShipping($xml->shipping);
+            ->setShipping($xml->shipping)
+            ->setApplication($xml->applications);
     }
 
     /**

@@ -77,10 +77,21 @@ $onlineDebit->setShipping()->setAddress()->withParameters(
     'apto. 114'
 );
 
+// Add a primary receiver for split this payment request
+$onlineDebit->setSplit()->setPrimaryReceiver("PUBBD8F184FEE144EADA6DA746D61FAA688");
+
+// Add an receiver for split this payment request
+$onlineDebit->setSplit()->addReceiver()->withParameters(
+    'PUBF0944ADDDD844957ABA278D8645A52C3',
+    200.00,
+    20,
+    0
+);
+
 try {
     //Get the crendentials and register the boleto payment
     $result = $onlineDebit->register(
-        \PagSeguro\Configuration\Configure::getAccountCredentials()
+        \PagSeguro\Configuration\Configure::getApplicationCredentials()
     );
 
     echo "<pre>";

@@ -92,7 +92,7 @@
             </search>
         </preApproval>
         <directPayment>
-            <request>v2/transactions</request>
+            <request>transactions/</request>
         </directPayment>
     </services>
 </Resources>

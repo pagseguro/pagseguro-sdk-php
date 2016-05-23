@@ -32,18 +32,32 @@ use PagSeguro\Enum\Properties\Current;
  */
 class Item
 {
+    /**
+     * @var array
+     */
     private $item;
 
+    /**
+     * Item constructor.
+     */
     public function __construct()
     {
         $this->item = [];
     }
 
+    /**
+     * @param \PagSeguro\Domains\Item $item
+     * @return \PagSeguro\Domains\Item
+     */
     public function instance(\PagSeguro\Domains\Item $item)
     {
         return $item;
     }
 
+    /**
+     * @param $array
+     * @return array
+     */
     public function withArray($array)
     {
         $properties = new Current;
@@ -60,6 +74,15 @@ class Item
         return $this->item;
     }
 
+    /**
+     * @param $id
+     * @param $description
+     * @param $quantity
+     * @param $amount
+     * @param null $weight
+     * @param null $shippingCost
+     * @return array
+     */
     public function withParameters(
         $id,
         $description,

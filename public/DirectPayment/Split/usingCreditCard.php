@@ -1,6 +1,6 @@
 <?php
 
-require_once "../../vendor/autoload.php";
+require_once "../../../vendor/autoload.php";
 
 \PagSeguro\Library::initialize();
 \PagSeguro\Library::cmsVersion()->setName("Nome")->setRelease("1.0.0");
@@ -81,9 +81,9 @@ $creditCard->setBilling()->setAddress()->withParameters(
 );
 
 // Set credit card token
-$creditCard->setToken('2ed34e61b24d4ea8ae872c66a512525c');
+$creditCard->setToken('1fcb2333ca7c46e38089dd9f2cac525c');
 
-// Set the installment quantity and value (could be obtained using the Installments
+// Set the installment quantity and value (could be obtained using the Installments 
 // service, that have an example here in \public\getInstallments.php)
 $creditCard->setInstallment()->withParameters(1, '30.00');
 
@@ -104,13 +104,21 @@ $creditCard->setHolder()->setDocument()->withParameters(
 // Set the Payment Mode for this payment request
 $creditCard->setMode('DEFAULT');
 
-// Set a reference code for this payment request. It is useful to identify this payment
-// in future notifications.
+// Add a primary receiver for split this payment request
+$creditCard->setSplit()->setPrimaryReceiver("PUBBD8F184FEE144EADA6DA746D61FAA688");
+
+// Add an receiver for split this payment request
+$creditCard->setSplit()->addReceiver()->withParameters(
+    'PUBF0944ADDDD844957ABA278D8645A52C3',
+    20.00,
+    20,
+    0
+);
 
 try {
     //Get the crendentials and register the boleto payment
     $result = $creditCard->register(
-        \PagSeguro\Configuration\Configure::getAccountCredentials()
+        \PagSeguro\Configuration\Configure::getApplicationCredentials()
     );
     echo "<pre>";
     print_r($result);

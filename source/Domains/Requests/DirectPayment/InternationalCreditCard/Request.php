@@ -35,6 +35,7 @@ use PagSeguro\Domains\Requests\ReceiverEmail;
 use PagSeguro\Domains\Requests\Redirect;
 use PagSeguro\Domains\Requests\Reference;
 use PagSeguro\Domains\Requests\Requests;
+use PagSeguro\Domains\Requests\Split;
 
 /**
  * The Request Class for International Credit Card direct payments
@@ -54,6 +55,7 @@ class Request implements Requests
     }
     use ReceiverEmail;
     use Sender;
+    use Split;
     use Reference;
     use Redirect {
         Redirect::getUrl as getRedirectUrl;

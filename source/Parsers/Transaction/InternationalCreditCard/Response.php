@@ -24,12 +24,17 @@
 
 namespace PagSeguro\Parsers\Transaction\InternationalCreditCard;
 
+use PagSeguro\Parsers\Response\Application;
+use PagSeguro\Parsers\Response\CreditorFees;
+
 /**
  * Class Response
  * @package PagSeguro\Parsers\Transaction\InternationalCreditCard
  */
 class Response
 {
+    use Application;
+    use CreditorFees;
     use \PagSeguro\Parsers\Response\Currency;
     use \PagSeguro\Parsers\Response\GatewaySystem;
     use \PagSeguro\Parsers\Response\Item;

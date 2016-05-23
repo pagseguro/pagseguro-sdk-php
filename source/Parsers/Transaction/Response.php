@@ -24,17 +24,24 @@
 
 namespace PagSeguro\Parsers\Transaction;
 
+use PagSeguro\Parsers\Response\Currency;
+use PagSeguro\Parsers\Response\Item;
+use PagSeguro\Parsers\Response\PaymentLink;
+use PagSeguro\Parsers\Response\PaymentMethod;
+use PagSeguro\Parsers\Response\Sender;
+use PagSeguro\Parsers\Response\Shipping;
+
 /**
  * Class Response
  * @package PagSeguro\Parsers\Transaction
  */
 class Response
 {
-    use \PagSeguro\Parsers\Response\Currency;
-    use \PagSeguro\Parsers\Response\Item;
-    use \PagSeguro\Parsers\Response\PaymentMethod;
-    use \PagSeguro\Parsers\Response\Sender;
-    use \PagSeguro\Parsers\Response\Shipping;
+    use Currency;
+    use Item;
+    use PaymentMethod;
+    use Sender;
+    use Shipping;
     
     /**
      * @var

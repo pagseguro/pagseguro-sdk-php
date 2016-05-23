@@ -22,19 +22,35 @@
  *
  */
 
-namespace PagSeguro\Parsers\Transaction\OnlineDebit;
+namespace PagSeguro\Domains\Requests;
 
-use PagSeguro\Parsers\Response\Application;
-use PagSeguro\Parsers\Response\CreditorFees;
+use PagSeguro\Helpers\InitializeObject;
 
 /**
- * Class Response
- * @package PagSeguro\Parsers\Transaction\OnlineDebit
+ * Class Split
+ * @package PagSeguro\Domains\Requests
  */
-class Response extends \PagSeguro\Parsers\Transaction\Response
+trait Split
 {
-    use Application;
-    use CreditorFees;
-    use \PagSeguro\Parsers\Response\PaymentLink;
-    use \PagSeguro\Parsers\Response\RecoveryCode;
+    /**
+     * @var
+     */
+    private $split;
+
+    /**
+     * @return Adapter\Split
+     */
+    public function setSplit()
+    {
+        $this->split = InitializeObject::initialize($this->split, '\PagSeguro\Domains\Split');
+        return new \PagSeguro\Domains\Requests\Adapter\Split($this->split);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSplit()
+    {
+        return $this->split;
+    }
 }
