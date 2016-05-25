@@ -22,25 +22,25 @@
  *
  */
 
-namespace PagSeguro\Resources\Builder\DirectPayment;
-
-use PagSeguro\Resources\Builder;
+namespace PagSeguro\Domains\Requests\DirectPayment\CreditCard;
 
 /**
- * Class Payment
- * @package PagSeguro\Resources\Builder
+ * Description of Installment
+ *
+ * @package \PagSeguro\Domains\Requests\DirectPayment\CreditCard
  */
-class DirectPayment extends Builder
+trait Installment
 {
-
-    /**
-     * @return string
-     */
-    public static function getDirectPaymentRequestUrl()
+    private $installment;
+    
+    public function getInstallment()
     {
-        return parent::getRequest(
-            parent::getUrl('webservice'),
-            'directPayment'
-        );
+        return $this->installment;
+    }
+
+    public function setInstallment()
+    {
+        $this->installment = new \PagSeguro\Resources\Factory\Request\DirectPayment\CreditCard\Installment();
+        return $this->installment;
     }
 }

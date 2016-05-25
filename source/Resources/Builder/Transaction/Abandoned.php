@@ -36,7 +36,7 @@ class Abandoned extends Builder
     /**
      * @return string
      */
-    public static function getAbandonedRequestUrl()
+    public static function getRequestUrl()
     {
         return parent::getRequest(
             parent::getUrl('webservice'),

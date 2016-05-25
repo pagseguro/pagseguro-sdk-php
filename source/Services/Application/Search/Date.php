@@ -53,7 +53,13 @@ class Date
             Logger::info("Begin", ['service' => 'Application.Search.Date']);
             $connection = new Connection\Data($credentials);
             $http = new Http();
-            Logger::info(sprintf("GET: %s", self::request($connection, $options)), ['service' => 'Application.Search.Date']);
+            Logger::info(
+                sprintf(
+                    "GET: %s",
+                    self::request($connection, $options)
+                ),
+                ['service' => 'Application.Search.Date']
+            );
             $http->get(
                 self::request($connection, $options)
             );
@@ -63,7 +69,15 @@ class Date
                 new Request
             );
 
-            Logger::info(sprintf("Date: %s, Results in this page: %s, Total pages: %s", $response->getDate(), $response->getResultsInThisPage(), $response->getTotalPages()), ['service' => 'Application.Search.Date']);
+            Logger::info(
+                sprintf(
+                    "Date: %s, Results in this page: %s, Total pages: %s",
+                    $response->getDate(),
+                    $response->getResultsInThisPage(),
+                    $response->getTotalPages()
+                ),
+                ['service' => 'Application.Search.Date']
+            );
             return $response;
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'Application.Search.Date']);

@@ -36,7 +36,8 @@ trait Address
 
     public function setAddress()
     {
-        $this->address = new \PagSeguro\Resources\Factory\Request\DirectPayment\CreditCard\Billing\Address($this->billing);
+        $this->address =
+            new \PagSeguro\Resources\Factory\Request\DirectPayment\CreditCard\Billing\Address($this->billing);
         return $this->address;
     }
 }

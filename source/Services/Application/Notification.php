@@ -57,7 +57,14 @@ class Notification
                 $http,
                 new \PagSeguro\Parsers\Authorization\Notification\Request
             );
-            Logger::info(sprintf("Date: %s, Code: %s", $response->getDate(), $response->getCode()), ['service' => 'Application.Notification']);
+            Logger::info(
+                sprintf(
+                    "Date: %s, Code: %s",
+                    $response->getDate(),
+                    $response->getCode()
+                ),
+                ['service' => 'Application.Notification']
+            );
             return $response;
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'Application.Notification']);

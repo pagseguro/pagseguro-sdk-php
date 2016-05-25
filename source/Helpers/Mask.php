@@ -122,7 +122,8 @@ class Mask
     private static function isValidType($type)
     {
         if (\PagSeguro\Enum\Mask::isValidName(
-                \PagSeguro\Enum\Mask::getType($type))) {
+            \PagSeguro\Enum\Mask::getType($type)
+        )) {
             return true;
         }
         return false;
@@ -144,40 +145,28 @@ class Mask
                 return self::mask(str_pad($subject, $options["length"], "*", STR_PAD_LEFT), $mask);
             }
             return self::mask($subject, $mask);
-
         }
         return false;
     }
 
     /**
-     * @param $subject
-     * @return bool|string
-     */
-    private static function removePrefix($subject)
-    {
-        if ($subject) {
-            return substr($subject, 2);
-        }
-        return false;
-    }
-
-    /**
-     * @param $val
+     * @param $value
      * @param $mask
      * @return string
      */
-    private static function mask($val, $mask)
+    private static function mask($value, $mask)
     {
         $maskared = '';
-        $k = 0;
-        for ($i = 0; $i <= strlen($mask)-1; $i++)
-        {
-            if ($mask[$i] == '#') {
-                if(isset($val[$k]))
-                    $maskared .= $val[$k++];
+        $key = 0;
+        for ($count = 0; $count <= strlen($mask)-1; $count++) {
+            if ($mask[$count] == '#') {
+                if (isset($value[$key])) {
+                    $maskared .= $value[$key++];
+                }
             } else {
-                if(isset($mask[$i]))
-                    $maskared .= $mask[$i];
+                if (isset($mask[$count])) {
+                    $maskared .= $mask[$count];
+                }
             }
         }
         return $maskared;

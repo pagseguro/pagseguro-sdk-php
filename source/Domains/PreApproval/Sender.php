@@ -24,7 +24,6 @@
 
 namespace PagSeguro\Domains\PreApproval;
 
-
 /**
  * Class Sender
  * @package PagSeguro\Domains

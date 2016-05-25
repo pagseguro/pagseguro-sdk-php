@@ -53,9 +53,11 @@ class Refund
             $connection = new Connection\Data($credentials);
             $http = new Http();
             Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'Refund']);
-            Logger::info(sprintf(
-                "Params: %s",
-                json_encode(Crypto::encrypt(Request::getData($code, $value)))),
+            Logger::info(
+                sprintf(
+                    "Params: %s",
+                    json_encode(Crypto::encrypt(Request::getData($code, $value)))
+                ),
                 ['service' => 'Refund']
             );
             $http->post(

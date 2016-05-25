@@ -24,8 +24,8 @@
 
 namespace PagSeguro\Domains\Requests\Adapter\DirectPayment;
 
-use PagSeguro\Domains\Requests\DirectPayment\CreditCard\Document;
-use PagSeguro\Domains\Requests\DirectPayment\CreditCard\Phone;
+use PagSeguro\Domains\Requests\DirectPayment\CreditCard\Holder\Document;
+use PagSeguro\Domains\Requests\DirectPayment\CreditCard\Holder\Phone;
 
 class Holder
 {
@@ -33,8 +33,6 @@ class Holder
     use Phone;
 
     private $holder;
-    private $name;
-    private $birthDate;
 
     public function __construct($holder)
     {
@@ -46,7 +44,7 @@ class Holder
      */
     public function getBirthDate()
     {
-        return $this->birthDate;
+        return $this->holder->getBirthDate();
     }
 
     /**
@@ -54,7 +52,7 @@ class Holder
      */
     public function setBirthDate($birthdate)
     {
-        $this->birthDate = $birthdate;
+        $this->holder->setBirthDate($birthdate);
     }
 
     /**
@@ -62,7 +60,7 @@ class Holder
      */
     public function getName()
     {
-        return $this->name;
+        return $this->holder->getName();
     }
 
     /**
@@ -70,6 +68,6 @@ class Holder
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->holder->setName($name);
     }
 }

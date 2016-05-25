@@ -37,6 +37,6 @@ trait Cancel
      */
     public function buildCancelRequestUrl()
     {
-        return Builder\Transaction\Cancel::getCancelRequestUrl();
+        return Builder\Transaction\Cancel::getCancelUrl();
     }
 }

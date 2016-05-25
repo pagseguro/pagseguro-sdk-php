@@ -36,7 +36,7 @@ class Refund extends Builder
     /**
      * @return string
      */
-    public static function getRefundRequestUrl()
+    public static function getRequestUrl()
     {
         return parent::getRequest(
             parent::getUrl('webservice'),

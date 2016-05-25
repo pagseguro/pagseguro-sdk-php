@@ -42,9 +42,11 @@ class Charge
             $connection = new Connection\Data($credentials);
             $http = new Http();
             Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'PreApproval.Charge']);
-            Logger::info(sprintf(
-                "Params: %s",
-                json_encode(Crypto::encrypt(Request::getData($charge)))),
+            Logger::info(
+                sprintf(
+                    "Params: %s",
+                    json_encode(Crypto::encrypt(Request::getData($charge)))
+                ),
                 ['service' => 'PreApproval.Charge']
             );
             $http->post(

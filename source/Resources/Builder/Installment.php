@@ -37,7 +37,7 @@ class Installment extends Builder
      * Class Installment
      * @return string
      */
-    public static function getInstallmentRequestUrl()
+    public static function getRequestUrl()
     {
         return parent::getRequest(
             parent::getUrl('webservice'),

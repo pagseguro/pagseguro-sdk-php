@@ -39,7 +39,7 @@ class InitializeObject
      */
     public static function initialize($attr, $instantiateClass)
     {
-        if (! isset($attr) || empty($attr)) {
+        if (! isset($attr) || empty($attr) || is_null($attr)) {
             $attr = new $instantiateClass;
         }
         

@@ -43,17 +43,17 @@ trait Item
     public function setItems($items)
     {
         if (is_array($items)) {
-            $i = array();
+            $arr = array();
             foreach ($items as $key => $item) {
                 if ($item instanceof \PagSeguro\Domains\Item) {
-                    $i[$key] = $item;
+                    $arr[$key] = $item;
                 } else {
                     if (is_array($item)) {
-                        $i[$key] = new \PagSeguro\Domains\Item($item);
+                        $arr[$key] = new \PagSeguro\Domains\Item($item);
                     }
                 }
             }
-            $this->items = $i;
+            $this->items = $arr;
         }
     }
 

@@ -24,10 +24,8 @@
 
 namespace PagSeguro\Helpers;
 
-
 class Characters
 {
-
     /**
      *
      */

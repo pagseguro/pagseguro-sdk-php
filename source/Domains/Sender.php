@@ -24,8 +24,6 @@
 
 namespace PagSeguro\Domains;
 
-use \PagSeguro\Domains\Phone;
-
 /**
  * Class Sender
  * @package PagSeguro\Domains

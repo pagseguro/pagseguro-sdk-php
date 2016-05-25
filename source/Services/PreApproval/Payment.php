@@ -25,7 +25,9 @@
 namespace PagSeguro\Services\PreApproval;
 
 use PagSeguro\Domains\Account\Credentials;
+use PagSeguro\Domains\Requests\PreApproval;
 use PagSeguro\Helpers\Crypto;
+use PagSeguro\Parsers\PreApproval\Request;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Log\Logger;
@@ -34,28 +36,34 @@ use PagSeguro\Resources\Responsibility;
 class Payment
 {
 
-    public static function create(Credentials $credentials, \PagSeguro\Domains\Requests\PreApproval $preApproval)
+    public static function create(Credentials $credentials, PreApproval $preApproval)
     {
         Logger::info("Begin", ['service' => 'PreApproval']);
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
             Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'PreApproval']);
-            Logger::info(sprintf(
-                "Params: %s",
-                json_encode(Crypto::encrypt(\PagSeguro\Parsers\PreApproval\Request::getData($preApproval)))),
+            Logger::info(
+                sprintf(
+                    "Params: %s",
+                    json_encode(Crypto::encrypt(Request::getData($preApproval)))
+                ),
                 ['service' => 'PreApproval']
             );
+
             $http->post(
                 self::request($connection),
-                \PagSeguro\Parsers\PreApproval\Request::getData($preApproval)
+                Request::getData($preApproval)
             );
 
             $response = Responsibility::http(
                 $http,
-                new \PagSeguro\Parsers\PreApproval\Request
+                new Request
             );
-            Logger::info(sprintf("PreApproval URL: %s", self::response($connection, $response)), ['service' => 'PreApproval']);
+            Logger::info(
+                sprintf("PreApproval URL: %s", self::response($connection, $response)),
+                ['service' => 'PreApproval']
+            );
             return self::response($connection, $response);
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'PreApproval']);
@@ -81,5 +89,4 @@ class Payment
     {
         return $connection->buildPreApprovalResponseUrl() ."?code=". $response->getCode();
     }
-
 }

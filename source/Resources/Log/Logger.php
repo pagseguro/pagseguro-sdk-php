@@ -167,7 +167,7 @@ class Logger implements LoggerInterface
 
         try {
             self::write(self::location(), self::message($level, $message, $context));
-        } catch (\Exception $exception){
+        } catch (\Exception $exception) {
             throw $exception;
         }
     }

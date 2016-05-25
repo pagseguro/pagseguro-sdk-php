@@ -53,7 +53,7 @@ class Cancel
             $http = new Http();
             Logger::info(sprintf("GET: %s", self::request($connection, $code)), ['service' => 'PreApproval.Cancel']);
             Logger::info(
-                sprintf("Params: %s",$code),
+                sprintf("Params: %s", $code),
                 ['service' => 'Cancel']
             );
 
@@ -79,7 +79,8 @@ class Cancel
      */
     private static function request(Connection\Data $connection, $code)
     {
-        return sprintf("%s/%s/?%s",
+        return sprintf(
+            "%s/%s/?%s",
             $connection->buildPreApprovalCancelUrl(),
             $code,
             $connection->buildCredentialsQuery()

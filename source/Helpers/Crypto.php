@@ -24,10 +24,8 @@
 
 namespace PagSeguro\Helpers;
 
-
 class Crypto
 {
-
     private static $list = [
         "senderPhone" => array("phone", \PagSeguro\Enum\Mask::PHONE),
         "senderCPF" => array("cpf", \PagSeguro\Enum\Mask::CPF)
@@ -42,5 +40,4 @@ class Crypto
         }
         return $parameters;
     }
-
 }

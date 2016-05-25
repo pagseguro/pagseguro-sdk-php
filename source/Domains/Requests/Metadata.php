@@ -43,17 +43,17 @@ trait Metadata
     public function setMetadata($metadata)
     {
         if (is_array($metadata)) {
-            $i = array();
+            $arr = array();
             foreach ($metadata as $key => $metadataItem) {
                 if ($metadataItem instanceof \PagSeguro\Domains\Metadata) {
-                    $i[$key] = $metadataItem;
+                    $arr[$key] = $metadataItem;
                 } else {
                     if (is_array($metadata)) {
-                        $i[$key] = new \PagSeguro\Domains\Metadata($metadataItem);
+                        $arr[$key] = new \PagSeguro\Domains\Metadata($metadataItem);
                     }
                 }
             }
-            $this->metadata = $i;
+            $this->metadata = $arr;
         }
     }
 

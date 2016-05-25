@@ -42,7 +42,7 @@ class Accepted
 
     public function __construct()
     {
-        if (is_null($this->accepted)){
+        if (is_null($this->accepted)) {
             $this->accepted = new \PagSeguro\Domains\PaymentMethod\Accepted();
         }
     }

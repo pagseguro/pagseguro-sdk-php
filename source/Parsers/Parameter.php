@@ -43,10 +43,7 @@ trait Parameter
         $data = [];
         $parameter = $request->getParameter();
         if ($request->parameterLenght() > 0) {
-            $i = 0;
-
             foreach ($parameter as $key => $value) {
-                $i++;
                 if (!is_null($parameter[$key]->getKey())) {
                     if (!is_null($parameter[$key]->getIndex())) {
                         $data[sprintf("%s%s", $parameter[$key]->getKey(), $parameter[$key]->getIndex())] =

@@ -22,25 +22,24 @@
  *
  */
 
-namespace PagSeguro\Resources\Builder;
+namespace PagSeguro\Domains\Requests\DirectPayment;
 
-use PagSeguro\Resources\Builder;
+use PagSeguro\Domains\Requests\DirectPayment\InternationalCreditCard\Request;
 
 /**
- * Class Payment
- * @package PagSeguro\Resources\Builder
+ * Class International Credit Card
+ * @package PagSeguro\Domains\Requests\DirectPayment
  */
-class Cancel extends Builder
+class InternationalCreditCard extends Request
 {
-
     /**
-     * @return string
+     * Register a checkout using international credit card
+     * @param $credentials
+     * @return mixed
+     * @throws \Exception
      */
-    public static function getCancelRequestUrl()
+    public function register($credentials)
     {
-        return parent::getRequest(
-            parent::getUrl('webservice'),
-            'cancel'
-        );
+        return \PagSeguro\Services\DirectPayment\InternationalCreditCard::checkout($credentials, $this);
     }
 }

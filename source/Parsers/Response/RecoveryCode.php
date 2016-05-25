@@ -45,6 +45,4 @@ trait RecoveryCode
         $this->recoveryCode = $recoveryCode;
         return $this;
     }
-
-
 }

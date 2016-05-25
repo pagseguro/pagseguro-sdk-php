@@ -22,21 +22,19 @@
  *
  */
 
-namespace PagSeguro\Resources\Connection\Base\DirectPayment;
+namespace PagSeguro\Parsers\Transaction\OnlineDebit;
 
-use PagSeguro\Resources\Builder;
+use PagSeguro\Parsers\Response\Application;
+use PagSeguro\Parsers\Response\CreditorFees;
 
 /**
- * Class Payment
- * @package PagSeguro\Services\Connection\Base
+ * Class Response
+ * @package PagSeguro\Parsers\Transaction\OnlineDebit
  */
-trait DirectPayment
+class Response extends \PagSeguro\Parsers\Transaction\Response
 {
-    /**
-     * @return string
-     */
-    public function buildDirectPaymentRequestUrl()
-    {
-        return Builder\DirectPayment\DirectPayment::getDirectPaymentRequestUrl();
-    }
+    use Application;
+    use CreditorFees;
+    use \PagSeguro\Parsers\Response\PaymentLink;
+    use \PagSeguro\Parsers\Response\RecoveryCode;
 }

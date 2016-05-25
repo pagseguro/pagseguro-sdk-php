@@ -45,16 +45,23 @@ class OnlineDebit
      * @return string
      * @throws \Exception
      */
-    public static function checkout(Credentials $credentials, \PagSeguro\Domains\Requests\DirectPayment\OnlineDebit $payment)
-    {
+    public static function checkout(
+        Credentials $credentials,
+        \PagSeguro\Domains\Requests\DirectPayment\OnlineDebit $payment
+    ) {
         Logger::info("Begin", ['service' => 'DirectPayment.OnlineDebit']);
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
-            Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'DirectPayment.OnlineDebit']);
-            Logger::info(sprintf(
-                "Params: %s",
-                json_encode(Crypto::encrypt(Request::getData($payment)))),
+            Logger::info(
+                sprintf("POST: %s", self::request($connection)),
+                ['service' => 'DirectPayment.OnlineDebit']
+            );
+            Logger::info(
+                sprintf(
+                    "Params: %s",
+                    json_encode(Crypto::encrypt(Request::getData($payment)))
+                ),
                 ['service' => 'Checkout']
             );
             $http->post(

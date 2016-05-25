@@ -53,7 +53,13 @@ class Abandoned
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
-            Logger::info(sprintf("GET: %s", self::request($connection, $options)), ['service' => 'Transactions.Search.Abandoned']);
+            Logger::info(
+                sprintf(
+                    "GET: %s",
+                    self::request($connection, $options)
+                ),
+                ['service' => 'Transactions.Search.Abandoned']
+            );
             $http->get(
                 self::request($connection, $options)
             );
@@ -63,7 +69,15 @@ class Abandoned
                 new Request
             );
 
-            Logger::info(sprintf("Date: %s, Results in this page: %s, Total pages: %s", $response->getDate(), $response->getResultsInThisPage(), $response->getTotalPages()), ['service' => 'Transactions.Search.Abandoned']);
+            Logger::info(
+                sprintf(
+                    "Date: %s, Results in this page: %s, Total pages: %s",
+                    $response->getDate(),
+                    $response->getResultsInThisPage(),
+                    $response->getTotalPages()
+                ),
+                ['service' => 'Transactions.Search.Abandoned']
+            );
             return $response;
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'Transactions.Search.Abandoned']);
@@ -88,22 +102,5 @@ class Abandoned
                 sprintf("&%s=%s", Current::SEARCH_MAX_RESULTS_PER_PAGE, $params["max_per_page"]),
             !isset($params["page"]) ?: sprintf("&%s=%s", Current::SEARCH_PAGE, $params["page"])
         );
-    }
-
-    /**
-     * @param $initial
-     * @param $final
-     * @param $max
-     * @param $pages
-     * @return array
-     */
-    private static function toArray($initial, $final, $max, $pages)
-    {
-        return [
-            'initial_date' => $initial,
-            'final_date' => $final,
-            'max_per_page' => $max,
-            'page' => $pages,
-        ];
     }
 }

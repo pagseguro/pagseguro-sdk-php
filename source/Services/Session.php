@@ -55,7 +55,6 @@ class Session
 
             Logger::info(sprintf("Session ID: %s", current($response)), ['service' => 'Session']);
             return $response;
-
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'Session']);
             throw $exception;

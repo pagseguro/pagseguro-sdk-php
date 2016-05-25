@@ -52,7 +52,10 @@ class Interval
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
-            Logger::info(sprintf("GET: %s", self::request($connection, $days)), ['service' => 'PreApproval.Search.Interval']);
+            Logger::info(
+                sprintf("GET: %s", self::request($connection, $days)),
+                ['service' => 'PreApproval.Search.Interval']
+            );
             $http->get(
                 self::request($connection, $days)
             );
@@ -62,7 +65,15 @@ class Interval
                 new Request
             );
 
-            Logger::info(sprintf("Date: %s, Results in this page: %s, Total pages: %s", $response->getDate(), $response->getResultsInThisPage(), $response->getTotalPages()), ['service' => 'PreApproval.Search.Interval']);
+            Logger::info(
+                sprintf(
+                    "Date: %s, Results in this page: %s, Total pages: %s",
+                    $response->getDate(),
+                    $response->getResultsInThisPage(),
+                    $response->getTotalPages()
+                ),
+                ['service' => 'PreApproval.Search.Interval']
+            );
             return $response;
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'PreApproval.Search.Interval']);

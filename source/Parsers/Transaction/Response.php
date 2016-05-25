@@ -24,19 +24,24 @@
 
 namespace PagSeguro\Parsers\Transaction;
 
+use PagSeguro\Parsers\Response\Currency;
+use PagSeguro\Parsers\Response\Item;
+use PagSeguro\Parsers\Response\PaymentLink;
+use PagSeguro\Parsers\Response\PaymentMethod;
+use PagSeguro\Parsers\Response\Sender;
+use PagSeguro\Parsers\Response\Shipping;
+
 /**
  * Class Response
- * @package PagSeguro\Parsers\Notifications
+ * @package PagSeguro\Parsers\Transaction
  */
 class Response
 {
-    use \PagSeguro\Parsers\Response\Currency;
-    use \PagSeguro\Parsers\Response\CreditorFees;
-    use \PagSeguro\Parsers\Response\Item;
-    use \PagSeguro\Parsers\Response\PaymentMethod;
-    use \PagSeguro\Parsers\Response\RecoveryCode;
-    use \PagSeguro\Parsers\Response\Sender;
-    use \PagSeguro\Parsers\Response\Shipping;
+    use Currency;
+    use Item;
+    use PaymentMethod;
+    use Sender;
+    use Shipping;
     
     /**
      * @var
@@ -67,9 +72,11 @@ class Response
      */
     private $installmentCount;
     
+    /**
+     * Only present when the status = 7
+     * @var string
+     */
     private $cancelationSource;
-    
-    private $paymentLink;
 
     public function getCancelationSource()
     {
@@ -81,18 +88,24 @@ class Response
         $this->cancelationSource = $cancelationSource;
         return $this;
     }
-    
-    public function getPaymentLink()
+
+    /**
+     * @return mixed
+     */
+    public function getInstallmentCount()
     {
-        return $this->paymentLink;
+        return $this->installmentCount;
     }
 
-    public function setPaymentLink($paymentLink)
+    /**
+     * @param mixed $installmentCount
+     * @return Response
+     */
+    public function setInstallmentCount($installmentCount)
     {
-        $this->paymentLink = $paymentLink;
+        $this->installmentCount = $installmentCount;
         return $this;
     }
-
         
     /**
      * @return mixed
@@ -130,23 +143,6 @@ class Response
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getInstallmentCount()
-    {
-        return $this->installmentCount;
-    }
-
-    /**
-     * @param mixed $installmentCount
-     * @return Response
-     */
-    public function setInstallmentCount($installmentCount)
-    {
-        $this->installmentCount = $installmentCount;
-        return $this;
-    }
 
     /**
      * @return mixed
