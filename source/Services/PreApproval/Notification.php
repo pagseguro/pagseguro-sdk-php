@@ -57,7 +57,10 @@ class Notification
                 $http,
                 new \PagSeguro\Parsers\PreApproval\Notification\Request
             );
-            Logger::info(sprintf("Date: %s, Code: %s", $response->getDate(), $response->getCode()), ['service' => 'PreApproval.Notification']);
+            Logger::info(
+                sprintf("Date: %s, Code: %s", $response->getDate(), $response->getCode()),
+                ['service' => 'PreApproval.Notification']
+            );
             return $response;
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'PreApproval.Notification']);

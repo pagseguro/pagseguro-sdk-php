@@ -53,9 +53,11 @@ class Payment
             $connection = new Connection\Data($credentials);
             $http = new Http();
             Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'Checkout']);
-            Logger::info(sprintf(
-                "Params: %s",
-                json_encode(Crypto::encrypt(\PagSeguro\Parsers\Checkout\Request::getData($payment)))),
+            Logger::info(
+                sprintf(
+                    "Params: %s",
+                    json_encode(Crypto::encrypt(\PagSeguro\Parsers\Checkout\Request::getData($payment)))
+                ),
                 ['service' => 'Checkout']
             );
             $http->post(
@@ -72,7 +74,10 @@ class Payment
                 Logger::info(sprintf("Code: %s", current($response)), ['service' => 'Checkout']);
                 return $response;
             }
-            Logger::info(sprintf("Checkout URL: %s", self::response($connection, $response)), ['service' => 'Checkout']);
+            Logger::info(
+                sprintf("Checkout URL: %s", self::response($connection, $response)),
+                ['service' => 'Checkout']
+            );
             return self::response($connection, $response);
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'Session']);

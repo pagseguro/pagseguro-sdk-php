@@ -47,7 +47,6 @@ use PagSeguro\Parsers\Split;
 use PagSeguro\Resources\Http;
 use PagSeguro\Parsers\Transaction\CreditCard\Response;
 
-
 /**
  * Class Payment
  * @package PagSeguro\Parsers\DirectPayment\CreditCard

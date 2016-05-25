@@ -38,7 +38,6 @@ use PagSeguro\Domains\Requests\Requests;
 use PagSeguro\Domains\Requests\Shipping;
 use PagSeguro\Domains\Requests\Split;
 
-
 /**
  * Class Request
  * @package PagSeguro\Domains\Requests\DirectPayment\CreditCard

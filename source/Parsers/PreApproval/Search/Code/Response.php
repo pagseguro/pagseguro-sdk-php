@@ -24,7 +24,6 @@
 
 namespace PagSeguro\Parsers\PreApproval\Search\Code;
 
-
 /**
  * Class Response
  * @package PagSeguro\Parsers\PreApproval\Search\Code
@@ -54,5 +53,4 @@ class Response extends \PagSeguro\Parsers\PreApproval\Search\Response
         $this->sender = $sender;
         return $this;
     }
-
 }

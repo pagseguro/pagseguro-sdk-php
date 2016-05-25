@@ -23,6 +23,7 @@
  */
 
 namespace PagSeguro\Parsers\Transaction\Boleto;
+
 use PagSeguro\Parsers\Response\Application;
 use PagSeguro\Parsers\Response\CreditorFees;
 

@@ -96,6 +96,4 @@ class Application
         $this->role = $role;
         return $this;
     }
-
-
 }

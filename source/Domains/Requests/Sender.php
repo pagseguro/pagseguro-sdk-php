@@ -54,5 +54,4 @@ trait Sender
     {
         return $this->sender;
     }
-
 }

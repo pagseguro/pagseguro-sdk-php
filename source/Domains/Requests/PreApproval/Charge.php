@@ -56,5 +56,4 @@ class Charge extends Request
     {
         return \PagSeguro\Services\PreApproval\Charge::create($credentials, $this);
     }
-
 }

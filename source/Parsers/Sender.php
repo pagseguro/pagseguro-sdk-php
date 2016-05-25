@@ -86,12 +86,15 @@ trait Sender
     {
         $data = [];
         $documents = $payment->getSender()->getDocuments();
+
         if (is_array($documents) && count($documents) == 1) {
             foreach ($documents as $document) {
                 if (!is_null($document)) {
                     $document->getType() == "CPF" ?
-                        $data[$properties::SENDER_DOCUMENT_CPF] = Characters::hasSpecialChars($document->getIdentifier()) :
-                        $data[$properties::SENDER_DOCUMENT_CNPJ] = Characters::hasSpecialChars($document->getIdentifier());
+                        $data[$properties::SENDER_DOCUMENT_CPF] =
+                            Characters::hasSpecialChars($document->getIdentifier()) :
+                        $data[$properties::SENDER_DOCUMENT_CNPJ] =
+                            Characters::hasSpecialChars($document->getIdentifier());
                 }
             }
         }

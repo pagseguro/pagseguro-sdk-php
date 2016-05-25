@@ -46,15 +46,23 @@ class Boleto
      * @return string
      * @throws \Exception
      */
-    public static function checkout(Credentials $credentials, \PagSeguro\Domains\Requests\DirectPayment\Boleto $payment){
+    public static function checkout(
+        Credentials $credentials,
+        \PagSeguro\Domains\Requests\DirectPayment\Boleto $payment
+    ) {
         Logger::info("Begin", ['service' => 'DirectPayment.Boleto']);
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
-            Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'DirectPayment.Boleto']);
-            Logger::info(sprintf(
-                "Params: %s",
-                json_encode(Crypto::encrypt(Request::getData($payment)))),
+            Logger::info(
+                sprintf("POST: %s", self::request($connection)),
+                ['service' => 'DirectPayment.Boleto']
+            );
+            Logger::info(
+                sprintf(
+                    "Params: %s",
+                    json_encode(Crypto::encrypt(Request::getData($payment)))
+                ),
                 ['service' => 'Checkout']
             );
 
@@ -70,7 +78,7 @@ class Boleto
 
             Logger::info(
                 sprintf("Boleto Payment Link URL: %s", $response->getPaymentLink()),
-                    ['service' => 'DirectPayment.Boleto']
+                ['service' => 'DirectPayment.Boleto']
             );
 
             return $response;

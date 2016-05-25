@@ -31,7 +31,7 @@ use PagSeguro\Domains\Requests\DirectPayment\CreditCard\Request;
  * @package PagSeguro\Domains\Requests\DirectPayment
  */
 class CreditCard extends Request
-{   
+{
     /**
      * @param $credentials
      * @return string

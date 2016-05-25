@@ -53,7 +53,10 @@ class Date
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
-            Logger::info(sprintf("GET: %s", self::request($connection, $options)), ['service' => 'PreApproval.Search.Date']);
+            Logger::info(
+                sprintf("GET: %s", self::request($connection, $options)),
+                ['service' => 'PreApproval.Search.Date']
+            );
             $http->get(
                 self::request($connection, $options)
             );
@@ -63,7 +66,15 @@ class Date
                 new Request
             );
 
-            Logger::info(sprintf("Date: %s, Results in this page: %s, Total pages: %s", $response->getDate(), $response->getResultsInThisPage(), $response->getTotalPages()), ['service' => 'Transactions.Search.Date']);
+            Logger::info(
+                sprintf(
+                    "Date: %s, Results in this page: %s, Total pages: %s",
+                    $response->getDate(),
+                    $response->getResultsInThisPage(),
+                    $response->getTotalPages()
+                ),
+                ['service' => 'Transactions.Search.Date']
+            );
             return $response;
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'PreApproval.Search.Date']);

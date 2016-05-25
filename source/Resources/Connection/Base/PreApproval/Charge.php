@@ -39,5 +39,4 @@ trait Charge
     {
         return Builder\PreApproval\Charge::getRequestUrl();
     }
-
 }

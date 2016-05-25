@@ -52,7 +52,13 @@ class Code
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
-            Logger::info(sprintf("GET: %s", self::request($connection, $code)), ['service' => 'Transactions.Search.Code']);
+            Logger::info(
+                sprintf(
+                    "GET: %s",
+                    self::request($connection, $code)
+                ),
+                ['service' => 'Transactions.Search.Code']
+            );
             $http->get(
                 self::request($connection, $code)
             );
@@ -62,7 +68,14 @@ class Code
                 new Request
             );
 
-            Logger::info(sprintf("Date: %s, Code: %s", $response->getDate(), $response->getCode()), ['service' => 'Transactions.Search.Code']);
+            Logger::info(
+                sprintf(
+                    "Date: %s, Code: %s",
+                    $response->getDate(),
+                    $response->getCode()
+                ),
+                ['service' => 'Transactions.Search.Code']
+            );
             return $response;
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'Transactions.Search.Code']);

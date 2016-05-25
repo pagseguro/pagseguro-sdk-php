@@ -31,7 +31,7 @@ use PagSeguro\Domains\Requests\DirectPayment\InternationalCreditCard\Request;
  * @package PagSeguro\Domains\Requests\DirectPayment
  */
 class InternationalCreditCard extends Request
-{   
+{
     /**
      * Register a checkout using international credit card
      * @param $credentials

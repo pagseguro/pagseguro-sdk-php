@@ -39,5 +39,4 @@ trait Document
         $this->document = new \PagSeguro\Resources\Factory\Sender\Document($this->sender);
         return $this->document;
     }
-
 }

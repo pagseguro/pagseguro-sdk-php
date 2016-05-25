@@ -45,16 +45,23 @@ class InternationalCreditCard
      * @return string
      * @throws \Exception
      */
-    public static function checkout(Credentials $credentials, \PagSeguro\Domains\Requests\DirectPayment\InternationalCreditCard $payment)
-    {
+    public static function checkout(
+        Credentials $credentials,
+        \PagSeguro\Domains\Requests\DirectPayment\InternationalCreditCard $payment
+    ) {
         Logger::info("Begin", ['service' => 'DirectPayment.InternationalCreditCard']);
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
-            Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'DirectPayment.InternationalCreditCard']);
-            Logger::info(sprintf(
-                "Params: %s",
-                json_encode(Crypto::encrypt(Request::getData($payment)))),
+            Logger::info(
+                sprintf("POST: %s", self::request($connection)),
+                ['service' => 'DirectPayment.InternationalCreditCard']
+            );
+            Logger::info(
+                sprintf(
+                    "Params: %s",
+                    json_encode(Crypto::encrypt(Request::getData($payment)))
+                ),
                 ['service' => 'Checkout']
             );
             $http->post(
@@ -74,7 +81,10 @@ class InternationalCreditCard
 
             return $response;
         } catch (\Exception $exception) {
-            Logger::error($exception->getMessage(), ['service' => 'DirectPayment.InternationalCreditCard']);
+            Logger::error(
+                $exception->getMessage(),
+                ['service' => 'DirectPayment.InternationalCreditCard']
+            );
             throw $exception;
         }
     }

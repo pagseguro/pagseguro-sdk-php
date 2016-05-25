@@ -43,7 +43,6 @@ use PagSeguro\Parsers\Split;
 use PagSeguro\Resources\Http;
 use PagSeguro\Parsers\Transaction\Boleto\Response;
 
-
 /**
  * Class Payment
  * @package PagSeguro\Parsers\DirectPayment\Boleto

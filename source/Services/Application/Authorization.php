@@ -41,9 +41,11 @@ class Authorization
             $connection = new Connection\Data($credentials);
             $http = new Http();
             Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'Authorization']);
-            Logger::info(sprintf(
-                "Params: %s",
-                json_encode(Crypto::encrypt(\PagSeguro\Parsers\Authorization\Request::getData($authorization)))),
+            Logger::info(
+                sprintf(
+                    "Params: %s",
+                    json_encode(Crypto::encrypt(\PagSeguro\Parsers\Authorization\Request::getData($authorization)))
+                ),
                 ['service' => 'Checkout']
             );
             $http->post(
@@ -55,7 +57,13 @@ class Authorization
                 $http,
                 new \PagSeguro\Parsers\Authorization\Request
             );
-            Logger::info(sprintf("Authorization URL: %s", self::response($connection, $response)), ['service' => 'Authorization']);
+            Logger::info(
+                sprintf(
+                    "Authorization URL: %s",
+                    self::response($connection, $response)
+                ),
+                ['service' => 'Authorization']
+            );
             return self::response($connection, $response);
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'Authorization']);

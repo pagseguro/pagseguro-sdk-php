@@ -61,5 +61,4 @@ trait Customer
         $this->sender->setName($name);
         return $this;
     }
-
 }

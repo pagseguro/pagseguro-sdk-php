@@ -96,4 +96,3 @@ trait Holder
         return $data;
     }
 }
-

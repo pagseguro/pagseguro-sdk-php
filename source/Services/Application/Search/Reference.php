@@ -55,7 +55,13 @@ class Reference
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
-            Logger::info(sprintf("GET: %s", self::request($connection, $reference, $options)), ['service' => 'Application.Search.Reference']);
+            Logger::info(
+                sprintf(
+                    "GET: %s",
+                    self::request($connection, $reference, $options)
+                ),
+                ['service' => 'Application.Search.Reference']
+            );
             $http->get(
                 self::request($connection, $reference, $options)
             );
@@ -64,7 +70,15 @@ class Reference
                 $http,
                 new Request
             );
-            Logger::info(sprintf("Date: %s, Results in this page: %s, Total pages: %s", $response->getDate(), $response->getResultsInThisPage(), $response->getTotalPages()), ['service' => 'Application.Search.Reference']);
+            Logger::info(
+                sprintf(
+                    "Date: %s, Results in this page: %s, Total pages: %s",
+                    $response->getDate(),
+                    $response->getResultsInThisPage(),
+                    $response->getTotalPages()
+                ),
+                ['service' => 'Application.Search.Reference']
+            );
             return $response;
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'Application.Search.Reference']);

@@ -36,5 +36,4 @@ class Billing
     {
         $this->billing = $billing;
     }
-
 }

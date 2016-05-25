@@ -38,5 +38,4 @@ class PreApproval extends Request
     {
         return \PagSeguro\Services\PreApproval\Payment::create($credentials, $this);
     }
-
 }

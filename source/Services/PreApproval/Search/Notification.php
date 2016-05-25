@@ -50,7 +50,10 @@ class Notification
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
-            Logger::info(sprintf("GET: %s", self::request($connection, $code)), ['service' => 'PreApproval.Search.Notification']);
+            Logger::info(
+                sprintf("GET: %s", self::request($connection, $code)),
+                ['service' => 'PreApproval.Search.Notification']
+            );
             $http->get(
                 self::request($connection, $code)
             );
@@ -59,7 +62,14 @@ class Notification
                 $http,
                 new Request
             );
-            Logger::info(sprintf("Tracker: %s, Date: %s", $response->getTracker(), $response->getDate()), ['service' => 'Application.Search.Notification']);
+            Logger::info(
+                sprintf(
+                    "Tracker: %s, Date: %s",
+                    $response->getTracker(),
+                    $response->getDate()
+                ),
+                ['service' => 'Application.Search.Notification']
+            );
             return $response;
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'PreApproval.Search.Notification']);

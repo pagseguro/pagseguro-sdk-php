@@ -44,7 +44,6 @@ class Installment
             );
 
             return $response;
-
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'Installment']);
             throw $exception;

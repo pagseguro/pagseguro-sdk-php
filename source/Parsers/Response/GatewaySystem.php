@@ -41,7 +41,7 @@ trait GatewaySystem
     }
 
     /**
-     * 
+     *
      * @param xmlObject $gatewaySystem
      * @return \Pagseguro\Parsers\Response\GatewaySystem
      */

@@ -23,6 +23,7 @@
  */
 
 namespace PagSeguro\Resources\Responsibility\Notifications;
+
 use PagSeguro\Helpers\Xhr;
 
 /**

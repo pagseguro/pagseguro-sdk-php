@@ -43,9 +43,11 @@ class Payment
             $connection = new Connection\Data($credentials);
             $http = new Http();
             Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'PreApproval']);
-            Logger::info(sprintf(
-                "Params: %s",
-                json_encode(Crypto::encrypt(Request::getData($preApproval)))),
+            Logger::info(
+                sprintf(
+                    "Params: %s",
+                    json_encode(Crypto::encrypt(Request::getData($preApproval)))
+                ),
                 ['service' => 'PreApproval']
             );
 
@@ -58,7 +60,10 @@ class Payment
                 $http,
                 new Request
             );
-            Logger::info(sprintf("PreApproval URL: %s", self::response($connection, $response)), ['service' => 'PreApproval']);
+            Logger::info(
+                sprintf("PreApproval URL: %s", self::response($connection, $response)),
+                ['service' => 'PreApproval']
+            );
             return self::response($connection, $response);
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'PreApproval']);
@@ -84,5 +89,4 @@ class Payment
     {
         return $connection->buildPreApprovalResponseUrl() ."?code=". $response->getCode();
     }
-
 }

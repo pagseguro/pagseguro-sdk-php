@@ -40,5 +40,4 @@ class Shipping
     {
         $this->shipping = $shipping;
     }
-
 }

@@ -50,22 +50,20 @@ trait Split
                 foreach ($receivers as $key => $value) {
                     $count++;
                     if (!is_null($receivers[$key]->getPublicKey())) {
-                        $data[sprintf($properties::RECEIVER_PUBLIC_KEY, $count)] = $receivers[$key]->getPublicKey();
+                        $data[sprintf($properties::RECEIVER_PUBLIC_KEY, $count)] =
+                            $receivers[$key]->getPublicKey();
                     }
                     if (!is_null($receivers[$key]->getAmount())) {
-                        $data[sprintf($properties::RECEIVER_SPLIT_AMOUNT, $count)] = \PagSeguro\Helpers\Currency::toDecimal(
-                            $receivers[$key]->getAmount()
-                        );
+                        $data[sprintf($properties::RECEIVER_SPLIT_AMOUNT, $count)] =
+                            \PagSeguro\Helpers\Currency::toDecimal($receivers[$key]->getAmount());
                     }
                     if (!is_null($receivers[$key]->getRatePercent())) {
-                        $data[sprintf($properties::RECEIVER_SPLIT_RATE_PERCENT, $count)] = \PagSeguro\Helpers\Currency::toDecimal(
-                            $receivers[$key]->getRatePercent()
-                        );
+                        $data[sprintf($properties::RECEIVER_SPLIT_RATE_PERCENT, $count)] =
+                            \PagSeguro\Helpers\Currency::toDecimal($receivers[$key]->getRatePercent());
                     }
                     if (!is_null($receivers[$key]->getFeePercent())) {
-                        $data[sprintf($properties::RECEIVER_SPLIT_FEE_PERCENT, $count)] = \PagSeguro\Helpers\Currency::toDecimal(
-                            $receivers[$key]->getFeePercent()
-                        );
+                        $data[sprintf($properties::RECEIVER_SPLIT_FEE_PERCENT, $count)] =
+                            \PagSeguro\Helpers\Currency::toDecimal($receivers[$key]->getFeePercent());
                     }
                 }
             }

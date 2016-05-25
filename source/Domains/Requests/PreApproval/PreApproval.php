@@ -24,7 +24,6 @@
 
 namespace PagSeguro\Domains\Requests\PreApproval;
 
-
 use PagSeguro\Helpers\InitializeObject;
 
 trait PreApproval
