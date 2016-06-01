@@ -24,6 +24,7 @@
 
 namespace PagSeguro\Parsers\Transaction;
 
+use PagSeguro\Parsers\Response\CreditorFees;
 use PagSeguro\Parsers\Response\Currency;
 use PagSeguro\Parsers\Response\Item;
 use PagSeguro\Parsers\Response\PaymentLink;
@@ -38,6 +39,7 @@ use PagSeguro\Parsers\Response\Shipping;
 class Response
 {
     use Currency;
+    use CreditorFees;
     use Item;
     use PaymentMethod;
     use Sender;
