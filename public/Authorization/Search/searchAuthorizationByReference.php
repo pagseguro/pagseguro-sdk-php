@@ -20,7 +20,8 @@ try {
         $options
     );
 
-    var_dump($response);
+    echo "<pre>";
+    print_r($response);
 } catch (Exception $e) {
     die($e->getMessage());
 }

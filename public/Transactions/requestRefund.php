@@ -24,7 +24,8 @@ try {
         $value
     );
 
-    var_dump($refund);
+    echo "<pre>";
+    print_r($refund);
 } catch (Exception $e) {
     die($e->getMessage());
 }

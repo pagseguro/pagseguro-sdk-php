@@ -16,8 +16,8 @@ try {
         \PagSeguro\Configuration\Configure::getAccountCredentials(),
         $code
     );
-
-    var_dump($cancel);
+    echo "<pre>";
+    print_r($cancel);
 } catch (Exception $e) {
     die($e->getMessage());
 }
