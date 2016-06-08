@@ -24,9 +24,9 @@ As opções de configuração disponíveis estão descritas abaixo:
 - **fileLocation**: local onde se deseja criar o arquivo de log. Ex.: /logs/ps.log.
 
 ## Dinâmica
-Para fazer a configuração de forma dinâmica das credenciais da biblioteca deve-se utilizar os métodos da classe estática [Configure.php](../source/Configuration/Configure.php) (/source/Configuration/Configure.php).
+Para fazer a configuração de forma dinâmica das credenciais da biblioteca deve-se utilizar os métodos da classe estática [Configure.php](/source/Configuration/Configure.php) (/source/Configuration/Configure.php).
 
-Para um exemplo completo de configuração dinâmica, consulte o arquivo [dynamicConfiguration.php](./Configuration/dynamicConfiguration.php) (/public/Configuration/dynamicConfiguration.php).
+Para um exemplo completo de configuração dinâmica, consulte o arquivo [dynamicConfiguration.php](/public/Configuration/dynamicConfiguration.php) (/public/Configuration/dynamicConfiguration.php).
 
 ## Wrapper
 Declarando uma classe **ConfigWrapper**, em qualquer arquivo, da seguinte forma:

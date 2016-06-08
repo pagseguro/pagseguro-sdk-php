@@ -45,8 +45,8 @@ require_once "../../vendor/autoload.php";
 /**
  * @todo To set the application credentials intead of the account credentials use:
  * \PagSeguro\Configuration\Configure::setApplicationCredentials(
-    'appKey',
-    'appId'
+ *  'appKey',
+ *  'appId'
 );
  */
 
