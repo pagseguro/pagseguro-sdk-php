@@ -1,7 +1,8 @@
 # Configuração das Credenciais da Biblioteca PagSeguro
-A configuração da biblioteca PagSeguro pode ser feita de quatro formas distintas, sendo que será sempre considerada 
+A configuração da biblioteca PagSeguro pode ser feita **dinamicamente** ou de outras quatro formas distintas, sendo que será sempre considerada 
 a configuração de maior precedência de acordo com a seguinte ordem:
 
+* Dinâmica
 * Wrapper
 * Environment
 * File
@@ -21,6 +22,11 @@ As opções de configuração disponíveis estão descritas abaixo:
 - **charset**: codificação do seu sistema (ISO-8859-1 ou UTF-8).
 - **log**: ativa/desativa a geração de logs.
 - **fileLocation**: local onde se deseja criar o arquivo de log. Ex.: /logs/ps.log.
+
+## Dinâmica
+Para fazer a configuração de forma dinâmica das credenciais da biblioteca deve-se utilizar os métodos da classe estática [Configure.php](/source/Configuration/Configure.php) (/source/Configuration/Configure.php).
+
+Para um exemplo completo de configuração dinâmica, consulte o arquivo [dynamicConfiguration.php](/public/Configuration/dynamicConfiguration.php) (/public/Configuration/dynamicConfiguration.php).
 
 ## Wrapper
 Declarando uma classe **ConfigWrapper**, em qualquer arquivo, da seguinte forma:

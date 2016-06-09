@@ -18,7 +18,8 @@ $preApproval->addItems()->withParameters(
 
 try {
     $response = $preApproval->register(\PagSeguro\Configuration\Configure::getAccountCredentials());
-    var_dump($response);
+    echo "<pre>";
+    print_r($response);
 } catch (Exception $e) {
     die($e->getMessage());
 }
