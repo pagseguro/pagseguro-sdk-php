@@ -22,7 +22,7 @@
  *
  */
 
-require_once "../../../vendor/autoload.php";
+require_once "../../vendor/autoload.php";
 
 \PagSeguro\Library::initialize();
 \PagSeguro\Library::cmsVersion()->setName("Nome")->setRelease("1.0.0");

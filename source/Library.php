@@ -51,8 +51,8 @@ class Library
     final public static function initialize()
     {
         //Basic configuration
-        define('BP', __DIR__);
-        define('CONFIG_PATH', BP. "/Configuration/");
+        define('BASEPATH', __DIR__);
+        define('CONFIG_PATH', BASEPATH. "/Configuration/");
         define('CONFIG', CONFIG_PATH."Properties/Conf.xml");
         define('RESOURCES', CONFIG_PATH."Properties/Resources.xml");
         //Validates for cUrl and SimpleXml.
