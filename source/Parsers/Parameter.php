@@ -41,8 +41,9 @@ trait Parameter
     public static function getData(Requests $request)
     {
         $data = [];
-        $parameter = $request->getParameter();
+        
         if ($request->parameterLenght() > 0) {
+            $parameter = $request->getParameter();
             foreach ($parameter as $key => $value) {
                 if (!is_null($parameter[$key]->getKey())) {
                     if (!is_null($parameter[$key]->getIndex())) {

@@ -44,8 +44,9 @@ trait Metadata
     public static function getData(Requests $request, $properties)
     {
         $data = [];
-        $metadata = $request->getMetadata();
+
         if ($request->metadataLenght() > 0) {
+            $metadata = $request->getMetadata();
             $count = 0;
 
             foreach ($metadata as $key => $value) {

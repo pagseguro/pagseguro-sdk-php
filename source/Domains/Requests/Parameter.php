@@ -68,6 +68,6 @@ trait Parameter
 
     public function parameterLenght()
     {
-        return count(current($this->parameter));
+        return (! is_null($this->parameter)) ? count(current($this->parameter)) : 0;
     }
 }

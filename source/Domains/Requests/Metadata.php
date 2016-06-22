@@ -64,6 +64,6 @@ trait Metadata
 
     public function metadataLenght()
     {
-        return count(current($this->metadata));
+        return (! is_null($this->metadata)) ? count(current($this->metadata)) : 0;
     }
 }
