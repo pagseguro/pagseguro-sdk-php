@@ -44,6 +44,10 @@ class Library
      * @var
      */
     private static $module;
+    /**
+     * @var
+     */
+    private static $cms;
 
     /**
      * @throws \Exception
@@ -112,9 +116,9 @@ class Library
      */
     public static function cmsVersion()
     {
-        if (is_null(self::$module)) {
-            return self::$module = new ContentManagementSystems();
+        if (is_null(self::$cms)) {
+            return self::$cms = new ContentManagementSystems();
         }
-        return self::$module;
+        return self::$cms;
     }
 }
