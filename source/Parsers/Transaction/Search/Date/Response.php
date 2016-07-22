@@ -139,10 +139,10 @@ class Response
     {
         if ($transactions) {
             if (is_object($transactions)) {
-                self::addTransaction($transactions);
+                self::addTransactions($transactions);
             } else {
                 foreach ($transactions as $transaction) {
-                    self::addTransaction($transaction);
+                    self::addTransactions($transaction);
                 }
             }
         }
@@ -152,21 +152,37 @@ class Response
     /**
      * @param $transaction
      */
-    private function addTransaction($transaction)
+    public function addTransactions($transaction)
     {
-        $response = new Transaction();
-        $response->setDate(current($transaction->date))
-            ->setCode(current($transaction->code))
-            ->setReference(current($transaction->reference))
-            ->setType(current($transaction->type))
-            ->setStatus(current($transaction->status))
-            ->setLastEventDate(current($transaction->lastEventDate))
-            ->setPaymentMethod($transaction->paymentMethod)
-            ->setGrossAmount(current($transaction->grossAmount))
-            ->setDiscountAmount(current($transaction->discountAmount))
-            ->setNetAmount(current($transaction->netAmount))
-            ->setExtraAmount(current($transaction->extraAmount))
-            ->setCancellationSource(current($transaction->cancellationSource));
+        //check if is an array of transactions if is just push to array
+        if (is_array($transaction)) {
+            foreach ($transaction as $item) {
+                array_push($this->transactions, $item);
+            }
+            return;
+        }
+        //create a new transaction and push to array
+        $response = $this->createTransaction($transaction);
         $this->transactions[] = $response;
+        return;
+    }
+
+    private function createTransaction($response)
+    {
+        $transaction = new Transaction();
+        $transaction->setDate(current($response->date))
+            ->setCode(current($response->code))
+            ->setReference(current($response->reference))
+            ->setType(current($response->type))
+            ->setStatus(current($response->status))
+            ->setLastEventDate(current($response->lastEventDate))
+            ->setPaymentMethod($response->paymentMethod)
+            ->setGrossAmount(current($response->grossAmount))
+            ->setDiscountAmount(current($response->discountAmount))
+            ->setNetAmount(current($response->netAmount))
+            ->setExtraAmount(current($response->extraAmount))
+            ->setCancellationSource(current($response->cancellationSource));
+        return $transaction;
     }
 }
+
