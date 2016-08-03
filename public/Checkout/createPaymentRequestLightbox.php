@@ -58,7 +58,7 @@ $payment->setSender()->setPhone()->withParameters(
 );
 $payment->setSender()->setDocument()->withParameters(
     'CPF',
-    '156.009.442-76'
+    'insira um numero de CPF valido'
 );
 
 $payment->setShipping()->setAddress()->withParameters(
@@ -75,7 +75,7 @@ $payment->setShipping()->setCost()->withParameters(20.00);
 $payment->setShipping()->setType()->withParameters(\PagSeguro\Enum\Shipping\Type::SEDEX);
 
 //Add metadata items
-$payment->addMetadata()->withParameters('PASSENGER_CPF', '11111111111');
+$payment->addMetadata()->withParameters('PASSENGER_CPF', 'insira um numero de CPF valido');
 $payment->addMetadata()->withParameters('GAME_NAME', 'DOTA');
 $payment->addMetadata()->withParameters('PASSENGER_PASSPORT', '23456', 1);
 

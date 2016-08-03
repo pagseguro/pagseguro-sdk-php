@@ -49,7 +49,7 @@ $creditCard->setSender()->setPhone()->withParameters(
 
 $creditCard->setSender()->setDocument()->withParameters(
     'CPF',
-    '156.009.442-76'
+    'insira um numero de CPF valido'
 );
 
 $creditCard->setSender()->setHash('d94d002b6998ca9cd69092746518e50aded5a54aef64c4877ccea02573694986');
@@ -98,7 +98,7 @@ $creditCard->setHolder()->setPhone()->withParameters(
 
 $creditCard->setHolder()->setDocument()->withParameters(
     'CPF',
-    '156.009.442-76'
+    'insira um numero de CPF valido'
 );
 
 // Set the Payment Mode for this payment request

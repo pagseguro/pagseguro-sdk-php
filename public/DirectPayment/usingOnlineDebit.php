@@ -58,7 +58,7 @@ $onlineDebit->setSender()->setPhone()->withParameters(
 
 $onlineDebit->setSender()->setDocument()->withParameters(
     'CPF',
-    '156.009.442-76'
+    'insira um numero de CPF valido'
 );
 
 $onlineDebit->setSender()->setHash('3dc25e8a7cb3fd3104e77ae5ad0e7df04621caa33e300b27aeeb9ed5fdf1a24f');

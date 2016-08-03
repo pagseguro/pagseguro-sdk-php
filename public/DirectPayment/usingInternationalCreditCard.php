@@ -74,7 +74,7 @@ $internationalCreditCard->setSender()->setPhone()->withParameters(
 
 $internationalCreditCard->setSender()->setDocument()->withParameters(
     'CPF',
-    '156.009.442-76'
+    'insira um numero de CPF valido'
 );
 
 $internationalCreditCard->setSender()->setHash('a2fd31b1024da2100d490d338aa3e2ade0a237b397a267177b8ff3ec88a06026');
