@@ -147,11 +147,14 @@ class Http
             CURLOPT_CONNECTTIMEOUT => $timeout,
             //CURLOPT_TIMEOUT => $timeout
         );
+
         if (!is_null(Library::moduleVersion()->getRelease())) {
             array_push($options[CURLOPT_HTTPHEADER], 'module-description: ' . Library::moduleVersion()->getName());
+            array_push($options[CURLOPT_HTTPHEADER], 'module-version: ' . Library::moduleVersion()->getRelease());
         }
+        
         if (!is_null(Library::cmsVersion()->getRelease())) {
-            array_push($options[CURLOPT_HTTPHEADER], 'cms-description: ' . Library::cmsVersion()->getName());
+            array_push($options[CURLOPT_HTTPHEADER], 'cms-description: ' . Library::cmsVersion()->getName() . '-' . Library::cmsVersion()->getRelease());
         }
 
         $options = ($options + $methodOptions);
