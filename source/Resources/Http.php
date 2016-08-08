@@ -149,12 +149,21 @@ class Http
         );
 
         if (!is_null(Library::moduleVersion()->getRelease())) {
-            array_push($options[CURLOPT_HTTPHEADER], 'module-description: ' . Library::moduleVersion()->getName());
-            array_push($options[CURLOPT_HTTPHEADER], 'module-version: ' . Library::moduleVersion()->getRelease());
+            array_push(
+                $options[CURLOPT_HTTPHEADER],
+                sprintf('module-description: %s', Library::moduleVersion()->getName())
+            );
+            array_push(
+                $options[CURLOPT_HTTPHEADER],
+                sprintf('module-version: %s', Library::moduleVersion()->getRelease())
+            );
         }
         
         if (!is_null(Library::cmsVersion()->getRelease())) {
-            array_push($options[CURLOPT_HTTPHEADER], 'cms-description: ' . Library::cmsVersion()->getName() . '-' . Library::cmsVersion()->getRelease());
+            array_push(
+                $options[CURLOPT_HTTPHEADER],
+                sprintf('cms-description: %s :%s', Library::cmsVersion()->getName(), Library::cmsVersion()->getRelease())
+            );
         }
 
         $options = ($options + $methodOptions);
