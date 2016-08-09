@@ -167,7 +167,12 @@ class BackwardCompatibility
     const ITEM_QUANTITY = "item[%s].quantity";
 
     /**
-     *  NOtification URL
+     * Item weight
+     */
+    const ITEM_WEIGHT = "item[%s].weight";
+
+    /**
+     *  Notification URL
      */
     const NOTIFICATION_URL = "notificationURL";
 
