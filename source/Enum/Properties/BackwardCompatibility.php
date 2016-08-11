@@ -207,6 +207,11 @@ class BackwardCompatibility
     const RECEIVER_SPLIT_FEE_PERCENT = "receiver[%s].split.feePercent";
 
     /**
+     * Redirect Url
+     */
+    const REDIRECT_URL = "redirectURL";
+
+    /**
      *  Reference
      */
     const REFERENCE = "reference";
