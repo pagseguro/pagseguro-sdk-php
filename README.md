@@ -44,7 +44,7 @@ Instalação via Composer
 ```composer.json
 {
     "require": {
-       "pagseguro/php": "3.0.0-dev"
+       "pagseguro/php3"
     }
 }
 ```
