@@ -1,13 +1,18 @@
 {
-  "name": "pagseguro/php",
-  "license": "MIT",
+  "name": "pagseguro/php3",
+  "description": "Biblioteca de integração com o PagSeguro",
+    "license": "Apache License 2.0",
   "authors": [
     {
-      "name": "Edison Silva Jr",
-      "email": "edison.junior@s2it.com.br"
+      "name": "PagSeguro",
     }
   ],
-  "require": {},
+  "require": {
+    "php": ">=5.4.27",
+    "ext-curl": "*",
+    "lib-curl": "*",
+    "lib-openssl": "*"
+  },
   "autoload": {
     "psr-4": {
       "PagSeguro\\": "source/"
