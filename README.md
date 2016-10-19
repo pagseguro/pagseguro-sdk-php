@@ -140,6 +140,7 @@ Achou e corrigiu um bug ou tem alguma feature em mente e deseja contribuir?
 * Rode um push para o branch (git push origin my-new-feature)
 * Envie um Pull Request
 * Obs.: Adicione exemplos para sua nova feature. Se seu Pull Request for relacionado a uma versão específica, o Pull Request não deve ser enviado para o branch master e sim para o branch correspondente a versão.
+* Obs2: Não serão aceitos PR's na branch master. Utilizar a branch de desenvolvimento.
 
 
   [requisições de assinaturas]: http://download.uol.com.br/pagseguro/docs/pagseguro-assinatura-automatica.pdf
