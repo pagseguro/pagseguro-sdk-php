@@ -221,7 +221,7 @@ class Logger implements LoggerInterface
         if (Configure::getLog()->getLocation()) {
             return Configure::getLog()->getLocation();
         } else {
-            return sprintf("%1s/../%1s", BASEPATH, self::DEFAULT_FILE);
+            return sprintf("%1s/../%1s", PS_BASEPATH, self::DEFAULT_FILE);
         }
     }
 }

@@ -64,8 +64,8 @@ class Builder
     {
         $resources = __DIR__ . '/../Configuration/Properties/Resources.xml';
 
-        if (defined('RESOURCES')) {
-            $resources = RESOURCES;
+        if (defined('PS_RESOURCES')) {
+            $resources = PS_RESOURCES;
         }
 
         return $resources;

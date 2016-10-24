@@ -46,7 +46,7 @@ class Extensible implements Handler
     public function handler($action, $class)
     {
         unset($action, $class);
-        if (file_exists(CONFIG)) {
+        if (file_exists(PS_CONFIG)) {
             return array_merge(
                 $this->environment(),
                 $this->credentials(),
@@ -61,7 +61,7 @@ class Extensible implements Handler
     {
         return [
             'environment' => current(
-                simplexml_load_file(CONFIG)->environment
+                simplexml_load_file(PS_CONFIG)->environment
             )
         ];
     }
@@ -69,7 +69,7 @@ class Extensible implements Handler
     private function credentials()
     {
         //Loading XML configuration file.
-        $xml = simplexml_load_file(CONFIG)->credentials;
+        $xml = simplexml_load_file(PS_CONFIG)->credentials;
         return [
             'credentials' => [
                 'email' => current($xml->account->email),
@@ -99,7 +99,7 @@ class Extensible implements Handler
     {
         return [
             'charset' => current(
-                simplexml_load_file(CONFIG)->charset
+                simplexml_load_file(PS_CONFIG)->charset
             )
         ];
     }
@@ -107,7 +107,7 @@ class Extensible implements Handler
     private function log()
     {
         //Loading XML configuration file.
-        $xml = simplexml_load_file(CONFIG)->log;
+        $xml = simplexml_load_file(PS_CONFIG)->log;
         return [
             'log' => [
                 'active' => current($xml->active),
