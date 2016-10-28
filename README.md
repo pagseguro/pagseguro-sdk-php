@@ -41,13 +41,21 @@ Instalação
 Instalação via Composer
 
 - Alternativamente, é possível utilizar o [Composer] para carregar a biblioteca ([pagseguro/php]).
+
+Adicionando a dependência ao seu arquivo ```composer.json```
 ```composer.json
 {
     "require": {
-       "pagseguro/php3"
+       "pagseguro/php3" : "^3.0"
     }
 }
 ```
+
+OU
+
+Executando o comando para adicionar a dependência automaticamente
+
+```php composer.phar require pagseguro/php3:^3.0```
 
 
 Configuração
@@ -140,6 +148,7 @@ Achou e corrigiu um bug ou tem alguma feature em mente e deseja contribuir?
 * Rode um push para o branch (git push origin my-new-feature)
 * Envie um Pull Request
 * Obs.: Adicione exemplos para sua nova feature. Se seu Pull Request for relacionado a uma versão específica, o Pull Request não deve ser enviado para o branch master e sim para o branch correspondente a versão.
+* Obs2: Não serão aceitos PR's na branch master. Utilizar a branch de desenvolvimento.
 
 
   [requisições de assinaturas]: http://download.uol.com.br/pagseguro/docs/pagseguro-assinatura-automatica.pdf
@@ -158,7 +167,7 @@ Achou e corrigiu um bug ou tem alguma feature em mente e deseja contribuir?
   [GitHub]: https://github.com/pagseguro/php/
   [documentação oficial]: https://pagseguro.uol.com.br/v2/guia-de-integracao/tutorial-da-biblioteca-pagseguro-em-php.html
   [Composer]: https://getcomposer.org
-  [pagseguro/php]: https://packagist.org/packages/pagseguro/php
+  [pagseguro/php]: https://packagist.org/packages/pagseguro/php3
   [Como receber pagamentos pelo PagSeguro]: https://pagseguro.uol.com.br/receba-pagamentos.jhtml#checkout-transparent
 
 
