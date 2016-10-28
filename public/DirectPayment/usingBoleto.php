@@ -80,6 +80,7 @@ try {
         \PagSeguro\Configuration\Configure::getAccountCredentials()
     );
 
+    // You can use methods like getCode() to get the transaction code and getPaymentLink() for the Payment's URL.
     echo "<pre>";
     print_r($result);
 } catch (Exception $e) {
