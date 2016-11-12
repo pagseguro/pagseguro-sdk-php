@@ -31,17 +31,19 @@ class Installment
     {
         $installment = new \PagSeguro\Domains\DirectPayment\CreditCard\Installment();
         $installment->setQuantity($array['quantity'])
-            ->setValue($array['value']);
+            ->setValue($array['value'])
+            ->setNoInterestQuantity($array['noInterestQuantity']);
 
         $this->installment = $installment;
         return $this->installment;
     }
     
-    public function withParameters($quantity, $value)
+    public function withParameters($quantity, $value, $noInterestQuantity)
     {
         $installment = new \PagSeguro\Domains\DirectPayment\CreditCard\Installment();
         $installment->setQuantity($quantity)
-            ->setValue($value);
+            ->setValue($value)
+            ->setNoInterestQuantity($noInterestQuantity);
         $this->installment = $installment;
 
         return $this->installment;

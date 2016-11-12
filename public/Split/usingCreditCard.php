@@ -105,9 +105,10 @@ $creditCard->setBilling()->setAddress()->withParameters(
 // Set credit card token
 $creditCard->setToken('1fcb2333ca7c46e38089dd9f2cac525c');
 
-// Set the installment quantity and value (could be obtained using the Installments 
-// service, that have an example here in \public\getInstallments.php)
-$creditCard->setInstallment()->withParameters(1, '30.00');
+// Set the installment quantity, value (could be obtained using the Installments
+// service, and the no interest installments quantity 
+// that have an example here in \public\getInstallments.php)
+$creditCard->setInstallment()->withParameters(1, '30.00', 12);
 
 // Set the credit card holder information
 $creditCard->setHolder()->setBirthdate('01/10/1979');

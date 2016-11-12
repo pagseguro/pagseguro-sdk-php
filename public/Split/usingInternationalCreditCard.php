@@ -84,9 +84,10 @@ $internationalCreditCard->setSender()->setIp('127.0.0.0');
 // Set credit card token
 $internationalCreditCard->setToken('5a0573d3f03143f29415793c285513ec');
 
-// Set the installment quantity and value (could be obtained using the Installments 
-// service, that have an example here in \public\getInstallments.php)
-$internationalCreditCard->setInstallment()->withParameters(1, '30.00');
+// Set the installment quantity, value (could be obtained using the Installments
+// service, and the no interest installments quantity 
+// that have an example here in \public\getInstallments.php)
+$internationalCreditCard->setInstallment()->withParameters(1, '30.00', 12);
 
 
 // Add a primary receiver for split this payment request
