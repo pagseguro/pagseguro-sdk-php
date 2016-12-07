@@ -46,7 +46,7 @@ Adicionando a dependência ao seu arquivo ```composer.json```
 ```composer.json
 {
     "require": {
-       "pagseguro/php3" : "^3.0"
+       "pagseguro/pagseguro-php-sdk" : "*"
     }
 }
 ```
@@ -55,7 +55,7 @@ OU
 
 Executando o comando para adicionar a dependência automaticamente
 
-```php composer.phar require pagseguro/php3:^3.0```
+```php composer.phar require pagseguro/pagseguro-php-sdk```
 
 
 Configuração
