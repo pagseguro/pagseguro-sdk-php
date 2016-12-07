@@ -1,5 +1,5 @@
 {
-  "name": "pagseguro/php3",
+  "name": "pagseguro/pagseguro-php-sdk",
   "description": "Biblioteca de integração com o PagSeguro",
     "license": "Apache License 2.0",
   "authors": [
