@@ -38,7 +38,7 @@ class Address extends Enum
     /**
      * Acronym for Amapá
      */
-    const AP = 'Amapa';
+    const AP = 'Amapá';
 
     /**
      * Acronym for Amazonas
@@ -53,7 +53,7 @@ class Address extends Enum
     /**
      * Acronym for Ceará
      */
-    const CE = 'Ceara';
+    const CE = 'Ceará';
 
     /**
      * Acronym for Espírito Santo
@@ -61,9 +61,9 @@ class Address extends Enum
     const ES = 'Espírito Santos';
 
     /**
-     * Acronym for Goías
+     * Acronym for Goiás
      */
-    const GO = 'Goías';
+    const GO = 'Goiás';
 
     /**
      * Acronym for Maranhão
@@ -88,7 +88,7 @@ class Address extends Enum
     /**
      * Acronym for Pará
      */
-    const PA = 'Para';
+    const PA = 'Pará';
 
     /**
      * Acronym for Paraíba
@@ -121,9 +121,9 @@ class Address extends Enum
     const RS = 'Rio Grande do Sul';
 
     /**
-     * Acronym for Rondonia
+     * Acronym for Rondônia
      */
-    const RO = 'Rondonia';
+    const RO = 'Rondônia';
 
     /**
      * Acronym for Roraima
