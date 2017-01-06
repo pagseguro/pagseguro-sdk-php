@@ -93,7 +93,7 @@ class Date
     private static function request(Connection\Data $connection, $params)
     {
         return sprintf(
-            "%1s/?%2s&%3s%4s%5s%6s",
+            "%s/?%s&%s%s%s%s",
             $connection->buildAuthorizationSearchRequestUrl(),
             $connection->buildCredentialsQuery(),
             sprintf("&%s=%s", Current::SEARCH_INITIAL_DATE, $params["initial_date"]),

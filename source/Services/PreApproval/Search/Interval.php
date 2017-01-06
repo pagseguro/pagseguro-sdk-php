@@ -89,7 +89,7 @@ class Interval
     private static function request(Connection\Data $connection, $days)
     {
         return sprintf(
-            "%1s/?%2s&interval=%2s",
+            "%s/?%s&interval=%s",
             $connection->buildNotificationPreApprovalRequestUrl(),
             $connection->buildCredentialsQuery(),
             $days

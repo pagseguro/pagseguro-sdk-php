@@ -93,7 +93,7 @@ class Abandoned
     private static function request(Connection\Data $connection, $params)
     {
         return sprintf(
-            "%1s/abandoned/?%2s%3s%4s%5s%6s",
+            "%s/abandoned/?%s%s%s%s%s",
             $connection->buildAbandonedRequestUrl(),
             $connection->buildCredentialsQuery(),
             sprintf("&%s=%s", Current::SEARCH_INITIAL_DATE, $params["initial_date"]),

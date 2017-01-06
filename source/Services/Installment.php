@@ -59,13 +59,13 @@ class Installment
     private static function request(Connection\Data $connection, $params)
     {
         return sprintf(
-            "%1s?%2s%3s%4s%5s",
+            "%s?%s%s%s%s",
             $connection->buildInstallmentRequestUrl(),
             $connection->buildCredentialsQuery(),
             sprintf("&%s=%s", Current::INSTALLMENT_AMOUNT, Currency::toDecimal($params['amount'])),
-            !isset($params['card_brand']) ?:
+            is_null($params['card_brand']) ?:
                 sprintf("&%s=%s", Current::INSTALLMENT_CARD_BRAND, $params['card_brand']),
-            !isset($params['max_installment_no_interest']) ?:
+            is_null($params['max_installment_no_interest']) ? '' :
                 sprintf(
                     "&%s=%s",
                     Current::INSTALLMENT_MAX_INSTALLMENT_NO_INTEREST,
