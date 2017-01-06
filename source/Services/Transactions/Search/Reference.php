@@ -99,7 +99,7 @@ class Reference
     private static function request(Connection\Data $connection, $reference, $params)
     {
         return sprintf(
-            "%1s/?%2s&reference=%3s%4s%5s%6s%7s",
+            "%s/?%s&reference=%s%s%s%s%s",
             $connection->buildTransactionSearchRequestUrl(),
             $connection->buildCredentialsQuery(),
             $reference,
