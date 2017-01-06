@@ -90,7 +90,7 @@ class Code
     private static function request(Connection\Data $connection, $code)
     {
         return sprintf(
-            "%1s/%2s/?%3s",
+            "%s/%s/?%s",
             $connection->buildTransactionSearchRequestUrl(),
             $code,
             $connection->buildCredentialsQuery()
