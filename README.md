@@ -1,10 +1,10 @@
 Biblioteca de integração PagSeguro para PHP
 ===========================================
 
-[![Code Climate](https://codeclimate.com/github/pagseguro/php/badges/gpa.svg)](https://codeclimate.com/github/pagseguro/php)
-[![Total Downloads](https://poser.pugx.org/pagseguro/php/d/total.svg)](https://packagist.org/packages/pagseguro/php)
-[![Latest Stable Version](https://poser.pugx.org/pagseguro/php/v/stable.svg)](https://packagist.org/packages/pagseguro/php)
-[![Latest Unstable Version](https://poser.pugx.org/pagseguro/php/v/unstable.svg)](https://packagist.org/packages/pagseguro/php)
+[![Code Climate](https://codeclimate.com/github/pagseguro/pagseguro-php-sdk/badges/gpa.svg)](https://codeclimate.com/github/pagseguro/pagseguro-php-sdk)
+[![Total Downloads](https://poser.pugx.org/pagseguro/pagseguro-php-sdk/d/total.svg)](https://packagist.org/packages/pagseguro/pagseguro-php-sdk)
+[![Latest Stable Version](https://poser.pugx.org/pagseguro/pagseguro-php-sdk/v/stable.svg)](https://packagist.org/packages/pagseguro/pagseguro-php-sdk)
+[![Latest Unstable Version](https://poser.pugx.org/pagseguro/pagseguro-php-sdk/v/unstable.svg)](https://packagist.org/packages/pagseguro/pagseguro-php-sdk)
 
 Descrição
 ---------
@@ -46,7 +46,7 @@ Adicionando a dependência ao seu arquivo ```composer.json```
 ```composer.json
 {
     "require": {
-       "pagseguro/php3" : "^3.0"
+       "pagseguro/pagseguro-php-sdk" : "*"
     }
 }
 ```
@@ -55,7 +55,7 @@ OU
 
 Executando o comando para adicionar a dependência automaticamente
 
-```php composer.phar require pagseguro/php3:^3.0```
+```php composer.phar require pagseguro/pagseguro-php-sdk```
 
 
 Configuração

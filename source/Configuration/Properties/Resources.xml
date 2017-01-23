@@ -1,4 +1,8 @@
 <?xml version="1.0"?>
+<!-- 
+    Não recomendamos a utilização deste arquivo como referência aos endpoints do PagSeguro. 
+    Para isto, consulte a documentação em dev.pagseguro.uol.com.br.
+-->
 <Resources>
     <path>
         <protocol>https</protocol>
@@ -91,6 +95,10 @@
                 <request>v2/pre-approvals</request>
             </search>
         </preApproval>
+        <!-- 
+           Nós não utilizamos a V2 deste serviço pois utilizamos uma versão mais recente da API que suporta Split Payment. 
+           Para maiores informações e consultar a disponibilidade de utilização do Split Payment, entre em contato com o PagSeguro. 
+        -->
         <directPayment>
             <request>transactions/</request>
         </directPayment>
