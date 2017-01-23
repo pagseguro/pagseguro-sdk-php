@@ -168,4 +168,14 @@ class Name
      * Bandeira Sorocred
      */
     const SOROCRED = "SOROCRED";
+
+    /**
+     * Bandeira BaneseCard
+     */
+    const BANESECARD = "BANESECARD";
+
+    /**
+     * Bandeira UpBrasil
+     */
+    const UPBRASIL = "UPBRASIL";
 }
