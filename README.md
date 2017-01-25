@@ -40,7 +40,7 @@ Instalação
 
 Instalação via Composer
 
-- Alternativamente, é possível utilizar o [Composer] para carregar a biblioteca ([pagseguro/php]).
+- Alternativamente, é possível utilizar o [Composer] para carregar a biblioteca ([pagseguro/pagseguro-php-sdk]).
 
 Adicionando a dependência ao seu arquivo ```composer.json```
 ```composer.json
@@ -153,21 +153,21 @@ Achou e corrigiu um bug ou tem alguma feature em mente e deseja contribuir?
 
   [requisições de assinaturas]: http://download.uol.com.br/pagseguro/docs/pagseguro-assinatura-automatica.pdf
   [assinaturas]: http://download.uol.com.br/pagseguro/docs/pagseguro-assinatura-automatica.pdf
-  [requisições de pagamentos]: https://pagseguro.uol.com.br/v2/guia-de-integracao/api-de-pagamentos.html
+  [requisições de pagamentos]: https://dev.pagseguro.uol.com.br/documentacao/pagamentos
   [notificações]: https://pagseguro.uol.com.br/v3/guia-de-integracao/api-de-notificacoes.html
   [Checkout Transparente]: https://pagseguro.uol.com.br/receba-pagamentos.jhtml#checkout-transparent
   [transações por código]: https://pagseguro.uol.com.br/v3/guia-de-integracao/consulta-de-transacoes-por-codigo.html
   [transações por intervalo de datas]: https://pagseguro.uol.com.br/v2/guia-de-integracao/consulta-de-transacoes-por-intervalo-de-datas.html
   [transações abandonadas]: https://pagseguro.uol.com.br/v2/guia-de-integracao/consulta-de-transacoes-abandonadas.html
-  [fórum]: http://forum.pagseguro.uol.com.br/
+  [fórum]: https://comunidade.pagseguro.uol.com.br/hc/pt-br/community/topics
   [PHP]: http://www.php.net/
   [SPL]: http://php.net/manual/en/book.spl.php
   [cURL]: http://php.net/manual/en/book.curl.php
   [SimpleXml]: http://php.net/manual/en/book.simplexml.php
   [GitHub]: https://github.com/pagseguro/php/
-  [documentação oficial]: https://pagseguro.uol.com.br/v2/guia-de-integracao/tutorial-da-biblioteca-pagseguro-em-php.html
+  [documentação oficial]: https://dev.pagseguro.uol.com.br/bibliotecas/php
   [Composer]: https://getcomposer.org
-  [pagseguro/php]: https://packagist.org/packages/pagseguro/php3
+  [pagseguro/pagseguro-php-sdk]: https://packagist.org/packages/pagseguro/pagseguro-php-sdk
   [Como receber pagamentos pelo PagSeguro]: https://pagseguro.uol.com.br/receba-pagamentos.jhtml#checkout-transparent
 
 
