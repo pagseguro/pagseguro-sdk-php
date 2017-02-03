@@ -84,9 +84,10 @@ $internationalCreditCard->setSender()->setIp('127.0.0.0');
 // Set credit card token
 $internationalCreditCard->setToken('ef35fdd9b3b84c7db0c1de132649f2c0');
 
-// Set the installment quantity and value (could be obtained using the Installments 
-// service, that have an example here in \public\getInstallments.php)
-$internationalCreditCard->setInstallment()->withParameters(1, '30.00');
+// Set the installment quantity, value (could be obtained using the Installments
+// service, and the no interest installments quantity 
+// that have an example here in \public\getInstallments.php)
+$internationalCreditCard->setInstallment()->withParameters(1, '30.00', 12);
 
 try {
     //Get the crendentials and register the boleto payment
