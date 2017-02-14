@@ -33,7 +33,8 @@ class Installment
 {
     private $quantity;
     private $value;
-    
+    private $noInterestInstallmentQuantity;
+
     public function getQuantity()
     {
         return $this->quantity;
@@ -42,6 +43,11 @@ class Installment
     public function getValue()
     {
         return $this->value;
+    }
+
+    public function getNoInterestInstallmentQuantity()
+    {
+        return $this->noInterestInstallmentQuantity;
     }
 
     public function setQuantity($quantity)
@@ -53,6 +59,12 @@ class Installment
     public function setValue($value)
     {
         $this->value = $value;
+        return $this;
+    }
+
+    public function setNoInterestInstallmentQuantity($noInterestQuantity)
+    {
+        $this->noInterestInstallmentQuantity = $noInterestQuantity;
         return $this;
     }
 }
