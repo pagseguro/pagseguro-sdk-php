@@ -179,6 +179,7 @@ class Response
             ->setPaymentMethod($response->paymentMethod)
             ->setGrossAmount(current($response->grossAmount))
             ->setDiscountAmount(current($response->discountAmount))
+            ->setFeeAmount(current($response->feeAmount))
             ->setNetAmount(current($response->netAmount))
             ->setExtraAmount(current($response->extraAmount))
             ->setCancellationSource(current($response->cancellationSource));
