@@ -144,7 +144,7 @@ class BackwardCompatibility
     /**
      * Installment no interest installment quantity for credit card payment
      */
-    const INSTALLMENT_NO_INTEREST_INSTALLMENT_QUANTITY = "installment.noInterestInstallmentQuantity=";
+    const INSTALLMENT_NO_INTEREST_INSTALLMENT_QUANTITY = "installment.noInterestInstallmentQuantity";
 
     /**
      *  Item id
