@@ -37,11 +37,12 @@ class Installment
         return $this->installment;
     }
     
-    public function withParameters($quantity, $value)
+    public function withParameters($quantity, $value, $noInterestInstallmentQuantity)
     {
         $installment = new \PagSeguro\Domains\DirectPayment\CreditCard\Installment();
         $installment->setQuantity($quantity)
-            ->setValue($value);
+            ->setValue($value)
+            ->setNoInterestInstallmentQuantity($noInterestInstallmentQuantity);
         $this->installment = $installment;
 
         return $this->installment;

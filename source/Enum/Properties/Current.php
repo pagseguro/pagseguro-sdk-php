@@ -174,7 +174,7 @@ class Current
     /**
      * Installment max installment No interest
      */
-    const INSTALLMENT_MAX_INSTALLMENT_NO_INTEREST = "maxInstallmentNoInterest";
+    const INSTALLMENT_MAX_INSTALLMENT_NO_INTEREST = "noInterestInstallmentQuantity";
     
     /**
      * Item identifier
