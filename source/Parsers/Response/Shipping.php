@@ -61,12 +61,12 @@ trait Shipping
         $shippingAddress->withParameters(
             current($shipping->address->street),
             current($shipping->address->number),
-            current($shipping->address->complement),
             current($shipping->address->district),
             current($shipping->address->postalCode),
             current($shipping->address->city),
             current($shipping->address->state),
-            current($shipping->address->country)
+            current($shipping->address->country), 
+            current($shipping->address->complement)
         );
 
         $shippingType = new Type($shippingClass);
