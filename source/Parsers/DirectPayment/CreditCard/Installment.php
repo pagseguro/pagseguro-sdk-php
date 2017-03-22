@@ -51,6 +51,10 @@ trait Installment
         if (!is_null($installment->getValue())) {
             $data[$properties::INSTALLMENT_VALUE] = Currency::toDecimal($installment->getValue());
         }
+        // setNoInterestInstallmentQuantity
+        if (!is_null($installment->getNoInterestInstallmentQuantity())) {
+            $data[$properties::INSTALLMENT_NO_INTEREST_INSTALLMENT_QUANTITY] = Currency::toDecimal($installment->getNoInterestInstallmentQuantity());
+        }
 
         return $data;
     }
