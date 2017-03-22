@@ -31,19 +31,24 @@ namespace PagSeguro\Enum;
 class Address extends Enum
 {
     /**
+     * Acronym for Acre
+     */
+    const AC = 'Acre';
+    
+    /**
      * Acronym for Alagoas
      */
     const AL = 'Alagoas';
 
     /**
-     * Acronym for Amapá
-     */
-    const AP = 'Amapá';
-
-    /**
      * Acronym for Amazonas
      */
     const AM = 'Amazonas';
+
+    /**
+     * Acronym for Amapá
+     */
+    const AP = 'Amapá';
 
     /**
      * Acronym for Bahia
@@ -96,9 +101,14 @@ class Address extends Enum
     const PB = 'Paraíba';
 
     /**
+     * Acronym for Paraná
+     */
+    const PR = 'Paraná';
+    
+    /**
      * Acronym for Pernambuco
      */
-    const PR = 'Pernambuco';
+    const PE = 'Pernambuco';
 
     /**
      * Acronym for Piauí
@@ -116,14 +126,14 @@ class Address extends Enum
     const RN = 'Rio Grande do Norte';
 
     /**
-     * Acronym for Rio Grande do Sul
-     */
-    const RS = 'Rio Grande do Sul';
-
-    /**
      * Acronym for Rondônia
      */
     const RO = 'Rondônia';
+
+    /**
+     * Acronym for Rio Grande do Sul
+     */
+    const RS = 'Rio Grande do Sul';
 
     /**
      * Acronym for Roraima
@@ -136,14 +146,14 @@ class Address extends Enum
     const SC = 'Santa Catarina';
 
     /**
-     *  Acronym for São Paulo
-     */
-    const SP = 'São Paulo';
-
-    /**
      *  Acronym for Sergipe
      */
     const SE = 'Sergipe';
+
+    /**
+     *  Acronym for São Paulo
+     */
+    const SP = 'São Paulo';
 
     /**
      *  Acronym for Tocantins
