@@ -41,6 +41,10 @@ class Shipping
      * Shipping cost.
      */
     private $cost;
+    /***
+     * Shipping address required.
+     */
+    private $addressRequired;
 
     /**
      * @return Address
@@ -93,6 +97,24 @@ class Shipping
     public function setType($type)
     {
         $this->type = $type;
+        return $this;
+    }
+
+    /**
+     * @return ShippingAddressRequired
+     */
+    public function getAddressRequired()
+    {
+        return $this->addressRequired;
+    }
+
+    /**
+     * @param ShippingAddressRequired $addressRequired
+     * @return Shipping
+     */
+    public function setAddressRequired($addressRequired)
+    {
+        $this->addressRequired = $addressRequired;
         return $this;
     }
 }

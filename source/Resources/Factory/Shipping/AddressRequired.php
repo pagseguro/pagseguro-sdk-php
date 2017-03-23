@@ -22,24 +22,42 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests\Adapter;
+namespace PagSeguro\Resources\Factory\Shipping;
 
-use PagSeguro\Domains\Requests\Shipping\Address;
-use PagSeguro\Domains\Requests\Shipping\AddressRequired;
-use PagSeguro\Domains\Requests\Shipping\Type;
-use PagSeguro\Domains\Requests\Shipping\Cost;
+use PagSeguro\Domains\ShippingAddressRequired;
 
-class Shipping
+/**
+ * Class Shipping
+ * @package PagSeguro\Resources\Factory\Request
+ */
+class AddressRequired
 {
-    use Address;
-    use Cost;
-    use Type;
-    use AddressRequired;
 
+    /**
+     * @var \PagSeguro\Domains\Shipping
+     */
     private $shipping;
 
+    /**
+     * Shipping constructor.
+     */
     public function __construct($shipping)
     {
         $this->shipping = $shipping;
+    }
+
+    public function instance(ShippingAddressRequired $addressRequired)
+    {
+        return $this->shipping->setAddressRequired($addressRequired);
+    }
+
+    public function withParameters($addressRequired)
+    {
+        $shipping = new ShippingAddressRequired();
+        $shipping->setAddressRequired($addressRequired);
+        $this->shipping->setAddressRequired(
+            $shipping
+        );
+        return $this->shipping;
     }
 }

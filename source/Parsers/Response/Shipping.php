@@ -25,6 +25,7 @@
 namespace PagSeguro\Parsers\Response;
 
 use PagSeguro\Resources\Factory\Shipping\Address;
+use PagSeguro\Resources\Factory\Shipping\AddressRequired;
 use PagSeguro\Resources\Factory\Shipping\Cost;
 use PagSeguro\Resources\Factory\Shipping\Type;
 
@@ -54,28 +55,31 @@ trait Shipping
      */
     public function setShipping($shipping)
     {
-        $shippingClass = new \PagSeguro\Domains\Shipping();
+        if ($shipping) {
+            $shippingClass = new \PagSeguro\Domains\Shipping();
 
-        $shippingAddress = new Address($shippingClass);
+            $shippingAddress = new Address($shippingClass);
 
-        $shippingAddress->withParameters(
-            current($shipping->address->street),
-            current($shipping->address->number),
-            current($shipping->address->district),
-            current($shipping->address->postalCode),
-            current($shipping->address->city),
-            current($shipping->address->state),
-            current($shipping->address->country), 
-            current($shipping->address->complement)
-        );
+            $shippingAddress->withParameters(
+                current($shipping->address->street),
+                current($shipping->address->number),
+                current($shipping->address->district),
+                current($shipping->address->postalCode),
+                current($shipping->address->city),
+                current($shipping->address->state),
+                current($shipping->address->country),
+                current($shipping->address->complement)
+            );
 
-        $shippingType = new Type($shippingClass);
-        $shippingType->withParameters(current($shipping->type));
+            $shippingType = new Type($shippingClass);
+            $shippingType->withParameters(current($shipping->type));
 
-        $shippingCost = new Cost($shippingClass);
-        $shippingCost->withParameters(current($shipping->cost));
+            $shippingCost = new Cost($shippingClass);
+            $shippingCost->withParameters(current($shipping->cost));
 
-        $this->shipping = $shippingClass;
+            $this->shipping = $shippingClass;
+        }
+
         return $this;
     }
 }

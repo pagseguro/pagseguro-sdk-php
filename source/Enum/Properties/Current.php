@@ -427,6 +427,11 @@ class Current
     const SHIPPING_ADDRESS_COUNTRY = "shippingAddressCountry";
 
     /**
+     * Shipping address required
+     */
+    const SHIPPING_ADDRESS_REQUIRED = "shippingAddressRequired";
+
+    /**
      * Redirect Url
      */
     const REDIRECT_URL = "redirectURL";
