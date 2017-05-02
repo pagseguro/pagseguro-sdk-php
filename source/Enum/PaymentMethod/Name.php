@@ -26,10 +26,6 @@ namespace PagSeguro\Enum\PaymentMethod;
 
 /**
  * Class Name
- * @package PagSeguro\Enum\PaymentMethod\Config
- */
-/**
- * Class Name
  * @package PagSeguro\Enum\PaymentMethod
  */
 class Name
@@ -58,11 +54,6 @@ class Name
      * Débito Barisul
      */
     const DEBITO_BANRISUL = "DEBITO_BANRISUL";
-
-    /**
-     * Débito HSBC
-     */
-    const DEBITO_HSBC = "DEBITO_HSBC";
 
     /**
      * Boleto
