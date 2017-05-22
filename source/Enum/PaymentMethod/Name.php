@@ -60,11 +60,6 @@ class Name
     const DEBITO_BANRISUL = "DEBITO_BANRISUL";
 
     /**
-     * Débito HSBC
-     */
-    const DEBITO_HSBC = "DEBITO_HSBC";
-
-    /**
      * Boleto
      */
     const BOLETO = "BOLETO";
