@@ -66,7 +66,7 @@ class Item
         $item->setId($array[$properties::ITEM_ID])
              ->setAmount($array[$properties::ITEM_AMOUNT])
              ->setDescription($array[$properties::ITEM_DESCRIPTION])
-             ->setQuantity($array[$properties::ITEM_DESCRIPTION])
+             ->setQuantity($array[$properties::ITEM_QUANTITY])
              ->setWeight($array[$properties::ITEM_WEIGHT])
              ->setShippingCost($array[$properties::ITEM_SHIPPING_COST]);
 
