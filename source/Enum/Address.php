@@ -63,7 +63,7 @@ class Address extends Enum
     /**
      * Acronym for Espírito Santo
      */
-    const ES = 'Espírito Santos';
+    const ES = 'Espírito Santo';
 
     /**
      * Acronym for Goiás
