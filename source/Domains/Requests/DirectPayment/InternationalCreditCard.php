@@ -42,4 +42,15 @@ class InternationalCreditCard extends Request
     {
         return \PagSeguro\Services\DirectPayment\InternationalCreditCard::checkout($credentials, $this);
     }
+    
+    /**
+     * Register a checkout using international credit card
+     * @param $credentials
+     * @return mixed
+     * @throws \Exception
+     */
+    public function registerWithSplit($credentials)
+    {
+        return \PagSeguro\Services\DirectPayment\InternationalCreditCard::checkoutWithSplit($credentials, $this);
+    }
 }

@@ -95,12 +95,11 @@
                 <request>v2/pre-approvals</request>
             </search>
         </preApproval>
-        <!-- 
-           Nós não utilizamos a V2 deste serviço pois utilizamos uma versão mais recente da API que suporta Split Payment. 
-           Para maiores informações e consultar a disponibilidade de utilização do Split Payment, entre em contato com o PagSeguro. 
-        -->
         <directPayment>
-            <request>transactions/</request>
+            <request>v2/transactions/</request>
         </directPayment>
+        <directPaymentWithSplit>
+            <request>transactions/</request>
+        </directPaymentWithSplit>
     </services>
 </Resources>
