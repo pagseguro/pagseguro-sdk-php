@@ -32,6 +32,7 @@ use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Log\Logger;
 use PagSeguro\Resources\Responsibility;
 use PagSeguro\Parsers\DirectPayment\Boleto\Request;
+use PagSeguro\Parsers\DirectPayment\Boleto\Split\Request as SplitRequest;
 
 /**
  * Class Payment
@@ -87,6 +88,54 @@ class Boleto
             throw $exception;
         }
     }
+    
+    /**
+     * @param \PagSeguro\Domains\Account\Credentials $credentials
+     * @param \PagSeguro\Domains\Requests\DirectPayment\Boleto $payment
+     * @return string
+     * @throws \Exception
+     */
+    public static function checkoutWithSplit(
+        Credentials $credentials,
+        \PagSeguro\Domains\Requests\DirectPayment\Boleto $payment
+    ) {
+        Logger::info("Begin", ['service' => 'DirectPayment.Boleto.Split']);
+        try {
+            $connection = new Connection\Data($credentials);
+            $http = new Http();
+            Logger::info(
+                sprintf("POST: %s", self::requestWithSplit($connection)),
+                ['service' => 'DirectPayment.Boleto.Split']
+            );
+            Logger::info(
+                sprintf(
+                    "Params: %s",
+                    json_encode(Crypto::encrypt(SplitRequest::getData($payment)))
+                ),
+                ['service' => 'DirectPayment.Boleto.Split']
+            );
+
+            $http->post(
+                self::requestWithSplit($connection),
+                SplitRequest::getData($payment)
+            );
+
+            $response = Responsibility::http(
+                $http,
+                new SplitRequest
+            );
+
+            Logger::info(
+                sprintf("Boleto Payment Link URL: %s", $response->getPaymentLink()),
+                ['service' => 'DirectPayment.Boleto']
+            );
+
+            return $response;
+        } catch (\Exception $exception) {
+            Logger::error($exception->getMessage(), ['service' => 'Session']);
+            throw $exception;
+        }
+    }
 
     /**
      * @param Connection\Data $connection
@@ -95,5 +144,14 @@ class Boleto
     private static function request(Connection\Data $connection)
     {
         return $connection->buildDirectPaymentRequestUrl() ."?". $connection->buildCredentialsQuery();
+    }
+    
+    /**
+     * @param Connection\Data $connection
+     * @return string
+     */
+    private static function requestWithSplit(Connection\Data $connection)
+    {
+        return $connection->buildDirectPaymentWithSplitRequestUrl() ."?". $connection->buildCredentialsQuery();
     }
 }

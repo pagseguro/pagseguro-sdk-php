@@ -102,7 +102,7 @@ $boleto->setSplit()->addReceiver()->withParameters(
 
 try {
     //Get the crendentials and register the boleto payment
-    $result = $boleto->register(
+    $result = $boleto->registerWithSplit(
         \PagSeguro\Configuration\Configure::getApplicationCredentials()
     );
 

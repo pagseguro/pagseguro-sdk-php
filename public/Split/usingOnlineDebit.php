@@ -112,7 +112,7 @@ $onlineDebit->setSplit()->addReceiver()->withParameters(
 
 try {
     //Get the crendentials and register the boleto payment
-    $result = $onlineDebit->register(
+    $result = $onlineDebit->registerWithSplit(
         \PagSeguro\Configuration\Configure::getApplicationCredentials()
     );
 

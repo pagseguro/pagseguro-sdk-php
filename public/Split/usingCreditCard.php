@@ -139,7 +139,7 @@ $creditCard->setSplit()->addReceiver()->withParameters(
 
 try {
     //Get the crendentials and register the boleto payment
-    $result = $creditCard->register(
+    $result = $creditCard->registerWithSplit(
         \PagSeguro\Configuration\Configure::getApplicationCredentials()
     );
     echo "<pre>";

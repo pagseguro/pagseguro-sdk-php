@@ -28,6 +28,7 @@ use PagSeguro\Domains\Account\Credentials;
 use PagSeguro\Helpers\Crypto;
 use PagSeguro\Helpers\Mask;
 use PagSeguro\Parsers\DirectPayment\CreditCard\Request;
+use PagSeguro\Parsers\DirectPayment\CreditCard\Split\Request as SplitRequest;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Log\Logger;
@@ -84,11 +85,64 @@ class CreditCard
     }
 
     /**
+     * @param \PagSeguro\Domains\Account\Credentials $credentials
+     * @param \PagSeguro\Domains\Requests\DirectPayment\OnlineDebit $payment
+     * @return string
+     * @throws \Exception
+     */
+    public static function checkoutWithSplit(
+        Credentials $credentials,
+        \PagSeguro\Domains\Requests\DirectPayment\CreditCard $payment
+    ) {
+        Logger::info("Begin", ['service' => 'DirectPayment.CreditCard.Split']);
+        try {
+            $connection = new Connection\Data($credentials);
+            $http = new Http();
+            Logger::info(sprintf("POST: %s", self::requestWithSplit($connection)), ['service' => 'DirectPayment.CreditCard.Split']);
+            Logger::info(
+                sprintf(
+                    "Params: %s",
+                    json_encode(Crypto::encrypt(SplitRequest::getData($payment)))
+                ),
+                ['service' => 'DirectPayment.CreditCard.Split']
+            );
+            $http->post(
+                self::requestWithSplit($connection),
+                SplitRequest::getData($payment)
+            );
+
+            $response = Responsibility::http(
+                $http,
+                new SplitRequest
+            );
+
+            Logger::info(
+                sprintf("Credit Card Payment Code: %s", $response->getCode()),
+                ['service' => 'DirectPayment.CreditCard.Split']
+            );
+
+            return $response;
+        } catch (\Exception $exception) {
+            Logger::error($exception->getMessage(), ['service' => 'DirectPayment.CreditCard.Split']);
+            throw $exception;
+        }
+    }
+    
+    /**
      * @param Connection\Data $connection
      * @return string
      */
     private static function request(Connection\Data $connection)
     {
         return $connection->buildDirectPaymentRequestUrl() ."?". $connection->buildCredentialsQuery();
+    }
+
+    /**
+     * @param Connection\Data $connection
+     * @return string
+     */
+    private static function requestWithSplit(Connection\Data $connection)
+    {
+        return $connection->buildDirectPaymentWithSplitRequestUrl() ."?". $connection->buildCredentialsQuery();
     }
 }

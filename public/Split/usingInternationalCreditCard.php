@@ -102,7 +102,7 @@ $internationalCreditCard->setSplit()->addReceiver()->withParameters(
 
 try {
     //Get the crendentials and register the boleto payment
-    $result = $internationalCreditCard->register(
+    $result = $internationalCreditCard->registerWithSplit(
         \PagSeguro\Configuration\Configure::getApplicationCredentials()
     );
     echo "<pre>";
