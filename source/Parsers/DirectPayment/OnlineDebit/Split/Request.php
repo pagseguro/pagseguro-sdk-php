@@ -22,62 +22,64 @@
  *
  */
 
-namespace PagSeguro\Parsers\DirectPayment\InternationalCreditCard;
+namespace PagSeguro\Parsers\DirectPayment\OnlineDebit\Split;
 
 /**
- * Request from the Credit Card direct payment
- * @package PagSeguro\Parsers\DirectPayment\CreditCard
+ * Request from the Online debit direct payment
+ * @package PagSeguro\Parsers\DirectPayment\OnlineDebit
  */
-use PagSeguro\Enum\Properties\Current;
+use PagSeguro\Enum\Properties\BackwardCompatibility;
 use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Currency;
-use PagSeguro\Parsers\DirectPayment\CreditCard\Installment;
-use PagSeguro\Parsers\DirectPayment\CreditCard\Method;
-use PagSeguro\Parsers\DirectPayment\CreditCard\Token;
 use PagSeguro\Parsers\DirectPayment\Mode;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Item;
 use PagSeguro\Parsers\Parser;
 use PagSeguro\Parsers\ReceiverEmail;
 use PagSeguro\Parsers\Sender;
+use PagSeguro\Parsers\Shipping;
+use PagSeguro\Parsers\Split;
 use PagSeguro\Resources\Http;
-use PagSeguro\Parsers\Transaction\InternationalCreditCard\Response;
+use PagSeguro\Parsers\Transaction\OnlineDebit\Response;
+use PagSeguro\Parsers\DirectPayment\OnlineDebit\Method;
+use PagSeguro\Parsers\DirectPayment\OnlineDebit\BankName;
 
 /**
  * Class Payment
- * @package PagSeguro\Parsers\DirectPayment\CreditCard
+ * @package PagSeguro\Parsers\DirectPayment\OnlineDebit
  */
 class Request extends Error implements Parser
 {
+    use BankName;
     use Basic;
     use Currency;
-    use Installment;
     use Item;
     use Method;
     use Mode;
     use ReceiverEmail;
     use Sender;
-    use Token;
+    use Shipping;
 
     /**
-     * @param \PagSeguro\Domains\Requests\DirectPayment\CreditCard $creditCard
+     * @param \PagSeguro\Domains\Requests\DirectPayment\OnlineDebit $onlineDebit
      * @return array
      */
-    public static function getData(\PagSeguro\Domains\Requests\Requests $creditCard)
+    public static function getData(\PagSeguro\Domains\Requests\DirectPayment\OnlineDebit $onlineDebit)
     {
         $data = [];
-        $properties = new Current();
+        $properties = new BackwardCompatibility();
         return array_merge(
             $data,
-            Basic::getData($creditCard, $properties),
-            Currency::getData($creditCard, $properties),
-            Installment::getData($creditCard, $properties),
-            Item::getData($creditCard, $properties),
+            BankName::getData($onlineDebit, $properties),
+            Basic::getData($onlineDebit, $properties),
+            Currency::getData($onlineDebit, $properties),
+            Item::getData($onlineDebit, $properties),
             Method::getData($properties),
-            Mode::getData($creditCard, $properties),
-            ReceiverEmail::getData($creditCard, $properties),
-            Sender::getData($creditCard, $properties),
-            Token::getData($creditCard, $properties)
+            Mode::getData($onlineDebit, $properties),
+            ReceiverEmail::getData($onlineDebit, $properties),
+            Sender::getData($onlineDebit, $properties),
+            Shipping::getData($onlineDebit, $properties),
+            Split::getData($onlineDebit, $properties)
         );
     }
 
@@ -97,6 +99,7 @@ class Request extends Error implements Parser
             ->setStatus(current($xml->status))
             ->setLastEventDate(current($xml->lastEventDate))
             ->setCancelationSource(current($xml->cancelationSource))
+            ->setPaymentLink(current($xml->paymentLink))
             ->setPaymentMethod($xml->paymentMethod)
             ->setGrossAmount(current($xml->grossAmount))
             ->setDiscountAmount(current($xml->discountAmount))
@@ -110,7 +113,7 @@ class Request extends Error implements Parser
             ->setSender($xml->sender)
             ->setCreditorFees($xml->creditorFees)
             ->setApplication($xml->applications)
-            ->setGatewaySystem($xml->gatewaySystem);
+            ->setShipping($xml->shipping);
     }
 
     /**

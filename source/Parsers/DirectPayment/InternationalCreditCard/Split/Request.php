@@ -22,13 +22,13 @@
  *
  */
 
-namespace PagSeguro\Parsers\DirectPayment\InternationalCreditCard;
+namespace PagSeguro\Parsers\DirectPayment\InternationalCreditCard\Split;
 
 /**
  * Request from the Credit Card direct payment
  * @package PagSeguro\Parsers\DirectPayment\CreditCard
  */
-use PagSeguro\Enum\Properties\Current;
+use PagSeguro\Enum\Properties\BackwardCompatibility;
 use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Currency;
 use PagSeguro\Parsers\DirectPayment\CreditCard\Installment;
@@ -40,6 +40,7 @@ use PagSeguro\Parsers\Item;
 use PagSeguro\Parsers\Parser;
 use PagSeguro\Parsers\ReceiverEmail;
 use PagSeguro\Parsers\Sender;
+use PagSeguro\Parsers\Split;
 use PagSeguro\Resources\Http;
 use PagSeguro\Parsers\Transaction\InternationalCreditCard\Response;
 
@@ -66,7 +67,7 @@ class Request extends Error implements Parser
     public static function getData(\PagSeguro\Domains\Requests\Requests $creditCard)
     {
         $data = [];
-        $properties = new Current();
+        $properties = new BackwardCompatibility();
         return array_merge(
             $data,
             Basic::getData($creditCard, $properties),
@@ -77,6 +78,7 @@ class Request extends Error implements Parser
             Mode::getData($creditCard, $properties),
             ReceiverEmail::getData($creditCard, $properties),
             Sender::getData($creditCard, $properties),
+            Split::getData($creditCard, $properties),
             Token::getData($creditCard, $properties)
         );
     }

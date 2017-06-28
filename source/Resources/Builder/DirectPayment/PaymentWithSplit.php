@@ -22,33 +22,25 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests\DirectPayment;
+namespace PagSeguro\Resources\Builder\DirectPayment;
 
-use PagSeguro\Domains\Requests\DirectPayment\Boleto\Request;
+use PagSeguro\Resources\Builder;
 
 /**
  * Class Payment
- * @package PagSeguro\Domains\Requests
+ * @package PagSeguro\Resources\Builder
  */
-class Boleto extends Request
+class PaymentWithSplit extends Builder
 {
+
     /**
-     * @param $credentials
      * @return string
-     * @throws \Exception
      */
-    public function register($credentials)
+    public static function getRequestUrl()
     {
-        return \PagSeguro\Services\DirectPayment\Boleto::checkout($credentials, $this);
-    }
-    
-    /**
-     * @param $credentials
-     * @return string
-     * @throws \Exception
-     */
-    public function registerWithSplit($credentials)
-    {
-        return \PagSeguro\Services\DirectPayment\Boleto::checkoutWithSplit($credentials, $this);
+        return parent::getRequest(
+            parent::getUrl('webservice'),
+            'directPaymentWithSplit'
+        );
     }
 }

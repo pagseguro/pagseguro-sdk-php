@@ -26,10 +26,6 @@ namespace PagSeguro\Enum\PaymentMethod;
 
 /**
  * Class Name
- * @package PagSeguro\Enum\PaymentMethod\Config
- */
-/**
- * Class Name
  * @package PagSeguro\Enum\PaymentMethod
  */
 class Name
