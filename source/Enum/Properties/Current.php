@@ -177,6 +177,11 @@ class Current
     const INSTALLMENT_MAX_INSTALLMENT_NO_INTEREST = "maxInstallmentNoInterest";
     
     /**
+     * Installment no interest installment quantity for credit card payment
+     */
+    const INSTALLMENT_NO_INTEREST_INSTALLMENT_QUANTITY = "noInterestInstallmentQuantity";
+    
+    /**
      * Item identifier
      */
     const ITEM_ID = "itemId%s";
