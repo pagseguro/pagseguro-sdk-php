@@ -58,6 +58,16 @@ class Data
         Base\Transaction\Search::buildSearchRequestUrl as buildTransactionSearchRequestUrl;
         Base\Transaction\Search::buildSearchRequestUrl insteadof Base\PreApproval\Search;
     }
+    use Base\DirectPreApproval\Accession;
+    use Base\DirectPreApproval\Plan;
+    use Base\DirectPreApproval\Query;
+    use Base\DirectPreApproval\Payment;
+    use Base\DirectPreApproval\Status;
+    use Base\DirectPreApproval\Cancel;
+    use Base\DirectPreApproval\Discount;
+    use Base\DirectPreApproval\ChangePayment;
+    use Base\DirectPreApproval\QueryPaymentOrder;
+    use Base\DirectPreApproval\QueryNotification;
 
     /**
      * Data constructor.
