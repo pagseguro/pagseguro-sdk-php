@@ -13,6 +13,8 @@ try {
     $response = $queryPreApproval->register(
         new \PagSeguro\Domains\AccountCredentials('exemplo@sandbox', 'token exemplo')
     );
+
+    echo '<pre>';
     print_r($response);
 } catch (Exception $e) {
     die($e->getMessage());
