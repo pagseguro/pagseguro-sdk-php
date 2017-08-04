@@ -13,7 +13,7 @@ $status->setStatus('SUPENDED');
 
 try {
     $response = $status->register(
-        new \PagSeguro\Domains\AccountCredentials('thiago.pixelab@gmail.com', '9D72B35DFD8A4FDC89F6D69BD75D8F6F')
+        new \PagSeguro\Domains\AccountCredentials('exemplo@sandbox', 'token exemplo')
     );
 
     echo '<pre>';

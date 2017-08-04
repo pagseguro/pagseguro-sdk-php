@@ -8,7 +8,7 @@ require_once "../../vendor/autoload.php";
 \PagSeguro\Configuration\Configure::setLog(true, '/var/www/git/pagseguro/pagseguro-php-sdk/Log.log');
 
 $status = new \PagSeguro\Domains\Requests\DirectPreApproval\Discount();
-$status->setPreApprovalCode('asdasdasdasd');
+$status->setPreApprovalCode('EE3283468282A96AA4984FB4F7B40252');
 $status->setType('DISCOUNT_PERCENT');
 $status->setValue('10.00');
 

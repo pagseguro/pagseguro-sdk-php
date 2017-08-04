@@ -9,7 +9,10 @@ require_once "../../vendor/autoload.php";
 
 $changePayment = new \PagSeguro\Domains\Requests\DirectPreApproval\ChangePayment();
 $changePayment->setPreApprovalCode('q213213123');
-$changePayment->setSender()->setHash('asdasd');
+/*
+ * usar setHas ou setIp
+ */
+//$changePayment->setSender()->setHash('asdasd');
 $changePayment->setSender()->setIp('1.1.1.1');
 $changePayment->setCreditCard()->setToken('asdas');
 $changePayment->setCreditCard()->setHolder()->setName('Nome teste');

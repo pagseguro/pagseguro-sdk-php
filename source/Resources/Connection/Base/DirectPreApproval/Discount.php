@@ -30,6 +30,6 @@ trait Discount
 {
     public function buildDirectPreApprovalDiscountRequestUrl($preApprovalCode)
     {
-        return Builder\DirectPreApproval\Discount::getDiscountUrl().'/'.$preApprovalCode.'/status';
+        return Builder\DirectPreApproval\Discount::getDiscountUrl().'/'.$preApprovalCode.'/discount';
     }
 }

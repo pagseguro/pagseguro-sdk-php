@@ -52,7 +52,7 @@ class DiscountService
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http('json');
-            Logger::info(sprintf("POST: %s", self::request($connection, DiscountParser::getPreApprovalCode($discount))),
+            Logger::info(sprintf("PUT: %s", self::request($connection, DiscountParser::getPreApprovalCode($discount))),
                 ['service' => 'DirectPreApproval']);
             Logger::info(
                 sprintf(

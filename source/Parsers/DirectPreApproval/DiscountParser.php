@@ -37,29 +37,29 @@ use PagSeguro\Resources\Http;
 class DiscountParser extends Error implements Parser
 {
     /**
-     * @param Discount $status
+     * @param Discount $discount
      *
      * @return mixed
      */
-    public static function getPreApprovalCode(Discount $status)
+    public static function getPreApprovalCode(Discount $discount)
     {
-        $status = $status->object_to_array($status);
-        unset($status['status']);
+        $discount = $discount->object_to_array($discount);
+        unset($discount['status']);
 
-        return $status['preApprovalCode'];
+        return $discount['preApprovalCode'];
     }
 
     /**
-     * @param Discount $status
+     * @param Discount $discount
      *
      * @return array|Discount
      */
-    public static function getData(Discount $status)
+    public static function getData(Discount $discount)
     {
-        $status = $status->object_to_array($status);
-        unset($status['preApprovalCode']);
+        $discount = $discount->object_to_array($discount);
+        unset($discount['preApprovalCode']);
 
-        return $status;
+        return $discount;
     }
 
     /**
