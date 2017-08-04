@@ -38,6 +38,6 @@ class QueryPaymentOrder extends Builder
      */
     public static function getQueryPaymentOrderUrl()
     {
-        return parent::getRequest(parent::getUrl('webservice'), 'directPreApproval/oueryPaymentOrder');
+        return parent::getRequest(parent::getUrl('webservice'), 'directPreApproval/queryPaymentOrder');
     }
 }

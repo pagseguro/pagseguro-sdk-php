@@ -121,9 +121,9 @@
             <changePayment>
                 <request>pre-approvals</request>
             </changePayment>
-            <queryPaymentOrders>
+            <queryPaymentOrder>
                 <request>pre-approvals</request>
-            </queryPaymentOrders>
+            </queryPaymentOrder>
             <queryNotification>
                 <request>pre-approvals/notifications</request>
             </queryNotification>
