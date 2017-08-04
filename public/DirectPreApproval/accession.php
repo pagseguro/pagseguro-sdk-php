@@ -1,5 +1,4 @@
 <?php
-opcache_reset();
 require_once "../../vendor/autoload.php";
 
 \PagSeguro\Library::initialize();
