@@ -7,6 +7,12 @@ require_once "../../vendor/autoload.php";
 \PagSeguro\Configuration\Configure::setEnvironment('sandbox');
 \PagSeguro\Configuration\Configure::setLog(true, '/var/www/git/pagseguro/pagseguro-php-sdk/Log.log');
 
+/**
+ * @param $preApprovalCode
+ * @param $status
+ * @param $page
+ * @param $maxPageResults
+ */
 $queryPreApproval = new \PagSeguro\Domains\Requests\DirectPreApproval\QueryPaymentOrder('asdasd', 1);
 
 try {

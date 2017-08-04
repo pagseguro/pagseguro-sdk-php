@@ -7,6 +7,14 @@ require_once "../../vendor/autoload.php";
 \PagSeguro\Configuration\Configure::setEnvironment('sandbox');
 \PagSeguro\Configuration\Configure::setLog(true, '/var/www/git/pagseguro/pagseguro-php-sdk/Log.log');
 
+/**
+ * QueryNotificationRequest constructor.
+ *
+ * @param int  $page
+ * @param int  $maxPageResults
+ * @param      $interval
+ * @param null $notificationCode
+ */
 $queryNotification = new \PagSeguro\Domains\Requests\DirectPreApproval\QueryNotification(null, null, 20, 'asdsasd');
 
 try {

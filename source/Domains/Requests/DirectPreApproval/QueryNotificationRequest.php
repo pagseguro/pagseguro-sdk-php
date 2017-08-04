@@ -34,9 +34,21 @@ use PagSeguro\Domains\DirectPreApproval\Traits\ParserTrait;
 class QueryNotificationRequest
 {
     use ParserTrait;
+    /**
+     * @var int
+     */
     public $page;
+    /**
+     * @var int
+     */
     public $maxPageResults;
+    /**
+     * @var
+     */
     public $interval;
+    /**
+     * @var null
+     */
     public $notificationCode;
 
     /**

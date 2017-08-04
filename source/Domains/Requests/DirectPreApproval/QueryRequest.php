@@ -34,12 +34,33 @@ use PagSeguro\Domains\DirectPreApproval\Traits\ParserTrait;
 class QueryRequest
 {
     use ParserTrait;
+    /**
+     * @var int
+     */
     public $page;
+    /**
+     * @var int
+     */
     public $maxPageResults;
+    /**
+     * @var false|string
+     */
     public $initialDate;
+    /**
+     * @var false|string
+     */
     public $finalDate;
+    /**
+     * @var null
+     */
     public $status;
+    /**
+     * @var null
+     */
     public $preApprovalRequest;
+    /**
+     * @var null
+     */
     public $senderEmail;
 
     /**
