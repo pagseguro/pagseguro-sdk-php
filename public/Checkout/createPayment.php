@@ -2,25 +2,27 @@
 
 require_once "../../vendor/autoload.php";
 
+use PagSeguro\Enum\Properties\Current as PagSeguroEnum;
+
 \PagSeguro\Library::initialize();
 \PagSeguro\Library::cmsVersion()->setName("Nome")->setRelease("1.0.0");
 \PagSeguro\Library::moduleVersion()->setName("Nome")->setRelease("1.0.0");
 
 $payment = new \PagSeguro\Domains\Requests\Payment();
 
-$payment->addItems()->withParameters(
-    '0001',
-    'Notebook prata',
-    2,
-    130.00
-);
+$payment->addItems()->withArray([
+    PagSeguroEnum::ITEM_ID => '0001',
+    PagSeguroEnum::ITEM_DESCRIPTION => 'Notebook prata',
+    PagSeguroEnum::ITEM_QUANTITY => 2,
+    PagSeguroEnum::ITEM_AMOUNT => 130.00
+]);
 
-$payment->addItems()->withParameters(
-    '0002',
-    'Notebook preto',
-    2,
-    430.00
-);
+$payment->addItems()->withArray([
+    PagSeguroEnum::ITEM_ID => '0002',
+    PagSeguroEnum::ITEM_DESCRIPTION => 'Notebook preto',
+    PagSeguroEnum::ITEM_QUANTITY => 2,
+    PagSeguroEnum::ITEM_AMOUNT => 430.00
+]);
 
 $payment->setCurrency("BRL");
 
@@ -33,25 +35,25 @@ $payment->setRedirectUrl("http://www.lojamodelo.com.br");
 // Set your customer information.
 $payment->setSender()->setName('João Comprador');
 $payment->setSender()->setEmail('email@comprador.com.br');
-$payment->setSender()->setPhone()->withParameters(
-    11,
-    56273440
-);
-$payment->setSender()->setDocument()->withParameters(
-    'CPF',
-    'insira um numero de CPF valido'
-);
+$payment->setSender()->setPhone()->withArray([
+    PagSeguroEnum::SENDER_PHONE_AREA_CODE => 11,
+    PagSeguroEnum::SENDER_PHONE_NUMBER => 56273440
+]);
+$payment->setSender()->setDocument()->withArray([
+    PagSeguroEnum::DOCUMENT_TYPE => 'CPF',
+    PagSeguroEnum::DOCUMENT_VALUE => 'insira um numero de CPF valido (apenas numeros)'
+]);
 
-$payment->setShipping()->setAddress()->withParameters(
-    'Av. Brig. Faria Lima',
-    '1384',
-    'Jardim Paulistano',
-    '01452002',
-    'São Paulo',
-    'SP',
-    'BRA',
-    'apto. 114'
-);
+$payment->setShipping()->setAddress()->withArray([
+    PagSeguroEnum::SHIPPING_ADDRESS_STREET => 'Av. Brig. Faria Lima',
+    PagSeguroEnum::SHIPPING_ADDRESS_NUMBER => '1384',
+    PagSeguroEnum::SHIPPING_ADDRESS_DISTRICT => 'Jardim Paulistano',
+    PagSeguroEnum::SHIPPING_ADDRESS_POSTAL_CODE => '01452002',
+    PagSeguroEnum::SHIPPING_ADDRESS_CITY => 'São Paulo',
+    PagSeguroEnum::SHIPPING_ADDRESS_STATE => 'SP',
+    PagSeguroEnum::SHIPPING_ADDRESS_COUNTRY => 'BRA',
+    PagSeguroEnum::SHIPPING_ADDRESS_COMPLEMENT => 'apto. 114'
+]);
 $payment->setShipping()->setCost()->withParameters(20.00);
 $payment->setShipping()->setType()->withParameters(\PagSeguro\Enum\Shipping\Type::SEDEX);
 
