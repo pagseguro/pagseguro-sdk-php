@@ -30,11 +30,11 @@ use PagSeguro\Domains\DirectPreApproval\Traits\ParserTrait;
 class PaymentRequest
 {
     use ParserTrait;
-    public $preApprovalCode;
-    public $reference;
-    public $senderHash;
-    public $senderIp;
-    public $items;
+    private $preApprovalCode;
+    private $reference;
+    private $senderHash;
+    private $senderIp;
+    private $items;
 
     public function __construct()
     {
