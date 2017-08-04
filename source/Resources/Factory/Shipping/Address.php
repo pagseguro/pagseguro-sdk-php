@@ -70,7 +70,7 @@ class Address
                 ->setNumber($array[$properties::SHIPPING_ADDRESS_NUMBER])
                 ->setComplement($array[$properties::SHIPPING_ADDRESS_COMPLEMENT])
                 ->setDistrict($array[$properties::SHIPPING_ADDRESS_DISTRICT])
-                ->setCity($array[$properties::SHIPPING_ADDRESS_NUMBER])
+                ->setCity($array[$properties::SHIPPING_ADDRESS_CITY])
                 ->setState($array[$properties::SHIPPING_ADDRESS_STATE])
                 ->setCountry($array[$properties::SHIPPING_ADDRESS_COUNTRY]);
         $this->shipping->setAddress($address);
