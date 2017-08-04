@@ -153,7 +153,7 @@ class Http
             }
             $contentLength = "Content-length: " . strlen($postFields);
             $methodOptions = array(
-                CURLOPT_PUT => true,
+                CURLOPT_CUSTOMREQUEST => 'PUT',
                 CURLOPT_POSTFIELDS => $postFields,
             );
         } else {

@@ -65,8 +65,6 @@ class StatusService
 
             return self::response($response);
         } catch (\Exception $exception) {
-            echo '<pre>';
-            print_r($exception);exit;
             Logger::error($exception->getMessage(), ['service' => 'DirectPreApproval']);
             throw $exception;
         }
