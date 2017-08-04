@@ -8,11 +8,12 @@ require_once "../../vendor/autoload.php";
 \PagSeguro\Configuration\Configure::setLog(true, '/var/www/git/pagseguro/pagseguro-php-sdk/Log.log');
 
 $status = new \PagSeguro\Domains\Requests\DirectPreApproval\Status();
-$status->setPreApprovalCode('17E4A8288080E3DBB4485FA431723801');
+$status->setPreApprovalCode('CA2A46');
 $status->setStatus('SUPENDED');
+
 try {
     $response = $status->register(
-        new \PagSeguro\Domains\AccountCredentials('exemplo@sandbox', 'token exemplo')
+        new \PagSeguro\Domains\AccountCredentials('thiago.pixelab@gmail.com', '9D72B35DFD8A4FDC89F6D69BD75D8F6F')
     );
 
     echo '<pre>';

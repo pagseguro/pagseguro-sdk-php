@@ -26,15 +26,26 @@ namespace PagSeguro\Services\DirectPreApproval;
 
 use PagSeguro\Domains\Account\Credentials;
 use PagSeguro\Domains\Requests\DirectPreApproval\QueryPaymentOrder;
-use PagSeguro\Parsers\DirectPreApproval\QueryParsers;
 use PagSeguro\Parsers\DirectPreApproval\QueryPaymentOrderParsers;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Log\Logger;
 use PagSeguro\Resources\Responsibility;
 
+/**
+ * Class QueryPaymentOrderService
+ *
+ * @package PagSeguro\Services\DirectPreApproval
+ */
 class QueryPaymentOrderService
 {
+    /**
+     * @param Credentials       $credentials
+     * @param QueryPaymentOrder $queryPaymentOrder
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public static function create(Credentials $credentials, QueryPaymentOrder $queryPaymentOrder)
     {
         Logger::info("Begin", ['service' => 'DirectPreApproval']);
@@ -68,11 +79,23 @@ class QueryPaymentOrderService
         }
     }
 
+    /**
+     * @param Connection\Data $connection
+     * @param                 $preApprovalCode
+     * @param null            $params
+     *
+     * @return string
+     */
     private static function request(Connection\Data $connection, $preApprovalCode , $params = null)
     {
         return $connection->buildDirectPreApprovalQueryPaymentOrderRequestUrl($preApprovalCode)."?".$connection->buildCredentialsQuery().($params ? '&'.$params : '');
     }
 
+    /**
+     * @param $response
+     *
+     * @return mixed
+     */
     private static function response($response)
     {
         return $response;

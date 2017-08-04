@@ -27,9 +27,9 @@ namespace PagSeguro\Resources\Builder\DirectPreApproval;
 use PagSeguro\Resources\Builder;
 
 /**
- * Class Payment
+ * Class Accession
  *
- * @package PagSeguro\Resources\Builder
+ * @package PagSeguro\Resources\Builder\DirectPreApproval
  */
 class Accession extends Builder
 {

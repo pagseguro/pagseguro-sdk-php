@@ -32,8 +32,20 @@ use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Log\Logger;
 use PagSeguro\Resources\Responsibility;
 
+/**
+ * Class AccessionService
+ *
+ * @package PagSeguro\Services\DirectPreApproval
+ */
 class AccessionService
 {
+    /**
+     * @param Credentials $credentials
+     * @param Accession   $directPreApproval
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public static function create(Credentials $credentials, Accession $directPreApproval)
     {
         Logger::info("Begin", ['service' => 'DirectPreApproval']);
@@ -68,11 +80,21 @@ class AccessionService
         }
     }
 
+    /**
+     * @param Connection\Data $connection
+     *
+     * @return string
+     */
     private static function request(Connection\Data $connection)
     {
         return $connection->buildDirectPreApprovalAccessionRequestUrl()."?".$connection->buildCredentialsQuery();
     }
 
+    /**
+     * @param $response
+     *
+     * @return mixed
+     */
     private static function response($response)
     {
         return $response;

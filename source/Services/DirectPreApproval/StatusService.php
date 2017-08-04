@@ -31,10 +31,21 @@ use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Log\Logger;
 use PagSeguro\Resources\Responsibility;
-use PhpParser\Node\Expr\Print_;
 
+/**
+ * Class StatusService
+ *
+ * @package PagSeguro\Services\DirectPreApproval
+ */
 class StatusService
 {
+    /**
+     * @param Credentials $credentials
+     * @param Status      $status
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public static function create(Credentials $credentials, Status $status)
     {
         Logger::info("Begin", ['service' => 'DirectPreApproval']);
@@ -70,11 +81,22 @@ class StatusService
         }
     }
 
+    /**
+     * @param Connection\Data $connection
+     * @param                 $preApprovalCode
+     *
+     * @return string
+     */
     private static function request(Connection\Data $connection, $preApprovalCode)
     {
         return $connection->buildDirectPreApprovalStatusRequestUrl($preApprovalCode)."?".$connection->buildCredentialsQuery();
     }
 
+    /**
+     * @param $response
+     *
+     * @return mixed
+     */
     private static function response($response)
     {
         return $response;

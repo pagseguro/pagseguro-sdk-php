@@ -27,14 +27,25 @@ namespace PagSeguro\Services\DirectPreApproval;
 use PagSeguro\Domains\Account\Credentials;
 use PagSeguro\Domains\Requests\DirectPreApproval\Cancel;
 use PagSeguro\Parsers\DirectPreApproval\CancelParser;
-use PagSeguro\Parsers\DirectPreApproval\StatusParser;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Log\Logger;
 use PagSeguro\Resources\Responsibility;
 
+/**
+ * Class CancelService
+ *
+ * @package PagSeguro\Services\DirectPreApproval
+ */
 class CancelService
 {
+    /**
+     * @param Credentials $credentials
+     * @param Cancel      $cancel
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public static function create(Credentials $credentials, Cancel $cancel)
     {
         Logger::info("Begin", ['service' => 'DirectPreApproval']);
@@ -70,11 +81,22 @@ class CancelService
         }
     }
 
+    /**
+     * @param Connection\Data $connection
+     * @param                 $preApprovalCode
+     *
+     * @return string
+     */
     private static function request(Connection\Data $connection, $preApprovalCode)
     {
         return $connection->buildDirectPreApprovalStatusRequestUrl($preApprovalCode)."?".$connection->buildCredentialsQuery();
     }
 
+    /**
+     * @param $response
+     *
+     * @return mixed
+     */
     private static function response($response)
     {
         return $response;

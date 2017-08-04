@@ -29,7 +29,7 @@ use PagSeguro\Resources\Builder;
 /**
  * Class Payment
  *
- * @package PagSeguro\Resources\Builder
+ * @package PagSeguro\Resources\Builder\DirectPreApproval
  */
 class Payment extends Builder
 {
@@ -38,9 +38,6 @@ class Payment extends Builder
      */
     public static function getPaymentUrl()
     {
-        return parent::getRequest(
-            parent::getUrl('webservice'),
-            'directPreApproval/payment'
-        );
+        return parent::getRequest(parent::getUrl('webservice'), 'directPreApproval/payment');
     }
 }

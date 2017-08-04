@@ -26,6 +26,11 @@ namespace PagSeguro\Domains\Requests\DirectPreApproval;
 
 use PagSeguro\Domains\DirectPreApproval\Traits\ParserTrait;
 
+/**
+ * Class QueryNotificationRequest
+ *
+ * @package PagSeguro\Domains\Requests\DirectPreApproval
+ */
 class QueryNotificationRequest
 {
     use ParserTrait;
@@ -34,6 +39,14 @@ class QueryNotificationRequest
     public $interval;
     public $notificationCode;
 
+    /**
+     * QueryNotificationRequest constructor.
+     *
+     * @param int  $page
+     * @param int  $maxPageResults
+     * @param      $interval
+     * @param null $notificationCode
+     */
     public function __construct(
         $page = 1,
         $maxPageResults = 50,

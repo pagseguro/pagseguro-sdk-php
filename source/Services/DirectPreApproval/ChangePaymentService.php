@@ -32,8 +32,20 @@ use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Log\Logger;
 use PagSeguro\Resources\Responsibility;
 
+/**
+ * Class ChangePaymentService
+ *
+ * @package PagSeguro\Services\DirectPreApproval
+ */
 class ChangePaymentService
 {
+    /**
+     * @param Credentials   $credentials
+     * @param ChangePayment $changePayment
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public static function create(Credentials $credentials, ChangePayment $changePayment)
     {
         Logger::info("Begin", ['service' => 'DirectPreApproval']);
@@ -70,11 +82,22 @@ class ChangePaymentService
         }
     }
 
+    /**
+     * @param Connection\Data $connection
+     * @param                 $preApprovalCode
+     *
+     * @return string
+     */
     private static function request(Connection\Data $connection, $preApprovalCode)
     {
         return $connection->buildDirectPreApprovalChangePaymentRequestUrl($preApprovalCode)."?".$connection->buildCredentialsQuery();
     }
 
+    /**
+     * @param $response
+     *
+     * @return mixed
+     */
     private static function response($response)
     {
         return $response;

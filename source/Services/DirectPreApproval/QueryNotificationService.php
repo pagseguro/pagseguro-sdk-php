@@ -32,8 +32,20 @@ use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Log\Logger;
 use PagSeguro\Resources\Responsibility;
 
+/**
+ * Class QueryNotificationService
+ *
+ * @package PagSeguro\Services\DirectPreApproval
+ */
 class QueryNotificationService
 {
+    /**
+     * @param Credentials       $credentials
+     * @param QueryNotification $queryNotification
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public static function create(Credentials $credentials, QueryNotification $queryNotification)
     {
         Logger::info("Begin", ['service' => 'DirectPreApproval']);
@@ -69,11 +81,23 @@ class QueryNotificationService
         }
     }
 
+    /**
+     * @param Connection\Data $connection
+     * @param null            $params
+     * @param null            $preApprovalCode
+     *
+     * @return string
+     */
     private static function request(Connection\Data $connection, $params = null, $preApprovalCode = null)
     {
         return $connection->buildDirectPreApprovalQueryNotificationRequestUrl($preApprovalCode)."?".$connection->buildCredentialsQuery().($params ? '&'.$params : '');
     }
 
+    /**
+     * @param $response
+     *
+     * @return mixed
+     */
     private static function response($response)
     {
         return $response;

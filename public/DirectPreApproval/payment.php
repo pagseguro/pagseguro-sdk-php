@@ -13,15 +13,12 @@ $plan->setReference('REF1234-1');
 $plan->setSenderHash('hash');
 $plan->setSenderIp('1.1.1.1');
 $item = new \PagSeguro\Domains\DirectPreApproval\Item();
-$item->id = '1234';
-$item->description = 'Assinatura de plano X';
-$item->quantity = '1';
-$item->amount = '99.90';
+$item->withParameters('1234', 'Assinatura X', '1', '99.90');
 $plan->addItems($item);
 
 try {
     $response = $plan->register(
-        new \PagSeguro\Domains\AccountCredentials('exemplo@sandbox', 'token exemplo')
+        new \PagSeguro\Domains\AccountCredentials('thiago.pixelab@gmail.com', '9D72B35DFD8A4FDC89F6D69BD75D8F6F')
     );
 
     echo '<pre>';

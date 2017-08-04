@@ -26,6 +26,11 @@ namespace PagSeguro\Domains\Requests\DirectPreApproval;
 
 use PagSeguro\Domains\DirectPreApproval\Traits\ParserTrait;
 
+/**
+ * Class QueryPaymentOrderRequest
+ *
+ * @package PagSeguro\Domains\Requests\DirectPreApproval
+ */
 class QueryPaymentOrderRequest
 {
     use ParserTrait;

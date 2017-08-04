@@ -29,8 +29,18 @@ use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Parser;
 use PagSeguro\Resources\Http;
 
+/**
+ * Class DiscountParser
+ *
+ * @package PagSeguro\Parsers\DirectPreApproval
+ */
 class DiscountParser extends Error implements Parser
 {
+    /**
+     * @param Discount $status
+     *
+     * @return mixed
+     */
     public static function getPreApprovalCode(Discount $status)
     {
         $status = $status->object_to_array($status);
@@ -39,6 +49,11 @@ class DiscountParser extends Error implements Parser
         return $status['preApprovalCode'];
     }
 
+    /**
+     * @param Discount $status
+     *
+     * @return array|Discount
+     */
     public static function getData(Discount $status)
     {
         $status = $status->object_to_array($status);
@@ -47,6 +62,11 @@ class DiscountParser extends Error implements Parser
         return $status;
     }
 
+    /**
+     * @param Http $http
+     *
+     * @return mixed
+     */
     public static function success(Http $http)
     {
         $json = json_decode($http->getResponse());
@@ -54,6 +74,11 @@ class DiscountParser extends Error implements Parser
         return $json;
     }
 
+    /**
+     * @param Http $http
+     *
+     * @return \PagSeguro\Domains\Error
+     */
     public static function error(Http $http)
     {
         return parent::error($http);

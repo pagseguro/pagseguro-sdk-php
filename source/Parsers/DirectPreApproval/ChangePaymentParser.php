@@ -29,8 +29,18 @@ use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Parser;
 use PagSeguro\Resources\Http;
 
+/**
+ * Class ChangePaymentParser
+ *
+ * @package PagSeguro\Parsers\DirectPreApproval
+ */
 class ChangePaymentParser extends Error implements Parser
 {
+    /**
+     * @param ChangePayment $changePayment
+     *
+     * @return mixed
+     */
     public static function getPreApprovalCode(ChangePayment $changePayment)
     {
         $changePayment = $changePayment->object_to_array($changePayment);
@@ -38,11 +48,21 @@ class ChangePaymentParser extends Error implements Parser
         return $changePayment['preApprovalCode'];
     }
 
+    /**
+     * @param ChangePayment $changePayment
+     *
+     * @return array
+     */
     public static function getData(ChangePayment $changePayment)
     {
         return $changePayment->object_to_array($changePayment);
     }
 
+    /**
+     * @param Http $http
+     *
+     * @return mixed
+     */
     public static function success(Http $http)
     {
         $json = json_decode($http->getResponse());
@@ -50,6 +70,11 @@ class ChangePaymentParser extends Error implements Parser
         return $json;
     }
 
+    /**
+     * @param Http $http
+     *
+     * @return \PagSeguro\Domains\Error
+     */
     public static function error(Http $http)
     {
         return parent::error($http);

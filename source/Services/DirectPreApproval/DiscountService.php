@@ -32,8 +32,20 @@ use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Log\Logger;
 use PagSeguro\Resources\Responsibility;
 
+/**
+ * Class DiscountService
+ *
+ * @package PagSeguro\Services\DirectPreApproval
+ */
 class DiscountService
 {
+    /**
+     * @param Credentials $credentials
+     * @param Discount    $discount
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public static function create(Credentials $credentials, Discount $discount)
     {
         Logger::info("Begin", ['service' => 'DirectPreApproval']);
@@ -69,11 +81,22 @@ class DiscountService
         }
     }
 
+    /**
+     * @param Connection\Data $connection
+     * @param                 $preApprovalCode
+     *
+     * @return string
+     */
     private static function request(Connection\Data $connection, $preApprovalCode)
     {
         return $connection->buildDirectPreApprovalDiscountRequestUrl($preApprovalCode)."?".$connection->buildCredentialsQuery();
     }
 
+    /**
+     * @param $response
+     *
+     * @return mixed
+     */
     private static function response($response)
     {
         return $response;
