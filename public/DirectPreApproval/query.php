@@ -4,8 +4,10 @@ require_once "../../vendor/autoload.php";
 \PagSeguro\Library::initialize();
 \PagSeguro\Library::cmsVersion()->setName("Nome")->setRelease("1.0.0");
 \PagSeguro\Library::moduleVersion()->setName("Nome")->setRelease("1.0.0");
-\PagSeguro\Configuration\Configure::setEnvironment('sandbox');
-\PagSeguro\Configuration\Configure::setLog(true, '/var/www/git/pagseguro/pagseguro-php-sdk/Log.log');
+/**
+ *  Para usa o ambiente de testes (sandbox) descomentar a linha abaixo
+ */
+//\PagSeguro\Configuration\Configure::setEnvironment('sandbox');
 
 /**
  * @param $page
@@ -20,7 +22,7 @@ $queryPreApproval = new \PagSeguro\Domains\Requests\DirectPreApproval\Query(null
 
 try {
     $response = $queryPreApproval->register(
-        new \PagSeguro\Domains\AccountCredentials('exemplo@sandbox', 'token exemplo')
+	    new \PagSeguro\Domains\AccountCredentials('email vendedor', 'token vendedor') // credencias do vendedor no pagseguro
     );
 
     echo '<pre>';
