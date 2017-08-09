@@ -12,6 +12,7 @@ Descrição
 A biblioteca PagSeguro em PHP é um conjunto de classes de domínio que facilitam, para o desenvolvedor PHP, a utilização das funcionalidades que o PagSeguro oferece na forma de APIs. Com a biblioteca instalada e configurada, você pode facilmente integrar funcionalidades como:
 
  - Criar [requisições de pagamentos]
+ - Criar [requisições de assinaturas transparentes] e gerenciá-las
  - Criar [requisições de assinaturas]
  - Cancelar [assinaturas]
  - Consultar [assinaturas]
@@ -28,34 +29,43 @@ Requisitos
  - [SPL]
  - [cURL]
  - [SimpleXml]
+ - [Composer]
 
 
 Instalação
 ----------
+> Nota: Recomendamos a instalação via **Composer**. Você também pode baixar o repositório como [arquivo zip] ou fazer um clone via Git.
+ 
+ ### Instalação via Composer
+> Para baixar e instalar o Composer no seu ambiente acesse https://getcomposer.org/download/ e caso tenha dúvidas de como utilizá-lo consulte a [documentação oficial do Composer].
 
- - Baixe o repositório como arquivo zip ou faça um clone;
+É possível instalar a biblioteca pagseguro-php-sdk([pagseguro/pagseguro-php-sdk]) via Composer de duas maneiras:
+
+- Executando o comando para adicionar a dependência automaticamente
+  ```
+  php composer.phar require pagseguro/pagseguro-php-sdk
+  ```
+
+**OU**
+
+- Adicionando a dependência ao seu arquivo ```composer.json```
+  ```composer.json
+  {
+      "require": {
+         "pagseguro/pagseguro-php-sdk" : "*"
+      }
+  }
+  ```
+ 
+### Instalação manual
+ - Baixe o repositório como [arquivo zip] ou faça um clone;
  - Descompacte os arquivos em seu computador;
- - Execute o comando ```composer install```
- - O diretório *public* contém exemplos de chamadas utilizando a API e o diretório *source* contém a biblioteca propriamente dita.
-
-Instalação via Composer
-
-- Alternativamente, é possível utilizar o [Composer] para carregar a biblioteca ([pagseguro/pagseguro-php-sdk]).
-
-Adicionando a dependência ao seu arquivo ```composer.json```
-```composer.json
-{
-    "require": {
-       "pagseguro/pagseguro-php-sdk" : "*"
-    }
-}
-```
-
-OU
-
-Executando o comando para adicionar a dependência automaticamente
-
-```php composer.phar require pagseguro/pagseguro-php-sdk```
+ - Execute o comando ```php composer.phar install``` no local onde extraiu os arquivos.
+ 
+ 
+ Como usar
+ ---------
+ O diretório *[public](public)* contém exemplos das mais diversas chamadas à API do PagSeguro utilizando a biblioteca (pagamento, assinatura, notificação) e o diretório *[source](source)* contém a biblioteca propriamente dita (código fonte).
 
 
 Configuração
@@ -73,41 +83,8 @@ Caso tenha dúvidas ou precise de suporte, acesse nosso [fórum].
 
 Changelog
 ---------
+Para consultar o log de alterações acesse o arquivo [CHANGELOG.md](CHANGELOG.md).
 
-3.0.0
- - Criar requisições de pagamentos
- - Criar requisições de pagamentos com assinaturas
- - Criar requisições de cancelamento de transações
- - Criar requisições de estorno de transações
- - Consultar transações por código
- - Consultar transações por intervalo de datas
- - Consultar transações abandonadas
- - Consultar transações por código de referência
- - Criar requisições de autorizações
- - Consultar autorizações por código
- - Consultar autorizações por intervalo de datas
- - Consultar autorizações por código de notificação
- - Consultar autorizações por código de referência 
- - Criar requisições de assinaturas
- - Criar requisições de cancelamento de assinaturas
- - Criar requisições de cobrança de assinaturas
- - Consultar assinaturas por código
- - Consultar assinaturas por intervalo de datas
- - Consultar assinaturas por intervalo de dias
- - Consultar assinaturas por código de notificação
- - Receber notificações de autorizações
- - Receber notificações de assinaturas
- - Receber notificações de transações
- - Criar requisições de checkout transparente utilizando boleto
- - Criar requisições de checkout transparente utilizando debito online
- - Criar requisições de checkout transparente utilizando cartão de crédito
- - Criar requisições de checkout transparente utilizando cartão de crédito internacional
- - Criar requisições de checkout transparente utilizando boleto com split payment
- - Criar requisições de checkout transparente utilizando debito online com split payment
- - Criar requisições de checkout transparente utilizando cartão de crédito com split payment
- - Criar requisições de checkout transparente utilizando cartão de crédito internacional com split payment
- - Atualização do código da biblioteca, aderindo ao uso de *namespaces*.
- - Refatoração do código base.
 
 Licença
 -------
@@ -150,7 +127,7 @@ Achou e corrigiu um bug ou tem alguma feature em mente e deseja contribuir?
 * Obs.: Adicione exemplos para sua nova feature. Se seu Pull Request for relacionado a uma versão específica, o Pull Request não deve ser enviado para o branch master e sim para o branch correspondente a versão.
 * Obs2: Não serão aceitos PR's na branch master. Utilizar a branch de desenvolvimento.
 
-
+  [requisições de assinaturas transparentes]: https://dev.pagseguro.uol.com.br/documentacao/pagamento-online/pagamentos/pagamento-recorrente-transparente
   [requisições de assinaturas]: http://download.uol.com.br/pagseguro/docs/pagseguro-assinatura-automatica.pdf
   [assinaturas]: http://download.uol.com.br/pagseguro/docs/pagseguro-assinatura-automatica.pdf
   [requisições de pagamentos]: https://dev.pagseguro.uol.com.br/documentacao/pagamentos
@@ -169,5 +146,6 @@ Achou e corrigiu um bug ou tem alguma feature em mente e deseja contribuir?
   [Composer]: https://getcomposer.org
   [pagseguro/pagseguro-php-sdk]: https://packagist.org/packages/pagseguro/pagseguro-php-sdk
   [Como receber pagamentos pelo PagSeguro]: https://pagseguro.uol.com.br/receba-pagamentos.jhtml#checkout-transparent
-
-
+  [Composer]: https://getcomposer.org/
+  [arquivo zip]: https://github.com/pagseguro/pagseguro-php-sdk/archive/master.zip
+  [documentação oficial do Composer]: https://getcomposer.org/doc/

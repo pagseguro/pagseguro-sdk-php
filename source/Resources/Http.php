@@ -40,12 +40,22 @@ class Http
      * @var
      */
     private $response;
+    private $contentType = 'Content-Type: application/x-www-form-urlencoded;';
+    private $accept = '';
 
     /**
      * Http constructor.
+     *
+     * @param string $contentType
+     *
+     * @throws \Exception
      */
-    public function __construct()
+    public function __construct($contentType = 'x-www-form')
     {
+        if($contentType === 'json') {
+            $this->contentType = 'Content-Type: application/json;';
+            $this->accept = 'Accept: application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1';
+        }
         if (!function_exists('curl_init')) {
             throw new \Exception('PagSeguro Library: cURL library is required.');
         }
@@ -85,15 +95,28 @@ class Http
 
     /**
      * @param $url
-     * @param array $data
+     * @param array|string $data
      * @param int $timeout
      * @param string $charset
      * @return bool
      * @throws \Exception
      */
-    public function post($url, array $data = array(), $timeout = 20, $charset = 'ISO-8859-1')
+    public function post($url, $data, $timeout = 20, $charset = 'ISO-8859-1')
     {
         return $this->curlConnection('POST', $url, $timeout, $charset, $data);
+    }
+
+	/**
+	 * @param        $url
+	 * @param        $data
+	 * @param int    $timeout
+	 * @param string $charset
+	 *
+	 * @return bool
+	 */
+	public function put($url, $data, $timeout = 20, $charset = 'ISO-8859-1')
+    {
+        return $this->curlConnection('PUT', $url, $timeout, $charset, $data);
     }
 
     /**
@@ -113,17 +136,32 @@ class Http
      * @param $url
      * @param $timeout
      * @param $charset
-     * @param array|null $data
+     * @param array|string $data
      * @return bool
      * @throws \Exception
      */
-    private function curlConnection($method, $url, $timeout, $charset, array $data = null)
+    private function curlConnection($method, $url, $timeout, $charset, $data = null)
     {
         if (strtoupper($method) === 'POST') {
-            $postFields = ($data ? http_build_query($data, '', '&') : "");
+            if($this->contentType === 'Content-Type: application/json;'){
+                $postFields = json_encode($data);
+            } else {
+                $postFields = (is_array($data) ? http_build_query($data, '', '&') : $data);
+            }
             $contentLength = "Content-length: " . strlen($postFields);
             $methodOptions = array(
                 CURLOPT_POST => true,
+                CURLOPT_POSTFIELDS => $postFields,
+            );
+        } elseif (strtoupper($method) === 'PUT') {
+            if($this->contentType === 'Content-Type: application/json;'){
+                $postFields = json_encode($data);
+            } else {
+                $postFields = (is_array($data) ? http_build_query($data, '', '&') : $data);
+            }
+            $contentLength = "Content-length: " . strlen($postFields);
+            $methodOptions = array(
+                CURLOPT_CUSTOMREQUEST => 'PUT',
                 CURLOPT_POSTFIELDS => $postFields,
             );
         } else {
@@ -134,12 +172,7 @@ class Http
         }
 
         $options = array(
-            CURLOPT_HTTPHEADER => array(
-                "Content-Type: application/x-www-form-urlencoded; charset=" . $charset,
-                $contentLength,
-                'lib-description: php:' . Library::libraryVersion(),
-                'language-engine-description: php:' . Library::phpVersion()
-            ),
+            CURLOPT_HTTPHEADER => $this->setHeader($charset, $contentLength),
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HEADER => false,
@@ -158,7 +191,7 @@ class Http
                 sprintf('module-version: %s', Library::moduleVersion()->getRelease())
             );
         }
-        
+
         if (!is_null(Library::cmsVersion()->getRelease())) {
             array_push(
                 $options[CURLOPT_HTTPHEADER],
@@ -181,5 +214,26 @@ class Http
         } else {
             return true;
         }
+    }
+
+	/**
+	 * @param $charset
+	 * @param $contentLength
+	 *
+	 * @return array
+	 */
+	private function setHeader($charset, $contentLength)
+    {
+        $httpHeader = array(
+            "$this->contentType charset= $charset",
+            $contentLength,
+            'lib-description: php:'.Library::libraryVersion(),
+            'language-engine-description: php:'.Library::phpVersion(),
+        );
+        if ($this->accept) {
+            $httpHeader[] = $this->accept;
+        }
+
+        return $httpHeader;
     }
 }
