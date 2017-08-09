@@ -106,7 +106,15 @@ class Http
         return $this->curlConnection('POST', $url, $timeout, $charset, $data);
     }
 
-    public function put($url, $data, $timeout = 20, $charset = 'ISO-8859-1')
+	/**
+	 * @param        $url
+	 * @param        $data
+	 * @param int    $timeout
+	 * @param string $charset
+	 *
+	 * @return bool
+	 */
+	public function put($url, $data, $timeout = 20, $charset = 'ISO-8859-1')
     {
         return $this->curlConnection('PUT', $url, $timeout, $charset, $data);
     }
@@ -208,7 +216,13 @@ class Http
         }
     }
 
-    private function setHeader($charset, $contentLength)
+	/**
+	 * @param $charset
+	 * @param $contentLength
+	 *
+	 * @return array
+	 */
+	private function setHeader($charset, $contentLength)
     {
         $httpHeader = array(
             "$this->contentType charset= $charset",
