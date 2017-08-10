@@ -67,6 +67,7 @@ class Request extends Error implements Parser
             ->setStatus(current($xml->status))
             ->setLastEventDate(current($xml->lastEventDate))
             ->setPaymentMethod($xml->paymentMethod)
+            ->setPaymentLink(current($xml->paymentLink))
             ->setGrossAmount(current($xml->grossAmount))
             ->setDiscountAmount(current($xml->discountAmount))
             ->setCreditorFees($xml->creditorFees)
