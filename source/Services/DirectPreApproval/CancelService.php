@@ -89,7 +89,7 @@ class CancelService
      */
     private static function request(Connection\Data $connection, $preApprovalCode)
     {
-        return $connection->buildDirectPreApprovalStatusRequestUrl($preApprovalCode)."?".$connection->buildCredentialsQuery();
+        return $connection->buildDirectPreApprovalCancelRequestUrl($preApprovalCode)."?".$connection->buildCredentialsQuery();
     }
 
     /**
