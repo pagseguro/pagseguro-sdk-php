@@ -101,7 +101,7 @@ class Http
      * @return bool
      * @throws \Exception
      */
-    public function post($url, $data, $timeout = 20, $charset = 'ISO-8859-1')
+    public function post($url, $data = null, $timeout = 20, $charset = 'ISO-8859-1')
     {
         return $this->curlConnection('POST', $url, $timeout, $charset, $data);
     }

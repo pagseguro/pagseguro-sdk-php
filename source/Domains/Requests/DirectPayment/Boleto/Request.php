@@ -34,7 +34,6 @@ use PagSeguro\Domains\Requests\Redirect;
 use PagSeguro\Domains\Requests\Reference;
 use PagSeguro\Domains\Requests\Requests;
 use PagSeguro\Domains\Requests\Shipping;
-use PagSeguro\Domains\Requests\Split;
 
 /**
  * Class Request
@@ -54,7 +53,6 @@ class Request implements Requests
     use ReceiverEmail;
     use Sender;
     use Shipping;
-    use Split;
     use Reference;
     use Redirect {
         Redirect::getUrl as getRedirectUrl;

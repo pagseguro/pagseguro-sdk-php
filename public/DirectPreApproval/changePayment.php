@@ -18,7 +18,7 @@ $changePayment->setPreApprovalCode('q213213123');
 $changePayment->setSender()->setIp('ip');
 $changePayment->setCreditCard()->setToken('token'); //token do cartão de crédito gerado via javascript
 $changePayment->setCreditCard()->setHolder()->setName('Nome Teste'); //nome do titular do cartão de crédito
-$changePayment->setCreditCard()->setHolder()->setHolder()->setBirthDate('10/10/1990'); //data de nascimento do titular do cartão de crédito
+$changePayment->setCreditCard()->setHolder()->setBirthDate('10/10/1990'); //data de nascimento do titular do cartão de crédito
 $document = new \PagSeguro\Domains\DirectPreApproval\Document();
 $document->withParameters('CPF', 'cpf');  //cpf do titular do cartão de crédito
 $changePayment->setCreditCard()->setHolder()->setDocuments($document);
