@@ -39,13 +39,4 @@ trait Payment
     {
         return Builder\DirectPayment\Payment::getRequestUrl();
     }
-    
-    /**
-     * @return string
-     */
-    public function buildDirectPaymentWithSplitRequestUrl()
-    {
-        return Builder\DirectPayment\PaymentWithSplit::getRequestUrl();
-    }
-    
 }
