@@ -41,6 +41,7 @@ class Response
     use Currency;
     use CreditorFees;
     use Item;
+    use PaymentLink;
     use PaymentMethod;
     use Sender;
     use Shipping;
