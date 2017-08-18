@@ -41,14 +41,4 @@ class Boleto extends Request
     {
         return \PagSeguro\Services\DirectPayment\Boleto::checkout($credentials, $this);
     }
-    
-    /**
-     * @param $credentials
-     * @return string
-     * @throws \Exception
-     */
-    public function registerWithSplit($credentials)
-    {
-        return \PagSeguro\Services\DirectPayment\Boleto::checkoutWithSplit($credentials, $this);
-    }
 }

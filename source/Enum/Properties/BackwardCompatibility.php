@@ -192,21 +192,6 @@ class BackwardCompatibility
     const RECEIVER_PUBLIC_KEY = "receiver[%s].publicKey";
 
     /**
-     *  Receiver split amount
-     */
-    const RECEIVER_SPLIT_AMOUNT = "receiver[%s].split.amount";
-
-    /**
-     *  Receiver split rate percent
-     */
-    const RECEIVER_SPLIT_RATE_PERCENT = "receiver[%s].split.ratePercent";
-
-    /**
-     *  Receiver split fee percent
-     */
-    const RECEIVER_SPLIT_FEE_PERCENT = "receiver[%s].split.feePercent";
-
-    /**
      * Redirect Url
      */
     const REDIRECT_URL = "redirectURL";

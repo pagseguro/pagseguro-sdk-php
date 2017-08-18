@@ -131,8 +131,5 @@
         <directPayment>
             <request>v2/transactions/</request>
         </directPayment>
-        <directPaymentWithSplit>
-            <request>transactions/</request>
-        </directPaymentWithSplit>
     </services>
 </Resources>

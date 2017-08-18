@@ -41,14 +41,4 @@ class CreditCard extends Request
     {
         return \PagSeguro\Services\DirectPayment\CreditCard::checkout($credentials, $this);
     }
-    
-    /**
-     * @param $credentials
-     * @return string
-     * @throws \Exception
-     */
-    public function registerWithSplit($credentials)
-    {
-        return \PagSeguro\Services\DirectPayment\CreditCard::checkoutWithSplit($credentials, $this);
-    }
 }

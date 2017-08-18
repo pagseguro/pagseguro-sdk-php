@@ -1,3 +1,7 @@
+3.3.0
+- Removida funcionalidade split (depreciada)
+- Correções e melhorias gerais
+
 3.2.0
 - Adicionado serviço de assinatura transparente
 
