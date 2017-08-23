@@ -1,5 +1,5 @@
 3.3.0
-- Removida funcionalidade split (depreciada)
+- Removidas funcionalidades depreciadas
 - Correções e melhorias gerais
 
 3.2.0
