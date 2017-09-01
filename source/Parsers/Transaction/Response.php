@@ -27,7 +27,6 @@ namespace PagSeguro\Parsers\Transaction;
 use PagSeguro\Parsers\Response\CreditorFees;
 use PagSeguro\Parsers\Response\Currency;
 use PagSeguro\Parsers\Response\Item;
-use PagSeguro\Parsers\Response\PaymentLink;
 use PagSeguro\Parsers\Response\PaymentMethod;
 use PagSeguro\Parsers\Response\Sender;
 use PagSeguro\Parsers\Response\Shipping;
