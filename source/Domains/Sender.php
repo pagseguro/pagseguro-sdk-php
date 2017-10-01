@@ -137,7 +137,9 @@ class Sender
     {
         if ($type && $value) {
             if (count($this->documents) == 0) {
-                $document = new Document($type, $value);
+                $document = new Document();
+                $document->setType($type);
+                $document->setIdentifier($value);
                 $this->documents[] = $document;
             }
         }
