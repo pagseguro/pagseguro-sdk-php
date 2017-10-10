@@ -189,4 +189,11 @@ nbproject/
 ## Composer
 #################
 composer.phar
+composer.lock
 /vendor/*
+
+
+#################
+## Lib
+#################
+*.log

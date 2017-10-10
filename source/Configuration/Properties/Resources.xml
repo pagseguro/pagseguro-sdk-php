@@ -95,12 +95,41 @@
                 <request>v2/pre-approvals</request>
             </search>
         </preApproval>
-        <!-- 
-           Nós não utilizamos a V2 deste serviço pois utilizamos uma versão mais recente da API que suporta Split Payment. 
-           Para maiores informações e consultar a disponibilidade de utilização do Split Payment, entre em contato com o PagSeguro. 
-        -->
+        <directPreApproval>
+            <request>pre-approvals</request>
+            <accession>
+                <request>pre-approvals</request>
+            </accession>
+            <plan>
+                <request>pre-approvals/request</request>
+            </plan>
+            <query>
+                <request>pre-approvals</request>
+            </query>
+            <payment>
+                <request>pre-approvals/payment</request>
+            </payment>
+            <status>
+                <request>pre-approvals</request>
+            </status>
+            <cancel>
+                <request>pre-approvals</request>
+            </cancel>
+            <discount>
+                <request>pre-approvals</request>
+            </discount>
+            <changePayment>
+                <request>pre-approvals</request>
+            </changePayment>
+            <queryPaymentOrder>
+                <request>pre-approvals</request>
+            </queryPaymentOrder>
+            <queryNotification>
+                <request>pre-approvals/notifications</request>
+            </queryNotification>
+        </directPreApproval>
         <directPayment>
-            <request>transactions/</request>
+            <request>v2/transactions/</request>
         </directPayment>
     </services>
 </Resources>

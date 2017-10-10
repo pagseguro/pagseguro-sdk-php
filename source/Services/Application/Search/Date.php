@@ -97,10 +97,10 @@ class Date
             $connection->buildAuthorizationSearchRequestUrl(),
             $connection->buildCredentialsQuery(),
             sprintf("&%s=%s", Current::SEARCH_INITIAL_DATE, $params["initial_date"]),
-            !isset($params["final_date"]) ?: sprintf("&%s=%s", Current::SEARCH_FINAL_DATE, $params["final_date"]),
-            !isset($params["max_per_page"]) ?:
+            !isset($params["final_date"]) ? '' : sprintf("&%s=%s", Current::SEARCH_FINAL_DATE, $params["final_date"]),
+            !isset($params["max_per_page"]) ? '' :
                 sprintf("&%s=%s", Current::SEARCH_MAX_RESULTS_PER_PAGE, $params["max_per_page"]),
-            !isset($params["page"]) ?: sprintf("&%s=%s", Current::SEARCH_PAGE, $params["page"])
+            !isset($params["page"]) ? '' : sprintf("&%s=%s", Current::SEARCH_PAGE, $params["page"])
         );
     }
 }

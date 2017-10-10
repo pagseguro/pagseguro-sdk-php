@@ -87,7 +87,7 @@ class Boleto
             throw $exception;
         }
     }
-
+    
     /**
      * @param Connection\Data $connection
      * @return string

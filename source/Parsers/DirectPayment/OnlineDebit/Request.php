@@ -28,7 +28,6 @@ namespace PagSeguro\Parsers\DirectPayment\OnlineDebit;
  * Request from the Online debit direct payment
  * @package PagSeguro\Parsers\DirectPayment\OnlineDebit
  */
-use PagSeguro\Enum\Properties\BackwardCompatibility;
 use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Currency;
@@ -39,7 +38,6 @@ use PagSeguro\Parsers\Parser;
 use PagSeguro\Parsers\ReceiverEmail;
 use PagSeguro\Parsers\Sender;
 use PagSeguro\Parsers\Shipping;
-use PagSeguro\Parsers\Split;
 use PagSeguro\Resources\Http;
 use PagSeguro\Parsers\Transaction\OnlineDebit\Response;
 
@@ -66,7 +64,7 @@ class Request extends Error implements Parser
     public static function getData(\PagSeguro\Domains\Requests\DirectPayment\OnlineDebit $onlineDebit)
     {
         $data = [];
-        $properties = new BackwardCompatibility();
+        $properties = new Current();
         return array_merge(
             $data,
             BankName::getData($onlineDebit, $properties),
@@ -77,8 +75,7 @@ class Request extends Error implements Parser
             Mode::getData($onlineDebit, $properties),
             ReceiverEmail::getData($onlineDebit, $properties),
             Sender::getData($onlineDebit, $properties),
-            Shipping::getData($onlineDebit, $properties),
-            Split::getData($onlineDebit, $properties)
+            Shipping::getData($onlineDebit, $properties)
         );
     }
 

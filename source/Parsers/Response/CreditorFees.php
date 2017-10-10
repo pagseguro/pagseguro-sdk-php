@@ -52,8 +52,15 @@ trait CreditorFees
     public function setCreditorFees($creditorFees)
     {
         $creditor = new \PagSeguro\Domains\CreditorFees();
-        $creditor->setIntermediationRateAmount(current($creditorFees->intermediationRateAmount))
-            ->setIntermediationFeeAmount(current($creditorFees->intermediationFeeAmount));
+
+        if (!is_null($creditorFees->intermediationRateAmount)) {
+            $creditor->setIntermediationRateAmount(current($creditorFees->intermediationRateAmount));
+        }
+        
+        if (!is_null($creditorFees->intermediationFeeAmount)) {
+            $creditor->setIntermediationFeeAmount(current($creditorFees->intermediationFeeAmount));
+        }
+
         $this->creditorFees = $creditor;
         return $this;
     }

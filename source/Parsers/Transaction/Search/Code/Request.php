@@ -27,7 +27,7 @@ namespace PagSeguro\Parsers\Transaction\Search\Code;
 use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Parser;
-use PagSeguro\Parsers\Transaction\Response;
+use PagSeguro\Parsers\Transaction\Search\Code\Response;
 use PagSeguro\Resources\Http;
 
 /**
@@ -67,6 +67,7 @@ class Request extends Error implements Parser
             ->setStatus(current($xml->status))
             ->setLastEventDate(current($xml->lastEventDate))
             ->setPaymentMethod($xml->paymentMethod)
+            ->setPaymentLink(current($xml->paymentLink))
             ->setGrossAmount(current($xml->grossAmount))
             ->setDiscountAmount(current($xml->discountAmount))
             ->setCreditorFees($xml->creditorFees)

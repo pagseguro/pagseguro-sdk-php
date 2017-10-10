@@ -82,7 +82,7 @@ class CreditCard
             throw $exception;
         }
     }
-
+    
     /**
      * @param Connection\Data $connection
      * @return string

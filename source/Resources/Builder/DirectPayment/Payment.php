@@ -32,7 +32,6 @@ use PagSeguro\Resources\Builder;
  */
 class Payment extends Builder
 {
-
     /**
      * @return string
      */
