@@ -61,7 +61,7 @@ class QueryService
                 ['service' => 'DirectPreApproval']
             );
             $http->get(
-                self::request($connection, QueryParsers::getData($directPreApproval))
+                self::request($connection, QueryParsers::getData($directPreApproval), $directPreApproval->preApprovalCode)
             );
             $response = Responsibility::http(
                 $http,
@@ -85,9 +85,13 @@ class QueryService
      *
      * @return string
      */
-    private static function request(Connection\Data $connection, $params = null)
+    private static function request(Connection\Data $connection, $params = null, $preApprovalCode = null)
     {
-        return $connection->buildDirectPreApprovalQueryRequestUrl()."?".$connection->buildCredentialsQuery().($params ? '&'.$params : '');
+        if ($preApprovalCode) {
+            return $connection->buildDirectPreApprovalQueryRequestUrl() . '/' . $preApprovalCode . "?" . $connection->buildCredentialsQuery();
+        }
+
+        return $connection->buildDirectPreApprovalQueryRequestUrl() . "?" . $connection->buildCredentialsQuery() . ($params ? '&' . $params : '');
     }
 
     /**

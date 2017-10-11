@@ -62,17 +62,22 @@ class QueryRequest
      * @var null
      */
     public $senderEmail;
+    /**
+     * @var null
+     */
+    public $preApprovalCode;
 
     /**
      * QueryRequest constructor.
      *
-     * @param $page
-     * @param $maxPageResults
-     * @param $initialDate
-     * @param $finalDate
-     * @param $status
-     * @param $preApprovalRequest
-     * @param $senderEmail
+     * @param int  $page
+     * @param int  $maxPageResults
+     * @param      $initialDate
+     * @param      $finalDate
+     * @param      $status
+     * @param      $preApprovalRequest
+     * @param      $senderEmail
+     * @param null $preApprovalCode
      */
     public function __construct(
         $page = 1,
@@ -81,7 +86,8 @@ class QueryRequest
         $finalDate = null,
         $status = null,
         $preApprovalRequest = null,
-        $senderEmail = null
+        $senderEmail = null,
+        $preApprovalCode = null
     ) {
         $this->page = $page;
         $this->maxPageResults = $maxPageResults;
@@ -90,5 +96,6 @@ class QueryRequest
         $this->status = $status;
         $this->preApprovalRequest = $preApprovalRequest;
         $this->senderEmail = $senderEmail;
+        $this->preApprovalCode = $preApprovalCode;
     }
 }
