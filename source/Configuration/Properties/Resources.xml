@@ -127,6 +127,9 @@
             <queryNotification>
                 <request>pre-approvals/notifications</request>
             </queryNotification>
+            <retryPaymentOrder>
+                <request>pre-approvals</request>
+            </retryPaymentOrder>
         </directPreApproval>
         <directPayment>
             <request>v2/transactions/</request>
