@@ -51,7 +51,9 @@ class Charge
             );
             $http->post(
                 self::request($connection),
-                Request::getData($charge)
+                Request::getData($charge),
+                20,
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
             );
 
             return Responsibility::http(
