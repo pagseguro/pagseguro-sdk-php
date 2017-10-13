@@ -64,7 +64,9 @@ class ChangePaymentService
             );
             $http->put(
                 self::request($connection, ChangePaymentParser::getPreApprovalCode($changePayment)),
-                ChangePaymentParser::getData($changePayment)
+                ChangePaymentParser::getData($changePayment),
+                20,
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
             );
             $response = Responsibility::http(
                 $http,

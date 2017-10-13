@@ -62,7 +62,9 @@ class Cancel
             );
             $http->post(
                 self::request($connection),
-                Request::getData($code)
+                Request::getData($code),
+                20,
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
             );
 
             $response = Responsibility::http(

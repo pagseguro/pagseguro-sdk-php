@@ -61,7 +61,9 @@ class QueryService
                 ['service' => 'DirectPreApproval']
             );
             $http->get(
-                self::request($connection, QueryParsers::getData($directPreApproval))
+                self::request($connection, QueryParsers::getData($directPreApproval)),
+                20,
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
             );
             $response = Responsibility::http(
                 $http,

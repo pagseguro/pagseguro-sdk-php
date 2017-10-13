@@ -53,7 +53,9 @@ class Payment
 
             $http->post(
                 self::request($connection),
-                Request::getData($preApproval)
+                Request::getData($preApproval),
+                20,
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
             );
 
             $response = Responsibility::http(

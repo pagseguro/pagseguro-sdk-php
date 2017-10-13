@@ -62,7 +62,9 @@ class PaymentService
             );
             $http->post(
                 self::request($connection),
-                PaymentParser::getData($payment)
+                PaymentParser::getData($payment),
+                20,
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
             );
             $response = Responsibility::http(
                 $http,

@@ -46,7 +46,10 @@ class Session
             $connection = new Connection\Data($credentials);
             $http = new Http();
             Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'Session']);
-            $http->post(self::request($connection));
+            $http->post(self::request($connection),
+                null,
+                20,
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding());
 
             $response = Responsibility::http(
                 $http,
