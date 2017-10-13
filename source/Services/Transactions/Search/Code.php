@@ -60,7 +60,9 @@ class Code
                 ['service' => 'Transactions.Search.Code']
             );
             $http->get(
-                self::request($connection, $code)
+                self::request($connection, $code),
+                20,
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
             );
 
             $response = Responsibility::http(

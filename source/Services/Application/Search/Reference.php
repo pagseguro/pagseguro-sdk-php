@@ -63,7 +63,9 @@ class Reference
                 ['service' => 'Application.Search.Reference']
             );
             $http->get(
-                self::request($connection, $reference, $options)
+                self::request($connection, $reference, $options),
+                20,
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
             );
 
             $response = Responsibility::http(
