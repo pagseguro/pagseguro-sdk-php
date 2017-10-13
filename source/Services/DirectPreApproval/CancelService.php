@@ -63,7 +63,9 @@ class CancelService
             );
             $http->put(
                 self::request($connection, CancelParser::getPreApprovalCode($cancel)),
-                CancelParser::getData($cancel)
+                CancelParser::getData($cancel),
+                20,
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
             );
             $response = Responsibility::http(
                 $http,

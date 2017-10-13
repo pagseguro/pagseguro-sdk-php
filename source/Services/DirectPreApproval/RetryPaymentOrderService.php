@@ -62,7 +62,9 @@ class RetryPaymentOrderService
             );
             $http->post(
                 self::request($connection, RetryPaymentOrderParser::getData($retryPaymentOrder)),
-                RetryPaymentOrderParser::getData($retryPaymentOrder)
+                RetryPaymentOrderParser::getData($retryPaymentOrder),
+                20,
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
             );
             $response = Responsibility::http(
                 $http,
