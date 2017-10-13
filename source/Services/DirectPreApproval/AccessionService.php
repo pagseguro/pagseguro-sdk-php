@@ -62,7 +62,9 @@ class AccessionService
             );
             $http->post(
                 self::request($connection),
-                AccessionParser::getData($directPreApproval)
+                AccessionParser::getData($directPreApproval),
+                20,
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
             );
             $response = Responsibility::http(
                 $http,

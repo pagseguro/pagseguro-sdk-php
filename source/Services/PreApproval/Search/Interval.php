@@ -57,7 +57,9 @@ class Interval
                 ['service' => 'PreApproval.Search.Interval']
             );
             $http->get(
-                self::request($connection, $days)
+                self::request($connection, $days),
+                20,
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
             );
 
             $response = Responsibility::http(
