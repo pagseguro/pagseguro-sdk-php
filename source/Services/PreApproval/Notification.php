@@ -50,7 +50,9 @@ class Notification
             $http = new Http();
             Logger::info(sprintf("GET: %s", self::request($connection)), ['service' => 'PreApproval.Notification']);
             $http->get(
-                self::request($connection)
+                self::request($connection),
+                20,
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
             );
 
             $response = Responsibility::http(

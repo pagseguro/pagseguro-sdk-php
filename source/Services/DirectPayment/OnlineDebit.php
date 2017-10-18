@@ -66,7 +66,9 @@ class OnlineDebit
             );
             $http->post(
                 self::request($connection),
-                Request::getData($payment)
+                Request::getData($payment),
+                20,
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
             );
 
             $response = Responsibility::http(

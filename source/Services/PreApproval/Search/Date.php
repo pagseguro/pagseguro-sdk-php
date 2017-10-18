@@ -58,7 +58,9 @@ class Date
                 ['service' => 'PreApproval.Search.Date']
             );
             $http->get(
-                self::request($connection, $options)
+                self::request($connection, $options),
+                20,
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
             );
 
             $response = Responsibility::http(

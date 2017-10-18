@@ -57,7 +57,9 @@ class Cancel
                 ['service' => 'Cancel']
             );
 
-            $http->get(self::request($connection, $code));
+            $http->get(self::request($connection, $code),
+                20,
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding());
 
             $response = Responsibility::http(
                 $http,

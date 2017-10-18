@@ -62,7 +62,9 @@ class Refund
             );
             $http->post(
                 self::request($connection),
-                Request::getData($code, $value)
+                Request::getData($code, $value),
+                20,
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
             );
 
             $response = Responsibility::http(
