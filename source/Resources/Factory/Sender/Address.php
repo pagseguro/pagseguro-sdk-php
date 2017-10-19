@@ -51,7 +51,7 @@ class Address
      * @param \PagSeguro\Domains\Addres $address
      * @return \PagSeguro\Domains\Shipping
      */
-    public function instance(\PagSeguro\Domains\Address $address)
+    public function WithInstance(\PagSeguro\Domains\Address $address)
     {
         $this->sender->setAddress($address);
         return $this->sender;
