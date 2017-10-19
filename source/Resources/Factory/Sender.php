@@ -52,7 +52,7 @@ class Sender
      * @param \PagSeguro\Domains\Sender $sender
      * @return \PagSeguro\Domains\Sender
      */
-    public function instance(\PagSeguro\Domains\Sender $sender)
+    public function withInstance(\PagSeguro\Domains\Sender $sender)
     {
         if ($sender instanceof \PagSeguro\Domains\Sender) {
             $this->sender = $sender;
