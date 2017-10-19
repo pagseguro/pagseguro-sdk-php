@@ -51,7 +51,7 @@ class Address
      * @param \PagSeguro\Domains\Address $address
      * @return \PagSeguro\Domains\DirectPayment\CreditCard\Billing
      */
-    public function instance(\PagSeguro\Domains\Address $address)
+    public function withInstance(\PagSeguro\Domains\Address $address)
     {
         $this->billing->setAddress($address);
         return $this->billing;
