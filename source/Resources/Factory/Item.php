@@ -49,8 +49,9 @@ class Item
      * @param \PagSeguro\Domains\Item $item
      * @return \PagSeguro\Domains\Item
      */
-    public function instance(\PagSeguro\Domains\Item $item)
+    public function withInstance(\PagSeguro\Domains\Item $item)
     {
+        array_push($this->item, $item);
         return $item;
     }
 
