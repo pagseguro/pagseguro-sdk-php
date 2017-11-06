@@ -8,7 +8,9 @@
 
 namespace PagSeguro\Domains\DirectPreApproval;
 
-class PhoneTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class PhoneTest extends TestCase
 {
     private $obj;
 

@@ -8,7 +8,9 @@
 
 namespace PagSeguro\Domains\DirectPreApproval;
 
-class PaymentMethodTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class PaymentMethodTest extends TestCase
 {
     private $obj;
 
