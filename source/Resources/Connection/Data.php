@@ -65,6 +65,7 @@ class Data
     use Base\DirectPreApproval\Status;
     use Base\DirectPreApproval\Cancel;
     use Base\DirectPreApproval\Discount;
+    use Base\DirectPreApproval\EditPlan;
     use Base\DirectPreApproval\ChangePayment;
     use Base\DirectPreApproval\QueryPaymentOrder;
     use Base\DirectPreApproval\QueryNotification;
