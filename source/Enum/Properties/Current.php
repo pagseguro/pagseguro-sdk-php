@@ -175,7 +175,23 @@ class Current
      * Installment max installment No interest
      */
     const INSTALLMENT_MAX_INSTALLMENT_NO_INTEREST = "maxInstallmentNoInterest";
-    
+
+	/**
+	 * Installment max installment No interest fallback resolver.
+	 * Using in line 56:32
+	 * Installment::getData(Requests $request, $properties)
+	 *                                            ^^^^^^
+	 *  ...
+	 *  // setNoInterestInstallmentQuantity
+	 *	if (!is_null($installment->getNoInterestInstallmentQuantity())) {
+	 *	    $data[$properties::INSTALLMENT_NO_INTEREST_INSTALLMENT_QUANTITY] = Currency::toDecimal($installment->getNoInterestInstallmentQuantity());
+	 *                                    ^^^^^^^^^^^^
+	 * }
+	 * ...
+	 * @TODO FIX TO PATTERN
+	 */
+     const INSTALLMENT_NO_INTEREST_INSTALLMENT_QUANTITY = "maxInstallmentNoInterest";
+
     /**
      * Item identifier
      */
