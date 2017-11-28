@@ -190,7 +190,7 @@ class Current
 	 * ...
 	 * @TODO FIX TO PATTERN
 	 */
-     const INSTALLMENT_NO_INTEREST_INSTALLMENT_QUANTITY = "maxInstallmentNoInterest";
+     const INSTALLMENT_NO_INTEREST_INSTALLMENT_QUANTITY = "noInterestInstallmentQuantity";
 
     /**
      * Item identifier
