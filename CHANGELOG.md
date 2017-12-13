@@ -1,3 +1,7 @@
+3.3.2
+- Correção no charset das requisições
+- Correção do erro "Undefined class constant 'INSTALLMENT_NO_INTEREST_INSTALLMENT_QUANTITY'" ao configurar o número de parcelas no checkout transparente com cartão de crédito.
+
 3.3.0
 - Removidas funcionalidades depreciadas
 - Correções e melhorias gerais
