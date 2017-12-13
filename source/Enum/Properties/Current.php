@@ -165,6 +165,11 @@ class Current
      * Installment quantity for credit card payment
      */
     const INSTALLMENT_QUANTITY = "installmentQuantity";
+
+    /**
+     * Installment no interest installment quantity for credit card payment
+     */
+    const INSTALLMENT_NO_INTEREST_INSTALLMENT_QUANTITY = "noInterestInstallmentQuantity";
     
     /**
      * Installment value for credit card payment
