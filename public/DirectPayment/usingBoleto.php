@@ -74,6 +74,9 @@ $boleto->setShipping()->setAddress()->withParameters(
     'apto. 114'
 );
 
+// If your payment request don't need shipping information use:
+// $boleto->setShipping()->setAddressRequired()->withParameters('FALSE');
+
 try {
     //Get the crendentials and register the boleto payment
     $result = $boleto->register(

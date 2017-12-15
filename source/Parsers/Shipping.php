@@ -46,6 +46,10 @@ trait Shipping
             if (!is_null($request->getShipping()->getType())) {
                 $data = array_merge($data, self::type($request, $properties));
             }
+            // address required
+            if (!is_null($request->getShipping()->getAddressRequired())) {
+                $data = array_merge($data, self::addressRequired($request, $properties));
+            }
             // cost
             if (!is_null($request->getShipping()->getCost())) {
                 $data = array_merge($data, self::cost($request, $properties));
@@ -81,6 +85,18 @@ trait Shipping
     {
         $data = [];
         $data[$properties::SHIPPING_TYPE] = $request->getShipping()->getType()->getType();
+        return $data;
+    }
+
+    /**
+     * @param $request
+     * @param $properties
+     * @return string
+     */
+    private static function addressRequired($request, $properties)
+    {
+        $data = [];
+        $data[$properties::SHIPPING_ADDRESS_REQUIRED] = $request->getShipping()->getAddressRequired()->getAddressRequired();
         return $data;
     }
 

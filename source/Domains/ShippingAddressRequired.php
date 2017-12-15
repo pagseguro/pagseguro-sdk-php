@@ -22,24 +22,33 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests\Adapter;
+namespace PagSeguro\Domains;
 
-use PagSeguro\Domains\Requests\Shipping\Address;
-use PagSeguro\Domains\Requests\Shipping\AddressRequired;
-use PagSeguro\Domains\Requests\Shipping\Type;
-use PagSeguro\Domains\Requests\Shipping\Cost;
-
-class Shipping
+/**
+ * Class ShippingAddressRequired
+ * @package PagSeguro\Domains
+ */
+class ShippingAddressRequired
 {
-    use Address;
-    use Cost;
-    use Type;
-    use AddressRequired;
 
-    private $shipping;
+    /**
+     * @var
+     */
+    private $addressRequired;
 
-    public function __construct($shipping)
+    /**
+     * @return string
+     */
+    public function getAddressRequired()
     {
-        $this->shipping = $shipping;
+        return $this->addressRequired;
+    }
+
+    /**
+     * @param string $addressRequired
+     */
+    public function setAddressRequired($addressRequired)
+    {
+        $this->addressRequired = $addressRequired;
     }
 }
