@@ -1,3 +1,6 @@
+3.4.0
+- Adicionada possibilidade *não* enviar o endereço de entrega nas requisições (*shipping* opcional).
+
 3.3.2
 - Correção no charset das requisições
 - Correção do erro "Undefined class constant 'INSTALLMENT_NO_INTEREST_INSTALLMENT_QUANTITY'" ao configurar o número de parcelas no checkout transparente com cartão de crédito.
