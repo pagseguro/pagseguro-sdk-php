@@ -1,5 +1,5 @@
 3.4.0
-- Adicionada possibilidade *não* enviar o endereço de entrega nas requisições (*shipping* opcional).
+- Adicionada possibilidade de *não* enviar o endereço de entrega nas requisições (*shipping* opcional).
 
 3.3.2
 - Correção no charset das requisições
