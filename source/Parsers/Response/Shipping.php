@@ -25,6 +25,7 @@
 namespace PagSeguro\Parsers\Response;
 
 use PagSeguro\Resources\Factory\Shipping\Address;
+use PagSeguro\Resources\Factory\Shipping\AddressRequired;
 use PagSeguro\Resources\Factory\Shipping\Cost;
 use PagSeguro\Resources\Factory\Shipping\Type;
 
@@ -75,7 +76,6 @@ trait Shipping
 
             $shippingCost = new Cost($shippingClass);
             $shippingCost->withParameters(current($shipping->cost));
-
             $this->shipping = $shippingClass;
         }
         return $this;

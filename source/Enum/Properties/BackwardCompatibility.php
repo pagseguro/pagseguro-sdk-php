@@ -292,6 +292,11 @@ class BackwardCompatibility
     const SHIPPING_ADDRESS_COUNTRY = "shipping.address.country";
 
     /**
+     * Shipping address required
+     */
+    const SHIPPING_ADDRESS_REQUIRED = "shipping.address.required";
+
+    /**
      *  Primary Key
      */
     const PRIMARY_RECEIVER_PUBLIC_KEY = "primaryReceiver.publicKey";
