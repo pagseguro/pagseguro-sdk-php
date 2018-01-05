@@ -38,8 +38,10 @@ trait Accepted
         if (!is_null($request->acceptedPaymentMethods())) {
             $accepted = $request->acceptedPaymentMethods();
             if (!is_null($accepted['accept'])) {
-                $data[$properties::ACCEPT_PAYMENT_METHOD_GROUP] =
-                    implode(',', current($accepted['accept'])->getGroups());
+                if (!is_null(current($accepted['accept'])->getGroups())) {
+                    $data[$properties::ACCEPT_PAYMENT_METHOD_GROUP] =
+                        implode(',', current($accepted['accept'])->getGroups());
+                }
                 if (!is_null(current($accepted['accept'])->getNames())) {
                     $data[$properties::ACCEPT_PAYMENT_METHOD_NAME] =
                         implode(',', current($accepted['accept'])->getNames());
