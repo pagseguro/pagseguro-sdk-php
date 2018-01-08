@@ -31,7 +31,7 @@ use PagSeguro\Services\DirectPreApproval\PaymentService;
  *
  * @package PagSeguro\Domains\Requests\DirectPreApproval
  */
-class Payment extends Paymentrequest
+class Payment extends PaymentRequest
 {
     /**
      * @param $credentials
