@@ -38,6 +38,6 @@ class RetryPaymentOrder extends Builder
      */
     public static function getRetryPaymentOrderUrl()
     {
-        return parent::getRequest(parent::getUrl('webservice'), 'directPreApproval/RetryPaymentOrder');
+        return parent::getRequest(parent::getUrl('webservice'), 'directPreApproval/retryPaymentOrder');
     }
 }

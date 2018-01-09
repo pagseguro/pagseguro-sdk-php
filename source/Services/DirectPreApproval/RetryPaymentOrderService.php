@@ -52,7 +52,8 @@ class RetryPaymentOrderService
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http('json');
-            Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'DirectPreApproval']);
+            Logger::info(sprintf("POST: %s", self::request($connection,
+                RetryPaymentOrderParser::getData($retryPaymentOrder))), ['service' => 'DirectPreApproval']);
             Logger::info(
                 sprintf(
                     "Params: %s",
@@ -91,12 +92,8 @@ class RetryPaymentOrderService
      */
     private static function request(Connection\Data $connection, $data)
     {
-        echo '<pre>';
-        print_r($data);
-        print_r($connection->buildDirectPreApprovalRetryPaymentOrderUrl() . "?" . $connection->buildCredentialsQuery());
-        exit;
-
-        return $connection->buildDirectPreApprovalRetryPaymentOrderUrl() . "?" . $connection->buildCredentialsQuery();
+        return $connection->buildDirectPreApprovalRetryPaymentOrderUrl(
+            $data['preApprovalCode'], $data['paymentOrderCode']) . "?" . $connection->buildCredentialsQuery();
     }
 
     /**
