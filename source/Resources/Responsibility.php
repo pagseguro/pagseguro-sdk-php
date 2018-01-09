@@ -27,6 +27,7 @@ namespace PagSeguro\Resources;
 use PagSeguro\Resources\Responsibility\Http\Methods\Generic;
 use PagSeguro\Resources\Responsibility\Http\Methods\Request;
 use PagSeguro\Resources\Responsibility\Http\Methods\Success;
+use PagSeguro\Resources\Responsibility\Http\Methods\NoContent;
 use PagSeguro\Resources\Responsibility\Http\Methods\Unauthorized;
 use PagSeguro\Resources\Responsibility\Configuration\Environment;
 use PagSeguro\Resources\Responsibility\Configuration\Extensible;
@@ -46,13 +47,16 @@ class Responsibility
     {
         $success = new Success();
         $request = new Request();
+        $noContent = new NoContent();
         $unauthorized = new Unauthorized();
         $generic = new Generic();
 
         $success->successor(
             $request->successor(
                 $unauthorized->successor(
-                    $generic
+                    $noContent->successor(
+                        $generic
+                    )
                 )
             )
         );

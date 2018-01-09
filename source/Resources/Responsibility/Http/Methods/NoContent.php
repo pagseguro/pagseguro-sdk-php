@@ -1,4 +1,5 @@
 <?php
+
 /**
  * 2007-2016 [PagSeguro Internet Ltda.]
  *
@@ -22,46 +23,43 @@
  *
  */
 
-namespace PagSeguro\Enum\Http;
+namespace PagSeguro\Resources\Responsibility\Http\Methods;
 
-use PagSeguro\Enum\Enum;
+use PagSeguro\Enum\Http\Status;
+use PagSeguro\Resources\Http;
+use PagSeguro\Resources\Responsibility\Handler;
 
 /**
- * Class Status
- * @package PagSeguro\Enum\Http
+ * Class NoContent
+ * @package PagSeguro\Services\Connection\HttpMethods
  */
-class Status extends Enum
+class NoContent implements Handler
 {
     /**
-     * Http Method 200 - OK.
+     * @var
      */
-    const OK = 200;
+    private $successor;
+
     /**
-     * Http Method 204 - No Content.
+     * @param $successor
+     * @return $this
      */
-    const NO_CONTENT = 204;
+    public function successor($successor)
+    {
+        $this->successor = $successor;
+        return $this;
+    }
+
     /**
-     * Http Method 400 - Bad request.
+     * @param Http $http
+     * @param $class
+     * @return mixed
      */
-    const BAD_REQUEST = 400;
-    /**
-     * Http Method 401 - Unauthorized.
-     */
-    const UNAUTHORIZED = 401;
-    /**
-     * Http Method 403 - Forbidden.
-     */
-    const FORBIDDEN = 403;
-    /**
-     * Http Method 404 - Not found.
-     */
-    const NOT_FOUND = 404;
-    /**
-     * Http Method 500 - Internal server error.
-     */
-    const INTERNAL_SERVER_ERROR = 500;
-    /**
-     * Http Method 502 - Bad gateway.
-     */
-    const BAD_GATEWAY = 502;
+    public function handler($http, $class)
+    {
+        if ($http->getStatus() == Status::NO_CONTENT) {
+            return $class::success($http);
+        }
+        return $this->successor->handler($http, $class);
+    }
 }
