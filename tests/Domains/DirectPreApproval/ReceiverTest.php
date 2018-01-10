@@ -8,7 +8,9 @@
 
 namespace PagSeguro\Domains\DirectPreApproval;
 
-class ReceiverTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class ReceiverTest extends TestCase
 {
     private $obj;
 
