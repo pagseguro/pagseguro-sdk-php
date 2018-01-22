@@ -25,7 +25,7 @@ A biblioteca PagSeguro em PHP é um conjunto de classes de domínio que facilita
 Requisitos
 ----------
 
- - [PHP] 5.4.27+
+ - [PHP] 5.4.27+ || 5.5+ || 5.6+
  - [SPL]
  - [cURL]
  - [SimpleXml]

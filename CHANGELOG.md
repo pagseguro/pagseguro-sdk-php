@@ -1,3 +1,6 @@
+3.4.1
+- Removida funcionalidade depreciada (cartão de crédito internacional)
+
 3.4.0
 - Adicionada possibilidade de *não* enviar o endereço de entrega nas requisições (*shipping* opcional).
 
