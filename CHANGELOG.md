@@ -1,5 +1,8 @@
-3.4.1
-- Removida funcionalidade depreciada (cartão de crédito internacional)
+4.0.0 (25/01/2018)
+**Funcionalidades**
+- *pagamento recorrente (assinatura) transparente:* editar valor de cobrança de planos ja criados
+- *autorização*: encaminhar os dados do cliente e sugestão para cadastro ao criar uma autorização
+- *checkout transparente:* removida funcionalidade depreciada (cartão de crédito internacional)
 
 3.4.0
 - Adicionada possibilidade de *não* enviar o endereço de entrega nas requisições (*shipping* opcional).
