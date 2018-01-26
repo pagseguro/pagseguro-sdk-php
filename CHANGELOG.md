@@ -1,3 +1,10 @@
+### 4.0.0 (25/01/2018)
+
+#### Funcionalidades
+- **pagamento recorrente (assinatura) transparente:** editar valor de cobrança de planos ja criados
+- **autorização**: encaminhar os dados do cliente e sugestão para cadastro ao criar uma autorização
+- **checkout transparente:** removida funcionalidade depreciada (cartão de crédito internacional)
+
 3.4.1
 - Correção na requisição de Pagamento e Retentativa de Pagamento Recorrente
 
