@@ -22,6 +22,40 @@ $authorization->addPermission(\PagSeguro\Enum\Authorization\Permissions::RECEIVE
 $authorization->addPermission(\PagSeguro\Enum\Authorization\Permissions::MANAGE_PAYMENT_PRE_APPROVALS);
 $authorization->addPermission(\PagSeguro\Enum\Authorization\Permissions::DIRECT_PAYMENT);
 
+$partner = new \PagSeguro\Domains\Authorization\Partner(
+    'Teste teste',
+    new DateTime(),
+    new \PagSeguro\Domains\Document('CPF', '00000000000'),
+    new \PagSeguro\Domains\Phone('00', '000000000', \PagSeguro\Enum\Authorization\PhoneEnum::HOME)
+);
+
+$person = new \PagSeguro\Domains\Authorization\Company(
+    'John Doe',
+    new DateTime('10-10-1990'),
+    new \PagSeguro\Domains\Document('CPF', '00000000000'),
+    new \PagSeguro\Domains\Phone('00', '000000000', \PagSeguro\Enum\Authorization\PhoneEnum::BUSINESS),
+    new \PagSeguro\Domains\Address('Rua Um',
+        '1',
+        'Sem complemento',
+        'Bairro',
+        '00000000',
+        'Cidade',
+        'UF',
+        'BRA'),
+    $partner);
+
+/**
+ * Com o método a seguir é possível especificar outros telefones
+ *
+ * Os tipos de telefone permitidos são HOME, MOBILE e BUSINESS.
+ */
+$person->addPhones(new \PagSeguro\Domains\Phone('00', '000000000', \PagSeguro\Enum\Authorization\PhoneEnum::HOME));
+$person->addPhones(new \PagSeguro\Domains\Phone('00', '000000000', \PagSeguro\Enum\Authorization\PhoneEnum::BUSINESS));
+
+$account = new \PagSeguro\Domains\Authorization\Account('john@doe.com', $person);
+
+$authorization->setAccount($account);
+
 try {
     $response = $authorization->register(
         \PagSeguro\Configuration\Configure::getApplicationCredentials()
