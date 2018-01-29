@@ -57,7 +57,7 @@ class Company
         Partner $partner = null
     ) {
         $this->displayName = $displayName;
-        $this->websiteURL = date('Y-m-d', $websiteURL->getTimestamp());
+        $this->websiteURL = $websiteURL;
         if (isset($document)) {
             $this->addDocuments($document);
         }

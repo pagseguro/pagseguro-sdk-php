@@ -117,7 +117,7 @@ class SellerService
     {
         $phonesElement = $this->dom->createElement('phones');
         $phonesDom = $personDom->appendChild($phonesElement);
-        $phones = $this->authorization->getAccount()->getPersonal()->getPhones();
+        $phones = $this->authorization->getAccount()->getSeller()->getPhones();
 
         $phoneElement = $this->dom->createElement('phone');
         $phoneDom = $phonesDom->appendChild($phoneElement);
@@ -144,7 +144,7 @@ class SellerService
     {
         $documentsElement = $this->dom->createElement('documents');
         $documentsDom = $personDom->appendChild($documentsElement);
-        $documents = $this->authorization->getAccount()->getPersonal()->getDocuments();
+        $documents = $this->authorization->getAccount()->getSeller()->getDocuments();
 
         /**
          * @var Document $document
@@ -170,35 +170,35 @@ class SellerService
         $addressDom = $personDom->appendChild($addressElement);
 
         $postalCodeElement = $this->dom->createElement('postalCode',
-            $this->authorization->getAccount()->getPersonal()->getAddress()->getPostalCode());
+            $this->authorization->getAccount()->getSeller()->getAddress()->getPostalCode());
         $addressDom->appendChild($postalCodeElement);
 
         $streetElement = $this->dom->createElement('street',
-            $this->authorization->getAccount()->getPersonal()->getAddress()->getStreet());
+            $this->authorization->getAccount()->getSeller()->getAddress()->getStreet());
         $addressDom->appendChild($streetElement);
 
         $numberElement = $this->dom->createElement('number',
-            $this->authorization->getAccount()->getPersonal()->getAddress()->getNumber());
+            $this->authorization->getAccount()->getSeller()->getAddress()->getNumber());
         $addressDom->appendChild($numberElement);
 
         $complementElement = $this->dom->createElement('complement',
-            $this->authorization->getAccount()->getPersonal()->getAddress()->getComplement());
+            $this->authorization->getAccount()->getSeller()->getAddress()->getComplement());
         $addressDom->appendChild($complementElement);
 
         $districtElement = $this->dom->createElement('district',
-            $this->authorization->getAccount()->getPersonal()->getAddress()->getDistrict());
+            $this->authorization->getAccount()->getSeller()->getAddress()->getDistrict());
         $addressDom->appendChild($districtElement);
 
         $cityElement = $this->dom->createElement('city',
-            $this->authorization->getAccount()->getPersonal()->getAddress()->getCity());
+            $this->authorization->getAccount()->getSeller()->getAddress()->getCity());
         $addressDom->appendChild($cityElement);
 
         $stateElement = $this->dom->createElement('state',
-            $this->authorization->getAccount()->getPersonal()->getAddress()->getState());
+            $this->authorization->getAccount()->getSeller()->getAddress()->getState());
         $addressDom->appendChild($stateElement);
 
         $countryElement = $this->dom->createElement('country',
-            $this->authorization->getAccount()->getPersonal()->getAddress()->getCountry());
+            $this->authorization->getAccount()->getSeller()->getAddress()->getCountry());
         $addressDom->appendChild($countryElement);
     }
 
