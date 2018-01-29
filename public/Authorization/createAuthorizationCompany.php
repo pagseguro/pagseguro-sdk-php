@@ -23,7 +23,7 @@ $authorization->addPermission(\PagSeguro\Enum\Authorization\Permissions::MANAGE_
 $authorization->addPermission(\PagSeguro\Enum\Authorization\Permissions::DIRECT_PAYMENT);
 
 $partner = new \PagSeguro\Domains\Authorization\Partner(
-    'Teste teste',
+    'John Doe',
     new DateTime(),
     new \PagSeguro\Domains\Document('CPF', '00000000000'),
     new \PagSeguro\Domains\Phone('00', '000000000', \PagSeguro\Enum\Authorization\PhoneEnum::HOME)
@@ -31,7 +31,7 @@ $partner = new \PagSeguro\Domains\Authorization\Partner(
 
 $person = new \PagSeguro\Domains\Authorization\Company(
     'John Doe',
-    new DateTime('10-10-1990'),
+    'http://www.example.com',
     new \PagSeguro\Domains\Document('CPF', '00000000000'),
     new \PagSeguro\Domains\Phone('00', '000000000', \PagSeguro\Enum\Authorization\PhoneEnum::BUSINESS),
     new \PagSeguro\Domains\Address('Rua Um',

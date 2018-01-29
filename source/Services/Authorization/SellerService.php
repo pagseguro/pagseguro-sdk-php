@@ -104,7 +104,7 @@ class SellerService
         $personDom->appendChild($nameElement);
 
         $birthDateElement = $this->dom->createElement('birthDate',
-            $this->authorization->getAccount()->getPersonal()->getBirthDate());
+            $this->authorization->getAccount()->getSeller()->getBirthDate());
         $personDom->appendChild($birthDateElement);
 
         return $personDom;
