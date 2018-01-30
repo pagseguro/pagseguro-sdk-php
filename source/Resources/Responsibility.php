@@ -24,24 +24,31 @@
 
 namespace PagSeguro\Resources;
 
-use PagSeguro\Resources\Responsibility\Http\Methods\Generic;
-use PagSeguro\Resources\Responsibility\Http\Methods\Request;
-use PagSeguro\Resources\Responsibility\Http\Methods\Success;
-use PagSeguro\Resources\Responsibility\Http\Methods\Unauthorized;
 use PagSeguro\Resources\Responsibility\Configuration\Environment;
 use PagSeguro\Resources\Responsibility\Configuration\Extensible;
 use PagSeguro\Resources\Responsibility\Configuration\File;
 use PagSeguro\Resources\Responsibility\Configuration\Wrapper;
+use PagSeguro\Resources\Responsibility\Http\Methods\Generic;
+use PagSeguro\Resources\Responsibility\Http\Methods\Request;
+use PagSeguro\Resources\Responsibility\Http\Methods\Success;
+use PagSeguro\Resources\Responsibility\Http\Methods\Unauthorized;
 use PagSeguro\Resources\Responsibility\Notifications\Application;
 use PagSeguro\Resources\Responsibility\Notifications\PreApproval;
 use PagSeguro\Resources\Responsibility\Notifications\Transaction;
 
 /**
  * class Handler
+ *
  * @package PagSeguro\Services\Connection\Responsibility
  */
 class Responsibility
 {
+    /**
+     * @param $http
+     * @param $class
+     *
+     * @return mixed
+     */
     public static function http($http, $class)
     {
         $success = new Success();
@@ -56,6 +63,7 @@ class Responsibility
                 )
             )
         );
+
         return $success->handler($http, $class);
     }
 
@@ -73,6 +81,7 @@ class Responsibility
                 )
             )
         );
+
         return $wrapper->handler(null, null);
     }
 

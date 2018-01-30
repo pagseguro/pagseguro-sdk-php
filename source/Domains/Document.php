@@ -40,6 +40,18 @@ class Document
     private $identifier;
 
     /**
+     * Document constructor.
+     *
+     * @param $type
+     * @param $identifier
+     */
+    public function __construct($type = null, $identifier = null)
+    {
+        $this->type = $type;
+        $this->identifier = $identifier;
+    }
+
+    /**
      * @return string
      */
     public function getIdentifier()

@@ -28,12 +28,14 @@ use PagSeguro\Domains\Requests\Application\Authorization\Request;
 
 /**
  * Class Payment
+ *
  * @package PagSeguro\Domains\Requests
  */
 class Authorization extends Request
 {
     /**
      * @param $credentials
+     *
      * @return string
      * @throws \Exception
      */
