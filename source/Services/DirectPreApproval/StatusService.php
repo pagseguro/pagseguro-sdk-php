@@ -51,7 +51,7 @@ class StatusService
         Logger::info("Begin", ['service' => 'DirectPreApproval']);
         try {
             $connection = new Connection\Data($credentials);
-            $http = new Http('json');
+            $http = new Http('Content-Type: application/json;', 'Accept: application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1');
             Logger::info(sprintf("PUT: %s", self::request($connection, StatusParser::getPreApprovalCode($status))),
                 ['service' => 'DirectPreApproval']);
             Logger::info(
