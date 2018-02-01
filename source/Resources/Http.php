@@ -210,7 +210,7 @@ class Http
     private function setHeader($charset, $contentLength)
     {
         $httpHeader = [
-            "$this->contentType charset= $charset",
+            $this->contentType . ' charset=' . $charset,
             $contentLength,
             'lib-description: php:' . Library::libraryVersion(),
             'language-engine-description: php:' . Library::phpVersion(),
