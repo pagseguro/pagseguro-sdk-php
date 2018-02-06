@@ -178,6 +178,7 @@ class Http
             CURLOPT_HEADER => false,
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_CONNECTTIMEOUT => $timeout,
+	    CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V6
             //CURLOPT_TIMEOUT => $timeout
         );
 
