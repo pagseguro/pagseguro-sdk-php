@@ -1,0 +1,9 @@
+default:
+  autoload:
+    '': "%paths.base%/tests/Acceptance"
+  suites:
+    default:
+      paths:
+        - "%paths.base%/tests/Acceptance/Features"
+      contexts:
+        - Tests\Acceptance\CreateSessionContext
