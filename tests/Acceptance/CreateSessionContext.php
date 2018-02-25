@@ -3,7 +3,6 @@
 namespace Tests\Acceptance;
 
 use Behat\Behat\Context\Context;
-use Exception;
 use PagSeguro\Configuration\Configure;
 use PagSeguro\Domains\AccountCredentials;
 use PagSeguro\Library;
@@ -13,7 +12,9 @@ use PHPUnit_Framework_TestCase;
 
 class CreateSessionContext implements Context
 {
+    /** @var AccountCredentials */
     private $credential;
+    /** @var Response | \Exception */
     private $session;
 
     /**
@@ -31,33 +32,53 @@ class CreateSessionContext implements Context
     }
 
     /**
-     * @param $user
-     * @param $token
-     *
-     * @Given /^the credentials (.*), (.*)$/
+     * @Given /^that I want to create a new session$/
      */
-    public function theCredentials($user, $token)
+    public function thatIWantToCreateANewSession()
     {
-        $this->credential = new AccountCredentials($user, $token);
+        return true;
     }
 
     /**
-     * @When /^I create the request$/
+     * @Given /^credentials of account are (.*), (.*)$/
      *
-     * @throws Exception
+     * @param $email
+     * @param $token
      */
-    public function iCreateTheRequest()
+    public function credentialsOfAccountAre($email, $token)
     {
-        $this->session = Session::create($this->credential);
+        $this->credential = new AccountCredentials($email, $token);
+    }
+
+    /**
+     * @Given /^I call create method$/
+     *
+     * @throws \Exception
+     */
+    public function iCallCreateMethod()
+    {
+        try {
+            $this->session = Session::create($this->credential);
+        } catch (\Exception $e) {
+            $this->session = $e;
+        }
     }
 
     /**
      * @Then /^a valid session must be returned$/
-     *
-     * @throws Exception
      */
     public function aValidSessionMustBeReturned()
     {
         PHPUnit_Framework_TestCase::assertInstanceOf(Response::class, $this->session);
+        PHPUnit_Framework_TestCase::assertObjectHasAttribute('result', $this->session);
+    }
+
+    /**
+     * @Then /^a invalid session must be returned$/
+     */
+    public function aInvalidSessionMustBeReturned()
+    {
+        PHPUnit_Framework_TestCase::assertInstanceOf(\Exception::class, $this->session);
+        PHPUnit_Framework_TestCase::assertEquals($this->session->getMessage(), 'Unauthorized');
     }
 }
