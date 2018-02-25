@@ -10,7 +10,7 @@ use PagSeguro\Parsers\Session\Response;
 use PagSeguro\Services\Session;
 use PHPUnit_Framework_TestCase;
 
-class CreateSessionContext implements Context
+class SessionContext implements Context
 {
     /** @var AccountCredentials */
     private $credential;
