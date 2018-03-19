@@ -35,6 +35,7 @@ use PagSeguro\Parsers\Currency;
 use PagSeguro\Parsers\DirectPayment\Mode;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Item;
+use PagSeguro\Parsers\Parameter;
 use PagSeguro\Parsers\Parser;
 use PagSeguro\Parsers\ReceiverEmail;
 use PagSeguro\Parsers\Sender;
@@ -53,6 +54,7 @@ class Request extends Error implements Parser
     use Item;
     use Method;
     use Mode;
+    use Parameter;
     use ReceiverEmail;
     use Sender;
     use Shipping;
@@ -74,6 +76,7 @@ class Request extends Error implements Parser
             Item::getData($boleto, $properties),
             Method::getData($properties),
             Mode::getData($boleto, $properties),
+            Parameter::getData($boleto),
             ReceiverEmail::getData($boleto, $properties),
             Sender::getData($boleto, $properties),
             Shipping::getData($boleto, $properties)

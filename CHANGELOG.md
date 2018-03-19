@@ -1,4 +1,15 @@
-### 4.0.0 (25/01/2018)
+### 4.2.0 (19/03/2018)
+
+#### Funcionalidades
+- **CreditorFees:** adicionados novos parâmetros da api do PagSeguro references às classes do CreditorFees
+- **addParameter:** adicionada possibilidade de se usar a função addParameter ao criar checkout transparente
+
+### 4.0.1 (13/03/2018)
+
+#### Correções
+- **dev (testes):** *downgrade* da versão mínima do PHPUnit
+
+### 4.0.0 (31/01/2018)
 
 #### Funcionalidades
 - **pagamento recorrente (assinatura) transparente:** editar valor de cobrança de planos ja criados

@@ -61,6 +61,18 @@ trait CreditorFees
             $creditor->setIntermediationFeeAmount(current($creditorFees->intermediationFeeAmount));
         }
 
+        if (!is_null($creditorFees->installmentFeeAmount)) {
+            $creditor->setInstallmentFeeAmount(current($creditorFees->installmentFeeAmount));
+        }
+
+        if (!is_null($creditorFees->operationalFeeAmount)) {
+            $creditor->setOperationalFeeAmount(current($creditorFees->operationalFeeAmount));
+        }
+
+        if (!is_null($creditorFees->commissionFeeAmount)) {
+            $creditor->setCommissionFeeAmount(current($creditorFees->commissionFeeAmount));
+        }
+
         $this->creditorFees = $creditor;
         return $this;
     }

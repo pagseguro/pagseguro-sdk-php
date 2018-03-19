@@ -38,6 +38,7 @@ use PagSeguro\Parsers\DirectPayment\CreditCard\Token;
 use PagSeguro\Parsers\DirectPayment\Mode;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Item;
+use PagSeguro\Parsers\Parameter;
 use PagSeguro\Parsers\Parser;
 use PagSeguro\Parsers\ReceiverEmail;
 use PagSeguro\Parsers\Sender;
@@ -58,6 +59,7 @@ class Request extends Error implements Parser
     use Item;
     use Method;
     use Mode;
+    use Parameter;
     use ReceiverEmail;
     use Sender;
     use Shipping;
@@ -81,6 +83,7 @@ class Request extends Error implements Parser
             Item::getData($creditCard, $properties),
             Method::getData($properties),
             Mode::getData($creditCard, $properties),
+            Parameter::getData($creditCard),
             ReceiverEmail::getData($creditCard, $properties),
             Sender::getData($creditCard, $properties),
             Shipping::getData($creditCard, $properties),
