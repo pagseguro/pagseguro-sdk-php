@@ -1,6 +1,6 @@
-Feature: Default checkout
+Feature: Transactins
   As a developer integrating PagSeguro-PHP-SDK
-  I want to create a request checkout
+  I want to handle transactions
 
   Background:
     Given valid account credential

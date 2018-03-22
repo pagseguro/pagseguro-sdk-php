@@ -14,4 +14,4 @@ before_script:
 script:
   - vendor/bin/phpunit
   - vendor/bin/behat
-  - phpcs --standard=PSR2 --colors
+  - phpcs source/ --standard=PSR2 --colors

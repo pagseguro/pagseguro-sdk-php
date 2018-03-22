@@ -28,7 +28,7 @@ class Mock
         $request = new \PagSeguro\Domains\Requests\DirectPreApproval\Payment();
         $request->setPreApprovalCode($preApprovalCode);
         $request->setReference(uniqid());
-        $request->setSenderIp($_SERVER['REMOTE_ADDR']);
+        $request->setSenderIp($_SERVER['HTTP_X_FORWARDED_FOR']);
         $item = new \PagSeguro\Domains\DirectPreApproval\Item();
         $item->withParameters(uniqid(), Library::moduleVersion()->getName() . '-' . uniqid(), 1, 100.00);
         $request->addItems($item);

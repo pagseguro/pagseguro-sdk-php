@@ -219,7 +219,7 @@ class PreApprovalContext implements Context
             $this->accountCredentials,
             [
                 'initial_date' => (new \DateTime())->sub(\DateInterval::createFromDateString('180 days'))->format('Y-m-d\TH:i'),
-                'final_date'   => (new \DateTime())->format('Y-m-d\TH:i'),
+                'final_date'   => (new \DateTime())->sub(\DateInterval::createFromDateString('12 hours'))->format('Y-m-d\TH:i'),
                 'page'         => 1,
                 'max_per_page' => 5,
             ]

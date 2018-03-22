@@ -156,7 +156,7 @@ class TransactionsContext implements Context
         $this->response = \PagSeguro\Services\Transactions\Search\Reference::search(
             $this->validAccountCredential,
             $this->validTransactionCode,
-            ['intial_date' => $this->validInitialDate]
+            ['initial_date' => $this->validInitialDate]
         );
     }
 
