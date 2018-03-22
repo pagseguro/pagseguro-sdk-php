@@ -3,7 +3,6 @@
 namespace Tests\Acceptance;
 
 use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
 use PHPUnit\Framework\TestCase;
 use Tests\Bootstrap;
 use Tests\Mock;
@@ -73,6 +72,8 @@ class PreApprovalContext implements Context
 
     /**
      * @Given /^I have a valid pre approval date$/
+     *
+     * @throws \Exception
      */
     public function iHaveAValidPreApprovalDate()
     {
@@ -154,7 +155,15 @@ class PreApprovalContext implements Context
      */
     public function registerTheChargeRequest()
     {
-        $this->response = $this->preApprovalChargeRequest->register(Bootstrap::getValidAccountCredentials());
+        try {
+            $this->response = $this->preApprovalChargeRequest->register(Bootstrap::getValidAccountCredentials());
+        } catch (\Exception $e) {
+            if (strpos($e->getMessage(), 'xml')) {
+                $this->response = 'error';
+            } else {
+                $this->response = null;
+            }
+        }
     }
 
     /**
@@ -164,10 +173,18 @@ class PreApprovalContext implements Context
      */
     public function iTryToCancel()
     {
-        $this->response = \PagSeguro\Services\PreApproval\Cancel::create(
-            \PagSeguro\Configuration\Configure::getAccountCredentials(),
-            $this->preApprovalCode
-        );
+        try {
+            $this->response = \PagSeguro\Services\PreApproval\Cancel::create(
+                $this->accountCredentials,
+                $this->preApprovalCode
+            );
+        } catch (\Exception $e) {
+            if (strpos($e->getMessage(), 'xml')) {
+                $this->response = 'error';
+            } else {
+                $this->response = null;
+            }
+        }
     }
 
     /**

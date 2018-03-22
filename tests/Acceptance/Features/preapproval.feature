@@ -1,4 +1,4 @@
-Feature: Direct Pre Approval
+Feature: Pre Approval
   As a developer integrating PagSeguro-PHP-SDK
   I want to request and query pre approvals
 
@@ -15,17 +15,15 @@ Feature: Direct Pre Approval
 
     Examples:
       | charge | amount | maxAmountPerPeriod | period  | maxTotalAmount |
-      | manual | 100.00 | 100.00             | MONTHLY | 100.00         |
       | auto   | 100.00 | 100.00             | MONTHLY | 100.00         |
+      | manual | 100.00 | 100.00             | MONTHLY | 100.00         |
 
   Scenario: Charge Pre Approval
-    Given a valid pre approval code
     When I try to charge
     And register the charge request
     Then I should see a response
 
   Scenario: Cancel Pre Approval
-    Given a valid pre approval code
     When I try to cancel
     Then I should see a response
 

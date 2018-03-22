@@ -290,15 +290,18 @@ class Mock
         );
 
         $request->setPreApproval()->setCharge($charge);
-        $request->setPreApproval()->setName(Library::moduleVersion()->getName());
-        $request->setPreApproval()->setDetails(Library::moduleVersion()->getName());
+        $request->setPreApproval()->setName(Library::moduleVersion()->getName() . uniqid());
+        $request->setPreApproval()->setDetails(Library::moduleVersion()->getName() . uniqid());
         $request->setPreApproval()->setPeriod($period);
-        if ($charge == 'auto') {
-            $request->setPreApproval()->setMaxAmountPerPeriod($maxAmountPerPeriod);
-            $request->setPreApproval()->setAmountPerPayment($amount);
-        }
         $request->setPreApproval()->setMaxTotalAmount($maxTotalAmount);
-        $request->setPreApproval()->setInitialDate((new \DateTime())->format('Y-m-d\TH:i:s'));
+        $request->setPreApproval()->setAmountPerPayment($amount);
+        if ($charge == 'auto') {
+            $request->setPreApproval()->setPeriod($period);
+        }
+        if ($charge !== 'auto') {
+            $request->setPreApproval()->setMaxAmountPerPeriod($maxAmountPerPeriod);
+            $request->setPreApproval()->setInitialDate((new \DateTime())->format('Y-m-d\TH:i:s'));
+        }
         $request->setPreApproval()->setFinalDate((new \DateTime())->add(\DateInterval::createFromDateString('23 months'))->format('Y-m-d\TH:i:s'));
 
         $request->setRedirectUrl('http://www.lojamodelo.com.br/redirect');
