@@ -8,8 +8,8 @@ php:
 
 before_script:
   - composer install
-  - pyrus install pear/PHP_CodeSniffer
-  - phpenv rehash
+  - export PATH="$PATH:$HOME/.composer/vendor/bin"
+  - composer global require "squizlabs/php_codesniffer=*"
 
 script:
   - vendor/bin/phpunit

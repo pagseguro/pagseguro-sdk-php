@@ -6,6 +6,7 @@ use PagSeguro\Configuration\Configure;
 use PagSeguro\Domains\AccountCredentials;
 use PagSeguro\Domains\ApplicationCredentials;
 use PagSeguro\Library;
+use Symfony\Component\Dotenv\Dotenv;
 
 /**
  * Trait Bootstrap
@@ -26,6 +27,11 @@ trait Bootstrap
         }
         Library::cmsVersion()->setName('PHP')->setRelease(phpversion());
         Library::moduleVersion()->setName('Lib-Php-Examples')->setRelease('4.x.x');
+
+        if (!getenv('TESTING')) {
+            $dotenv = new Dotenv();
+            $dotenv->load(__DIR__ . '/../.env');
+        }
     }
 
     /**
