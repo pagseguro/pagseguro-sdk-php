@@ -15,7 +15,8 @@
   },
   "require-dev": {
     "phpunit/phpunit": "^5.7",
-    "behat/behat": "^3.4"
+    "behat/behat": "^3.4",
+    "symfony/dotenv": "^4.0"
   },
   "autoload": {
     "psr-4": {

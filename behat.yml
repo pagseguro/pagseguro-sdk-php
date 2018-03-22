@@ -1,9 +1,42 @@
 default:
-  autoload:
-    '': "%paths.base%/tests/Acceptance"
   suites:
-    default:
+    session:
       paths:
-        - "%paths.base%/tests/Acceptance/Features"
+        - "%paths.base%/tests/Acceptance/Features/session.feature"
       contexts:
         - Tests\Acceptance\SessionContext
+    authorization:
+      paths:
+        - "%paths.base%/tests/Acceptance/Features/authorization.feature"
+      contexts:
+        - Tests\Acceptance\AuthorizationContext
+    checkout_default:
+      paths:
+        - "%paths.base%/tests/Acceptance/Features/checkout_default.feature"
+      contexts:
+        - Tests\Acceptance\CheckoutDefaultContext
+    checkout_lightbox:
+      paths:
+        - "%paths.base%/tests/Acceptance/Features/checkout_lightbox.feature"
+      contexts:
+        - Tests\Acceptance\CheckoutLightboxContext
+    checkout_preapproval:
+      paths:
+        - "%paths.base%/tests/Acceptance/Features/checkout_preapproval.feature"
+      contexts:
+        - Tests\Acceptance\CheckoutPreApprovalContext
+    direct_preapproval:
+      paths:
+        - "%paths.base%/tests/Acceptance/Features/direct_preapproval.feature"
+      contexts:
+        - Tests\Acceptance\DirectPreApprovalContext
+    transactions:
+      paths:
+        - "%paths.base%/tests/Acceptance/Features/transactions.feature"
+      contexts:
+        - Tests\Acceptance\TransactionsContext
+    preapproval:
+      paths:
+        - "%paths.base%/tests/Acceptance/Features/preapproval.feature"
+      contexts:
+        - Tests\Acceptance\PreApprovalContext

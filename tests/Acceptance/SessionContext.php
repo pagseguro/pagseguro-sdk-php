@@ -3,82 +3,56 @@
 namespace Tests\Acceptance;
 
 use Behat\Behat\Context\Context;
-use PagSeguro\Configuration\Configure;
-use PagSeguro\Domains\AccountCredentials;
-use PagSeguro\Library;
 use PagSeguro\Parsers\Session\Response;
 use PagSeguro\Services\Session;
 use PHPUnit_Framework_TestCase;
+use Tests\Bootstrap;
 
 class SessionContext implements Context
 {
-    /** @var AccountCredentials */
-    private $credential;
-    /** @var Response | \Exception */
+    use Bootstrap;
+    /**
+     * @var Response | \Exception
+     */
     private $session;
+
+    /**
+     * @var \PagSeguro\Domains\AccountCredentials
+     */
+    private $accountCredential;
 
     /**
      * @BeforeFeature
      */
     public static function init()
     {
-        try {
-            Library::initialize();
-        } catch (\Exception $e) {
-        }
-        Library::cmsVersion()->setName('PHP')->setRelease(phpversion());
-        Library::moduleVersion()->setName('Lib-Php-Examples')->setRelease('4.x.x');
-        Configure::setEnvironment('sandbox');
+        Bootstrap::init();
     }
 
     /**
-     * @Given /^that I want to create a new session$/
+     * @Given /^a valid account credentiala$/
      */
-    public function thatIWantToCreateANewSession()
+    public function aValidAccountCredentiala()
     {
-        return true;
+        $this->accountCredential = Bootstrap::getValidAccountCredentials();
     }
 
     /**
-     * @Given /^credentials of account are (.*), (.*)$/
-     *
-     * @param $email
-     * @param $token
-     */
-    public function credentialsOfAccountAre($email, $token)
-    {
-        $this->credential = new AccountCredentials($email, $token);
-    }
-
-    /**
-     * @Given /^I call create method$/
+     * @When /^I try to create a session$/
      *
      * @throws \Exception
      */
-    public function iCallCreateMethod()
+    public function iTryToCreateASession()
     {
-        try {
-            $this->session = Session::create($this->credential);
-        } catch (\Exception $e) {
-            $this->session = $e;
-        }
+        $this->session = Session::create($this->accountCredential);
     }
 
     /**
-     * @Then /^a valid session must be returned$/
+     * @Then /^I should see a session id$/
      */
-    public function aValidSessionMustBeReturned()
+    public function iShouldSeeASessionId()
     {
-        PHPUnit_Framework_TestCase::assertInstanceOf(Response::class, $this->session);
+        PHPUnit_Framework_TestCase::assertInstanceOf('\PagSeguro\Parsers\Session\Response', $this->session);
         PHPUnit_Framework_TestCase::assertObjectHasAttribute('result', $this->session);
-    }
-
-    /**
-     * @Then /^a invalid session must be returned$/
-     */
-    public function aInvalidSessionMustBeReturned()
-    {
-        PHPUnit_Framework_TestCase::assertInstanceOf(\Exception::class, $this->session);
-        PHPUnit_Framework_TestCase::assertEquals($this->session->getMessage(), 'Unauthorized');
     }
 }

@@ -1,0 +1,25 @@
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false">
+    <testsuites>
+        <testsuite name="directPreAprroval">
+            <directory suffix="Test.php">./tests/Unit/Domains/DirectPreApproval</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./source</directory>
+        </whitelist>
+        <blacklist>
+            <directory suffix=".php">./public</directory>
+            <directory suffix=".php">./tests</directory>
+            <directory suffix=".php">./vendor</directory>
+        </blacklist>
+    </filter>
+</phpunit>

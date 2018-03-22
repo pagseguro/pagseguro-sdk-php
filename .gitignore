@@ -112,6 +112,7 @@ ClientBin
 stylecop.*
 ~$*
 *.dbmdl
+/.bash_history
 Generated_Code #added for RIA/Silverlight projects
 
 # Backup & report files from converting an old project file to a newer
@@ -191,9 +192,11 @@ nbproject/
 composer.phar
 composer.lock
 /vendor/*
+/.composer/
 
 
 #################
 ## Lib
 #################
 *.log
+.env
