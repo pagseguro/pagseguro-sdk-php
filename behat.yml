@@ -25,6 +25,21 @@ default:
         - "%paths.base%/tests/Acceptance/Features/checkout_preapproval.feature"
       contexts:
         - Tests\Acceptance\CheckoutPreApprovalContext
+    direct_checkout_boleto:
+      paths:
+        - "%paths.base%/tests/Acceptance/Features/direct_checkout_boleto.feature"
+      contexts:
+        - Tests\Acceptance\DirectCheckoutBoleto
+    direct_checkout_online_debit:
+      paths:
+        - "%paths.base%/tests/Acceptance/Features/direct_checkout_online_debit.feature"
+      contexts:
+        - Tests\Acceptance\DirectCheckoutOnlineDebit
+    direct_checkout_credit_card:
+      paths:
+        - "%paths.base%/tests/Acceptance/Features/direct_checkout_credit_card.feature"
+      contexts:
+        - Tests\Acceptance\DirectCheckoutCreditCard
     direct_preapproval:
       paths:
         - "%paths.base%/tests/Acceptance/Features/direct_preapproval.feature"

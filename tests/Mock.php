@@ -27,7 +27,7 @@ class Mock
     {
         $request = new \PagSeguro\Domains\Requests\DirectPreApproval\Payment();
         $request->setPreApprovalCode($preApprovalCode);
-        $request->setReference(uniqid());
+        $request->setReference(Library::moduleVersion()->getName() . '-' . uniqid());
         $request->setSenderIp('127.0.0.1');
         $item = new \PagSeguro\Domains\DirectPreApproval\Item();
         $item->withParameters(uniqid(), Library::moduleVersion()->getName() . '-' . uniqid(), 1, 100.00);
@@ -58,7 +58,7 @@ class Mock
 
         $request->setExtraAmount(11.5);
 
-        $request->setReference(Library::moduleVersion()->getName());
+        $request->setReference(Library::moduleVersion()->getName() . '-' . uniqid());
 
         $request->setRedirectUrl('http://www.lojamodelo.com.br');
 
@@ -321,6 +321,137 @@ class Mock
             1,
             100.00
         );
+
+        return $request;
+    }
+
+    public static function DirectCheckoutBoleto($itemId, $itemName, $itemQty, $itemValue, $extraAmount, $hash)
+    {
+        $request = new \PagSeguro\Domains\Requests\DirectPayment\Boleto();
+
+        $request->setMode('DEFAULT');
+
+        $request->setCurrency('BRL');
+
+        $request->addItems()->withParameters(
+            $itemId,
+            $itemName,
+            $itemQty,
+            $itemValue
+        );
+
+        $request->setReference(Library::moduleVersion()->getName() . '-' . uniqid());
+
+        $request->setExtraAmount($extraAmount);
+
+        $request->setSender()->setName('John Doe');
+        $request->setSender()->setEmail(Bootstrap::getTestSelleerEmail());
+
+        $request->setSender()->setPhone()->instance(Mock::Phone());
+
+        $request->setSender()->setDocument()->instance(Mock::DocumentCPF());
+
+        $request->setSender()->setHash($hash);
+
+        $request->setSender()->setIp('127.0.0.0');
+
+        $request->setShipping()->setAddress()->instance(Mock::Address());
+
+        return $request;
+    }
+
+    public static function DirectCheckoutOnlineDebit($bank, $itemId, $itemName, $itemQty, $itemValue, $extraAmount, $hash)
+    {
+        $request = new \PagSeguro\Domains\Requests\DirectPayment\OnlineDebit();
+
+        $request->setMode('DEFAULT');
+
+        $request->setBankName($bank);
+
+        $request->setCurrency('BRL');
+
+        $request->addItems()->withParameters(
+            $itemId,
+            $itemName,
+            $itemQty,
+            $itemValue
+        );
+
+        $request->setReference(Library::moduleVersion()->getName() . '-' . uniqid());
+
+        $request->setExtraAmount($extraAmount);
+
+        $request->setSender()->setName('John Doe');
+        $request->setSender()->setEmail(Bootstrap::getTestSelleerEmail());
+
+        $request->setSender()->setPhone()->instance(Mock::Phone());
+
+        $request->setSender()->setDocument()->instance(Mock::DocumentCPF());
+
+        $request->setSender()->setHash($hash);
+
+        $request->setSender()->setIp('127.0.0.0');
+
+        $request->setShipping()->setAddress()->instance(Mock::Address());
+
+        return $request;
+    }
+
+    public static function DirectCheckoutCreditCard(
+        $itemId,
+        $itemName,
+        $itemQty,
+        $itemValue,
+        $extraAmount,
+        $installments,
+        $installmentValue,
+        $hash,
+        $token
+    ) {
+        $request = new \PagSeguro\Domains\Requests\DirectPayment\CreditCard();
+
+        $request->setCurrency('BRL');
+
+        $request->setMode('DEFAULT');
+
+        $request->addItems()->withParameters(
+            $itemId,
+            $itemName,
+            $itemQty,
+            $itemValue
+        );
+
+        $request->setReference(Library::moduleVersion()->getName() . '-' . uniqid());
+
+        $request->setExtraAmount($extraAmount);
+
+        $request->setSender()->setName('John Doe');
+
+        $request->setSender()->setEmail(Bootstrap::getTestSelleerEmail());
+
+        $request->setSender()->setPhone()->instance(Mock::Phone());
+
+        $request->setSender()->setDocument()->instance(Mock::DocumentCPF());
+
+        $request->setSender()->setHash($hash);
+
+        $request->setSender()->setIp('127.0.0.0');
+
+        $request->setShipping()->setAddress()->instance(Mock::Address());
+
+        $request->setBilling()->setAddress()->instance(Mock::Address());
+
+        $request->setToken($token);
+
+        $request->setInstallment()->withParameters($installments, $installmentValue);
+
+        $request->setHolder()->setBirthdate('01/10/1979');
+
+        $request->setHolder()->setName('John Doe');
+
+        $request->setHolder()->setPhone()->instance(Mock::Phone());
+
+        $request->setHolder()->setDocument()->instance(Mock::DocumentCPF());
 
         return $request;
     }

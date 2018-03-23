@@ -14,19 +14,6 @@ use PagSeguro\Library;
  */
 trait Bootstrap
 {
-    /**
-     * Bootstrap constructor.
-     */
-    public function __construct()
-    {
-        try {
-            Library::initialize();
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
-        Library::cmsVersion()->setName('PHP')->setRelease(phpversion());
-        Library::moduleVersion()->setName('Lib-Php-Examples')->setRelease('4.x.x');
-    }
 
     /**
      * @return AccountCredentials
@@ -43,7 +30,7 @@ trait Bootstrap
 
     public static function getTestSelleerEmail()
     {
-        return Library::moduleVersion()->getName() . '@sandbox.pagseguro.com.br';
+        return strtolower(Library::moduleVersion()->getName() . '@sandbox.pagseguro.com.br');
     }
 
     /**
@@ -58,9 +45,18 @@ trait Bootstrap
      * @param string $environment
      * @param string $charset
      * @param bool   $log
+     *
+     * @return string
      */
     public static function init($environment = 'sandbox', $charset = 'UTF-8', $log = false)
     {
+        try {
+            Library::initialize();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        Library::cmsVersion()->setName('PHP')->setRelease(phpversion());
+        Library::moduleVersion()->setName('Lib-Php-Examples')->setRelease('4.x.x');
         self::setEnvironment($environment);
         self::setCharset($charset);
         self::setLog($log);
