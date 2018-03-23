@@ -24,9 +24,9 @@
 
 namespace PagSeguro\Domains\Requests\PreApproval;
 
-use PagSeguro\Domains\Requests\PreApproval\Charge\Request;
+use PagSeguro\Domains\Requests\PreApproval\Charge\Request as ChargeRequest;
 
-class Charge extends Request
+class Charge extends ChargeRequest
 {
 
     private $code;
