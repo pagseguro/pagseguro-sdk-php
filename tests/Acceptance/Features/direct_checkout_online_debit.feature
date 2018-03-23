@@ -2,9 +2,9 @@ Feature: Direct checkout
   As a developer integrating PagSeguro-PHP-SDK
   I want to create a checkout request
 
-  Scenario Outline: Using boleto
+  Scenario Outline: Using online debit
     Given a valid application credential
-    And a new checkout online debit request <bank>, <itemId>, <itemName>, <itemQty>, <itemValue>, <extraAmount>, <hash>, <token>
+    And a new checkout online debit request <bank>, <itemId>, <itemName>, <itemQty>, <itemValue>, <extraAmount>, <hash>
     When register the request
     Then I should see a response that contain a transaction or a error
 

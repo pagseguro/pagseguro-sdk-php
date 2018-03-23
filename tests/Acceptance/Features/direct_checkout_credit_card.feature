@@ -2,7 +2,7 @@ Feature: Direct checkout
   As a developer integrating PagSeguro-PHP-SDK
   I want to create a checkout request
 
-  Scenario Outline: Using boleto
+  Scenario Outline: Using credit card
     Given a valid application credential
     And a new checkout boleto request <itemId>, <itemName>, <itemQty>, <itemValue>, <extraAmount>, <installment>, <intallmentValue>, <hash>, <token>
     When register the request

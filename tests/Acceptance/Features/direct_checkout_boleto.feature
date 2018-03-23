@@ -4,7 +4,7 @@ Feature: Direct checkout
 
   Scenario Outline: Using boleto
     Given a valid application credential
-    And a new checkout boleto request <itemId>, <itemName>, <itemQty>, <itemValue>, <extraAmount>, <hash>, <token>
+    And a new checkout boleto request <itemId>, <itemName>, <itemQty>, <itemValue>, <extraAmount>, <hash>
     When register the request
     Then I should see a response that contain a transaction or a error
 
