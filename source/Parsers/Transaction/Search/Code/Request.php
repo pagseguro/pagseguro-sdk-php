@@ -78,7 +78,8 @@ class Request extends Error implements Parser
             ->setItemCount(current($xml->itemCount))
             ->setItems($xml->items)
             ->setSender($xml->sender)
-            ->setShipping($xml->shipping);
+            ->setShipping($xml->shipping)
+            ->setPromoCode(current($xml->promoCode));
         return $response;
     }
 
