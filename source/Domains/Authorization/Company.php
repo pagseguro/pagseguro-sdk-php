@@ -17,22 +17,27 @@ class Company
      * @var string
      */
     private $displayName = '';
+
     /**
      * @var \DateTime
      */
     private $websiteURL = null;
+
     /**
      * @var array
      */
     private $documents = [];
+
     /**
      * @var array
      */
     private $phones = [];
+
     /**
      * @var Address
      */
     private $address = null;
+
     /**
      * @var Partner
      */

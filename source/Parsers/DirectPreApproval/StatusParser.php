@@ -43,7 +43,7 @@ class StatusParser extends Error implements Parser
      */
     public static function getPreApprovalCode(Status $status)
     {
-        $status = $status->object_to_array($status);
+        $status = $status->objectToArray($status);
 
         return $status['preApprovalCode'];
     }
@@ -55,7 +55,7 @@ class StatusParser extends Error implements Parser
      */
     public static function getData(Status $status)
     {
-        $status = $status->object_to_array($status);
+        $status = $status->objectToArray($status);
         unset($status['preApprovalCode']);
 
         return $status;

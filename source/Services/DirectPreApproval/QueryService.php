@@ -51,7 +51,10 @@ class QueryService
         Logger::info("Begin", ['service' => 'DirectPreApproval']);
         try {
             $connection = new Connection\Data($credentials);
-            $http = new Http('Content-Type: application/json;', 'Accept: application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1');
+            $http = new Http(
+                'Content-Type: application/json;',
+                'Accept: application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1'
+            );
             Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'DirectPreApproval']);
             Logger::info(
                 sprintf(
@@ -61,7 +64,11 @@ class QueryService
                 ['service' => 'DirectPreApproval']
             );
             $http->get(
-                self::request($connection, QueryParsers::getData($directPreApproval), $directPreApproval->preApprovalCode),
+                self::request(
+                    $connection,
+                    QueryParsers::getData($directPreApproval),
+                    $directPreApproval->preApprovalCode
+                ),
                 20,
                 \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
             );
@@ -90,10 +97,12 @@ class QueryService
     private static function request(Connection\Data $connection, $params = null, $preApprovalCode = null)
     {
         if ($preApprovalCode) {
-            return $connection->buildDirectPreApprovalQueryRequestUrl() . '/' . $preApprovalCode . "?" . $connection->buildCredentialsQuery();
+            return $connection->buildDirectPreApprovalQueryRequestUrl() . '/' .
+                $preApprovalCode . "?" . $connection->buildCredentialsQuery();
         }
 
-        return $connection->buildDirectPreApprovalQueryRequestUrl() . "?" . $connection->buildCredentialsQuery() . ($params ? '&' . $params : '');
+        return $connection->buildDirectPreApprovalQueryRequestUrl() . "?" .
+            $connection->buildCredentialsQuery() . ($params ? '&' . $params : '');
     }
 
     /**

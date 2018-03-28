@@ -43,7 +43,7 @@ class QueryPaymentOrderParsers extends Error implements Parser
      */
     public static function getPreApprovalCode(QueryPaymentOrder $queryPaymentOrder)
     {
-        $queryPaymentOrder = $queryPaymentOrder->object_to_array($queryPaymentOrder);
+        $queryPaymentOrder = $queryPaymentOrder->objectToArray($queryPaymentOrder);
 
         return $queryPaymentOrder['preApprovalCode'];
     }
@@ -55,7 +55,7 @@ class QueryPaymentOrderParsers extends Error implements Parser
      */
     public static function getData(QueryPaymentOrder $queryPaymentOrder)
     {
-        $queryPaymentOrder = $queryPaymentOrder->object_to_array($queryPaymentOrder);
+        $queryPaymentOrder = $queryPaymentOrder->objectToArray($queryPaymentOrder);
         unset($queryPaymentOrder['preApprovalCode']);
 
         return http_build_query($queryPaymentOrder);

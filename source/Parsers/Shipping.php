@@ -28,13 +28,15 @@ use PagSeguro\Domains\Requests\Requests;
 
 /**
  * Class Shipping
+ *
  * @package PagSeguro\Parsers
  */
 trait Shipping
 {
     /**
      * @param Requests $request
-     * @param $properties
+     * @param          $properties
+     *
      * @return array
      */
     public static function getData(Requests $request, $properties)
@@ -59,12 +61,43 @@ trait Shipping
                 $data = array_merge($data, self::address($request, $properties));
             }
         }
+
         return $data;
     }
 
     /**
      * @param $request
      * @param $properties
+     *
+     * @return mixed
+     */
+    private static function type($request, $properties)
+    {
+        $data = [];
+        $data[$properties::SHIPPING_TYPE] = $request->getShipping()->getType()->getType();
+
+        return $data;
+    }
+
+    /**
+     * @param $request
+     * @param $properties
+     *
+     * @return string
+     */
+    private static function addressRequired($request, $properties)
+    {
+        $data = [];
+        $data[$properties::SHIPPING_ADDRESS_REQUIRED] =
+            $request->getShipping()->getAddressRequired()->getAddressRequired();
+
+        return $data;
+    }
+
+    /**
+     * @param $request
+     * @param $properties
+     *
      * @return float|string
      */
     private static function cost($request, $properties)
@@ -73,36 +106,14 @@ trait Shipping
         $data[$properties::SHIPPING_COST] = \PagSeguro\Helpers\Currency::toDecimal(
             $request->getShipping()->getCost()->getCost()
         );
+
         return $data;
     }
 
     /**
      * @param $request
      * @param $properties
-     * @return mixed
-     */
-    private static function type($request, $properties)
-    {
-        $data = [];
-        $data[$properties::SHIPPING_TYPE] = $request->getShipping()->getType()->getType();
-        return $data;
-    }
-
-    /**
-     * @param $request
-     * @param $properties
-     * @return string
-     */
-    private static function addressRequired($request, $properties)
-    {
-        $data = [];
-        $data[$properties::SHIPPING_ADDRESS_REQUIRED] = $request->getShipping()->getAddressRequired()->getAddressRequired();
-        return $data;
-    }
-
-    /**
-     * @param $request
-     * @param $properties
+     *
      * @return array
      */
     private static function address($request, $properties)
@@ -132,6 +143,7 @@ trait Shipping
         if (!is_null($request->getShipping()->getAddress()->getCountry())) {
             $data[$properties::SHIPPING_ADDRESS_COUNTRY] = $request->getShipping()->getAddress()->getCountry();
         }
+
         return $data;
     }
 }

@@ -34,14 +34,15 @@ use PagSeguro\Resources\Responsibility;
 
 /**
  * Class Payment
+ *
  * @package PagSeguro\Services\Checkout
  */
 class Abandoned
 {
-
     /**
      * @param \PagSeguro\Domains\Account\Credentials $credentials
-     * @param $options
+     * @param                                        $options
+     *
      * @return string
      * @throws \Exception
      */
@@ -80,6 +81,7 @@ class Abandoned
                 ),
                 ['service' => 'Transactions.Search.Abandoned']
             );
+
             return $response;
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'Transactions.Search.Abandoned']);
@@ -89,7 +91,8 @@ class Abandoned
 
     /**
      * @param Connection\Data $connection
-     * @param $params
+     * @param                 $params
+     *
      * @return string
      */
     private static function request(Connection\Data $connection, $params)
@@ -100,8 +103,11 @@ class Abandoned
             $connection->buildCredentialsQuery(),
             sprintf("&%s=%s", Current::SEARCH_INITIAL_DATE, $params["initial_date"]),
             !isset($params["final_date"]) ? '' : sprintf("&%s=%s", Current::SEARCH_FINAL_DATE, $params["final_date"]),
-            !isset($params["max_per_page"]) ? '' :
-                sprintf("&%s=%s", Current::SEARCH_MAX_RESULTS_PER_PAGE, $params["max_per_page"]),
+            !isset($params["max_per_page"]) ? '' : sprintf(
+                "&%s=%s",
+                Current::SEARCH_MAX_RESULTS_PER_PAGE,
+                $params["max_per_page"]
+            ),
             !isset($params["page"]) ? '' : sprintf("&%s=%s", Current::SEARCH_PAGE, $params["page"])
         );
     }

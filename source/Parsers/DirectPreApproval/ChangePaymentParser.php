@@ -43,7 +43,7 @@ class ChangePaymentParser extends Error implements Parser
      */
     public static function getPreApprovalCode(ChangePayment $changePayment)
     {
-        $changePayment = $changePayment->object_to_array($changePayment);
+        $changePayment = $changePayment->objectToArray($changePayment);
 
         return $changePayment['preApprovalCode'];
     }
@@ -55,7 +55,7 @@ class ChangePaymentParser extends Error implements Parser
      */
     public static function getData(ChangePayment $changePayment)
     {
-        $changePayment = $changePayment->object_to_array($changePayment);
+        $changePayment = $changePayment->objectToArray($changePayment);
         unset($changePayment['preApprovalCode']);
 
         return $changePayment;

@@ -35,6 +35,7 @@ class Document
      * @var
      */
     public $type;
+
     /**
      * @var
      */

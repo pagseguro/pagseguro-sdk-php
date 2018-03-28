@@ -51,7 +51,10 @@ class PaymentService
         Logger::info("Begin", ['service' => 'DirectPreApproval']);
         try {
             $connection = new Connection\Data($credentials);
-            $http = new Http('Content-Type: application/json;', 'Accept: application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1');
+            $http = new Http(
+                'Content-Type: application/json;',
+                'Accept: application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1'
+            );
             Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'DirectPreApproval']);
             Logger::info(
                 sprintf(
@@ -89,7 +92,7 @@ class PaymentService
      */
     private static function request(Connection\Data $connection)
     {
-        return $connection->buildDirectPreApprovalPaymentRequestUrl()."?".$connection->buildCredentialsQuery();
+        return $connection->buildDirectPreApprovalPaymentRequestUrl() . "?" . $connection->buildCredentialsQuery();
     }
 
     /**

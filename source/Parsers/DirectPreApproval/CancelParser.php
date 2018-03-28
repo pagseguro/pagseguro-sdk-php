@@ -43,7 +43,7 @@ class CancelParser extends Error implements Parser
      */
     public static function getPreApprovalCode(Cancel $status)
     {
-        $status = $status->object_to_array($status);
+        $status = $status->objectToArray($status);
         unset($status['status']);
 
         return $status['preApprovalCode'];
@@ -56,7 +56,7 @@ class CancelParser extends Error implements Parser
      */
     public static function getData(Cancel $status)
     {
-        $status = $status->object_to_array($status);
+        $status = $status->objectToArray($status);
         unset($status['preApprovalCode']);
 
         return $status;

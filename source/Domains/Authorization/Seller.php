@@ -17,18 +17,22 @@ class Seller
      * @var string
      */
     private $name = '';
+
     /**
      * @var \DateTime
      */
     private $birthDate = null;
+
     /**
      * @var array
      */
     private $documents = [];
+
     /**
      * @var array
      */
     private $phones = [];
+
     /**
      * @var Address
      */
@@ -81,12 +85,11 @@ class Seller
     public function addPhones(Phone $phone)
     {
         try {
-            if(!$phone->getType()){
+            if (!$phone->getType()) {
                 throw new \InvalidArgumentException('Phone Type is required');
             };
         } catch (\InvalidArgumentException $exception) {
             die($exception);
-            exit;
         }
         $this->phones[] = $phone;
 

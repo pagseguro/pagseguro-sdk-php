@@ -43,7 +43,7 @@ class PaymentParser extends Error implements Parser
      */
     public static function getData(Payment $directPreApproval)
     {
-        return $directPreApproval->object_to_array($directPreApproval);
+        return $directPreApproval->objectToArray($directPreApproval);
     }
 
     /**

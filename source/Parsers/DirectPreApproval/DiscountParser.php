@@ -43,7 +43,7 @@ class DiscountParser extends Error implements Parser
      */
     public static function getPreApprovalCode(Discount $discount)
     {
-        $discount = $discount->object_to_array($discount);
+        $discount = $discount->objectToArray($discount);
         unset($discount['status']);
 
         return $discount['preApprovalCode'];
@@ -56,7 +56,7 @@ class DiscountParser extends Error implements Parser
      */
     public static function getData(Discount $discount)
     {
-        $discount = $discount->object_to_array($discount);
+        $discount = $discount->objectToArray($discount);
         unset($discount['preApprovalCode']);
 
         return $discount;

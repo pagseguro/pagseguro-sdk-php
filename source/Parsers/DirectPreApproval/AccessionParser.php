@@ -43,7 +43,7 @@ class AccessionParser extends Error implements Parser
      */
     public static function getData(Accession $directPreApproval)
     {
-        return $directPreApproval->object_to_array($directPreApproval);
+        return $directPreApproval->objectToArray($directPreApproval);
     }
 
     /**

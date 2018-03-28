@@ -17,6 +17,7 @@ class PersonalService
      * @var Authorization
      */
     private $authorization;
+
     /**
      * @var \DOMDocument
      */
@@ -64,8 +65,10 @@ class PersonalService
         $redirectURLElement = $this->dom->createElement('redirectURL', $this->authorization->getRedirectURL());
         $authorizationRequestDom->appendChild($redirectURLElement);
 
-        $notificationURLElement = $this->dom->createElement('notificationURL',
-            $this->authorization->getNotificationURL());
+        $notificationURLElement = $this->dom->createElement(
+            'notificationURL',
+            $this->authorization->getNotificationURL()
+        );
         $authorizationRequestDom->appendChild($notificationURLElement);
 
         $accountElement = $this->dom->createElement('account');
@@ -103,8 +106,10 @@ class PersonalService
         $nameElement = $this->dom->createElement('name', $this->authorization->getAccount()->getPersonal()->getName());
         $personDom->appendChild($nameElement);
 
-        $birthDateElement = $this->dom->createElement('birthDate',
-            $this->authorization->getAccount()->getPersonal()->getBirthDate());
+        $birthDateElement = $this->dom->createElement(
+            'birthDate',
+            $this->authorization->getAccount()->getPersonal()->getBirthDate()
+        );
         $personDom->appendChild($birthDateElement);
 
         return $personDom;
@@ -169,36 +174,52 @@ class PersonalService
         $addressElement = $this->dom->createElement('address');
         $addressDom = $personDom->appendChild($addressElement);
 
-        $postalCodeElement = $this->dom->createElement('postalCode',
-            $this->authorization->getAccount()->getPersonal()->getAddress()->getPostalCode());
+        $postalCodeElement = $this->dom->createElement(
+            'postalCode',
+            $this->authorization->getAccount()->getPersonal()->getAddress()->getPostalCode()
+        );
         $addressDom->appendChild($postalCodeElement);
 
-        $streetElement = $this->dom->createElement('street',
-            $this->authorization->getAccount()->getPersonal()->getAddress()->getStreet());
+        $streetElement = $this->dom->createElement(
+            'street',
+            $this->authorization->getAccount()->getPersonal()->getAddress()->getStreet()
+        );
         $addressDom->appendChild($streetElement);
 
-        $numberElement = $this->dom->createElement('number',
-            $this->authorization->getAccount()->getPersonal()->getAddress()->getNumber());
+        $numberElement = $this->dom->createElement(
+            'number',
+            $this->authorization->getAccount()->getPersonal()->getAddress()->getNumber()
+        );
         $addressDom->appendChild($numberElement);
 
-        $complementElement = $this->dom->createElement('complement',
-            $this->authorization->getAccount()->getPersonal()->getAddress()->getComplement());
+        $complementElement = $this->dom->createElement(
+            'complement',
+            $this->authorization->getAccount()->getPersonal()->getAddress()->getComplement()
+        );
         $addressDom->appendChild($complementElement);
 
-        $districtElement = $this->dom->createElement('district',
-            $this->authorization->getAccount()->getPersonal()->getAddress()->getDistrict());
+        $districtElement = $this->dom->createElement(
+            'district',
+            $this->authorization->getAccount()->getPersonal()->getAddress()->getDistrict()
+        );
         $addressDom->appendChild($districtElement);
 
-        $cityElement = $this->dom->createElement('city',
-            $this->authorization->getAccount()->getPersonal()->getAddress()->getCity());
+        $cityElement = $this->dom->createElement(
+            'city',
+            $this->authorization->getAccount()->getPersonal()->getAddress()->getCity()
+        );
         $addressDom->appendChild($cityElement);
 
-        $stateElement = $this->dom->createElement('state',
-            $this->authorization->getAccount()->getPersonal()->getAddress()->getState());
+        $stateElement = $this->dom->createElement(
+            'state',
+            $this->authorization->getAccount()->getPersonal()->getAddress()->getState()
+        );
         $addressDom->appendChild($stateElement);
 
-        $countryElement = $this->dom->createElement('country',
-            $this->authorization->getAccount()->getPersonal()->getAddress()->getCountry());
+        $countryElement = $this->dom->createElement(
+            'country',
+            $this->authorization->getAccount()->getPersonal()->getAddress()->getCountry()
+        );
         $addressDom->appendChild($countryElement);
     }
 

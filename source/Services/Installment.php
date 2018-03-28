@@ -25,8 +25,9 @@ class Installment
 {
     /**
      * @param Credentials $credentials
-     * @param mixed $params
-     * @return Pagseguro\Domains\Responses\Installments
+     * @param mixed       $params
+     *
+     * @return \Pagseguro\Domains\Responses\Installments
      * @throws \Exception
      */
     public static function create(Credentials $credentials, $params)
@@ -36,9 +37,11 @@ class Installment
             $connection = new Connection\Data($credentials);
             $http = new Http();
             Logger::info(sprintf("GET: %s", self::request($connection, $params)), ['service' => 'Installment']);
-            $http->get(self::request($connection, $params),
+            $http->get(
+                self::request($connection, $params),
                 20,
-                \PagSeguro\Configuration\Configure::getCharset()->getEncoding());
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
+            );
 
             $response = Responsibility::http(
                 $http,
@@ -51,11 +54,13 @@ class Installment
             throw $exception;
         }
     }
-    
+
     /**
      * Build the service request url
+     *
      * @param \PagSeguro\Resources\Connection\Data $connection
-     * @param mixed $params
+     * @param mixed                                $params
+     *
      * @return string
      */
     private static function request(Connection\Data $connection, $params)
@@ -66,16 +71,20 @@ class Installment
             $connection->buildCredentialsQuery(),
             sprintf(
                 "&%s=%s",
-                Current::INSTALLMENT_AMOUNT, Currency::toDecimal($params['amount'])
+                Current::INSTALLMENT_AMOUNT,
+                Currency::toDecimal($params['amount'])
             ),
-            ! isset($params['card_brand']) || is_null($params['card_brand']) ? '' :
-                sprintf("&%s=%s", Current::INSTALLMENT_CARD_BRAND, $params['card_brand']),
-            ! isset($params['max_installment_no_interest']) || is_null($params['max_installment_no_interest']) ? '' :
-                sprintf(
-                    "&%s=%s",
-                    Current::INSTALLMENT_MAX_INSTALLMENT_NO_INTEREST,
-                    $params['max_installment_no_interest']
-                )
+            !isset($params['card_brand']) || is_null($params['card_brand']) ? '' : sprintf(
+                "&%s=%s",
+                Current::INSTALLMENT_CARD_BRAND,
+                $params['card_brand']
+            ),
+            !isset($params['max_installment_no_interest']) || is_null($params['max_installment_no_interest']) ? '' :
+            sprintf(
+                "&%s=%s",
+                Current::INSTALLMENT_MAX_INSTALLMENT_NO_INTEREST,
+                $params['max_installment_no_interest']
+            )
         );
     }
 }

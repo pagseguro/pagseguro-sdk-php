@@ -17,18 +17,22 @@ class Personal
      * @var string
      */
     private $name = '';
+
     /**
      * @var \DateTime
      */
     private $birthDate;
+
     /**
      * @var array
      */
     private $documents = [];
+
     /**
      * @var array
      */
     private $phones = [];
+
     /**
      * @var Address
      */

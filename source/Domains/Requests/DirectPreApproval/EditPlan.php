@@ -37,6 +37,7 @@ class EditPlan extends EditPlanRequest
      * @param $credentials
      *
      * @return mixed
+     * @throws \Exception
      */
     public function register($credentials)
     {

@@ -51,9 +51,17 @@ class RetryPaymentOrderService
         Logger::info("Begin", ['service' => 'DirectPreApproval']);
         try {
             $connection = new Connection\Data($credentials);
-            $http = new Http('Content-Type: application/json;', 'Accept: application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1');
-            Logger::info(sprintf("POST: %s", self::request($connection,
-                RetryPaymentOrderParser::getData($retryPaymentOrder))), ['service' => 'DirectPreApproval']);
+            $http = new Http(
+                'Content-Type: application/json;',
+                'Accept: application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1'
+            );
+            Logger::info(
+                sprintf(
+                    "POST: %s",
+                    self::request($connection, RetryPaymentOrderParser::getData($retryPaymentOrder))
+                ),
+                ['service' => 'DirectPreApproval']
+            );
             Logger::info(
                 sprintf(
                     "Params: %s",
@@ -92,8 +100,9 @@ class RetryPaymentOrderService
      */
     private static function request(Connection\Data $connection, $data)
     {
-        return $connection->buildDirectPreApprovalRetryPaymentOrderUrl(
-            $data['preApprovalCode'], $data['paymentOrderCode']) . "?" . $connection->buildCredentialsQuery();
+        return $connection->
+            buildDirectPreApprovalRetryPaymentOrderUrl($data['preApprovalCode'], $data['paymentOrderCode']) . "?" .
+            $connection->buildCredentialsQuery();
     }
 
     /**

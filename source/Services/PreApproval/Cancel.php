@@ -34,14 +34,15 @@ use PagSeguro\Resources\Responsibility;
 
 /**
  * Class Payment
+ *
  * @package PagSeguro\Services\Checkout
  */
 class Cancel
 {
-
     /**
      * @param Credentials $credentials
-     * @param $code
+     * @param             $code
+     *
      * @return Response
      * @throws \Exception
      */
@@ -57,9 +58,11 @@ class Cancel
                 ['service' => 'Cancel']
             );
 
-            $http->get(self::request($connection, $code),
+            $http->get(
+                self::request($connection, $code),
                 20,
-                \PagSeguro\Configuration\Configure::getCharset()->getEncoding());
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
+            );
 
             $response = Responsibility::http(
                 $http,
@@ -67,6 +70,7 @@ class Cancel
             );
 
             Logger::info(sprintf("Result: %s", current($response)), ['service' => 'PreApproval.Cancel']);
+
             return $response;
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'PreApproval.Cancel']);
@@ -76,7 +80,8 @@ class Cancel
 
     /**
      * @param Connection\Data $connection
-     * @param $code
+     * @param                 $code
+     *
      * @return string
      */
     private static function request(Connection\Data $connection, $code)

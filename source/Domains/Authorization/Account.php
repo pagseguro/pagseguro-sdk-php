@@ -13,18 +13,22 @@ class Account
      * @var string
      */
     private $email;
+
     /**
      * @var string
      */
     private $type;
+
     /**
      * @var Seller
      */
     private $seller;
+
     /**
      * @var Company
      */
     private $company;
+
     /**
      * @var Company
      */

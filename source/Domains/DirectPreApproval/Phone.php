@@ -35,6 +35,7 @@ class Phone
      * @var
      */
     public $areaCode;
+
     /**
      * @var
      */

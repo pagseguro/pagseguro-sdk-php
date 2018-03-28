@@ -43,7 +43,7 @@ class RetryPaymentOrderParser extends Error implements Parser
      */
     public static function getData(RetryPaymentOrder $retryPaymentOrder)
     {
-        return $retryPaymentOrder->object_to_array($retryPaymentOrder);
+        return $retryPaymentOrder->objectToArray($retryPaymentOrder);
     }
 
     /**

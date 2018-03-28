@@ -43,7 +43,7 @@ class PlanParser extends Error implements Parser
      */
     public static function getData(Plan $data)
     {
-        return $data->object_to_array($data);
+        return $data->objectToArray($data);
     }
 
     /**

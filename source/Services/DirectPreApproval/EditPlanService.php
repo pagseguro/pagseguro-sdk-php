@@ -40,8 +40,8 @@ use PagSeguro\Resources\Responsibility;
 class EditPlanService
 {
     /**
-     * @param Credentials   $credentials
-     * @param EditPlan      $editPlan
+     * @param Credentials $credentials
+     * @param EditPlan    $editPlan
      *
      * @return mixed
      * @throws \Exception
@@ -51,11 +51,18 @@ class EditPlanService
         Logger::info("Begin", ['service' => 'DirectPreApproval']);
         try {
             $connection = new Connection\Data($credentials);
-            $http = new Http('Content-Type: application/json;', 'Accept: application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1');
+            $http = new Http(
+                'Content-Type: application/json;',
+                'Accept: application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1'
+            );
 
-            Logger::info(sprintf("PUT: %s",
-                self::request($connection, EditPlanParser::getPreApprovalRequestCode($editPlan))),
-                ['service' => 'DirectPreApproval']);
+            Logger::info(
+                sprintf(
+                    "PUT: %s",
+                    self::request($connection, EditPlanParser::getPreApprovalRequestCode($editPlan))
+                ),
+                ['service' => 'DirectPreApproval']
+            );
             Logger::info(
                 sprintf(
                     "Params: %s",
@@ -96,7 +103,8 @@ class EditPlanService
      */
     private static function request(Connection\Data $connection, $preApprovalCode)
     {
-        return $connection->buildDirectPreApprovalEditPlanRequestUrl($preApprovalCode)."?".$connection->buildCredentialsQuery();
+        return $connection->buildDirectPreApprovalEditPlanRequestUrl($preApprovalCode) . '?' .
+            $connection->buildCredentialsQuery();
     }
 
     /**

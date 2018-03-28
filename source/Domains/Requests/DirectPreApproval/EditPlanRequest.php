@@ -34,8 +34,11 @@ use PagSeguro\Domains\DirectPreApproval\Traits\ParserTrait;
 class EditPlanRequest
 {
     use ParserTrait;
+
     public $preApprovalRequestCode;
+
     public $amountPerPayment;
+
     public $updateSubscriptions;
 
     /**
@@ -43,12 +46,11 @@ class EditPlanRequest
      */
     public function __construct()
     {
-
     }
 
     /**
-    * @param $preApprovalRequestCode
-    */
+     * @param $preApprovalRequestCode
+     */
     public function setPreApprovalRequestCode($preApprovalRequestCode)
     {
         $this->preApprovalRequestCode = $preApprovalRequestCode;

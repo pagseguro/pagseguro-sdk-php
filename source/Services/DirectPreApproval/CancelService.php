@@ -51,9 +51,14 @@ class CancelService
         Logger::info("Begin", ['service' => 'DirectPreApproval']);
         try {
             $connection = new Connection\Data($credentials);
-            $http = new Http('Content-Type: application/json;', 'Accept: application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1');
-            Logger::info(sprintf("POST: %s", self::request($connection, CancelParser::getPreApprovalCode($cancel))),
-                ['service' => 'DirectPreApproval']);
+            $http = new Http(
+                'Content-Type: application/json;',
+                'Accept: application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1'
+            );
+            Logger::info(
+                sprintf("POST: %s", self::request($connection, CancelParser::getPreApprovalCode($cancel))),
+                ['service' => 'DirectPreApproval']
+            );
             Logger::info(
                 sprintf(
                     "Params: %s",
@@ -91,7 +96,8 @@ class CancelService
      */
     private static function request(Connection\Data $connection, $preApprovalCode)
     {
-        return $connection->buildDirectPreApprovalCancelRequestUrl($preApprovalCode)."?".$connection->buildCredentialsQuery();
+        return $connection->buildDirectPreApprovalCancelRequestUrl($preApprovalCode) . "?" .
+            $connection->buildCredentialsQuery();
     }
 
     /**

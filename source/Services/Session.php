@@ -39,17 +39,18 @@ class Session
 {
     public static function create(Credentials $credentials)
     {
-
         Logger::info("Begin", ['service' => 'Session']);
 
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http();
             Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'Session']);
-            $http->post(self::request($connection),
+            $http->post(
+                self::request($connection),
                 null,
                 20,
-                \PagSeguro\Configuration\Configure::getCharset()->getEncoding());
+                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
+            );
 
             $response = Responsibility::http(
                 $http,
@@ -57,16 +58,16 @@ class Session
             );
 
             Logger::info(sprintf("Session ID: %s", current($response)), ['service' => 'Session']);
+
             return $response;
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'Session']);
             throw $exception;
         }
     }
-    
+
     private static function request(Connection\Data $connection)
     {
-
         return $connection->buildSessionRequestUrl() . "?" . $connection->buildCredentialsQuery();
     }
 }

@@ -35,22 +35,27 @@ class Plan
      * @var
      */
     public $redirectURL;
+
     /**
      * @var
      */
     public $reference;
+
     /**
      * @var PreApproval
      */
     public $preApproval;
+
     /**
      * @var
      */
     public $reviewURL;
+
     /**
      * @var
      */
     public $maxUsers;
+
     /**
      * @var Receiver
      */
@@ -76,7 +81,7 @@ class Plan
     /**
      * @param $reference
      */
-    function setReference($reference)
+    public function setReference($reference)
     {
         $this->reference = $reference;
     }

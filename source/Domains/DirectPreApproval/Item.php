@@ -35,22 +35,27 @@ class Item
      * @var
      */
     public $id;
+
     /**
      * @var
      */
     public $description;
+
     /**
      * @var
      */
     public $quantity;
+
     /**
      * @var
      */
     public $amount;
+
     /**
      * @var
      */
     public $weight;
+
     /**
      * @var
      */

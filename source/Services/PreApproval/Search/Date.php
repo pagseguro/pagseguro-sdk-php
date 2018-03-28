@@ -34,14 +34,15 @@ use PagSeguro\Resources\Responsibility;
 
 /**
  * Class Payment
+ *
  * @package PagSeguro\Services\Checkout
  */
 class Date
 {
-
     /**
      * @param \PagSeguro\Domains\Account\Credentials $credentials
-     * @param $options
+     * @param                                        $options
+     *
      * @return string
      * @throws \Exception
      */
@@ -77,6 +78,7 @@ class Date
                 ),
                 ['service' => 'Transactions.Search.Date']
             );
+
             return $response;
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'PreApproval.Search.Date']);
@@ -86,7 +88,8 @@ class Date
 
     /**
      * @param Connection\Data $connection
-     * @param $params
+     * @param                 $params
+     *
      * @return string
      */
     private static function request(Connection\Data $connection, $params)
@@ -97,8 +100,11 @@ class Date
             $connection->buildCredentialsQuery(),
             sprintf("&%s=%s", Current::SEARCH_INITIAL_DATE, $params["initial_date"]),
             !isset($params["final_date"]) ? '' : sprintf("&%s=%s", Current::SEARCH_FINAL_DATE, $params["final_date"]),
-            !isset($params["max_per_page"]) ? '' :
-                sprintf("&%s=%s", Current::SEARCH_MAX_RESULTS_PER_PAGE, $params["max_per_page"]),
+            !isset($params["max_per_page"]) ? '' : sprintf(
+                "&%s=%s",
+                Current::SEARCH_MAX_RESULTS_PER_PAGE,
+                $params["max_per_page"]
+            ),
             !isset($params["page"]) ? '' : sprintf("&%s=%s", Current::SEARCH_PAGE, $params["page"])
         );
     }

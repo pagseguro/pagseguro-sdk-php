@@ -29,13 +29,15 @@ use PagSeguro\Helpers\Currency;
 
 /**
  * Class Installment
+ *
  * @package PagSeguro\Parsers\DirectPayment\CreditCard
  */
 trait Installment
 {
     /**
      * @param Requests $request
-     * @param $properties
+     * @param          $properties
+     *
      * @return array
      */
     public static function getData(Requests $request, $properties)
@@ -53,7 +55,8 @@ trait Installment
         }
         // setNoInterestInstallmentQuantity
         if (!is_null($installment->getNoInterestInstallmentQuantity())) {
-            $data[$properties::INSTALLMENT_NO_INTEREST_INSTALLMENT_QUANTITY] = Currency::toDecimal($installment->getNoInterestInstallmentQuantity());
+            $data[$properties::INSTALLMENT_NO_INTEREST_INSTALLMENT_QUANTITY] =
+                Currency::toDecimal($installment->getNoInterestInstallmentQuantity());
         }
 
         return $data;

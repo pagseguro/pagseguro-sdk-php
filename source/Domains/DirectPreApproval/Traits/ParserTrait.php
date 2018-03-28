@@ -36,12 +36,12 @@ trait ParserTrait
      *
      * @return array
      */
-    function object_to_array($data)
+    public function objectToArray($data)
     {
         if (is_array($data) || is_object($data)) {
             $result = array();
             foreach ($data as $key => $value) {
-                $result[$key] = $this->object_to_array($value);
+                $result[$key] = $this->objectToArray($value);
             }
 
             return $result;

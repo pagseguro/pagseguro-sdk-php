@@ -41,11 +41,12 @@ class EditPlanParser extends Error implements Parser
      *
      * @return array
      */
-      public static function getPreApprovalRequestCode(EditPlan $editPlan)
-      {
-          $editPlan = $editPlan->object_to_array($editPlan);
-          return $editPlan['preApprovalRequestCode'];
-      }
+    public static function getPreApprovalRequestCode(EditPlan $editPlan)
+    {
+        $editPlan = $editPlan->objectToArray($editPlan);
+
+        return $editPlan['preApprovalRequestCode'];
+    }
 
     /**
      * @param EditPlan $editPlan
@@ -54,8 +55,9 @@ class EditPlanParser extends Error implements Parser
      */
     public static function getData(EditPlan $editPlan)
     {
-        $editPlan = $editPlan->object_to_array($editPlan);
+        $editPlan = $editPlan->objectToArray($editPlan);
         unset($editPlan['preApprovalRequestCode']);
+
         return $editPlan;
     }
 

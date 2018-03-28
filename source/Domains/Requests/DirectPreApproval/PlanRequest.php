@@ -63,7 +63,7 @@ class PlanRequest
     /**
      * @param $reference
      */
-    function setReference($reference)
+    public function setReference($reference)
     {
         $this->reference = $reference;
     }

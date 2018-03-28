@@ -179,8 +179,11 @@ class Http
         if (!is_null(Library::cmsVersion()->getRelease())) {
             array_push(
                 $options[CURLOPT_HTTPHEADER],
-                sprintf('cms-description: %s :%s', Library::cmsVersion()->getName(),
-                    Library::cmsVersion()->getRelease())
+                sprintf(
+                    'cms-description: %s :%s',
+                    Library::cmsVersion()->getName(),
+                    Library::cmsVersion()->getRelease()
+                )
             );
         }
 

@@ -16,14 +16,17 @@ class Partner
      * @var string
      */
     private $name = '';
+
     /**
      * @var \DateTime
      */
     private $birthDate;
+
     /**
      * @var array
      */
     private $documents = [];
+
     /**
      * @var array
      */

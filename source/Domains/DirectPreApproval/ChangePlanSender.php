@@ -35,6 +35,7 @@ class ChangePlanSender
      * @var
      */
     public $ip;
+
     /**
      * @var
      */

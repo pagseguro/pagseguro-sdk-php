@@ -37,10 +37,12 @@ class Phone
      * @var string
      */
     private $type;
+
     /**
      * @var integer
      */
     private $areaCode;
+
     /**
      * @var integer
      */
@@ -65,7 +67,9 @@ class Phone
     private function validateType($type)
     {
         if (!array_key_exists($type, PhoneEnum::getList())) {
-            throw new \InvalidArgumentException("Must be a valid currency, see \PagSeguro\Enum\Authorization\PhoneEnum");
+            throw new \InvalidArgumentException(
+                "Must be a valid currency, see \PagSeguro\Enum\Authorization\PhoneEnum"
+            );
         }
 
         return true;

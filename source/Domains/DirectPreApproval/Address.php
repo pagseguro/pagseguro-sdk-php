@@ -35,30 +35,37 @@ class Address
      * @var
      */
     public $street;
+
     /**
      * @var
      */
     public $number;
+
     /**
      * @var
      */
     public $district;
+
     /**
      * @var
      */
     public $postalCode;
+
     /**
      * @var
      */
     public $city;
+
     /**
      * @var
      */
     public $state;
+
     /**
      * @var
      */
     public $country;
+
     /**
      * @var
      */

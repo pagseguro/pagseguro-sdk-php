@@ -26,10 +26,21 @@ namespace PagSeguro\Resources\Connection\Base\DirectPreApproval;
 
 use PagSeguro\Resources\Builder;
 
+/**
+ * Trait QueryPaymentOrder
+ *
+ * @package PagSeguro\Resources\Connection\Base\DirectPreApproval
+ */
 trait QueryPaymentOrder
 {
+    /**
+     * @param $preApprovalCode
+     *
+     * @return string
+     */
     public function buildDirectPreApprovalQueryPaymentOrderRequestUrl($preApprovalCode)
     {
-        return Builder\DirectPreApproval\QueryPaymentOrder::getQueryPaymentOrderUrl().'/'.$preApprovalCode.'/payment-orders';
+        return Builder\DirectPreApproval\QueryPaymentOrder::getQueryPaymentOrderUrl() .
+            '/' . $preApprovalCode . '/payment-orders';
     }
 }

@@ -16,6 +16,7 @@ class DefaultAuthorizationService
      * @var Company
      */
     private $authorization;
+
     /**
      * @var \DOMDocument
      */
@@ -58,8 +59,10 @@ class DefaultAuthorizationService
         $redirectURLElement = $this->dom->createElement('redirectURL', $this->authorization->getRedirectURL());
         $authorizationRequestDom->appendChild($redirectURLElement);
 
-        $notificationURLElement = $this->dom->createElement('notificationURL',
-            $this->authorization->getNotificationURL());
+        $notificationURLElement = $this->dom->createElement(
+            'notificationURL',
+            $this->authorization->getNotificationURL()
+        );
         $authorizationRequestDom->appendChild($notificationURLElement);
 
         return $authorizationRequestDom;

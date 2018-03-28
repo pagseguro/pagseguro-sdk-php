@@ -43,7 +43,7 @@ class QueryNotificationParser extends Error implements Parser
      */
     public static function getNotificationCode(QueryNotification $queryNotification)
     {
-        $queryNotification = $queryNotification->object_to_array($queryNotification);
+        $queryNotification = $queryNotification->objectToArray($queryNotification);
 
         return $queryNotification['notificationCode'];
     }
@@ -55,7 +55,7 @@ class QueryNotificationParser extends Error implements Parser
      */
     public static function getData(QueryNotification $directPreApproval)
     {
-        $directPreApproval = $directPreApproval->object_to_array($directPreApproval);
+        $directPreApproval = $directPreApproval->objectToArray($directPreApproval);
         unset($directPreApproval['notificationCode']);
 
         return http_build_query($directPreApproval);

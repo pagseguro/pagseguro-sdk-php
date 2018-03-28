@@ -26,10 +26,21 @@ namespace PagSeguro\Resources\Connection\Base\DirectPreApproval;
 
 use PagSeguro\Resources\Builder;
 
+/**
+ * Trait QueryNotification
+ *
+ * @package PagSeguro\Resources\Connection\Base\DirectPreApproval
+ */
 trait QueryNotification
 {
+    /**
+     * @param null $preApprovalCode
+     *
+     * @return string
+     */
     public function buildDirectPreApprovalQueryNotificationRequestUrl($preApprovalCode = null)
     {
-        return Builder\DirectPreApproval\QueryNotification::getQueryNotificationUrl().($preApprovalCode ? '/'.$preApprovalCode : '');
+        return Builder\DirectPreApproval\QueryNotification::getQueryNotificationUrl() .
+            ($preApprovalCode ? '/' . $preApprovalCode : '');
     }
 }
