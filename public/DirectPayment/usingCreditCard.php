@@ -22,11 +22,13 @@ $creditCard->setReference("LIBPHP000001");
 $creditCard->setCurrency("BRL");
 
 // Add an item for this payment request
+// @see Pagseguro\Resources\Factory\Item
 $creditCard->addItems()->withParameters(
-    '0001',
-    'Notebook prata',
-    2,
-    10.00
+    '0001', // ID
+    'Notebook prata', // Description
+    2, // Quantity
+    10.00 // Amount
+    // Accepts two more arguments: Weight and Shipping Cost
 );
 
 // Add an item for this payment request
@@ -57,15 +59,16 @@ $creditCard->setSender()->setHash('d94d002b6998ca9cd69092746518e50aded5a54aef64c
 $creditCard->setSender()->setIp('127.0.0.0');
 
 // Set shipping information for this payment request
+// @see Pagseguro\Resources\Factory\Shipping\Address
 $creditCard->setShipping()->setAddress()->withParameters(
-    'Av. Brig. Faria Lima',
-    '1384',
-    'Jardim Paulistano',
-    '01452002',
-    'São Paulo',
-    'SP',
-    'BRA',
-    'apto. 114'
+    'Av. Brig. Faria Lima', // Street
+    '1384', // Number
+    'Jardim Paulistano', // District
+    '01452002', // Postal Code
+    'São Paulo', // City
+    'SP', // State
+    'BRA', // County
+    'apto. 114' // @optional Complement
 );
 
 //Set billing information for credit card
