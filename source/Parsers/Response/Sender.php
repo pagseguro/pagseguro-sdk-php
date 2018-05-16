@@ -52,12 +52,18 @@ trait Sender
     public function setSender($sender)
     {
         $phone = new Phone();
-        $phone->setAreaCode(current($sender->phone->areaCode))
-              ->setNumber(current($sender->phone->number));
+
+        if(isset($sender->phone)) {
+            $phone->setAreaCode(current($sender->phone->areaCode))
+                  ->setNumber(current($sender->phone->number));
+        }
+
+        $name = isset($sender->name) ? current($sender->name) : null;
+        $email = isset($sender->email) ? current($sender->email) : null;
 
         $senderClass = new \PagSeguro\Domains\Sender();
-        $this->sender = $senderClass->setName(current($sender->name))
-            ->setEmail(current($sender->email))
+        $this->sender = $senderClass->setName($name)
+            ->setEmail($email)
             ->setPhone($phone)
             ->setDocuments(new Document());
 
