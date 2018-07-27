@@ -25,51 +25,57 @@
 namespace PagSeguro\Services\DirectPreApproval;
 
 use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Domains\Requests\DirectPreApproval\Accession;
-use PagSeguro\Parsers\DirectPreApproval\AccessionParser;
+use PagSeguro\Domains\Requests\DirectPreApproval\EditPlan;
+use PagSeguro\Parsers\DirectPreApproval\EditPlanParser;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Log\Logger;
 use PagSeguro\Resources\Responsibility;
 
 /**
- * Class AccessionService
+ * Class EditPlanService
  *
  * @package PagSeguro\Services\DirectPreApproval
  */
-class AccessionService
+class EditPlanService
 {
     /**
-     * @param Credentials $credentials
-     * @param Accession   $directPreApproval
+     * @param Credentials   $credentials
+     * @param EditPlan      $editPlan
      *
      * @return mixed
      * @throws \Exception
      */
-    public static function create(Credentials $credentials, Accession $directPreApproval)
+    public static function edit(Credentials $credentials, EditPlan $editPlan)
     {
         Logger::info("Begin", ['service' => 'DirectPreApproval']);
         try {
             $connection = new Connection\Data($credentials);
             $http = new Http('Content-Type: application/json;', 'Accept: application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1');
-            Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'DirectPreApproval']);
+
+            Logger::info(sprintf("PUT: %s",
+                self::request($connection, EditPlanParser::getPreApprovalRequestCode($editPlan))),
+                ['service' => 'DirectPreApproval']);
             Logger::info(
                 sprintf(
                     "Params: %s",
-                    json_encode(AccessionParser::getData($directPreApproval))
+                    json_encode(EditPlanParser::getData($editPlan))
                 ),
                 ['service' => 'DirectPreApproval']
             );
-            $http->post(
-                self::request($connection),
-                AccessionParser::getData($directPreApproval),
+
+            $http->put(
+                self::request($connection, EditPlanParser::getPreApprovalRequestCode($editPlan)),
+                EditPlanParser::getData($editPlan),
                 20,
                 \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
             );
+
             $response = Responsibility::http(
                 $http,
-                new AccessionParser
+                new EditPlanParser
             );
+
             Logger::info(
                 sprintf("DirectPreApproval URL: %s", json_encode(self::response($response))),
                 ['service' => 'DirectPreApproval']
@@ -84,12 +90,13 @@ class AccessionService
 
     /**
      * @param Connection\Data $connection
+     * @param                 $preApprovalCode
      *
      * @return string
      */
-    private static function request(Connection\Data $connection)
+    private static function request(Connection\Data $connection, $preApprovalCode)
     {
-        return $connection->buildDirectPreApprovalAccessionRequestUrl()."?".$connection->buildCredentialsQuery();
+        return $connection->buildDirectPreApprovalEditPlanRequestUrl($preApprovalCode)."?".$connection->buildCredentialsQuery();
     }
 
     /**

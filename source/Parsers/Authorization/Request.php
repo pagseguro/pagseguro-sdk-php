@@ -24,59 +24,76 @@
 
 namespace PagSeguro\Parsers\Authorization;
 
-use PagSeguro\Enum\Properties\Current;
+use PagSeguro\Domains\Authorization;
 use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Parser;
 use PagSeguro\Resources\Http;
+use PagSeguro\Services\Authorization\CompanyService;
+use PagSeguro\Services\Authorization\DefaultAuthorizationService;
+use PagSeguro\Services\Authorization\PersonalService;
+use PagSeguro\Services\Authorization\SellerService;
 
 /**
  * Class Payment
+ *
  * @package PagSeguro\Parsers\Checkout
  */
 class Request extends Error implements Parser
 {
-
     use Basic;
-
 
     /**
      * @param \PagSeguro\Domains\Requests\Authorization $authorization
-     * @return array
+     *
+     * @return string
      */
     public static function getData(\PagSeguro\Domains\Requests\Authorization $authorization)
     {
-        $data = [];
-        $properties = new Current;
-
-        if (!is_null($authorization->getPermissions())) {
-            $data[$properties::PERMISSIONS] = $authorization->getPermissions();
+        $authorization = new Authorization(
+            $authorization->getReference(),
+            $authorization->getPermissions(),
+            $authorization->getRedirectUrl(),
+            $authorization->getNotificationUrl(),
+            $authorization->getAccount()
+        );
+        if (!$authorization->getAccount()) {
+            $xml = new DefaultAuthorizationService($authorization);
+        } else {
+            if ($authorization->getAccount()->getCompany() instanceof Authorization\Company) {
+                $xml = new CompanyService($authorization);
+            } elseif ($authorization->getAccount()->getSeller() instanceof Authorization\Seller) {
+                $xml = new SellerService($authorization);
+            } elseif ($authorization->getAccount()->getPersonal() instanceof Authorization\Personal) {
+                $xml = new PersonalService($authorization);
+            }
         }
 
-        return array_merge(
-            $data,
-            Basic::getData($authorization, $properties)
-        );
+        return $xml->getAsXML();
     }
 
     /**
      * @param \PagSeguro\Resources\Http $http
+     *
      * @return Response
      */
     public static function success(Http $http)
     {
         $xml = simplexml_load_string($http->getResponse());
+
         return (new Response)->setCode(current($xml->code))
-                             ->setDate(current($xml->date));
+            ->setDate(current($xml->date));
     }
 
     /**
      * @param \PagSeguro\Resources\Http $http
+     *
      * @return \PagSeguro\Domains\Error
      */
     public static function error(Http $http)
     {
         $error = parent::error($http);
+
         return $error;
     }
 }

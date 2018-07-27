@@ -30,7 +30,7 @@ use PagSeguro\Enum\Properties\Current;
  * Class PaymentMethod
  * @package PagSeguro\Resources\Factory\Request
  */
-class PaymentMethod
+class PaymentMethod implements \Countable
 {
     private $paymentMethod = array();
 
@@ -64,4 +64,9 @@ class PaymentMethod
         array_push($this->paymentMethod, $paymentMethod);
         return $this->paymentMethod;
     }
+
+    public function count() 
+    { 
+        return count($this->paymentMethod); 
+    } 
 }

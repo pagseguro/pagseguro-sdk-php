@@ -24,6 +24,7 @@
 
 namespace PagSeguro\Domains\Requests\Application\Authorization;
 
+use PagSeguro\Domains\Authorization\AccountTrait;
 use PagSeguro\Domains\Requests\Notification;
 use PagSeguro\Domains\Requests\Permissions;
 use PagSeguro\Domains\Requests\Reference;
@@ -44,6 +45,7 @@ class Request implements Requests
     }
     use Permissions;
     use Reference;
+    use AccountTrait;
     use Redirect {
         Redirect::getUrl as getRedirectUrl;
         Redirect::setUrl as setRedirectUrl;

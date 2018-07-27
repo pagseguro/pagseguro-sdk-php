@@ -24,20 +24,52 @@
 
 namespace PagSeguro\Domains;
 
+use PagSeguro\Enum\Authorization\PhoneEnum;
+
 /**
  * Class Phone
+ *
  * @package PagSeguro\Domains
  */
 class Phone
 {
     /**
-     * @var
+     * @var string
+     */
+    private $type;
+    /**
+     * @var integer
      */
     private $areaCode;
     /**
-     * @var
+     * @var integer
      */
     private $number;
+
+    /**
+     * Phone constructor.
+     *
+     * @param null      $areaCode
+     * @param null      $number
+     * @param PhoneEnum $type
+     */
+    public function __construct($areaCode = null, $number = null, $type = null)
+    {
+        $this->areaCode = $areaCode;
+        $this->number = $number;
+        if ($type && $this->validateType($type)) {
+            $this->type = $type;
+        }
+    }
+
+    private function validateType($type)
+    {
+        if (!array_key_exists($type, PhoneEnum::getList())) {
+            throw new \InvalidArgumentException("Must be a valid currency, see \PagSeguro\Enum\Authorization\PhoneEnum");
+        }
+
+        return true;
+    }
 
     /**
      * @return integer
@@ -49,11 +81,13 @@ class Phone
 
     /**
      * @param integer $areaCode
+     *
      * @return Phone
      */
     public function setAreaCode($areaCode)
     {
         $this->areaCode = $areaCode;
+
         return $this;
     }
 
@@ -67,11 +101,21 @@ class Phone
 
     /**
      * @param integer $number
+     *
      * @return Phone
      */
     public function setNumber($number)
     {
         $this->number = $number;
+
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

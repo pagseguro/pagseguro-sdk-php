@@ -26,6 +26,7 @@ namespace PagSeguro\Domains;
 
 /**
  * Class Address
+ *
  * @package PagSeguro\Domains
  */
 class Address
@@ -64,6 +65,38 @@ class Address
     private $country;
 
     /**
+     * Address constructor.
+     *
+     * @param $street
+     * @param $number
+     * @param $complement
+     * @param $district
+     * @param $postalCode
+     * @param $city
+     * @param $state
+     * @param $country
+     */
+    public function __construct(
+        $street = null,
+        $number = null,
+        $complement = null,
+        $district = null,
+        $postalCode = null,
+        $city = null,
+        $state = null,
+        $country = null
+    ) {
+        $this->street = $street;
+        $this->number = $number;
+        $this->complement = $complement;
+        $this->district = $district;
+        $this->postalCode = $postalCode;
+        $this->city = $city;
+        $this->state = $state;
+        $this->country = $country;
+    }
+
+    /**
      * @return string
      */
     public function getCity()
@@ -73,11 +106,13 @@ class Address
 
     /**
      * @param $city
+     *
      * @return $this
      */
     public function setCity($city)
     {
         $this->city = $city;
+
         return $this;
     }
 
@@ -91,11 +126,13 @@ class Address
 
     /**
      * @param $complement
+     *
      * @return $this
      */
     public function setComplement($complement)
     {
         $this->complement = $complement;
+
         return $this;
     }
 
@@ -109,11 +146,13 @@ class Address
 
     /**
      * @param $country
+     *
      * @return $this
      */
     public function setCountry($country)
     {
         $this->country = $country;
+
         return $this;
     }
 
@@ -127,11 +166,13 @@ class Address
 
     /**
      * @param $district
+     *
      * @return $this
      */
     public function setDistrict($district)
     {
         $this->district = $district;
+
         return $this;
     }
 
@@ -145,11 +186,13 @@ class Address
 
     /**
      * @param $number
+     *
      * @return $this
      */
     public function setNumber($number)
     {
         $this->number = $number;
+
         return $this;
     }
 
@@ -163,11 +206,13 @@ class Address
 
     /**
      * @param $postalCode
+     *
      * @return $this
      */
     public function setPostalCode($postalCode)
     {
         $this->postalCode = $postalCode;
+
         return $this;
     }
 
@@ -181,11 +226,13 @@ class Address
 
     /**
      * @param $state
+     *
      * @return $this
      */
     public function setState($state)
     {
         $this->state = $state;
+
         return $this;
     }
 
@@ -199,11 +246,13 @@ class Address
 
     /**
      * @param $street
+     *
      * @return $this
      */
     public function setStreet($street)
     {
         $this->street = $street;
+
         return $this;
     }
 }
