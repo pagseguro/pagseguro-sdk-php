@@ -131,6 +131,7 @@ Achou e corrigiu um bug ou tem alguma feature em mente e deseja contribuir?
   [Cancelar Assinaturas]: https://devs.pagseguro.uol.com.br/docs/arquivo-documentacoes-depreciadas
   [Consultar Assinaturas]: https://devs.pagseguro.uol.com.br/docs/arquivo-documentacoes-depreciadas
   [Cancelar Transações por Código]: https://devs.pagseguro.uol.com.br/docs/pagamento-recorrente-cancelamento-de-adesao
+  [Consultar Transações por Código]: https://devs.pagseguro.uol.com.br/docs/pagamento-recorrente-consulta-pelo-codigo-de-adesao
   [Consultar Transações por Intervalo de Datas]: https://devs.pagseguro.uol.com.br/docs/pagamento-recorrente-consulta-por-intervalo-de-datas
   [Receber Notificações]: https://devs.pagseguro.uol.com.br/docs/checkout-web-notificacoes
   [fórum]: https://comunidade.pagseguro.uol.com.br/hc/pt-br/community/topics
