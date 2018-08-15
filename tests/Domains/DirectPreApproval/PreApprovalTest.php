@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: thiago.medeiros
- * Date: 04/08/2017
- * Time: 13:45
- */
 
 namespace PagSeguro\Domains\DirectPreApproval;
 
@@ -12,13 +6,23 @@ class PreApprovalTest extends \PHPUnit_Framework_TestCase
 {
     private $obj;
 
-    public function testParameters()
+    protected function setUp()
+    {
+        $this->obj = new PreApproval();
+    }
+
+    /**
+     * @todo implement assertInstanceOf
+     */
+
+    public function testRequiredParameters()
     {
         $this->assertObjectHasAttribute('name', $this->obj);
         $this->assertObjectHasAttribute('charge', $this->obj);
         $this->assertObjectHasAttribute('period', $this->obj);
         $this->assertObjectHasAttribute('amountPerPayment', $this->obj);
         $this->assertObjectHasAttribute('membershipFee', $this->obj);
+        $this->assertObjectHasAttribute('trialPeriodDuration', $this->obj);
         $this->assertObjectHasAttribute('expiration', $this->obj);
         $this->assertObjectHasAttribute('details', $this->obj);
         $this->assertObjectHasAttribute('maxAmountPerPeriod', $this->obj);
@@ -31,15 +35,5 @@ class PreApprovalTest extends \PHPUnit_Framework_TestCase
         $this->assertObjectHasAttribute('dayOfMonth', $this->obj);
         $this->assertObjectHasAttribute('dayOfWeek', $this->obj);
         $this->assertObjectHasAttribute('cancelURL', $this->obj);
-    }
-
-    public function testSetExpiration()
-    {
-        $this->assertInstanceOf(Expiration::class, $this->obj->expiration);
-    }
-
-    protected function setUp()
-    {
-        $this->obj = new PreApproval();
     }
 }
