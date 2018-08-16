@@ -1,6 +1,8 @@
 <?php
 
-namespace PagSeguro\Domains\DirectPreApproval;
+namespace PagSeguro\Tests;
+
+use PagSeguro\Domains\DirectPreApproval\Holder;
 
 class HolderTest extends \PHPUnit_Framework_TestCase
 {

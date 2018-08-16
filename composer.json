@@ -20,5 +20,10 @@
     "psr-4": {
       "PagSeguro\\": "source/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PagSeguro\\Tests\\": "tests/"
+    }
   }
 }

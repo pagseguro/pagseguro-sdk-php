@@ -1,6 +1,8 @@
 <?php
 
-namespace PagSeguro\Domains\DirectPreApproval;
+namespace PagSeguro\Tests;
+
+use PagSeguro\Domains\DirectPreApproval\PaymentMethod;
 
 class PaymentMethodTest extends \PHPUnit_Framework_TestCase
 {
