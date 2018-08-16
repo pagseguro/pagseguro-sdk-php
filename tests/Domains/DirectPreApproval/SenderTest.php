@@ -1,18 +1,23 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: thiago.medeiros
- * Date: 04/08/2017
- * Time: 13:58
- */
 
-namespace PagSeguro\Domains\DirectPreApproval;
+namespace PagSeguro\Tests;
+
+use PagSeguro\Domains\DirectPreApproval\Sender;
 
 class SenderTest extends \PHPUnit_Framework_TestCase
 {
     private $obj;
 
-    public function testParameters()
+    protected function setUp()
+    {
+        $this->obj = new Sender();
+    }
+
+    /**
+     * @todo implements test assertInstanceOf
+     */
+
+    public function testRequiredParameters()
     {
         $this->assertObjectHasAttribute('name', $this->obj);
         $this->assertObjectHasAttribute('email', $this->obj);
@@ -21,10 +26,5 @@ class SenderTest extends \PHPUnit_Framework_TestCase
         $this->assertObjectHasAttribute('phone', $this->obj);
         $this->assertObjectHasAttribute('documents', $this->obj);
         $this->assertObjectHasAttribute('address', $this->obj);
-    }
-
-    protected function setUp()
-    {
-        $this->obj = new Sender();
     }
 }
