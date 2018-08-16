@@ -79,6 +79,11 @@ class Response
      */
     private $cancelationSource;
 
+    /**
+     * @var
+     */
+    private $promoCode;
+
     public function getCancelationSource()
     {
         return $this->cancelationSource;
@@ -214,6 +219,24 @@ class Response
     public function setType($type)
     {
         $this->type = $type;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPromoCode()
+    {
+        return $this->promoCode;
+    }
+
+    /**
+     * @param mixed $installmentCount
+     * @return Response
+     */
+    public function setPromoCode($promoCode)
+    {
+        $this->promoCode = $promoCode;
         return $this;
     }
 }

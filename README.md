@@ -11,15 +11,14 @@ Descrição
 
 A biblioteca PagSeguro em PHP é um conjunto de classes de domínio que facilitam, para o desenvolvedor PHP, a utilização das funcionalidades que o PagSeguro oferece na forma de APIs. Com a biblioteca instalada e configurada, você pode facilmente integrar funcionalidades como:
 
- - Criar [requisições de pagamentos]
- - Criar [requisições de assinaturas transparentes] e gerenciá-las
- - Criar [requisições de assinaturas]
- - Cancelar [assinaturas]
- - Consultar [assinaturas]
- - Consultar [transações por código]
- - Consultar [transações por intervalo de datas]
- - Consultar [transações abandonadas]
- - Receber [notificações]
+ - [Criar Requisições de Pagamentos]
+ - [Criar Requisições de Pagamento Recorrente] (assinatura transparente)
+ - [Criar Requisições de assinaturas]
+ - [Cancelar Assinaturas]
+ - [Consultar Assinaturas]
+ - [Consultar Transações por Código]
+ - [Consultar Transações por Intervalo de Datas]
+ - [Receber Notificações]
 
 
 Requisitos
@@ -125,27 +124,23 @@ Achou e corrigiu um bug ou tem alguma feature em mente e deseja contribuir?
 * Rode um push para o branch (git push origin my-new-feature)
 * Envie um Pull Request
 * Obs.: Adicione exemplos para sua nova feature. Se seu Pull Request for relacionado a uma versão específica, o Pull Request não deve ser enviado para o branch master e sim para o branch correspondente a versão.
-* Obs2: Não serão aceitos PR's na branch master. Utilizar a branch de desenvolvimento.
 
-  [requisições de assinaturas transparentes]: https://dev.pagseguro.uol.com.br/documentacao/pagamento-online/pagamentos/pagamento-recorrente-transparente
-  [requisições de assinaturas]: http://download.uol.com.br/pagseguro/docs/pagseguro-assinatura-automatica.pdf
-  [assinaturas]: http://download.uol.com.br/pagseguro/docs/pagseguro-assinatura-automatica.pdf
-  [requisições de pagamentos]: https://dev.pagseguro.uol.com.br/documentacao/pagamentos
-  [notificações]: https://pagseguro.uol.com.br/v3/guia-de-integracao/api-de-notificacoes.html
-  [Checkout Transparente]: https://pagseguro.uol.com.br/receba-pagamentos.jhtml#checkout-transparent
-  [transações por código]: https://pagseguro.uol.com.br/v3/guia-de-integracao/consulta-de-transacoes-por-codigo.html
-  [transações por intervalo de datas]: https://pagseguro.uol.com.br/v2/guia-de-integracao/consulta-de-transacoes-por-intervalo-de-datas.html
-  [transações abandonadas]: https://pagseguro.uol.com.br/v2/guia-de-integracao/consulta-de-transacoes-abandonadas.html
+  [Criar Requisições de Pagamentos]: https://devs.pagseguro.uol.com.br/docs/checkout-web
+  [Criar Requisições de Pagamento Recorrente]: https://devs.pagseguro.uol.com.br/docs/pagamento-recorrente
+  [Criar Requisições de assinaturas]: https://devs.pagseguro.uol.com.br/docs/arquivo-documentacoes-depreciadas
+  [Cancelar Assinaturas]: https://devs.pagseguro.uol.com.br/docs/arquivo-documentacoes-depreciadas
+  [Consultar Assinaturas]: https://devs.pagseguro.uol.com.br/docs/arquivo-documentacoes-depreciadas
+  [Cancelar Transações por Código]: https://devs.pagseguro.uol.com.br/docs/pagamento-recorrente-cancelamento-de-adesao
+  [Consultar Transações por Código]: https://devs.pagseguro.uol.com.br/docs/pagamento-recorrente-consulta-pelo-codigo-de-adesao
+  [Consultar Transações por Intervalo de Datas]: https://devs.pagseguro.uol.com.br/docs/pagamento-recorrente-consulta-por-intervalo-de-datas
+  [Receber Notificações]: https://devs.pagseguro.uol.com.br/docs/checkout-web-notificacoes
   [fórum]: https://comunidade.pagseguro.uol.com.br/hc/pt-br/community/topics
   [PHP]: http://www.php.net/
   [SPL]: http://php.net/manual/en/book.spl.php
   [cURL]: http://php.net/manual/en/book.curl.php
   [SimpleXml]: http://php.net/manual/en/book.simplexml.php
-  [GitHub]: https://github.com/pagseguro/php/
-  [documentação oficial]: https://dev.pagseguro.uol.com.br/bibliotecas/php
   [Composer]: https://getcomposer.org
   [pagseguro/pagseguro-php-sdk]: https://packagist.org/packages/pagseguro/pagseguro-php-sdk
   [Como receber pagamentos pelo PagSeguro]: https://pagseguro.uol.com.br/receba-pagamentos.jhtml#checkout-transparent
-  [Composer]: https://getcomposer.org/
   [arquivo zip]: https://github.com/pagseguro/pagseguro-php-sdk/archive/master.zip
   [documentação oficial do Composer]: https://getcomposer.org/doc/

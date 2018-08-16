@@ -38,6 +38,18 @@ class CreditorFees
      * @var
      */
     private $intermediationFeeAmount;
+    /**
+     * @var
+     */
+    private $installmentFeeAmount;
+    /**
+     * @var
+     */
+    private $operationalFeeAmount;
+    /**
+     * @var
+     */
+    private $commissionFeeAmount;
 
     /**
      * @return mixed
@@ -72,6 +84,59 @@ class CreditorFees
     public function setIntermediationRateAmount($intermediationRateAmount)
     {
         $this->intermediationRateAmount = $intermediationRateAmount;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInstallmentFeeAmount()
+    {
+        return $this->installmentFeeAmount;
+    }
+
+    /**
+     * @param mixed $installmentFeeAmount
+     * @return CreditorFees
+     */
+    public function setInstallmentFeeAmount($installmentFeeAmount)
+    {
+        $this->installmentFeeAmount = $installmentFeeAmount;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOperationalFeeAmount()
+    {
+        return $this->operationalFeeAmount;
+    }
+
+    /**
+     * @param mixed $operationalFeeAmount
+     * @return CreditorFees
+     */
+    public function setOperationalFeeAmount($operationalFeeAmount)
+    {
+        $this->operationalFeeAmount = $operationalFeeAmount;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommissionFeeAmount()
+    {
+        return $this->commissionFeeAmount;
+    }
+    /**
+     * @param mixed $commissionFeeAmount
+     * @return CreditorFees
+     */
+    public function setCommissionFeeAmount($commissionFeeAmount)
+    {
+        $this->commissionFeeAmount = $commissionFeeAmount;
         return $this;
     }
 }
