@@ -22,24 +22,22 @@
  *
  */
 
-namespace PagSeguro\Domains\Requests\DirectPayment;
+namespace PagSeguro\Resources\Connection\Base\DirectPreApproval;
 
-use PagSeguro\Domains\Requests\DirectPayment\InternationalCreditCard\Request;
+use PagSeguro\Resources\Builder;
 
 /**
- * Class International Credit Card
- * @package PagSeguro\Domains\Requests\DirectPayment
+ * Class EditPlan
+ * @package PagSeguro\Services\Connection\Base
  */
-class InternationalCreditCard extends Request
+trait EditPlan
 {
     /**
-     * Register a checkout using international credit card
-     * @param $credentials
-     * @return mixed
-     * @throws \Exception
+     * @param $preApprovalRequestCode
+     * @return string
      */
-    public function register($credentials)
+    public function buildDirectPreApprovalEditPlanRequestUrl($preApprovalRequestCode)
     {
-        return \PagSeguro\Services\DirectPayment\InternationalCreditCard::checkout($credentials, $this);
+        return Builder\DirectPreApproval\EditPlan::getEditPlanUrl().'/'.$preApprovalRequestCode.'/payment';
     }
 }

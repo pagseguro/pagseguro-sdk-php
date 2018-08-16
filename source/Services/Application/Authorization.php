@@ -24,8 +24,9 @@
 
 namespace PagSeguro\Services\Application;
 
+use PagSeguro\Configuration\Configure;
 use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Helpers\Crypto;
+use PagSeguro\Parsers\Authorization\Request;
 use PagSeguro\Resources\Connection;
 use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Log\Logger;
@@ -33,32 +34,28 @@ use PagSeguro\Resources\Responsibility;
 
 class Authorization
 {
-
     public static function create(Credentials $credentials, \PagSeguro\Domains\Requests\Authorization $authorization)
     {
         Logger::info("Begin", ['service' => 'Authorization']);
         try {
             $connection = new Connection\Data($credentials);
-            $http = new Http();
+            $http = new Http('Content-Type: application/xml;');
             Logger::info(sprintf("POST: %s", self::request($connection)), ['service' => 'Authorization']);
             Logger::info(
                 sprintf(
                     "Params: %s",
-                    json_encode(Crypto::encrypt(\PagSeguro\Parsers\Authorization\Request::getData($authorization)))
+                    Request::getData($authorization)
                 ),
                 ['service' => 'Checkout']
             );
             $http->post(
                 self::request($connection),
-                \PagSeguro\Parsers\Authorization\Request::getData($authorization),
+                Request::getData($authorization),
                 20,
-                \PagSeguro\Configuration\Configure::getCharset()->getEncoding()
+                Configure::getCharset()->getEncoding()
             );
 
-            $response = Responsibility::http(
-                $http,
-                new \PagSeguro\Parsers\Authorization\Request
-            );
+            $response = Responsibility::http($http, new Request);
             Logger::info(
                 sprintf(
                     "Authorization URL: %s",
@@ -66,25 +63,28 @@ class Authorization
                 ),
                 ['service' => 'Authorization']
             );
+
             return self::response($connection, $response);
         } catch (\Exception $exception) {
             Logger::error($exception->getMessage(), ['service' => 'Authorization']);
-            throw $exception;
+            die($exception);
         }
     }
 
     /**
      * @param Connection\Data $connection
+     *
      * @return string
      */
     private static function request(Connection\Data $connection)
     {
-        return $connection->buildAuthorizationRequestUrl() ."?". $connection->buildCredentialsQuery();
+        return $connection->buildAuthorizationRequestUrl() . "?" . $connection->buildCredentialsQuery();
     }
 
     /**
      * @param Connection\Data $connection
-     * @param $response
+     * @param                 $response
+     *
      * @return string
      */
     private static function response(Connection\Data $connection, $response)

@@ -2,7 +2,11 @@
 
 require_once "../../vendor/autoload.php";
 
-\PagSeguro\Library::initialize();
+try {
+    \PagSeguro\Library::initialize();
+} catch (Exception $e) {
+    die($e);
+}
 \PagSeguro\Library::cmsVersion()->setName("Nome")->setRelease("1.0.0");
 \PagSeguro\Library::moduleVersion()->setName("Nome")->setRelease("1.0.0");
 

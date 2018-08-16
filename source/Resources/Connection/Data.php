@@ -60,6 +60,7 @@ class Data
     }
     use Base\DirectPreApproval\Accession;
     use Base\DirectPreApproval\Plan;
+    use Base\DirectPreApproval\EditPlan;
     use Base\DirectPreApproval\Query;
     use Base\DirectPreApproval\Payment;
     use Base\DirectPreApproval\Status;

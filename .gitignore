@@ -197,3 +197,8 @@ composer.lock
 ## Lib
 #################
 *.log
+
+#################
+## Tests
+#################
+tests/codeCoverage

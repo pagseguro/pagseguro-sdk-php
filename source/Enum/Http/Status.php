@@ -60,4 +60,8 @@ class Status extends Enum
      * Http Method 502 - Bad gateway.
      */
     const BAD_GATEWAY = 502;
+    /**
+     * Http Method 204 - No Content.
+     */
+    const NO_CONTENT = 204;
 }

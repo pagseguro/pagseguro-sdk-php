@@ -28,6 +28,7 @@ use PagSeguro\Library;
 
 /**
  * Class Http
+ *
  * @package PagSeguro\Resources
  */
 class Http
@@ -48,13 +49,17 @@ class Http
      *
      * @param string $contentType
      *
+     * @param null   $accept
+     *
      * @throws \Exception
      */
-    public function __construct($contentType = 'x-www-form')
+    public function __construct($contentType = null, $accept = null)
     {
-        if($contentType === 'json') {
-            $this->contentType = 'Content-Type: application/json;';
-            $this->accept = 'Accept: application/vnd.pagseguro.com.br.v3+json;charset=ISO-8859-1';
+        if ($contentType) {
+            $this->contentType = $contentType;
+        }
+        if ($contentType) {
+            $this->accept = $accept;
         }
         if (!function_exists('curl_init')) {
             throw new \Exception('PagSeguro Library: cURL library is required.');
@@ -94,10 +99,11 @@ class Http
     }
 
     /**
-     * @param $url
+     * @param              $url
      * @param array|string $data
-     * @param int $timeout
-     * @param string $charset
+     * @param int          $timeout
+     * @param string       $charset
+     *
      * @return bool
      * @throws \Exception
      */
@@ -106,80 +112,58 @@ class Http
         return $this->curlConnection('POST', $url, $timeout, $charset, $data);
     }
 
-	/**
-	 * @param        $url
-	 * @param        $data
-	 * @param int    $timeout
-	 * @param string $charset
-	 *
-	 * @return bool
-	 */
-	public function put($url, $data, $timeout = 20, $charset = 'ISO-8859-1')
-    {
-        return $this->curlConnection('PUT', $url, $timeout, $charset, $data);
-    }
-
     /**
-     * @param $url
-     * @param int $timeout
-     * @param string $charset
-     * @return bool
-     * @throws \Exception
-     */
-    public function get($url, $timeout = 20, $charset = 'ISO-8859-1')
-    {
-        return $this->curlConnection('GET', $url, $timeout, $charset, null);
-    }
-
-    /**
-     * @param $method
-     * @param $url
-     * @param $timeout
-     * @param $charset
+     * @param              $method
+     * @param              $url
+     * @param              $timeout
+     * @param              $charset
      * @param array|string $data
+     *
      * @return bool
      * @throws \Exception
      */
     private function curlConnection($method, $url, $timeout, $charset, $data = null)
     {
         if (strtoupper($method) === 'POST') {
-            if($this->contentType === 'Content-Type: application/json;'){
+            if ($this->contentType === 'Content-Type: application/json;') {
                 $postFields = json_encode($data);
+            } elseif ($this->contentType === 'Content-Type: application/xml;') {
+                $postFields = $data;
             } else {
                 $postFields = (is_array($data) ? http_build_query($data, '', '&') : $data);
             }
             $contentLength = "Content-length: " . strlen($postFields);
-            $methodOptions = array(
-                CURLOPT_POST => true,
+            $methodOptions = [
+                CURLOPT_POST       => true,
                 CURLOPT_POSTFIELDS => $postFields,
-            );
+            ];
         } elseif (strtoupper($method) === 'PUT') {
-            if($this->contentType === 'Content-Type: application/json;'){
+            if ($this->contentType === 'Content-Type: application/json;') {
                 $postFields = json_encode($data);
             } else {
                 $postFields = (is_array($data) ? http_build_query($data, '', '&') : $data);
             }
             $contentLength = "Content-length: " . strlen($postFields);
-            $methodOptions = array(
+            $methodOptions = [
                 CURLOPT_CUSTOMREQUEST => 'PUT',
-                CURLOPT_POSTFIELDS => $postFields,
-            );
+                CURLOPT_POSTFIELDS    => $postFields,
+            ];
         } else {
             $contentLength = null;
-            $methodOptions = array(
-                CURLOPT_HTTPGET => true
-            );
+            $methodOptions = [
+                CURLOPT_HTTPGET => true,
+            ];
         }
 
-        $options = array(
-            CURLOPT_HTTPHEADER => $this->setHeader($charset, $contentLength),
-            CURLOPT_URL => $url,
+        $options = [
+            CURLOPT_HTTPHEADER     => $this->setHeader($charset, $contentLength),
+            CURLOPT_URL            => $url,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_HEADER => false,
+            CURLOPT_HEADER         => false,
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_CONNECTTIMEOUT => $timeout,
             //CURLOPT_TIMEOUT => $timeout
-        );
+        ];
 
         if (!is_null(Library::moduleVersion()->getRelease())) {
             array_push(
@@ -195,7 +179,8 @@ class Http
         if (!is_null(Library::cmsVersion()->getRelease())) {
             array_push(
                 $options[CURLOPT_HTTPHEADER],
-                sprintf('cms-description: %s :%s', Library::cmsVersion()->getName(), Library::cmsVersion()->getRelease())
+                sprintf('cms-description: %s :%s', Library::cmsVersion()->getName(),
+                    Library::cmsVersion()->getRelease())
             );
         }
 
@@ -207,8 +192,8 @@ class Http
         $error = curl_errno($curl);
         $errorMessage = curl_error($curl);
         curl_close($curl);
-        $this->setStatus((int) $info['http_code']);
-        $this->setResponse((String) $resp);
+        $this->setStatus((int)$info['http_code']);
+        $this->setResponse((String)$resp);
         if ($error) {
             throw new \Exception("CURL can't connect: $errorMessage");
         } else {
@@ -216,24 +201,51 @@ class Http
         }
     }
 
-	/**
-	 * @param $charset
-	 * @param $contentLength
-	 *
-	 * @return array
-	 */
-	private function setHeader($charset, $contentLength)
+    /**
+     * @param $charset
+     * @param $contentLength
+     *
+     * @return array
+     */
+    private function setHeader($charset, $contentLength)
     {
-        $httpHeader = array(
+        $httpHeader = [
             "$this->contentType charset= $charset",
             $contentLength,
-            'lib-description: php:'.Library::libraryVersion(),
-            'language-engine-description: php:'.Library::phpVersion(),
-        );
+            'lib-description: php:' . Library::libraryVersion(),
+            'language-engine-description: php:' . Library::phpVersion(),
+        ];
         if ($this->accept) {
             $httpHeader[] = $this->accept;
         }
 
         return $httpHeader;
+    }
+
+    /**
+     * @param        $url
+     * @param        $data
+     * @param int    $timeout
+     * @param string $charset
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    public function put($url, $data, $timeout = 20, $charset = 'ISO-8859-1')
+    {
+        return $this->curlConnection('PUT', $url, $timeout, $charset, $data);
+    }
+
+    /**
+     * @param        $url
+     * @param int    $timeout
+     * @param string $charset
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    public function get($url, $timeout = 20, $charset = 'ISO-8859-1')
+    {
+        return $this->curlConnection('GET', $url, $timeout, $charset, null);
     }
 }

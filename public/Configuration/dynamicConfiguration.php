@@ -43,7 +43,7 @@ require_once "../../vendor/autoload.php";
 \PagSeguro\Configuration\Configure::setLog(true, '/logpath/logFilename.log');
 
 /**
- * @todo To set the application credentials intead of the account credentials use:
+ * @todo To set the application credentials instead of the account credentials use:
  * \PagSeguro\Configuration\Configure::setApplicationCredentials(
  *  'appId',
  *  'appKey'
