@@ -1,3 +1,8 @@
+### 4.3.0 (16/08/2018)
+
+- Versão mínima para o PHP 5.6 em diante
+- Várias melhorias nos testes de unidade
+
 ### 4.2.0 (19/03/2018)
 
 #### Funcionalidades
