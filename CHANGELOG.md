@@ -1,3 +1,13 @@
+### 4.2.1 (16/08/2018)
+
+#### Correções
+- **dev (testes de unidade):**
+    * os quebrados foram corrigidos
+    * agora estão separados em suites
+    * novos casos foram implementados
+    * namespace específico para testes foi adicionado "Pagseguro/Tests"
+    * logs em html serão criado na pasta ignorada "tests/codeCoverage"
+
 ### 4.2.0 (19/03/2018)
 
 #### Funcionalidades
