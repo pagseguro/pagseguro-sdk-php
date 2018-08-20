@@ -1,5 +1,5 @@
 {
-  "name": "MarioPereira/pagseguro-php-sdk",
+  "name": "mariopereira/pagseguro-php-sdk",
   "description": "Biblioteca de integração com o PagSeguro, com patches de Mário Pereira",
   "license": "Apache-2.0",
   "authors": [
