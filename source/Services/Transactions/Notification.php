@@ -57,7 +57,7 @@ class Notification
 
             $response = Responsibility::http(
                 $http,
-                new \PagSeguro\Parsers\Transaction\Notification\Request
+                new \PagSeguro\Parsers\Transaction\Search\Code\Response
             );
             Logger::info(
                 sprintf(
