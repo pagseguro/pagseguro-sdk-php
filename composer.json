@@ -1,10 +1,16 @@
 {
-  "name": "pagseguro/pagseguro-php-sdk",
-  "description": "Biblioteca de integração com o PagSeguro",
+  "name": "mariopereira/pagseguro-php-sdk",
+  "description": "Biblioteca de integração com o PagSeguro, com patches de Mário Pereira",
   "license": "Apache-2.0",
   "authors": [
     {
       "name": "PagSeguro"
+    },
+    {
+      "name": "Mário Pereira",
+      "email": "mario.pereira@facestore.pt",
+      "homepage": "https://facestore.pt",
+      "role": "Developer"
     }
   ],
   "require": {
