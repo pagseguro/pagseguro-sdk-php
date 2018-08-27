@@ -39,7 +39,7 @@ class Library
     /**
      *
      */
-    const VERSION = "3.4.0";
+    const VERSION = '4.2.1';
     /**
      * @var
      */
