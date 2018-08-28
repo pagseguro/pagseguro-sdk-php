@@ -2,9 +2,10 @@
 
 namespace PagSeguro\Tests;
 
+use PHPUnit\Framework\TestCase;
 use PagSeguro\Domains\DirectPreApproval\Phone;
 
-class PhoneTest extends \PHPUnit_Framework_TestCase
+class PhoneTest extends TestCase
 {
     private $obj;
 

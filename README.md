@@ -24,7 +24,7 @@ A biblioteca PagSeguro em PHP é um conjunto de classes de domínio que facilita
 Requisitos
 ----------
 
- - [PHP] 5.4.27+ || 5.5+ || 5.6+
+ - [PHP] ^5.6
  - [SPL]
  - [cURL]
  - [SimpleXml]
@@ -51,7 +51,7 @@ Instalação
   ```composer.json
   {
       "require": {
-         "pagseguro/pagseguro-php-sdk" : "*"
+         "pagseguro/pagseguro-php-sdk" : "^5.0"
       }
   }
   ```

@@ -2,9 +2,10 @@
 
 namespace PagSeguro\Tests;
 
+use PHPUnit\Framework\TestCase;
 use PagSeguro\Domains\DirectPreApproval\PreApproval;
 
-class PreApprovalTest extends \PHPUnit_Framework_TestCase
+class PreApprovalTest extends TestCase
 {
     private $obj;
 
