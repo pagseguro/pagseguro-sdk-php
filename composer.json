@@ -8,7 +8,7 @@
     }
   ],
   "require": {
-    "php": ">=5.4.27",
+    "php": "^5.4.27",
     "ext-curl": "*",
     "lib-curl": "*",
     "lib-openssl": "*"
