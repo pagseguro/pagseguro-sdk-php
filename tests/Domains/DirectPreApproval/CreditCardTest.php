@@ -2,9 +2,10 @@
 
 namespace PagSeguro\Tests;
 
+use PHPUnit\Framework\TestCase;
 use PagSeguro\Domains\DirectPreApproval\CreditCard;
 
-class CreditCardTest extends \PHPUnit_Framework_TestCase
+class CreditCardTest extends TestCase
 {
     private $obj;
 
