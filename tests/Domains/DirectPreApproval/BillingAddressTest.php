@@ -14,9 +14,10 @@ class BillingAddressTest extends TestCase
         $this->obj = new BillingAddress();
     }
 
-    /**
-     * @todo implement assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(BillingAddress::class, $this->obj);
+    }
 
     public function testRequiredParameters()
     {

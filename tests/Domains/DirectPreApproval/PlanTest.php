@@ -14,9 +14,10 @@ class PlanTest extends TestCase
         $this->obj = new Plan();
     }
 
-    /**
-     * @todo implement assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(Plan::class, $this->obj);
+    }
 
     public function testRequiredParameters()
     {

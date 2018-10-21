@@ -14,9 +14,10 @@ class PhoneTest extends TestCase
         $this->obj = new Phone();
     }
 
-    /**
-     * @todo implement assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(Phone::class, $this->obj);
+    }
 
     public function testParameters()
     {
