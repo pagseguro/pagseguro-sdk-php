@@ -14,9 +14,10 @@ class PreApprovalTest extends TestCase
         $this->obj = new PreApproval();
     }
 
-    /**
-     * @todo implement assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(PreApproval::class, $this->obj);
+    }
 
     public function testRequiredParameters()
     {

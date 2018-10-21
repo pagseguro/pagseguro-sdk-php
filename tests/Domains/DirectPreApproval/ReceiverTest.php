@@ -14,9 +14,10 @@ class ReceiverTest extends TestCase
         $this->obj = new Receiver();
     }
 
-    /**
-     * @todo implements test assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(Receiver::class, $this->obj);
+    }
 
     public function testRequiredParameters()
     {

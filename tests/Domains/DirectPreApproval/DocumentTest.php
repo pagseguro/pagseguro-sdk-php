@@ -14,9 +14,10 @@ class DocumentTest extends TestCase
         $this->obj = new Document();
     }
 
-    /**
-     * @todo implement assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(Document::class, $this->obj);
+    }
 
     public function testRequiredParameters()
     {

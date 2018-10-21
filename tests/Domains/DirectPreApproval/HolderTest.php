@@ -14,7 +14,16 @@ class HolderTest extends TestCase
         $this->obj = new Holder();
     }
 
-    /**
-     * @todo implement tests
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(Holder::class, $this->obj);
+    }
+
+    public function testRequiredParameters()
+    {
+        $this->assertObjectHasAttribute('name', $this->obj);
+        $this->assertObjectHasAttribute('birthDate', $this->obj);
+        $this->assertObjectHasAttribute('documents', $this->obj);
+        $this->assertObjectHasAttribute('phone', $this->obj);
+    }
 }

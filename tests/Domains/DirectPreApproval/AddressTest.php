@@ -14,9 +14,10 @@ class AddressTest extends TestCase
         $this->obj = new Address();
     }
 
-    /**
-     * @todo implement assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(Address::class, $this->obj);
+    }
 
     public function testRequiredParameters()
     {

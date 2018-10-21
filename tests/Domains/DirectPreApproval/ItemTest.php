@@ -14,9 +14,10 @@ class ItemTest extends TestCase
         $this->obj = new Item();
     }
 
-    /**
-     * @todo implement assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(Item::class, $this->obj);
+    }
 
     public function testRequiredParameters()
     {

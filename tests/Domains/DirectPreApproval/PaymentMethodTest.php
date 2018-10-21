@@ -14,9 +14,10 @@ class PaymentMethodTest extends TestCase
         $this->obj = new PaymentMethod();
     }
 
-    /**
-     * @todo implement assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(PaymentMethod::class, $this->obj);
+    }
 
     public function testRequiredParameters()
     {

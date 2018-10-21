@@ -14,9 +14,10 @@ class SenderTest extends TestCase
         $this->obj = new Sender();
     }
 
-    /**
-     * @todo implements test assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(Sender::class, $this->obj);
+    }
 
     public function testRequiredParameters()
     {
