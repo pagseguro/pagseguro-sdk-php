@@ -2,9 +2,10 @@
 
 namespace PagSeguro\Tests;
 
+use PHPUnit\Framework\TestCase;
 use PagSeguro\Domains\DirectPreApproval\Sender;
 
-class SenderTest extends \PHPUnit_Framework_TestCase
+class SenderTest extends TestCase
 {
     private $obj;
 
@@ -13,9 +14,10 @@ class SenderTest extends \PHPUnit_Framework_TestCase
         $this->obj = new Sender();
     }
 
-    /**
-     * @todo implements test assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(Sender::class, $this->obj);
+    }
 
     public function testRequiredParameters()
     {

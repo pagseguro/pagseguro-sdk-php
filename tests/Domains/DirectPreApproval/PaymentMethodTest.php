@@ -2,9 +2,10 @@
 
 namespace PagSeguro\Tests;
 
+use PHPUnit\Framework\TestCase;
 use PagSeguro\Domains\DirectPreApproval\PaymentMethod;
 
-class PaymentMethodTest extends \PHPUnit_Framework_TestCase
+class PaymentMethodTest extends TestCase
 {
     private $obj;
 
@@ -13,9 +14,10 @@ class PaymentMethodTest extends \PHPUnit_Framework_TestCase
         $this->obj = new PaymentMethod();
     }
 
-    /**
-     * @todo implement assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(PaymentMethod::class, $this->obj);
+    }
 
     public function testRequiredParameters()
     {

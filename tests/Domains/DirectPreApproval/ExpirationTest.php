@@ -2,9 +2,10 @@
 
 namespace PagSeguro\Tests;
 
+use PHPUnit\Framework\TestCase;
 use PagSeguro\Domains\DirectPreApproval\Expiration;
 
-class ExpirationTest extends \PHPUnit_Framework_TestCase
+class ExpirationTest extends TestCase
 {
     private $obj;
 
@@ -13,9 +14,10 @@ class ExpirationTest extends \PHPUnit_Framework_TestCase
         $this->obj = new Expiration();
     }
 
-    /**
-     * @todo implement assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(Expiration::class, $this->obj);
+    }
 
     public function testRequiredParameters()
     {

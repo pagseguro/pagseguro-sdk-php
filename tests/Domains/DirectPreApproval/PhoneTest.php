@@ -2,9 +2,10 @@
 
 namespace PagSeguro\Tests;
 
+use PHPUnit\Framework\TestCase;
 use PagSeguro\Domains\DirectPreApproval\Phone;
 
-class PhoneTest extends \PHPUnit_Framework_TestCase
+class PhoneTest extends TestCase
 {
     private $obj;
 
@@ -13,9 +14,10 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
         $this->obj = new Phone();
     }
 
-    /**
-     * @todo implement assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(Phone::class, $this->obj);
+    }
 
     public function testParameters()
     {

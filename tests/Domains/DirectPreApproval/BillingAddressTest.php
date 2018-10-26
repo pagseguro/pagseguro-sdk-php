@@ -2,9 +2,10 @@
 
 namespace PagSeguro\Tests;
 
+use PHPUnit\Framework\TestCase;
 use PagSeguro\Domains\DirectPreApproval\BillingAddress;
 
-class BillingAddressTest extends \PHPUnit_Framework_TestCase
+class BillingAddressTest extends TestCase
 {
     private $obj;
 
@@ -13,9 +14,10 @@ class BillingAddressTest extends \PHPUnit_Framework_TestCase
         $this->obj = new BillingAddress();
     }
 
-    /**
-     * @todo implement assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(BillingAddress::class, $this->obj);
+    }
 
     public function testRequiredParameters()
     {

@@ -1,3 +1,8 @@
+### 5.0.0 (21/10/2018)
+
+#### Implementações
+   * novos casos de testes foram implementados
+   
 ### 4.2.1 (16/08/2018)
 
 #### Correções

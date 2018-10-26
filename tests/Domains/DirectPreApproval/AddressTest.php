@@ -2,9 +2,10 @@
 
 namespace PagSeguro\Tests;
 
+use PHPUnit\Framework\TestCase;
 use PagSeguro\Domains\DirectPreApproval\Address;
 
-class AddressTest extends \PHPUnit_Framework_TestCase
+class AddressTest extends TestCase
 {
     private $obj;
 
@@ -13,9 +14,10 @@ class AddressTest extends \PHPUnit_Framework_TestCase
         $this->obj = new Address();
     }
 
-    /**
-     * @todo implement assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(Address::class, $this->obj);
+    }
 
     public function testRequiredParameters()
     {

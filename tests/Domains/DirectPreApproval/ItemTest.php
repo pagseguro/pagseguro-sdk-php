@@ -2,9 +2,10 @@
 
 namespace PagSeguro\Tests;
 
+use PHPUnit\Framework\TestCase;
 use PagSeguro\Domains\DirectPreApproval\Item;
 
-class ItemTest extends \PHPUnit_Framework_TestCase
+class ItemTest extends TestCase
 {
     private $obj;
 
@@ -13,9 +14,10 @@ class ItemTest extends \PHPUnit_Framework_TestCase
         $this->obj = new Item();
     }
 
-    /**
-     * @todo implement assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(Item::class, $this->obj);
+    }
 
     public function testRequiredParameters()
     {

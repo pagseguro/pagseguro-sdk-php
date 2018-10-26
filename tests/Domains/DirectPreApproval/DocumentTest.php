@@ -2,9 +2,10 @@
 
 namespace PagSeguro\Tests;
 
+use PHPUnit\Framework\TestCase;
 use PagSeguro\Domains\DirectPreApproval\Document;
 
-class DocumentTest extends \PHPUnit_Framework_TestCase
+class DocumentTest extends TestCase
 {
     private $obj;
 
@@ -13,9 +14,10 @@ class DocumentTest extends \PHPUnit_Framework_TestCase
         $this->obj = new Document();
     }
 
-    /**
-     * @todo implement assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(Document::class, $this->obj);
+    }
 
     public function testRequiredParameters()
     {

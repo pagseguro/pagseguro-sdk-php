@@ -2,9 +2,10 @@
 
 namespace PagSeguro\Tests;
 
+use PHPUnit\Framework\TestCase;
 use PagSeguro\Domains\DirectPreApproval\PreApproval;
 
-class PreApprovalTest extends \PHPUnit_Framework_TestCase
+class PreApprovalTest extends TestCase
 {
     private $obj;
 
@@ -13,9 +14,10 @@ class PreApprovalTest extends \PHPUnit_Framework_TestCase
         $this->obj = new PreApproval();
     }
 
-    /**
-     * @todo implement assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(PreApproval::class, $this->obj);
+    }
 
     public function testRequiredParameters()
     {

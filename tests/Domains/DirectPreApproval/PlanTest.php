@@ -2,9 +2,10 @@
 
 namespace PagSeguro\Tests;
 
+use PHPUnit\Framework\TestCase;
 use PagSeguro\Domains\DirectPreApproval\Plan;
 
-class PlanTest extends \PHPUnit_Framework_TestCase
+class PlanTest extends TestCase
 {
     private $obj;
 
@@ -13,9 +14,10 @@ class PlanTest extends \PHPUnit_Framework_TestCase
         $this->obj = new Plan();
     }
 
-    /**
-     * @todo implement assertInstanceOf
-     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(Plan::class, $this->obj);
+    }
 
     public function testRequiredParameters()
     {
