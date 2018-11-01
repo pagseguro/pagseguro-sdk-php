@@ -92,7 +92,7 @@ class Address
         $this->district = $district;
         $this->postalCode = $postalCode;
         $this->city = $city;
-        $this->state = $state;
+        $this->state = trim($state);
         $this->country = $country;
     }
 
@@ -231,7 +231,7 @@ class Address
      */
     public function setState($state)
     {
-        $this->state = $state;
+        $this->state = trim($state);
 
         return $this;
     }
