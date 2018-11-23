@@ -1,3 +1,8 @@
+### 5.0.1 (14/11/2018)
+
+#### Implementações
+   * checagem para número de telefone e código de area
+   
 ### 5.0.0 (21/10/2018)
 
 #### Implementações
