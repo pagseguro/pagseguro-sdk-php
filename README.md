@@ -9,6 +9,8 @@ Biblioteca de integração PagSeguro para PHP
 Descrição
 ---------
 
+### Legacy Version
+
 A biblioteca PagSeguro em PHP é um conjunto de classes de domínio que facilitam, para o desenvolvedor PHP, a utilização das funcionalidades que o PagSeguro oferece na forma de APIs. Com a biblioteca instalada e configurada, você pode facilmente integrar funcionalidades como:
 
  - [Criar Requisições de Pagamentos]
