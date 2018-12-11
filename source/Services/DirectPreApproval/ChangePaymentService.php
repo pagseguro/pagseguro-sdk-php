@@ -40,7 +40,7 @@ use PagSeguro\Resources\Responsibility;
 class ChangePaymentService
 {
     /**
-     * @param Credentials   $credentials
+     * @param Credentials $credentials
      * @param ChangePayment $changePayment
      *
      * @return mixed
@@ -92,7 +92,7 @@ class ChangePaymentService
      */
     private static function request(Connection\Data $connection, $preApprovalCode)
     {
-        return $connection->buildDirectPreApprovalChangePaymentRequestUrl($preApprovalCode)."?".$connection->buildCredentialsQuery();
+        return $connection->buildDirectPreApprovalChangePaymentRequestUrl($preApprovalCode) . "?" . $connection->buildCredentialsQuery();
     }
 
     /**

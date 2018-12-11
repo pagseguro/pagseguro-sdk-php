@@ -25,7 +25,7 @@
 namespace PagSeguro\Parsers\Response;
 
 /**
- * Class PaymentMethod
+ * Trait PaymentMethod
  * @package PagSeguro\Parsers\Response
  */
 trait PaymentMethod

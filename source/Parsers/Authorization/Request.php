@@ -35,9 +35,8 @@ use PagSeguro\Services\Authorization\PersonalService;
 use PagSeguro\Services\Authorization\SellerService;
 
 /**
- * Class Payment
- *
- * @package PagSeguro\Parsers\Checkout
+ * Class Request
+ * @package PagSeguro\Parsers\Authorization
  */
 class Request extends Error implements Parser
 {
@@ -45,7 +44,6 @@ class Request extends Error implements Parser
 
     /**
      * @param \PagSeguro\Domains\Requests\Authorization $authorization
-     *
      * @return string
      */
     public static function getData(\PagSeguro\Domains\Requests\Authorization $authorization)
@@ -68,32 +66,27 @@ class Request extends Error implements Parser
                 $xml = new PersonalService($authorization);
             }
         }
-
         return $xml->getAsXML();
     }
 
     /**
-     * @param \PagSeguro\Resources\Http $http
-     *
-     * @return Response
+     * @param Http $http
+     * @return mixed|Response
      */
     public static function success(Http $http)
     {
         $xml = simplexml_load_string($http->getResponse());
-
         return (new Response)->setCode(current($xml->code))
             ->setDate(current($xml->date));
     }
 
     /**
-     * @param \PagSeguro\Resources\Http $http
-     *
-     * @return \PagSeguro\Domains\Error
+     * @param Http $http
+     * @return mixed|\PagSeguro\Domains\Error
      */
     public static function error(Http $http)
     {
         $error = parent::error($http);
-
         return $error;
     }
 }

@@ -127,7 +127,7 @@ class GatewaySystem
         $this->establishmentCode = $establishmentCode;
         return $this;
     }
-    
+
     public function getNormalizedMessage()
     {
         return $this->normalizedMessage;

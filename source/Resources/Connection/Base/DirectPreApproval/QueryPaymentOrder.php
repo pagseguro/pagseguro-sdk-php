@@ -30,6 +30,6 @@ trait QueryPaymentOrder
 {
     public function buildDirectPreApprovalQueryPaymentOrderRequestUrl($preApprovalCode)
     {
-        return Builder\DirectPreApproval\QueryPaymentOrder::getQueryPaymentOrderUrl().'/'.$preApprovalCode.'/payment-orders';
+        return Builder\DirectPreApproval\QueryPaymentOrder::getQueryPaymentOrderUrl() . '/' . $preApprovalCode . '/payment-orders';
     }
 }

@@ -25,7 +25,7 @@
 namespace PagSeguro\Parsers\DirectPayment\CreditCard;
 
 /**
- * Class Moede
+ * Trait Method
  * @package PagSeguro\Parsers\DirectPayment\CreditCard
  */
 trait Method

@@ -33,12 +33,11 @@ use PagSeguro\Parsers\Parser;
 use PagSeguro\Resources\Http;
 
 /**
- * Class Payment
- * @package PagSeguro\Parsers\Checkout
+ * Class Request
+ * @package PagSeguro\Parsers\PreApproval\Search\Code
  */
 class Request extends Error implements Parser
 {
-
     /**
      * @param $code
      * @return array
@@ -75,16 +74,16 @@ class Request extends Error implements Parser
                     ->setEmail(current($xml->sender->email))
                     ->setPhone(
                         (new Phone)->setAreaCode(current($xml->sender->phone->areaCode))
-                                   ->setNumber(current($xml->sender->phone->areaCode))
+                            ->setNumber(current($xml->sender->phone->areaCode))
                     )->setAddress(
                         (new Address)->setStreet(current($xml->sender->address->street))
-                                     ->setNumber(current($xml->sender->address->number))
-                                     ->setComplement(current($xml->sender->address->complement))
-                                     ->setDistrict(current($xml->sender->address->district))
-                                     ->setCity(current($xml->sender->address->city))
-                                     ->setState(current($xml->sender->address->state))
-                                     ->setCountry(current($xml->sender->address->country))
-                                     ->setPostalCode(current($xml->sender->address->postalCode))
+                            ->setNumber(current($xml->sender->address->number))
+                            ->setComplement(current($xml->sender->address->complement))
+                            ->setDistrict(current($xml->sender->address->district))
+                            ->setCity(current($xml->sender->address->city))
+                            ->setState(current($xml->sender->address->state))
+                            ->setCountry(current($xml->sender->address->country))
+                            ->setPostalCode(current($xml->sender->address->postalCode))
                     )
             );
 

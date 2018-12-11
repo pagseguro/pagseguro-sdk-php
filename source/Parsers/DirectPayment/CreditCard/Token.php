@@ -27,7 +27,7 @@ namespace PagSeguro\Parsers\DirectPayment\CreditCard;
 use PagSeguro\Domains\Requests\Requests;
 
 /**
- * Class Moede
+ * Trait Token
  * @package PagSeguro\Parsers\DirectPayment\CreditCard
  */
 trait Token

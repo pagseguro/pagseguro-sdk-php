@@ -34,7 +34,7 @@ class Address extends Enum
      * Acronym for Acre
      */
     const AC = 'Acre';
-    
+
     /**
      * Acronym for Alagoas
      */
@@ -104,7 +104,7 @@ class Address extends Enum
      * Acronym for Paraná
      */
     const PR = 'Paraná';
-    
+
     /**
      * Acronym for Pernambuco
      */

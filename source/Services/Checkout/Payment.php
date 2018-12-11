@@ -38,7 +38,6 @@ use PagSeguro\Resources\Responsibility;
  */
 class Payment
 {
-
     /**
      * @param \PagSeguro\Domains\Account\Credentials $credentials
      * @param \PagSeguro\Domains\Requests\Payment $payment
@@ -93,7 +92,7 @@ class Payment
      */
     private static function request(Connection\Data $connection)
     {
-        return $connection->buildPaymentRequestUrl() ."?". $connection->buildCredentialsQuery();
+        return $connection->buildPaymentRequestUrl() . "?" . $connection->buildCredentialsQuery();
     }
 
     /**

@@ -27,8 +27,8 @@ namespace PagSeguro\Parsers\Transaction\Search\Date;
 use PagSeguro\Parsers\Transaction\Search\Transactions;
 
 /**
- * Class Response
- * @package PagSeguro\Parsers\Notifications
+ * Class Transaction
+ * @package PagSeguro\Parsers\Transaction\Search\Date
  */
 class Transaction extends Transactions
 {

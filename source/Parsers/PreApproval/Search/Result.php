@@ -25,8 +25,8 @@
 namespace PagSeguro\Parsers\PreApproval\Search;
 
 /**
- * Class Response
- * @package PagSeguro\Parsers\Transaction\Search\Date
+ * Class Result
+ * @package PagSeguro\Parsers\PreApproval\Search
  */
 class Result
 {

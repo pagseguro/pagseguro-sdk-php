@@ -26,11 +26,10 @@ namespace PagSeguro\Parsers\PreApproval\Search;
 
 /**
  * Class Response
- * @package PagSeguro\Parsers\Checkout
+ * @package PagSeguro\Parsers\PreApproval\Search
  */
 class Response
 {
-
     private $name;
     private $code;
     private $date;

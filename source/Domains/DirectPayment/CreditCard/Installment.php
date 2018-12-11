@@ -40,26 +40,26 @@ class Installment
         return $this->quantity;
     }
 
-    public function getValue()
-    {
-        return $this->value;
-    }
-
-    public function getNoInterestInstallmentQuantity()
-    {
-        return $this->noInterestInstallmentQuantity;
-    }
-
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
         return $this;
     }
 
+    public function getValue()
+    {
+        return $this->value;
+    }
+
     public function setValue($value)
     {
         $this->value = $value;
         return $this;
+    }
+
+    public function getNoInterestInstallmentQuantity()
+    {
+        return $this->noInterestInstallmentQuantity;
     }
 
     public function setNoInterestInstallmentQuantity($noInterestQuantity)

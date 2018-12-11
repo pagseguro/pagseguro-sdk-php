@@ -41,7 +41,7 @@ class AccessionService
 {
     /**
      * @param Credentials $credentials
-     * @param Accession   $directPreApproval
+     * @param Accession $directPreApproval
      *
      * @return mixed
      * @throws \Exception
@@ -89,7 +89,7 @@ class AccessionService
      */
     private static function request(Connection\Data $connection)
     {
-        return $connection->buildDirectPreApprovalAccessionRequestUrl()."?".$connection->buildCredentialsQuery();
+        return $connection->buildDirectPreApprovalAccessionRequestUrl() . "?" . $connection->buildCredentialsQuery();
     }
 
     /**

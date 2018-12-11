@@ -38,6 +38,6 @@ trait EditPlan
      */
     public function buildDirectPreApprovalEditPlanRequestUrl($preApprovalRequestCode)
     {
-        return Builder\DirectPreApproval\EditPlan::getEditPlanUrl().'/'.$preApprovalRequestCode.'/payment';
+        return Builder\DirectPreApproval\EditPlan::getEditPlanUrl() . '/' . $preApprovalRequestCode . '/payment';
     }
 }

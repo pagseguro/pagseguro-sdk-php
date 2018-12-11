@@ -31,26 +31,23 @@ use PagSeguro\Resources\Http;
 
 /**
  * Class EditPlanParser
- *
  * @package PagSeguro\Parsers\DirectPreApproval
  */
 class EditPlanParser extends Error implements Parser
 {
     /**
      * @param EditPlan $editPlan
-     *
-     * @return array
+     * @return mixed
      */
-      public static function getPreApprovalRequestCode(EditPlan $editPlan)
-      {
-          $editPlan = $editPlan->object_to_array($editPlan);
-          return $editPlan['preApprovalRequestCode'];
-      }
+    public static function getPreApprovalRequestCode(EditPlan $editPlan)
+    {
+        $editPlan = $editPlan->object_to_array($editPlan);
+        return $editPlan['preApprovalRequestCode'];
+    }
 
     /**
      * @param EditPlan $editPlan
-     *
-     * @return array
+     * @return array|EditPlan
      */
     public static function getData(EditPlan $editPlan)
     {
@@ -61,7 +58,6 @@ class EditPlanParser extends Error implements Parser
 
     /**
      * @param Http $http
-     *
      * @return mixed
      */
     public static function success(Http $http)
@@ -73,8 +69,7 @@ class EditPlanParser extends Error implements Parser
 
     /**
      * @param Http $http
-     *
-     * @return \PagSeguro\Domains\Error
+     * @return mixed|\PagSeguro\Domains\Error
      */
     public static function error(Http $http)
     {

@@ -37,7 +37,6 @@ use PagSeguro\Resources\Responsibility;
  */
 class Code
 {
-
     /**
      * @param \PagSeguro\Domains\Account\Credentials $credentials
      * @param $code
@@ -46,7 +45,6 @@ class Code
      */
     public static function search(Credentials $credentials, $code)
     {
-
         Logger::info("Begin", ['service' => 'Transactions.Search.Code']);
 
         try {

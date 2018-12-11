@@ -38,7 +38,6 @@ use PagSeguro\Resources\Responsibility;
  */
 class Abandoned
 {
-
     /**
      * @param \PagSeguro\Domains\Account\Credentials $credentials
      * @param $options
@@ -48,7 +47,8 @@ class Abandoned
     public static function search(
         Credentials $credentials,
         array $options
-    ) {
+    )
+    {
         Logger::info("Begin", ['service' => 'Transactions.Search.Abandoned']);
         try {
             $connection = new Connection\Data($credentials);

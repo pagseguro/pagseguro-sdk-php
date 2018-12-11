@@ -50,8 +50,8 @@ class Metadata
 
         $metadata = new \PagSeguro\Domains\Metadata();
         $metadata->setKey($array[$properties::METADATA_ITEM_KEY])
-             ->setValue($array[$properties::METADATA_ITEM_VALUE])
-             ->setGroup($array[$properties::METADATA_ITEM_GROUP]);
+            ->setValue($array[$properties::METADATA_ITEM_VALUE])
+            ->setGroup($array[$properties::METADATA_ITEM_GROUP]);
 
         array_push($this->metadata, $metadata);
         return $this->metadata;

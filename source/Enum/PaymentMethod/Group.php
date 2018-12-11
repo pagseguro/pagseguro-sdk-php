@@ -30,25 +30,28 @@ namespace PagSeguro\Enum\PaymentMethod;
  */
 class Group
 {
+    /**
+     *
+     */
+    const CREDIT_CARD = 'CREDIT_CARD';
 
     /**
      *
      */
-    const CREDIT_CARD = "CREDIT_CARD";
+    const BOLETO = 'BOLETO';
+
     /**
      *
      */
-    const BOLETO = "BOLETO";
+    const EFT = 'EFT';
+
     /**
      *
      */
-    const EFT = "EFT";
+    const BALANCE = 'BALANCE';
+
     /**
      *
      */
-    const BALANCE = "BALANCE";
-    /**
-     *
-     */
-    const DEPOSIT = "DEPOSIT";
+    const DEPOSIT = 'DEPOSIT';
 }

@@ -49,8 +49,8 @@ class Sender
     }
 
     /**
-     * @param \PagSeguro\Domains\Sender $sender
-     * @return \PagSeguro\Domains\Sender
+     * @param \PagSeguro\Domains\DirectPayment\Sender $sender
+     * @return \PagSeguro\Domains\DirectPayment\Sender
      */
     public function instance(\PagSeguro\Domains\DirectPayment\Sender $sender)
     {
@@ -65,10 +65,10 @@ class Sender
     {
         $properties = new Current;
         return $this->sender->setName($array[$properties::SENDER_NAME])
-                            ->setEmail($array[$properties::SENDER_EMAIL])
-                            ->setPhone($array["phone"])
-                            ->setDocuments($array["document"])
-                            ->setIp($array[$properties::SENDER_IP]);
+            ->setEmail($array[$properties::SENDER_EMAIL])
+            ->setPhone($array["phone"])
+            ->setDocuments($array["document"])
+            ->setIp($array[$properties::SENDER_IP]);
     }
 
     /**
@@ -87,13 +87,13 @@ class Sender
         $ip
     ) {
         $this->sender->setName($name)
-               ->setEmail($email)
-               ->setPhone($phone)
-               ->setDocuments($document)
-               ->setIp($ip);
+            ->setEmail($email)
+            ->setPhone($phone)
+            ->setDocuments($document)
+            ->setIp($ip);
         return $this->sender;
     }
-    
+
     public function setHash($hash)
     {
         $this->sender->setHash($hash);

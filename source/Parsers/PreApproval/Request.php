@@ -35,7 +35,8 @@ use PagSeguro\Parsers\Sender;
 use PagSeguro\Resources\Http;
 
 /**
- * Request class
+ * Class Request
+ * @package PagSeguro\Parsers\PreApproval
  */
 class Request extends Error implements Parser
 {
@@ -45,7 +46,6 @@ class Request extends Error implements Parser
 
     /**
      * @param Requests $request
-     * @param $properties
      * @return array
      */
     public static function getData(Requests $request)
@@ -62,19 +62,19 @@ class Request extends Error implements Parser
     }
 
     /**
-     * @param \PagSeguro\Resources\Http $http
-     * @return Response
+     * @param Http $http
+     * @return mixed|Response
      */
     public static function success(Http $http)
     {
         $xml = simplexml_load_string($http->getResponse());
         return (new Response)->setCode(current($xml->code))
-                             ->setDate(current($xml->date));
+            ->setDate(current($xml->date));
     }
-    
+
     /**
-     * @param \PagSeguro\Resources\Http $http
-     * @return \PagSeguro\Domains\Error
+     * @param Http $http
+     * @return mixed|\PagSeguro\Domains\Error
      */
     public static function error(Http $http)
     {

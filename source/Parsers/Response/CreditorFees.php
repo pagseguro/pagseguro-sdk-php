@@ -25,12 +25,11 @@
 namespace PagSeguro\Parsers\Response;
 
 /**
- * Class CreditorFees
+ * Trait CreditorFees
  * @package PagSeguro\Parsers\Response
  */
 trait CreditorFees
 {
-
     /**
      * @var
      */
@@ -43,8 +42,7 @@ trait CreditorFees
     {
         return $this->creditorFees;
     }
-
-
+    
     /**
      * @param $creditorFees
      * @return $this
@@ -56,7 +54,7 @@ trait CreditorFees
         if (!is_null($creditorFees->intermediationRateAmount)) {
             $creditor->setIntermediationRateAmount(current($creditorFees->intermediationRateAmount));
         }
-        
+
         if (!is_null($creditorFees->intermediationFeeAmount)) {
             $creditor->setIntermediationFeeAmount(current($creditorFees->intermediationFeeAmount));
         }

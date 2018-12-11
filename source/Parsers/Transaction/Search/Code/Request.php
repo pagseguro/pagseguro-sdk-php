@@ -27,16 +27,14 @@ namespace PagSeguro\Parsers\Transaction\Search\Code;
 use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Parser;
-use PagSeguro\Parsers\Transaction\Search\Code\Response;
 use PagSeguro\Resources\Http;
 
 /**
- * Class Payment
- * @package PagSeguro\Parsers\Checkout
+ * Class Request
+ * @package PagSeguro\Parsers\Transaction\Search\Code
  */
 class Request extends Error implements Parser
 {
-
     /**
      * @param $code
      * @return array

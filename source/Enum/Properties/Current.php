@@ -45,37 +45,37 @@ class Current
      * Billing addres postal code for credit card direct payment
      */
     const BILLING_ADDRESS_POSTAL_CODE = 'billingAddressPostalCode';
-    
+
     /**
      * Billing addres postal street for credit card direct payment
      */
     const BILLING_ADDRESS_STREET = 'billingAddressStreet';
-    
+
     /**
      * Billing addres number for credit card direct payment
      */
     const BILLING_ADDRESS_NUMBER = 'billingAddressNumber';
-    
+
     /**
      * Billing addres complement for credit card direct payment
      */
     const BILLING_ADDRESS_COMPLEMENT = 'billingAddressComplement';
-    
+
     /**
      * Billing addres district for credit card direct payment
      */
     const BILLING_ADDRESS_DISTRICT = 'billingAddressDistrict';
-    
+
     /**
      * Billing addres city for credit card direct payment
      */
     const BILLING_ADDRESS_CITY = 'billingAddressCity';
-    
+
     /**
      * Billing addres state for credit card direct payment
      */
     const BILLING_ADDRESS_STATE = 'billingAddressState';
-    
+
     /**
      * Billing addres country for credit card direct payment
      */
@@ -85,42 +85,42 @@ class Current
      * Credit card holder name for credit card direct payment
      */
     const CREDIT_CARD_HOLDER_NAME = 'creditCardHolderName';
-    
+
     /**
      * Credit card holder birth date for credit card direct payment
      */
     const CREDIT_CARD_HOLDER_BIRTH_DATE = 'creditCardHolderBirthDate';
-    
+
     /**
      * Credit card holder cpf for credit card direct payment
      */
     const CREDIT_CARD_HOLDER_CPF = 'creditCardHolderCPF';
-    
+
     /**
      * Credit card holder area code for credit card direct payment
      */
     const CREDIT_CARD_HOLDER_AREA_CODE = 'creditCardHolderAreaCode';
-    
+
     /**
      * Credit card holder phone for credit card direct payment
      */
     const CREDIT_CARD_HOLDER_PHONE = 'creditCardHolderPhone';
-    
+
     /**
      * Credit card token for credit card direct payment
      */
     const CREDIT_CARD_TOKEN = "creditCardToken";
-    
+
     /**
      * Currency
      */
     const CURRENCY = "currency";
-    
+
     /**
      * Currency extra amount (optional)
      */
     const CURRENCY_EXTRA_AMOUNT = "extraAmount";
-    
+
     /**
      * Direct Payment Method
      */
@@ -160,7 +160,7 @@ class Current
      * Installment card brand
      */
     const INSTALLMENT_CARD_BRAND = "cardBrand";
-    
+
     /**
      * Installment quantity for credit card payment
      */
@@ -170,7 +170,7 @@ class Current
      * Installment no interest installment quantity for credit card payment
      */
     const INSTALLMENT_NO_INTEREST_INSTALLMENT_QUANTITY = "noInterestInstallmentQuantity";
-    
+
     /**
      * Installment value for credit card payment
      */
@@ -180,7 +180,7 @@ class Current
      * Installment max installment No interest
      */
     const INSTALLMENT_MAX_INSTALLMENT_NO_INTEREST = "maxInstallmentNoInterest";
-    
+
     /**
      * Item identifier
      */
@@ -230,7 +230,7 @@ class Current
      * Notification Url
      */
     const NOTIFICATION_URL = "notificationURL";
-    
+
     /**
      * The bank name for online debit
      */
@@ -350,12 +350,12 @@ class Current
      * Sender email
      */
     const SENDER_EMAIL = "senderEmail";
-    
+
     /**
      * Sender hash
      */
     const SENDER_HASH = "senderHash";
-    
+
     /**
      * Sender ip number
      */

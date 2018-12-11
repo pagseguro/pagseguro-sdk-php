@@ -48,7 +48,7 @@ class Configure
      */
     public static function getAccountCredentials()
     {
-        if (! isset(self::$accountCredentials)) {
+        if (!isset(self::$accountCredentials)) {
             $configuration = Responsibility::configuration();
             self::setAccountCredentials(
                 $configuration['credentials']['email'],
@@ -58,7 +58,7 @@ class Configure
 
         return self::$accountCredentials;
     }
-    
+
     /**
      * @param string $email
      * @param string $token
@@ -75,17 +75,17 @@ class Configure
      */
     public static function getApplicationCredentials()
     {
-        if (! isset(self::$applicationCredentials)) {
+        if (!isset(self::$applicationCredentials)) {
             $configuration = Responsibility::configuration();
             self::setApplicationCredentials(
-                $configuration['credentials']['appId']['environment'][$configuration['environment']], 
+                $configuration['credentials']['appId']['environment'][$configuration['environment']],
                 $configuration['credentials']['appKey']['environment'][$configuration['environment']]
             );
         }
 
         return self::$applicationCredentials;
     }
-    
+
     /**
      * @param string $appId
      * @param string $appKey
@@ -102,13 +102,13 @@ class Configure
      */
     public static function getEnvironment()
     {
-        if (! isset(self::$environment)) {
+        if (!isset(self::$environment)) {
             $configuration = Responsibility::configuration();
             self::setEnvironment($configuration['environment']);
         }
         return self::$environment;
     }
-    
+
     /**
      * @param string $environment
      */
@@ -123,13 +123,13 @@ class Configure
      */
     public static function getCharset()
     {
-        if (! isset(self::$charset)) {
+        if (!isset(self::$charset)) {
             $configuration = Responsibility::configuration();
             self::setCharset($configuration['charset']);
         }
         return self::$charset;
     }
-    
+
     /**
      * @param string $charset
      */
@@ -144,7 +144,7 @@ class Configure
      */
     public static function getLog()
     {
-        if (! isset(self::$log)) {
+        if (!isset(self::$log)) {
             $configuration = Responsibility::configuration();
             self::setLog(
                 $configuration['log']['active'] === "false" ? false : true,
@@ -153,7 +153,7 @@ class Configure
         }
         return self::$log;
     }
-    
+
     /**
      * @param boolean $active
      * @param string $location

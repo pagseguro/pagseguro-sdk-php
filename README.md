@@ -3,8 +3,11 @@ Biblioteca de integração PagSeguro para PHP
 
 [![Code Climate](https://codeclimate.com/github/pagseguro/pagseguro-php-sdk/badges/gpa.svg)](https://codeclimate.com/github/pagseguro/pagseguro-php-sdk)
 [![Total Downloads](https://poser.pugx.org/pagseguro/pagseguro-php-sdk/d/total.svg)](https://packagist.org/packages/pagseguro/pagseguro-php-sdk)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1.3-blue.svg?style=flat-square)](https://php.net/)
 [![Latest Stable Version](https://poser.pugx.org/pagseguro/pagseguro-php-sdk/v/stable.svg)](https://packagist.org/packages/pagseguro/pagseguro-php-sdk)
 [![Latest Unstable Version](https://poser.pugx.org/pagseguro/pagseguro-php-sdk/v/unstable.svg)](https://packagist.org/packages/pagseguro/pagseguro-php-sdk)
+
+> Caso você deseje usar uma versão abaixo do PHP 7.1.3 por favor consulte o branch https://github.com/pagseguro/pagseguro-php-sdk/tree/5.x.x
 
 Descrição
 ---------
@@ -24,7 +27,7 @@ A biblioteca PagSeguro em PHP é um conjunto de classes de domínio que facilita
 Requisitos
 ----------
 
- - [PHP] ^5.6
+ - [PHP] ^7.1.3
  - [SPL]
  - [cURL]
  - [SimpleXml]
@@ -51,7 +54,7 @@ Instalação
   ```composer.json
   {
       "require": {
-         "pagseguro/pagseguro-php-sdk" : "^5.0"
+         "pagseguro/pagseguro-php-sdk" : "^6.0"
       }
   }
   ```

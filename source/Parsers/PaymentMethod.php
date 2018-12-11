@@ -27,12 +27,11 @@ namespace PagSeguro\Parsers;
 use PagSeguro\Domains\Requests\Requests;
 
 /**
- * Parser for the Payment Method
- *
+ * Trait PaymentMethod
+ * @package PagSeguro\Parsers
  */
 trait PaymentMethod
 {
-
     /**
      * @param Requests $request
      * @param $properties

@@ -45,8 +45,8 @@ class PaymentMethod
 
         $paymentMethod = new \PagSeguro\Domains\PaymentMethod();
         $paymentMethod->setKey($array[$properties::PAYMENT_METHOD_CONFIG_KEY])
-             ->setValue($array[$properties::PAYMENT_METHOD_CONFIG_VALUE])
-             ->setGroup($array[$properties::PAYMENT_METHOD_GROUP]);
+            ->setValue($array[$properties::PAYMENT_METHOD_CONFIG_VALUE])
+            ->setGroup($array[$properties::PAYMENT_METHOD_GROUP]);
 
         array_push($this->paymentMethod, $paymentMethod);
         return $this->paymentMethod;

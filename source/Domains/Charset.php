@@ -22,13 +22,6 @@
  *
  */
 
-/**
- * Created by PhpStorm.
- * User: esilva
- * Date: 09/03/16
- * Time: 13:55
- */
-
 namespace PagSeguro\Domains;
 
 class Charset

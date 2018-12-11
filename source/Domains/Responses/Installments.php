@@ -24,8 +24,6 @@
 
 namespace PagSeguro\Domains\Responses;
 
-use PagSeguro\Domains\Responses\Installment;
-
 /**
  * Domain class for Installments
  */
@@ -36,7 +34,7 @@ class Installments
      * @var
      */
     private $installments;
-    
+
     /**
      * @return array
      */
@@ -60,7 +58,7 @@ class Installments
             }
         }
     }
-    
+
     /**
      * @param PagSeguro\Domains\Responses\Installment $installment
      */
@@ -72,7 +70,7 @@ class Installments
             ->setAmount(current($installment->amount))
             ->setTotalAmount(current($installment->totalAmount))
             ->setInterestFree(current($installment->interestFree));
-        
+
         $this->installments[] = $response;
     }
 }

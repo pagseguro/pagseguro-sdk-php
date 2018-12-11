@@ -30,12 +30,11 @@ use PagSeguro\Parsers\PreApproval\Search\Result;
 use PagSeguro\Resources\Http;
 
 /**
- * Class Payment
- * @package PagSeguro\Parsers\Checkout
+ * Class Request
+ * @package PagSeguro\Parsers\PreApproval\Search\Date
  */
 class Request extends Error implements Parser
 {
-
     /**
      * @param \PagSeguro\Resources\Http $http
      * @return Response

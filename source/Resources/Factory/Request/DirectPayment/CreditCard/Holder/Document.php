@@ -40,6 +40,7 @@ class Document
 
     /**
      * Document constructor.
+     * @param $holder
      */
     public function __construct($holder)
     {
@@ -48,7 +49,7 @@ class Document
 
     /**
      * @param \PagSeguro\Domains\Document $document
-     * @return \PagSeguro\Domains\DirectPayment\CreditCard\Holder
+     * @return \PagSeguro\Domains\Document
      */
     public function instance(\PagSeguro\Domains\Document $document)
     {
@@ -58,14 +59,14 @@ class Document
 
     /**
      * @param $array
-     * @return \PagSeguro\Domains\DirectPayment\CreditCard\Holder
+     * @return \PagSeguro\Domains\Document
      */
     public function withArray($array)
     {
         $properties = new Current;
         $document = new \PagSeguro\Domains\Document();
         $document->setType($array[$properties::DOCUMENT_TYPE])
-                 ->setIdentifier($array[$properties::DOCUMENT_VALUE]);
+            ->setIdentifier($array[$properties::DOCUMENT_VALUE]);
         $this->holder->setDocuments($document);
         return $this->holder;
     }
@@ -73,13 +74,13 @@ class Document
     /**
      * @param $type
      * @param $identifier
-     * @return \PagSeguro\Domains\DirectPayment\CreditCard\Holder
+     * @return \PagSeguro\Domains\Document
      */
     public function withParameters($type, $identifier)
     {
         $document = new \PagSeguro\Domains\Document();
         $document->setType($type)
-                 ->setIdentifier($identifier);
+            ->setIdentifier($identifier);
         $this->holder->setDocuments($document);
         return $this->holder;
     }

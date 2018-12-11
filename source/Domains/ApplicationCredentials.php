@@ -73,8 +73,8 @@ class ApplicationCredentials implements Credentials
     }
 
     /**
-     * @param mixed $appId
-     * @return AccountCredentials
+     * @param $appId
+     * @return $this
      */
     public function setAppId($appId)
     {
@@ -91,8 +91,8 @@ class ApplicationCredentials implements Credentials
     }
 
     /**
-     * @param mixed $appKey
-     * @return AccountCredentials
+     * @param $appKey
+     * @return $this
      */
     public function setAppKey($appKey)
     {

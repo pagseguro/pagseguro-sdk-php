@@ -61,7 +61,7 @@ class Phone
     {
         $properties = new Current();
         $this->phone->setAreaCode($array[$properties::SENDER_PHONE_AREA_CODE])
-                    ->setNumber($array[$properties::SENDER_PHONE_NUMBER]);
+            ->setNumber($array[$properties::SENDER_PHONE_NUMBER]);
     }
 
     /**
@@ -72,7 +72,7 @@ class Phone
     public function withParameters($areaCode, $number)
     {
         $this->phone->setAreaCode($areaCode)
-                    ->setNumber($number);
+            ->setNumber($number);
         return $this->phone;
     }
 }

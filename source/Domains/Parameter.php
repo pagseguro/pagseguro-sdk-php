@@ -58,10 +58,9 @@ class Parameter
         return $this->key;
     }
 
-    /***
-     * Sets the parameter item key
-     *
-     * @param string $key
+    /**
+     * @param $key
+     * @return $this
      */
     public function setKey($key)
     {
@@ -78,10 +77,9 @@ class Parameter
         return $this->value;
     }
 
-    /***
-     * Sets parameter item value
-     *
-     * @param string $value
+    /**
+     * @param $value
+     * @return $this
      */
     public function setValue($value)
     {
@@ -99,10 +97,9 @@ class Parameter
         return $this->index;
     }
 
-    /***
-     * Sets parameter item group
-     *
-     * @param int $group
+    /**
+     * @param $index
+     * @return $this
      */
     public function setIndex($index)
     {

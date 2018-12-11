@@ -27,12 +27,11 @@ namespace PagSeguro\Parsers;
 use PagSeguro\Domains\Requests\Requests;
 
 /**
- * Class Basic
+ * Trait PreApproval
  * @package PagSeguro\Parsers
  */
 trait PreApproval
 {
-
     /**
      * @param Requests $request
      * @param $properties

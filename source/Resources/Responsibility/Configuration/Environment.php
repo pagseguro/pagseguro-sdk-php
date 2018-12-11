@@ -22,13 +22,6 @@
  *
  */
 
-/**
- * Created by PhpStorm.
- * User: esilva
- * Date: 16/03/16
- * Time: 09:53
- */
-
 namespace PagSeguro\Resources\Responsibility\Configuration;
 
 use PagSeguro\Resources\Responsibility\Handler;
@@ -36,6 +29,7 @@ use PagSeguro\Resources\Responsibility\Handler;
 class Environment implements Handler
 {
     private $successor;
+
     /**
      * @inheritDoc
      */

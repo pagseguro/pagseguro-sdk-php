@@ -41,7 +41,7 @@ class PaymentService
 {
     /**
      * @param Credentials $credentials
-     * @param Payment     $payment
+     * @param Payment $payment
      *
      * @return mixed
      * @throws \Exception
@@ -89,7 +89,7 @@ class PaymentService
      */
     private static function request(Connection\Data $connection)
     {
-        return $connection->buildDirectPreApprovalPaymentRequestUrl()."?".$connection->buildCredentialsQuery();
+        return $connection->buildDirectPreApprovalPaymentRequestUrl() . "?" . $connection->buildCredentialsQuery();
     }
 
     /**

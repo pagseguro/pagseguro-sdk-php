@@ -38,7 +38,6 @@ use PagSeguro\Resources\Responsibility;
  */
 class Reference
 {
-
     /**
      * @param \PagSeguro\Domains\Account\Credentials $credentials
      * @param $reference
@@ -53,7 +52,8 @@ class Reference
         Credentials $credentials,
         $reference,
         array $options
-    ) {
+    )
+    {
         Logger::info("Begin", ['service' => 'Transactions.Search.Reference']);
         try {
             $connection = new Connection\Data($credentials);

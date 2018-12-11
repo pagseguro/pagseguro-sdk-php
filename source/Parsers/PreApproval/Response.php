@@ -26,7 +26,7 @@ namespace PagSeguro\Parsers\PreApproval;
 
 /**
  * Class Response
- * @package PagSeguro\Parsers\Checkout
+ * @package PagSeguro\Parsers\PreApproval
  */
 class Response
 {
@@ -35,6 +35,7 @@ class Response
      * @var
      */
     private $code;
+    
     /**
      * @var
      */

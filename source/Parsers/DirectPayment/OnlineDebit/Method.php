@@ -25,7 +25,7 @@
 namespace PagSeguro\Parsers\DirectPayment\OnlineDebit;
 
 /**
- * Class Moede
+ * Trait Method
  * @package PagSeguro\Parsers\DirectPayment\OnlineDebit
  */
 trait Method

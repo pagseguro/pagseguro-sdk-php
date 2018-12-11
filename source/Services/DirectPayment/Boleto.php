@@ -39,7 +39,6 @@ use PagSeguro\Parsers\DirectPayment\Boleto\Request;
  */
 class Boleto
 {
-
     /**
      * @param \PagSeguro\Domains\Account\Credentials $credentials
      * @param \PagSeguro\Domains\Requests\DirectPayment\Boleto $payment
@@ -49,7 +48,8 @@ class Boleto
     public static function checkout(
         Credentials $credentials,
         \PagSeguro\Domains\Requests\DirectPayment\Boleto $payment
-    ) {
+    )
+    {
         Logger::info("Begin", ['service' => 'DirectPayment.Boleto']);
         try {
             $connection = new Connection\Data($credentials);
@@ -89,13 +89,13 @@ class Boleto
             throw $exception;
         }
     }
-    
+
     /**
      * @param Connection\Data $connection
      * @return string
      */
     private static function request(Connection\Data $connection)
     {
-        return $connection->buildDirectPaymentRequestUrl() ."?". $connection->buildCredentialsQuery();
+        return $connection->buildDirectPaymentRequestUrl() . "?" . $connection->buildCredentialsQuery();
     }
 }

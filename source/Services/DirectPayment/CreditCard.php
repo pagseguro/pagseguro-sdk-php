@@ -48,7 +48,8 @@ class CreditCard
     public static function checkout(
         Credentials $credentials,
         \PagSeguro\Domains\Requests\DirectPayment\CreditCard $payment
-    ) {
+    )
+    {
         Logger::info("Begin", ['service' => 'DirectPayment.CreditCard']);
         try {
             $connection = new Connection\Data($credentials);
@@ -84,13 +85,13 @@ class CreditCard
             throw $exception;
         }
     }
-    
+
     /**
      * @param Connection\Data $connection
      * @return string
      */
     private static function request(Connection\Data $connection)
     {
-        return $connection->buildDirectPaymentRequestUrl() ."?". $connection->buildCredentialsQuery();
+        return $connection->buildDirectPaymentRequestUrl() . "?" . $connection->buildCredentialsQuery();
     }
 }

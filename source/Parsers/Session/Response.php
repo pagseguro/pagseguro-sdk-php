@@ -26,7 +26,7 @@ namespace PagSeguro\Parsers\Session;
 
 /**
  * Class Response
- *
+ * @package PagSeguro\Parsers\Session
  */
 class Response
 {

@@ -30,7 +30,6 @@ namespace PagSeguro\Helpers;
  */
 class InitializeObject
 {
-    
     /**
      * Check if $attr is started, if not instatiate it
      * @param object $attr
@@ -39,10 +38,9 @@ class InitializeObject
      */
     public static function initialize($attr, $instantiateClass)
     {
-        if (! isset($attr) || empty($attr) || is_null($attr)) {
+        if (!isset($attr) || empty($attr) || is_null($attr)) {
             $attr = new $instantiateClass;
         }
-        
         return $attr;
     }
 }

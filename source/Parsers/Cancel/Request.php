@@ -30,16 +30,13 @@ use PagSeguro\Parsers\Parser;
 use PagSeguro\Resources\Http;
 
 /**
- * Class Payment
- * @package PagSeguro\Parsers\Checkout
+ * Class Request
+ * @package PagSeguro\Parsers\Cancel
  */
 class Request extends Error implements Parser
 {
-
-
     /**
      * @param $code
-     * @param $value
      * @return array
      */
     public static function getData($code)

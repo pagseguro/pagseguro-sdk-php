@@ -33,14 +33,14 @@ use PagSeguro\Resources\Http;
 class Error
 {
     /**
-     * @param \PagSeguro\Resources\Http $http
+     * @param Http $http
      * @return \PagSeguro\Domains\Error
      */
     protected static function error(Http $http)
     {
         $error = new \PagSeguro\Domains\Error;
         $error->setCode($http->getStatus())
-              ->setMessage($http->getResponse());
+            ->setMessage($http->getResponse());
         return $error;
     }
 }

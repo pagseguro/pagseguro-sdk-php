@@ -8,8 +8,6 @@
 
 namespace PagSeguro\Parsers\Transaction\Search\Abandoned;
 
-use PagSeguro\Parsers\Transaction\Search\Abandoned\Transaction;
-
 /**
  * Class Response
  * @package PagSeguro\Parsers\Transaction\Search\Abandoned

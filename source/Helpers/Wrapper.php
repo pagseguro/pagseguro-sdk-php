@@ -22,13 +22,6 @@
  *
  */
 
-/**
- * Created by PhpStorm.
- * User: esilva
- * Date: 21/03/16
- * Time: 11:43
- */
-
 namespace PagSeguro\Helpers;
 
 class Wrapper

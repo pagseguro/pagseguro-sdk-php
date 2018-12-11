@@ -24,7 +24,6 @@
 
 namespace PagSeguro\Resources\Responsibility\Http\Methods;
 
-use PagSeguro\Resources\Http;
 use PagSeguro\Resources\Responsibility\Handler;
 
 /**
@@ -49,10 +48,10 @@ class Generic implements Handler
     }
 
     /**
-     * @param Http $http
+     * @param $http
      * @param $class
+     * @return mixed|void
      * @throws \ErrorException
-     * @return bool;
      */
     public function handler($http, $class)
     {

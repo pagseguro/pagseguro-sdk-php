@@ -25,11 +25,7 @@
 namespace PagSeguro\Parsers\Response;
 
 /**
- * Class Currency
- * @package PagSeguro\Parsers\Response
- */
-/**
- * Class Currency
+ * Trait Currency
  * @package PagSeguro\Parsers\Response
  */
 trait Currency
@@ -112,7 +108,7 @@ trait Currency
         $this->extraAmount = $extraAmount;
         return $this;
     }
-    
+
     /**
      * @return mixed
      */

@@ -24,19 +24,16 @@
 
 namespace PagSeguro\Parsers\Transaction\Search\Date;
 
-use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Parser;
-use PagSeguro\Parsers\Transaction\Search\Date\Response;
 use PagSeguro\Resources\Http;
 
 /**
- * Class Payment
- * @package PagSeguro\Parsers\Checkout
+ * Class Request
+ * @package PagSeguro\Parsers\Transaction\Search\Date
  */
 class Request extends Error implements Parser
 {
-
     /**
      * @param \PagSeguro\Resources\Http $http
      * @return Response

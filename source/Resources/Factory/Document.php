@@ -63,7 +63,7 @@ class Document
     {
         $properties = new Current();
         $this->document->setType($array[$properties::DOCUMENT_TYPE])
-                       ->setIdentifier($array[$properties::DOCUMENT_VALUE]);
+            ->setIdentifier($array[$properties::DOCUMENT_VALUE]);
         return $this->document;
     }
 
@@ -75,7 +75,7 @@ class Document
     public function withParameters($type, $identifier)
     {
         $this->document->setType($type)
-                       ->setIdentifier($identifier);
+            ->setIdentifier($identifier);
         return $this->document;
     }
 }

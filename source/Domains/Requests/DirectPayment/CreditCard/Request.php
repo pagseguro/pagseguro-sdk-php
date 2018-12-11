@@ -25,8 +25,6 @@
 namespace PagSeguro\Domains\Requests\DirectPayment\CreditCard;
 
 use PagSeguro\Domains\Requests\Currency;
-use PagSeguro\Domains\Requests\DirectPayment\CreditCard\Billing;
-use PagSeguro\Domains\Requests\DirectPayment\CreditCard\Holder;
 use PagSeguro\Domains\Requests\DirectPayment\Mode;
 use PagSeguro\Domains\Requests\DirectPayment\Sender;
 use PagSeguro\Domains\Requests\Item;

@@ -49,10 +49,9 @@ class Instance implements Handler
     }
 
     /**
-     * @param Http $http
+     * @param $instance
      * @param $class
-     * @throws \ErrorException
-     * @return bool;
+     * @return mixed|void
      */
     public function handler($instance, $class)
     {

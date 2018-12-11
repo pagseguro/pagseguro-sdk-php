@@ -28,12 +28,11 @@ use PagSeguro\Domains\Account;
 use PagSeguro\Domains\Permission;
 
 /**
- * Class Authorization
+ * Class Response
  * @package PagSeguro\Parsers\Authorization\Search
  */
 class Response
 {
-
     /**
      * @var
      */
@@ -140,8 +139,8 @@ class Response
     {
         $permission = new Permission();
         $permission->setCode(current($parameter->code))
-                   ->setStatus(current($parameter->status))
-                   ->setLastUpdate(current($parameter->lastUpdate));
+            ->setStatus(current($parameter->status))
+            ->setLastUpdate(current($parameter->lastUpdate));
         return $permission;
     }
 

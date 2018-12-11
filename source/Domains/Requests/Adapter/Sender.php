@@ -24,7 +24,6 @@
 
 namespace PagSeguro\Domains\Requests\Adapter;
 
-use PagSeguro\Domains\Requests\Sender\Address;
 use PagSeguro\Domains\Requests\Sender\Customer;
 use PagSeguro\Domains\Requests\Sender\Document;
 use PagSeguro\Domains\Requests\Sender\Phone;

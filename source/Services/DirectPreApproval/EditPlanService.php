@@ -40,8 +40,8 @@ use PagSeguro\Resources\Responsibility;
 class EditPlanService
 {
     /**
-     * @param Credentials   $credentials
-     * @param EditPlan      $editPlan
+     * @param Credentials $credentials
+     * @param EditPlan $editPlan
      *
      * @return mixed
      * @throws \Exception
@@ -96,7 +96,7 @@ class EditPlanService
      */
     private static function request(Connection\Data $connection, $preApprovalCode)
     {
-        return $connection->buildDirectPreApprovalEditPlanRequestUrl($preApprovalCode)."?".$connection->buildCredentialsQuery();
+        return $connection->buildDirectPreApprovalEditPlanRequestUrl($preApprovalCode) . "?" . $connection->buildCredentialsQuery();
     }
 
     /**

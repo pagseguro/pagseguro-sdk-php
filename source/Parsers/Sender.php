@@ -29,7 +29,7 @@ use PagSeguro\Helpers\Characters;
 use PagSeguro\Helpers\Mask;
 
 /**
- * Class Sender
+ * Trait Sender
  * @package PagSeguro\Parsers
  */
 trait Sender
@@ -70,6 +70,11 @@ trait Sender
         return $data;
     }
 
+    /**
+     * @param $request
+     * @param $properties
+     * @return array
+     */
     private static function phone($request, $properties)
     {
         $data = [];
@@ -82,6 +87,11 @@ trait Sender
         return $data;
     }
 
+    /**
+     * @param $payment
+     * @param $properties
+     * @return array
+     */
     private static function documents($payment, $properties)
     {
         $data = [];

@@ -37,7 +37,6 @@ use PagSeguro\Resources\Responsibility;
  */
 class Interval
 {
-
     /**
      * @param \PagSeguro\Domains\Account\Credentials $credentials
      * @param $code
@@ -46,7 +45,6 @@ class Interval
      */
     public static function search(Credentials $credentials, $days)
     {
-
         Logger::info("Begin", ['service' => 'PreApproval.Search.Interval']);
 
         try {

@@ -27,7 +27,7 @@ namespace PagSeguro\Parsers;
 use PagSeguro\Domains\Requests\Requests;
 
 /**
- * Class Basic
+ * Trait ReceiverEmail
  * @package PagSeguro\Parsers
  */
 trait ReceiverEmail
@@ -39,7 +39,6 @@ trait ReceiverEmail
      */
     public static function getData(Requests $request, $properties)
     {
-
         $data = [];
 
         if (!is_null($request->getReceiverEmail())) {

@@ -25,17 +25,15 @@
 namespace PagSeguro\Parsers\Response;
 
 use PagSeguro\Resources\Factory\Shipping\Address;
-use PagSeguro\Resources\Factory\Shipping\AddressRequired;
 use PagSeguro\Resources\Factory\Shipping\Cost;
 use PagSeguro\Resources\Factory\Shipping\Type;
 
 /**
- * Class Shipping
+ * Trait Shipping
  * @package PagSeguro\Parsers\Response
  */
 trait Shipping
 {
-
     /**
      * @var
      */
@@ -55,7 +53,7 @@ trait Shipping
      */
     public function setShipping($shipping)
     {
-        if (current($shipping) !== FALSE) {
+        if (current($shipping) !== false) {
             $shippingClass = new \PagSeguro\Domains\Shipping();
 
             $shippingAddress = new Address($shippingClass);
@@ -67,7 +65,7 @@ trait Shipping
                 current($shipping->address->postalCode),
                 current($shipping->address->city),
                 current($shipping->address->state),
-                current($shipping->address->country), 
+                current($shipping->address->country),
                 current($shipping->address->complement)
             );
 

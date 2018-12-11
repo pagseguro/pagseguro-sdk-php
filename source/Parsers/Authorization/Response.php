@@ -26,7 +26,7 @@ namespace PagSeguro\Parsers\Authorization;
 
 /**
  * Class Response
- * @package PagSeguro\Parsers\Checkout
+ * @package PagSeguro\Parsers\Authorization
  */
 class Response
 {
@@ -38,10 +38,11 @@ class Response
     /**
      * @var
      */
+
     private $date;
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getCode()
     {
@@ -50,7 +51,7 @@ class Response
 
     /**
      * @param string $code
-     * @return Response
+     * @return $this
      */
     public function setCode($code)
     {

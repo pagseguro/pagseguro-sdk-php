@@ -33,7 +33,7 @@ use PagSeguro\Enum\Enum;
 class Description extends Enum
 {
     const PASSENGER_CPF = 'CPF do passageiro';
-    const PASSENGER_PASSPORT = ' Passaporte do passageiro';
+    const PASSENGER_PASSPORT = 'Passaporte do passageiro';
     const ORIGIN_CITY = 'Cidade de origem';
     const DESTINATION_CITY = 'Cidade de destino';
     const ORIGIN_AIRPORT_CODE = 'Código do aeroporto de origem';

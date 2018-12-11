@@ -33,12 +33,11 @@ use PagSeguro\Parsers\PreApproval\Search\Code\Response;
 use PagSeguro\Resources\Http;
 
 /**
- * Class Payment
- * @package PagSeguro\Parsers\Checkout
+ * Class Request
+ * @package PagSeguro\Parsers\PreApproval\Notification
  */
 class Request extends Error implements Parser
 {
-
     /**
      * @param \PagSeguro\Resources\Http $http
      * @return Response
@@ -49,30 +48,30 @@ class Request extends Error implements Parser
 
         $response = new Response();
         $response->setName(current($xml->name))
-                ->setCode(current($xml->code))
-                ->setDate(current($xml->date))
-                ->setTracker(current($xml->tracker))
-                ->setStatus(current($xml->status))
-                ->setReference(current($xml->reference))
-                ->setLastEventDate(current($xml->lastEventDate))
-                ->setCharge(current($xml->charge))
-                ->setSender(
-                    (new Sender)->setName(current($xml->sender->name))
-                                ->setEmail(current($xml->sender->email))
-                                ->setPhone(
-                                    (new Phone)->setAreaCode(current($xml->sender->phone->areaCode))
-                                            ->setNumber(current($xml->sender->phone->areaCode))
-                                )->setAddress(
-                                    (new Address)->setStreet(current($xml->sender->address->street))
-                                        ->setNumber(current($xml->sender->address->number))
-                                        ->setComplement(current($xml->sender->address->complement))
-                                        ->setDistrict(current($xml->sender->address->district))
-                                        ->setCity(current($xml->sender->address->city))
-                                        ->setState(current($xml->sender->address->state))
-                                        ->setCountry(current($xml->sender->address->country))
-                                        ->setPostalCode(current($xml->sender->address->postalCode))
-                                )
-                );
+            ->setCode(current($xml->code))
+            ->setDate(current($xml->date))
+            ->setTracker(current($xml->tracker))
+            ->setStatus(current($xml->status))
+            ->setReference(current($xml->reference))
+            ->setLastEventDate(current($xml->lastEventDate))
+            ->setCharge(current($xml->charge))
+            ->setSender(
+                (new Sender)->setName(current($xml->sender->name))
+                    ->setEmail(current($xml->sender->email))
+                    ->setPhone(
+                        (new Phone)->setAreaCode(current($xml->sender->phone->areaCode))
+                            ->setNumber(current($xml->sender->phone->areaCode))
+                    )->setAddress(
+                        (new Address)->setStreet(current($xml->sender->address->street))
+                            ->setNumber(current($xml->sender->address->number))
+                            ->setComplement(current($xml->sender->address->complement))
+                            ->setDistrict(current($xml->sender->address->district))
+                            ->setCity(current($xml->sender->address->city))
+                            ->setState(current($xml->sender->address->state))
+                            ->setCountry(current($xml->sender->address->country))
+                            ->setPostalCode(current($xml->sender->address->postalCode))
+                    )
+            );
 
 
         return $response;

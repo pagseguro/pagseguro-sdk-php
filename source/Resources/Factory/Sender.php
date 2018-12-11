@@ -59,15 +59,15 @@ class Sender
 
     /**
      * @param $array
-     * @return \PagSeguro\Domains\Shipping
+     * @return \PagSeguro\Domains\Sender
      */
     public function withArray($array)
     {
         $properties = new Current;
         return $this->sender->setName($array[$properties::SENDER_NAME])
-                            ->setEmail($array[$properties::SENDER_EMAIL])
-                            ->setPhone($array["phone"])
-                            ->setDocuments($array["document"]);
+            ->setEmail($array[$properties::SENDER_EMAIL])
+            ->setPhone($array["phone"])
+            ->setDocuments($array["document"]);
     }
 
     /**
@@ -84,9 +84,9 @@ class Sender
         Document $document
     ) {
         $this->sender->setName($name)
-               ->setEmail($email)
-               ->setPhone($phone)
-               ->setDocuments($document);
+            ->setEmail($email)
+            ->setPhone($phone)
+            ->setDocuments($document);
         return $this->sender;
     }
 }

@@ -49,7 +49,7 @@ class Http
      *
      * @param string $contentType
      *
-     * @param null   $accept
+     * @param null $accept
      *
      * @throws \Exception
      */
@@ -101,8 +101,8 @@ class Http
     /**
      * @param              $url
      * @param array|string $data
-     * @param int          $timeout
-     * @param string       $charset
+     * @param int $timeout
+     * @param string $charset
      *
      * @return bool
      * @throws \Exception
@@ -134,7 +134,7 @@ class Http
             }
             $contentLength = "Content-length: " . strlen($postFields);
             $methodOptions = [
-                CURLOPT_POST       => true,
+                CURLOPT_POST => true,
                 CURLOPT_POSTFIELDS => $postFields,
             ];
         } elseif (strtoupper($method) === 'PUT') {
@@ -146,7 +146,7 @@ class Http
             $contentLength = "Content-length: " . strlen($postFields);
             $methodOptions = [
                 CURLOPT_CUSTOMREQUEST => 'PUT',
-                CURLOPT_POSTFIELDS    => $postFields,
+                CURLOPT_POSTFIELDS => $postFields,
             ];
         } else {
             $contentLength = null;
@@ -156,10 +156,10 @@ class Http
         }
 
         $options = [
-            CURLOPT_HTTPHEADER     => $this->setHeader($charset, $contentLength),
-            CURLOPT_URL            => $url,
+            CURLOPT_HTTPHEADER => $this->setHeader($charset, $contentLength),
+            CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_HEADER         => false,
+            CURLOPT_HEADER => false,
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_CONNECTTIMEOUT => $timeout,
             //CURLOPT_TIMEOUT => $timeout
@@ -225,7 +225,7 @@ class Http
     /**
      * @param        $url
      * @param        $data
-     * @param int    $timeout
+     * @param int $timeout
      * @param string $charset
      *
      * @return bool
@@ -238,7 +238,7 @@ class Http
 
     /**
      * @param        $url
-     * @param int    $timeout
+     * @param int $timeout
      * @param string $charset
      *
      * @return bool

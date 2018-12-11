@@ -26,7 +26,6 @@ namespace PagSeguro\Domains\Requests\Adapter\PreApproval;
 
 use PagSeguro\Domains\Requests\Sender\Address;
 use PagSeguro\Domains\Requests\Sender\Customer;
-use PagSeguro\Domains\Requests\Sender\Document;
 use PagSeguro\Domains\Requests\Sender\Phone;
 
 class Sender

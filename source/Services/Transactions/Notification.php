@@ -36,7 +36,6 @@ use PagSeguro\Resources\Responsibility;
  */
 class Notification
 {
-
     /**
      * @param Credentials $credentials
      * @return mixed
@@ -80,7 +79,7 @@ class Notification
      */
     private static function request(Connection\Data $connection)
     {
-        return $connection->buildNotificationTransactionRequestUrl()."/".
-               Responsibility::notifications()."?".$connection->buildCredentialsQuery();
+        return $connection->buildNotificationTransactionRequestUrl() . "/" .
+            Responsibility::notifications() . "?" . $connection->buildCredentialsQuery();
     }
 }

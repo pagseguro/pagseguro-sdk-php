@@ -27,8 +27,8 @@ namespace PagSeguro\Parsers\DirectPayment\CreditCard;
 use PagSeguro\Domains\Requests\Requests;
 
 /**
- * Class Sender
- * @package PagSeguro\Parsers
+ * Trait Billing
+ * @package PagSeguro\Parsers\DirectPayment\CreditCard
  */
 trait Billing
 {
@@ -82,7 +82,7 @@ trait Billing
         if (!is_null($request->getCountry())) {
             $data[$properties::BILLING_ADDRESS_COUNTRY] = $request->getCountry();
         }
-   
+
         return $data;
     }
 }

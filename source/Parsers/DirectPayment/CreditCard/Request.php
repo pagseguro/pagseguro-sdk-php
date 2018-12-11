@@ -28,13 +28,10 @@ namespace PagSeguro\Parsers\DirectPayment\CreditCard;
  * Request from the Credit Card direct payment
  * @package PagSeguro\Parsers\DirectPayment\CreditCard
  */
+
 use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Currency;
-use PagSeguro\Parsers\DirectPayment\CreditCard\Billing;
-use PagSeguro\Parsers\DirectPayment\CreditCard\Holder;
-use PagSeguro\Parsers\DirectPayment\CreditCard\Installment;
-use PagSeguro\Parsers\DirectPayment\CreditCard\Token;
 use PagSeguro\Parsers\DirectPayment\Mode;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Item;
@@ -43,11 +40,11 @@ use PagSeguro\Parsers\Parser;
 use PagSeguro\Parsers\ReceiverEmail;
 use PagSeguro\Parsers\Sender;
 use PagSeguro\Parsers\Shipping;
-use PagSeguro\Resources\Http;
 use PagSeguro\Parsers\Transaction\CreditCard\Response;
+use PagSeguro\Resources\Http;
 
 /**
- * Class Payment
+ * Class Request
  * @package PagSeguro\Parsers\DirectPayment\CreditCard
  */
 class Request extends Error implements Parser

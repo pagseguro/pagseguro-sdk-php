@@ -34,7 +34,6 @@ use PagSeguro\Resources\Responsibility;
 
 class Charge
 {
-
     public static function create(Credentials $credentials, \PagSeguro\Domains\Requests\PreApproval\Charge $charge)
     {
         Logger::info("Begin", ['service' => 'PreApproval.Charge']);
@@ -72,6 +71,6 @@ class Charge
      */
     private static function request(Connection\Data $connection)
     {
-        return $connection->buildPreApprovalChargeRequestUrl() ."?". $connection->buildCredentialsQuery();
+        return $connection->buildPreApprovalChargeRequestUrl() . "?" . $connection->buildCredentialsQuery();
     }
 }

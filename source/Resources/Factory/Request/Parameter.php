@@ -24,8 +24,6 @@
 
 namespace PagSeguro\Resources\Factory\Request;
 
-use PagSeguro\Enum\Properties\Current;
-
 /**
  * Description of Parameter
  *
@@ -48,14 +46,14 @@ class Parameter
     {
         $parameter = new \PagSeguro\Domains\Parameter();
         $parameter->setKey($array[0])
-             ->setValue($array[1]);
+            ->setValue($array[1]);
 
         array_push($this->parameter, $parameter);
-        
+
         if (!empty($array[2])) {
             return $this->index($array[2]);
         }
-        
+
         return $this->parameter;
     }
 
@@ -67,7 +65,7 @@ class Parameter
         array_push($this->parameter, $parameter);
         return $this;
     }
-    
+
     public function index($index)
     {
         end($this->parameter)->setIndex($index);

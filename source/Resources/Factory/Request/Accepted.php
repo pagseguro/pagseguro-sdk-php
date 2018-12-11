@@ -26,7 +26,6 @@ namespace PagSeguro\Resources\Factory\Request;
 
 use PagSeguro\Domains\PaymentMethod\Groups;
 use PagSeguro\Domains\PaymentMethod\Names;
-use PagSeguro\Enum\Properties\Current;
 
 /**
  * Class Metadata

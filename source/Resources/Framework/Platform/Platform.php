@@ -22,13 +22,6 @@
  *
  */
 
-/**
- * Created by PhpStorm.
- * User: esilva
- * Date: 09/03/16
- * Time: 14:02
- */
-
 namespace PagSeguro\Resources\Framework\Platform;
 
 /**

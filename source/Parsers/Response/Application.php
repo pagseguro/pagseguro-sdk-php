@@ -25,12 +25,11 @@
 namespace PagSeguro\Parsers\Response;
 
 /**
- * Class Application
+ * Trait Application
  * @package PagSeguro\Parsers\Response
  */
 trait Application
 {
-
     /**
      * @var
      */

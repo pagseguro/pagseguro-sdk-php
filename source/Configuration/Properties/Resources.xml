@@ -73,7 +73,7 @@
         </session>
         <installment>
             <request>v2/installments</request>
-    	</installment>
+        </installment>
         <transaction>
             <search>
                 <request>v3/transactions</request>

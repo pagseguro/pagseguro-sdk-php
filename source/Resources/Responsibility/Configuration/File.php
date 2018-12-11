@@ -24,8 +24,8 @@
 
 namespace PagSeguro\Resources\Responsibility\Configuration;
 
-use PagSeguro\Resources\Responsibility\Handler;
 use PagSeguro\Configuration\Wrapper;
+use PagSeguro\Resources\Responsibility\Handler;
 
 class File implements Handler
 {
@@ -39,7 +39,7 @@ class File implements Handler
 
     public function handler($action, $class)
     {
-        if (file_exists(PS_CONFIG_PATH."Wrapper.php")) {
+        if (file_exists(PS_CONFIG_PATH . "Wrapper.php")) {
             $wrapper = new Wrapper;
             return array_merge(
                 \PagSeguro\Helpers\Wrapper::environment($wrapper),

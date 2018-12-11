@@ -28,12 +28,11 @@ namespace PagSeguro\Parsers;
 use PagSeguro\Domains\Requests\Requests;
 
 /**
- * Description of Parameter
- *
+ * Trait Parameter
+ * @package PagSeguro\Parsers
  */
 trait Parameter
 {
-
     /**
      * @param Requests $request
      * @return array
@@ -41,7 +40,7 @@ trait Parameter
     public static function getData(Requests $request)
     {
         $data = [];
-        
+
         if ($request->parameterLenght() > 0) {
             $parameter = $request->getParameter();
             foreach ($parameter as $key => $value) {

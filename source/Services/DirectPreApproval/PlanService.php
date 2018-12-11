@@ -88,7 +88,7 @@ class PlanService
      */
     private static function request(Connection\Data $connection)
     {
-        return $connection->buildDirectPreApprovalPlanRequestUrl()."?".$connection->buildCredentialsQuery();
+        return $connection->buildDirectPreApprovalPlanRequestUrl() . "?" . $connection->buildCredentialsQuery();
     }
 
     /**

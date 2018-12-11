@@ -41,7 +41,7 @@ class DiscountService
 {
     /**
      * @param Credentials $credentials
-     * @param Discount    $discount
+     * @param Discount $discount
      *
      * @return mixed
      * @throws \Exception
@@ -91,7 +91,7 @@ class DiscountService
      */
     private static function request(Connection\Data $connection, $preApprovalCode)
     {
-        return $connection->buildDirectPreApprovalDiscountRequestUrl($preApprovalCode)."?".$connection->buildCredentialsQuery();
+        return $connection->buildDirectPreApprovalDiscountRequestUrl($preApprovalCode) . "?" . $connection->buildCredentialsQuery();
     }
 
     /**

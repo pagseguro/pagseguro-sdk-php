@@ -30,6 +30,6 @@ trait Status
 {
     public function buildDirectPreApprovalStatusRequestUrl($preApprovalCode)
     {
-        return Builder\DirectPreApproval\Status::getStatusUrl().'/'.$preApprovalCode.'/status';
+        return Builder\DirectPreApproval\Status::getStatusUrl() . '/' . $preApprovalCode . '/status';
     }
 }

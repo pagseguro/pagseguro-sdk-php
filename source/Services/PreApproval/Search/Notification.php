@@ -37,7 +37,6 @@ use PagSeguro\Resources\Responsibility;
  */
 class Notification
 {
-
     /**
      * @param \PagSeguro\Domains\Account\Credentials $credentials
      * @param $code

@@ -27,14 +27,15 @@ namespace PagSeguro\Parsers\PreApproval\Charge;
 use PagSeguro\Domains\Requests\Requests;
 use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Basic;
-use PagSeguro\Parsers\Item;
 use PagSeguro\Parsers\Error;
+use PagSeguro\Parsers\Item;
 use PagSeguro\Parsers\Parser;
 use PagSeguro\Parsers\PreApproval\Response;
 use PagSeguro\Resources\Http;
 
 /**
- * Request class
+ * Class Request
+ * @package PagSeguro\Parsers\PreApproval\Charge
  */
 class Request extends Error implements Parser
 {
@@ -51,7 +52,7 @@ class Request extends Error implements Parser
         $data = [];
         $properties = new Current;
         if (!is_null($request->getCode())) {
-                $data[$properties::PRE_APPROVAL_CODE] = $request->getCode();
+            $data[$properties::PRE_APPROVAL_CODE] = $request->getCode();
         }
         return array_merge(
             $data,
@@ -68,9 +69,9 @@ class Request extends Error implements Parser
     {
         $xml = simplexml_load_string($http->getResponse());
         return (new Response)->setCode(current($xml->transactionCode))
-                             ->setDate(current($xml->date));
+            ->setDate(current($xml->date));
     }
-    
+
     /**
      * @param \PagSeguro\Resources\Http $http
      * @return \PagSeguro\Domains\Error

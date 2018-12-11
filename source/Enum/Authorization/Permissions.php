@@ -32,25 +32,28 @@ use PagSeguro\Enum\Enum;
  */
 class Permissions extends Enum
 {
+    /**
+     *
+     */
+    const CREATE_CHECKOUTS = 'CREATE_CHECKOUTS';
 
     /**
      *
      */
-    const CREATE_CHECKOUTS = "CREATE_CHECKOUTS";
+    const RECEIVE_TRANSACTION_NOTIFICATIONS = 'RECEIVE_TRANSACTION_NOTIFICATIONS';
+
     /**
      *
      */
-    const RECEIVE_TRANSACTION_NOTIFICATIONS = "RECEIVE_TRANSACTION_NOTIFICATIONS";
+    const SEARCH_TRANSACTIONS = 'SEARCH_TRANSACTIONS';
+
     /**
      *
      */
-    const SEARCH_TRANSACTIONS = "SEARCH_TRANSACTIONS";
+    const MANAGE_PAYMENT_PRE_APPROVALS = 'MANAGE_PAYMENT_PRE_APPROVALS';
+
     /**
      *
      */
-    const MANAGE_PAYMENT_PRE_APPROVALS = "MANAGE_PAYMENT_PRE_APPROVALS";
-    /**
-     *
-     */
-    const DIRECT_PAYMENT = "DIRECT_PAYMENT";
+    const DIRECT_PAYMENT = 'DIRECT_PAYMENT';
 }

@@ -10,10 +10,6 @@ namespace PagSeguro\Parsers\Authorization\Search\Date;
 
 /**
  * Class Response
- * @package PagSeguro\Parsers\Transaction\Search\Date
- */
-/**
- * Class Response
  * @package PagSeguro\Parsers\Authorization\Search\Date
  */
 class Response
@@ -22,18 +18,22 @@ class Response
      * @var
      */
     private $date;
+
     /**
      * @var
      */
     private $resultsInThisPage;
+
     /**
      * @var
      */
     private $authorizations;
+
     /**
      * @var
      */
     private $currentPage;
+    
     /**
      * @var
      */
@@ -145,10 +145,10 @@ class Response
     {
         $response = new \PagSeguro\Parsers\Authorization\Search\Response();
         $response->setCode(current($authorization->code))
-                 ->setCreationDate(current($authorization->creationDate))
-                 ->setReference(current($authorization->reference))
-                 ->setAccount(current($authorization->account))
-                 ->setPermissions(current($authorization->permissions));
+            ->setCreationDate(current($authorization->creationDate))
+            ->setReference(current($authorization->reference))
+            ->setAccount(current($authorization->account))
+            ->setPermissions(current($authorization->permissions));
         $this->authorizations[] = $response;
     }
 }

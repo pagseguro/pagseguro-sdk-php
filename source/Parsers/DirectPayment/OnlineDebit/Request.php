@@ -28,6 +28,7 @@ namespace PagSeguro\Parsers\DirectPayment\OnlineDebit;
  * Request from the Online debit direct payment
  * @package PagSeguro\Parsers\DirectPayment\OnlineDebit
  */
+
 use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Currency;
@@ -39,11 +40,11 @@ use PagSeguro\Parsers\Parser;
 use PagSeguro\Parsers\ReceiverEmail;
 use PagSeguro\Parsers\Sender;
 use PagSeguro\Parsers\Shipping;
-use PagSeguro\Resources\Http;
 use PagSeguro\Parsers\Transaction\OnlineDebit\Response;
+use PagSeguro\Resources\Http;
 
 /**
- * Class Payment
+ * Class Request
  * @package PagSeguro\Parsers\DirectPayment\OnlineDebit
  */
 class Request extends Error implements Parser
@@ -83,8 +84,8 @@ class Request extends Error implements Parser
     }
 
     /**
-     * @param \PagSeguro\Resources\Http $http
-     * @return Response
+     * @param Http $http
+     * @return mixed
      */
     public static function success(Http $http)
     {
@@ -116,8 +117,8 @@ class Request extends Error implements Parser
     }
 
     /**
-     * @param \PagSeguro\Resources\Http $http
-     * @return \PagSeguro\Domains\Error
+     * @param Http $http
+     * @return mixed|\PagSeguro\Domains\Error
      */
     public static function error(Http $http)
     {

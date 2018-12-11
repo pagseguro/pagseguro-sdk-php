@@ -38,7 +38,6 @@ use PagSeguro\Resources\Responsibility;
  */
 class Date
 {
-
     /**
      * @param \PagSeguro\Domains\Account\Credentials $credentials
      * @param $options
@@ -48,7 +47,8 @@ class Date
     public static function search(
         Credentials $credentials,
         array $options
-    ) {
+    )
+    {
         Logger::info("Begin", ['service' => 'Transactions.Search.Date']);
         try {
             $connection = new Connection\Data($credentials);

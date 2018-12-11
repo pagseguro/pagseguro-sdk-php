@@ -29,15 +29,14 @@ use PagSeguro\Parsers\Parser;
 use PagSeguro\Resources\Http;
 
 /**
- * Class Payment
- * @package PagSeguro\Parsers\Checkout
+ * Class Request
+ * @package PagSeguro\Parsers\Authorization\Search\Date
  */
 class Request extends Error implements Parser
 {
-
     /**
-     * @param \PagSeguro\Resources\Http $http
-     * @return Response
+     * @param Http $http
+     * @return mixed|Response
      */
     public static function success(Http $http)
     {
@@ -52,8 +51,8 @@ class Request extends Error implements Parser
     }
 
     /**
-     * @param \PagSeguro\Resources\Http $http
-     * @return \PagSeguro\Domains\Error
+     * @param Http $http
+     * @return mixed|\PagSeguro\Domains\Error
      */
     public static function error(Http $http)
     {

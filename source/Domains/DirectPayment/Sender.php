@@ -35,12 +35,12 @@ class Sender extends \PagSeguro\Domains\Sender
      * @var
      */
     private $ip;
-    
+
     /**
      * @var
      */
     private $hash;
-    
+
     /**
      * Sender constructor.
      */
@@ -49,7 +49,7 @@ class Sender extends \PagSeguro\Domains\Sender
         parent::__construct();
         return $this;
     }
-    
+
     /**
      * @return string
      */
@@ -67,7 +67,7 @@ class Sender extends \PagSeguro\Domains\Sender
         $this->ip = $ip;
         return $this;
     }
-    
+
     /**
      * @return string
      */
@@ -77,8 +77,8 @@ class Sender extends \PagSeguro\Domains\Sender
     }
 
     /**
-     * @param string $ip
-     * @return Sender
+     * @param $hash
+     * @return $this
      */
     public function setHash($hash)
     {

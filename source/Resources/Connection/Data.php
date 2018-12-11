@@ -25,7 +25,6 @@
 namespace PagSeguro\Resources\Connection;
 
 use PagSeguro\Domains\Account\Credentials;
-use PagSeguro\Resources\Builder;
 
 /**
  * Class Data

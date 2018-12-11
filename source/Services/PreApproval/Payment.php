@@ -35,7 +35,6 @@ use PagSeguro\Resources\Responsibility;
 
 class Payment
 {
-
     public static function create(Credentials $credentials, PreApproval $preApproval)
     {
         Logger::info("Begin", ['service' => 'PreApproval']);
@@ -79,7 +78,7 @@ class Payment
      */
     private static function request(Connection\Data $connection)
     {
-        return $connection->buildPreApprovalRequestUrl() ."?". $connection->buildCredentialsQuery();
+        return $connection->buildPreApprovalRequestUrl() . "?" . $connection->buildCredentialsQuery();
     }
 
     /**
@@ -89,6 +88,6 @@ class Payment
      */
     private static function response(Connection\Data $connection, $response)
     {
-        return $connection->buildPreApprovalResponseUrl() ."?code=". $response->getCode();
+        return $connection->buildPreApprovalResponseUrl() . "?code=" . $response->getCode();
     }
 }

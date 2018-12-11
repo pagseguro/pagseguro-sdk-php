@@ -43,7 +43,7 @@ class Response
     use PaymentMethod;
     use Sender;
     use Shipping;
-    
+
     /**
      * @var
      */
@@ -72,7 +72,7 @@ class Response
      * @var
      */
     private $installmentCount;
-    
+
     /**
      * Only present when the status = 7
      * @var string
@@ -88,7 +88,7 @@ class Response
     {
         return $this->cancelationSource;
     }
-    
+
     public function setCancelationSource($cancelationSource)
     {
         $this->cancelationSource = $cancelationSource;
@@ -112,7 +112,7 @@ class Response
         $this->installmentCount = $installmentCount;
         return $this;
     }
-        
+
     /**
      * @return mixed
      */
@@ -148,7 +148,6 @@ class Response
         $this->date = $date;
         return $this;
     }
-
 
     /**
      * @return mixed

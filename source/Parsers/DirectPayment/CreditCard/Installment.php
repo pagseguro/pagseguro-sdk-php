@@ -28,7 +28,7 @@ use PagSeguro\Domains\Requests\Requests;
 use PagSeguro\Helpers\Currency;
 
 /**
- * Class Installment
+ * Trait Installment
  * @package PagSeguro\Parsers\DirectPayment\CreditCard
  */
 trait Installment

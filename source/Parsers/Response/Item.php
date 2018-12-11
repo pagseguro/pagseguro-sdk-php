@@ -27,12 +27,11 @@ namespace PagSeguro\Parsers\Response;
 use PagSeguro\Helpers\InitializeObject;
 
 /**
- * Class Item
+ * Trait Item
  * @package PagSeguro\Parsers\Response
  */
 trait Item
 {
-
     /**
      * @var
      */

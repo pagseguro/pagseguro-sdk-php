@@ -31,14 +31,12 @@ use PagSeguro\Resources\Http;
 
 /**
  * Class RetryPaymentOrderParser
- *
  * @package PagSeguro\Parsers\DirectPreApproval
  */
 class RetryPaymentOrderParser extends Error implements Parser
 {
     /**
      * @param RetryPaymentOrder $retryPaymentOrder
-     *
      * @return array
      */
     public static function getData(RetryPaymentOrder $retryPaymentOrder)
@@ -48,20 +46,17 @@ class RetryPaymentOrderParser extends Error implements Parser
 
     /**
      * @param Http $http
-     *
      * @return mixed
      */
     public static function success(Http $http)
     {
         $json = json_decode($http->getResponse());
-
         return $json;
     }
 
     /**
      * @param Http $http
-     *
-     * @return \PagSeguro\Domains\Error
+     * @return mixed|\PagSeguro\Domains\Error
      */
     public static function error(Http $http)
     {

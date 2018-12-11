@@ -30,7 +30,6 @@ namespace PagSeguro\Helpers;
  */
 class NotificationObject
 {
-
     /**
      * @return $this
      */
@@ -38,7 +37,7 @@ class NotificationObject
     {
         $notification = new \PagSeguro\Domains\Notification();
         $notification->setCode(Xhr::getInputCode())
-                     ->setType(Xhr::getInputType());
+            ->setType(Xhr::getInputType());
         return $notification;
     }
 }

@@ -40,6 +40,7 @@ class Document
 
     /**
      * Document constructor.
+     * @param $sender
      */
     public function __construct($sender)
     {
@@ -65,7 +66,7 @@ class Document
         $properties = new Current;
         $document = new \PagSeguro\Domains\Document();
         $document->setType($array[$properties::DOCUMENT_TYPE])
-                 ->setIdentifier($array[$properties::DOCUMENT_VALUE]);
+            ->setIdentifier($array[$properties::DOCUMENT_VALUE]);
         $this->sender->setDocuments($document);
         return $this->sender;
     }
@@ -79,7 +80,7 @@ class Document
     {
         $document = new \PagSeguro\Domains\Document();
         $document->setType($type)
-                 ->setIdentifier($identifier);
+            ->setIdentifier($identifier);
         $this->sender->setDocuments($document);
         return $this->sender;
     }

@@ -56,7 +56,7 @@ class Success implements Handler
      */
     public function handler($http, $class)
     {
-        if(in_array($http->getStatus(), array(Status::OK, Status::NO_CONTENT))){
+        if (in_array($http->getStatus(), array(Status::OK, Status::NO_CONTENT))) {
             return $class::success($http);
         }
         return $this->successor->handler($http, $class);

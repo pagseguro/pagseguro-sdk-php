@@ -30,18 +30,18 @@ use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Currency;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Item;
+use PagSeguro\Parsers\Metadata;
+use PagSeguro\Parsers\Parameter;
 use PagSeguro\Parsers\Parser;
 use PagSeguro\Parsers\PaymentMethod;
 use PagSeguro\Parsers\PreApproval;
+use PagSeguro\Parsers\ReceiverEmail;
 use PagSeguro\Parsers\Sender;
 use PagSeguro\Parsers\Shipping;
-use PagSeguro\Parsers\Metadata;
-use PagSeguro\Parsers\Parameter;
-use PagSeguro\Parsers\ReceiverEmail;
 use PagSeguro\Resources\Http;
 
 /**
- * Class Payment
+ * Class Request
  * @package PagSeguro\Parsers\Checkout
  */
 class Request extends Error implements Parser
@@ -83,19 +83,19 @@ class Request extends Error implements Parser
     }
 
     /**
-     * @param \PagSeguro\Resources\Http $http
-     * @return Response
+     * @param Http $http
+     * @return mixed|Response
      */
     public static function success(Http $http)
     {
         $xml = simplexml_load_string($http->getResponse());
         return (new Response)->setCode(current($xml->code))
-                             ->setDate(current($xml->date));
+            ->setDate(current($xml->date));
     }
 
     /**
-     * @param \PagSeguro\Resources\Http $http
-     * @return \PagSeguro\Domains\Error
+     * @param Http $http
+     * @return mixed|\PagSeguro\Domains\Error
      */
     public static function error(Http $http)
     {

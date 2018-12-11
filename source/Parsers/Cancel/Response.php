@@ -30,7 +30,6 @@ namespace PagSeguro\Parsers\Cancel;
  */
 class Response
 {
-
     /**
      * @var
      */

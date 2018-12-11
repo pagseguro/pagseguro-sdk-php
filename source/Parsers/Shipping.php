@@ -27,7 +27,7 @@ namespace PagSeguro\Parsers;
 use PagSeguro\Domains\Requests\Requests;
 
 /**
- * Class Shipping
+ * Trait Shipping
  * @package PagSeguro\Parsers
  */
 trait Shipping
@@ -91,7 +91,7 @@ trait Shipping
     /**
      * @param $request
      * @param $properties
-     * @return string
+     * @return array
      */
     private static function addressRequired($request, $properties)
     {

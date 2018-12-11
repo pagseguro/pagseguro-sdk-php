@@ -28,15 +28,15 @@ use PagSeguro\Parsers\Transaction\Search\Transactions;
 
 /**
  * Class Transaction
- * @package PagSeguro\Parsers\Transaction\Search
+ * @package PagSeguro\Parsers\Transaction\Search\Abandoned
  */
 class Transaction extends Transactions
 {
-
     /**
      * @var
      */
     private $recoveryCode;
+
     /**
      * @var
      */

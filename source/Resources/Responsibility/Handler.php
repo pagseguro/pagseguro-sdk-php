@@ -24,8 +24,6 @@
 
 namespace PagSeguro\Resources\Responsibility;
 
-use \PagSeguro\Resources\Http;
-
 /**
  * interface Handler
  * @package PagSeguro\Services\Connection\Responsibility
@@ -39,7 +37,7 @@ interface Handler
     public function successor($next);
 
     /**
-     * @param \PagSeguro\Resources\Http $http
+     * @param $action
      * @param $class
      * @return mixed
      */

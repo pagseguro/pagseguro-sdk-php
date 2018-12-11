@@ -26,16 +26,15 @@
 namespace PagSeguro\Parsers;
 
 use PagSeguro\Domains\Requests\Requests;
-use PagSeguro\Helpers\StringFormat;
 use PagSeguro\Enum\Metadata\Description;
+use PagSeguro\Helpers\StringFormat;
 
 /**
- * Parser for the Metadata
- *
+ * Trait Metadata
+ * @package PagSeguro\Parsers
  */
 trait Metadata
 {
-
     /**
      * @param Requests $request
      * @param $properties
@@ -67,10 +66,10 @@ trait Metadata
         }
         return $data;
     }
-    
+
     /**
      * Format the $value to fit the limit of 100 characters and according
-     *  with the $key value, if it needs an special format
+     * with the $key value, if it needs an special format
      * @param string $key
      * @param string $value
      * @return string
@@ -93,8 +92,8 @@ trait Metadata
                 return $value;
         }
     }
-    
-    /***
+
+    /**
      * Gets item key type by description
      * @param string $itemDescription
      * @return string

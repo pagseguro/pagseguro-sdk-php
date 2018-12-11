@@ -22,13 +22,6 @@
  *
  */
 
-/**
- * Created by PhpStorm.
- * User: esilva
- * Date: 14/03/16
- * Time: 13:47
- */
-
 namespace PagSeguro\Resources\Responsibility\Configuration;
 
 use PagSeguro\Resources\Responsibility\Handler;

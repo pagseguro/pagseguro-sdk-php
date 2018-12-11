@@ -48,7 +48,8 @@ class OnlineDebit
     public static function checkout(
         Credentials $credentials,
         \PagSeguro\Domains\Requests\DirectPayment\OnlineDebit $payment
-    ) {
+    )
+    {
         Logger::info("Begin", ['service' => 'DirectPayment.OnlineDebit']);
         try {
             $connection = new Connection\Data($credentials);
@@ -94,6 +95,6 @@ class OnlineDebit
      */
     private static function request(Connection\Data $connection)
     {
-        return $connection->buildDirectPaymentRequestUrl() ."?". $connection->buildCredentialsQuery();
+        return $connection->buildDirectPaymentRequestUrl() . "?" . $connection->buildCredentialsQuery();
     }
 }

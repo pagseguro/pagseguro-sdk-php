@@ -30,7 +30,6 @@ namespace PagSeguro\Parsers\PreApproval\Search\Code;
  */
 class Response extends \PagSeguro\Parsers\PreApproval\Search\Response
 {
-
     /**
      * @var
      */

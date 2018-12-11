@@ -29,12 +29,11 @@ use PagSeguro\Parsers\Parser;
 use PagSeguro\Resources\Http;
 
 /**
- * Class Payment
- * @package PagSeguro\Parsers\Checkout
+ * Class Request
+ * @package PagSeguro\Parsers\Transaction\Search\Abandoned
  */
 class Request extends Error implements Parser
 {
-
     /**
      * @param \PagSeguro\Resources\Http $http
      * @return Response

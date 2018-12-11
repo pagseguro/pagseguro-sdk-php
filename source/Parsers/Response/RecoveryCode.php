@@ -25,7 +25,7 @@
 namespace PagSeguro\Parsers\Response;
 
 /**
- * Class Sender
+ * Trait RecoveryCode
  * @package PagSeguro\Parsers\Response
  */
 trait RecoveryCode
@@ -34,7 +34,7 @@ trait RecoveryCode
      * @var
      */
     private $recoveryCode;
-    
+
     public function getRecoveryCode()
     {
         return $this->recoveryCode;

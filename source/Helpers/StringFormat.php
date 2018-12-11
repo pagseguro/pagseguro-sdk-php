@@ -39,7 +39,7 @@ class StringFormat
     {
         return preg_replace('/\D/', '', $value);
     }
-    
+
     /***
      * Return formatted string to send in PagSeguro request
      * @param string $string
@@ -52,7 +52,7 @@ class StringFormat
         $string = self::removeStringExtraSpaces($string);
         return self::truncateValue($string, $limit, $endchars);
     }
-    
+
     /***
      * Remove left, right and inside extra spaces in string
      * @param string $string
@@ -62,7 +62,7 @@ class StringFormat
     {
         return trim(preg_replace("/( +)/", " ", $string));
     }
-    
+
     /***
      * Perform truncate of string value
      * @param string $string
@@ -76,8 +76,8 @@ class StringFormat
             $stringLength = strlen($string);
             $endcharsLength = strlen($endchars);
 
-            if ($stringLength > (int) $limit) {
-                $cut = (int) ($limit - $endcharsLength);
+            if ($stringLength > (int)$limit) {
+                $cut = (int)($limit - $endcharsLength);
                 $string = substr($string, 0, $cut) . $endchars;
             }
         }

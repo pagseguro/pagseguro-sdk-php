@@ -30,7 +30,6 @@ namespace PagSeguro\Helpers;
  */
 class Mask
 {
-
     /**
      * @param $subject
      * @param array $options
@@ -158,7 +157,7 @@ class Mask
     {
         $maskared = '';
         $key = 0;
-        for ($count = 0; $count <= strlen($mask)-1; $count++) {
+        for ($count = 0; $count <= strlen($mask) - 1; $count++) {
             if ($mask[$count] == '#') {
                 if (isset($value[$key])) {
                     $maskared .= $value[$key++];

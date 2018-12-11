@@ -24,13 +24,13 @@
 
 namespace PagSeguro\Parsers\Session;
 
-use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Parser;
 use PagSeguro\Resources\Http;
 
 /**
- * Request class
+ * Class Request
+ * @package PagSeguro\Parsers\Session
  */
 class Request extends Error implements Parser
 {
@@ -45,7 +45,7 @@ class Request extends Error implements Parser
         $result->setResult(current($xml));
         return $result;
     }
-    
+
     /**
      * @param \PagSeguro\Resources\Http $http
      * @return \PagSeguro\Domains\Error

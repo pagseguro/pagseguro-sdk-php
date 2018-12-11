@@ -30,26 +30,26 @@ use PagSeguro\Parsers\Parser;
 use PagSeguro\Resources\Http;
 
 /**
- * Class Installment
+ * Class Request
+ * @package PagSeguro\Parsers\Installment
  */
 class Request extends Error implements Parser
 {
     /**
      * @param Http $http
-     * @return \PagSeguro\Parsers\Installment\Response
+     * @return mixed|Installments
      */
     public static function success(Http $http)
     {
         $xml = simplexml_load_string($http->getResponse());
         $installments = new Installments();
         $installments->setInstallments(current($xml));
-
         return $installments;
     }
-    
+
     /**
-     * @param \PagSeguro\Resources\Http $http
-     * @return \PagSeguro\Domains\Error
+     * @param Http $http
+     * @return mixed|\PagSeguro\Domains\Error
      */
     public static function error(Http $http)
     {

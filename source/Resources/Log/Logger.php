@@ -21,6 +21,7 @@
  * @license   http://www.apache.org/licenses/LICENSE-2.0
  *
  */
+
 namespace PagSeguro\Resources\Log;
 
 use PagSeguro\Configuration\Configure;
@@ -33,21 +34,23 @@ use PagSeguro\Enum\Log\Level;
  */
 class Logger implements LoggerInterface
 {
-
     const DEFAULT_FILE = "PagSeguro.Log";
 
     /**
      * System is unusable.
-     *
      * @param string $message
-     * @param array  $context
-     *
-     * @return null
+     * @param array $context
+     * @return void|null
+     * @throws \Exception
      */
     public static function emergency($message, array $context = array())
     {
         self::log(Level::EMERGENCY, $message, $context);
     }
+
+    /**
+
+     */
 
     /**
      * Action must be taken immediately.
@@ -56,9 +59,9 @@ class Logger implements LoggerInterface
      * trigger the SMS alerts and wake you up.
      *
      * @param string $message
-     * @param array  $context
-     *
-     * @return null
+     * @param array $context
+     * @return void|null
+     * @throws \Exception
      */
     public static function alert($message, array $context = array())
     {
@@ -69,11 +72,6 @@ class Logger implements LoggerInterface
      * Critical conditions.
      *
      * Example: Application component unavailable, unexpected exception.
-     *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return null
      */
     public static function critical($message, array $context = array())
     {
@@ -83,11 +81,6 @@ class Logger implements LoggerInterface
     /**
      * Runtime errors that do not require immediate action but should typically
      * be logged and monitored.
-     *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return null
      */
     public static function error($message, array $context = array())
     {
@@ -99,11 +92,6 @@ class Logger implements LoggerInterface
      *
      * Example: Use of deprecated APIs, poor use of an API, undesirable things
      * that are not necessarily wrong.
-     *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return null
      */
     public static function warning($message, array $context = array())
     {
@@ -112,11 +100,10 @@ class Logger implements LoggerInterface
 
     /**
      * Normal but significant events.
-     *
      * @param string $message
-     * @param array  $context
-     *
-     * @return null
+     * @param array $context
+     * @return void|null
+     * @throws \Exception
      */
     public static function notice($message, array $context = array())
     {
@@ -125,13 +112,12 @@ class Logger implements LoggerInterface
 
     /**
      * Interesting events.
-     *
      * Example: User logs in, SQL logs.
      *
      * @param string $message
-     * @param array  $context
-     *
-     * @return null
+     * @param array $context
+     * @return void|null
+     * @throws \Exception
      */
     public static function info($message, array $context = array())
     {
@@ -140,11 +126,10 @@ class Logger implements LoggerInterface
 
     /**
      * Detailed debug information.
-     *
      * @param string $message
-     * @param array  $context
-     *
-     * @return null
+     * @param array $context
+     * @return void|null
+     * @throws \Exception
      */
     public static function debug($message, array $context = array())
     {
@@ -178,6 +163,7 @@ class Logger implements LoggerInterface
      * @param $message
      * @param array $context
      * @return string
+     * @throws \Exception
      */
     private static function message($level, $message, array $context = array())
     {
@@ -186,7 +172,7 @@ class Logger implements LoggerInterface
         return sprintf(
             "\n%1s PagSeguro.%s[%1s]: %s", //"%1sPagSeguro.%2s[%3s]: %4s"
             $dateTime->format("d/m/Y H:i:s"),
-            !array_key_exists("service", $context)? '' :sprintf("%1s", $context['service']),
+            !array_key_exists("service", $context) ? '' : sprintf("%1s", $context['service']),
             $level,
             $message
         );

@@ -25,13 +25,13 @@
 namespace PagSeguro\Parsers\Response;
 
 /**
- * Class Sender
+ * Trait PaymentLink
  * @package PagSeguro\Parsers\Response
  */
 trait PaymentLink
 {
     private $paymentLink;
-    
+
     public function getPaymentLink()
     {
         return $this->paymentLink;

@@ -39,7 +39,8 @@ class AddressRequired
     private $shipping;
 
     /**
-     * Shipping constructor.
+     * AddressRequired constructor.
+     * @param $shipping
      */
     public function __construct($shipping)
     {

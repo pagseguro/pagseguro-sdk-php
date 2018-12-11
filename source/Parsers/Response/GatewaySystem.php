@@ -25,7 +25,7 @@
 namespace PagSeguro\Parsers\Response;
 
 /**
- * Class Sender
+ * Trait GatewaySystem
  * @package PagSeguro\Parsers\Response
  */
 trait GatewaySystem
@@ -41,7 +41,6 @@ trait GatewaySystem
     }
 
     /**
-     *
      * @param xmlObject $gatewaySystem
      * @return \Pagseguro\Parsers\Response\GatewaySystem
      */

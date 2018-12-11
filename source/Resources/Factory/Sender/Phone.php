@@ -39,7 +39,8 @@ class Phone
     private $sender;
 
     /**
-     * Document constructor.
+     * Phone constructor.
+     * @param $sender
      */
     public function __construct($sender)
     {
@@ -47,7 +48,7 @@ class Phone
     }
 
     /**
-     * @param \PagSeguro\Domains\Phone $document
+     * @param \PagSeguro\Domains\Phone $phone
      * @return \PagSeguro\Domains\Sender
      */
     public function instance(\PagSeguro\Domains\Phone $phone)
@@ -65,7 +66,7 @@ class Phone
         $properties = new Current;
         $phone = new \PagSeguro\Domains\Phone();
         $phone->setAreaCode($array[$properties::SENDER_PHONE_AREA_CODE])
-              ->setNumber($array[$properties::SENDER_PHONE_NUMBER]);
+            ->setNumber($array[$properties::SENDER_PHONE_NUMBER]);
         $this->sender->setPhone($phone);
         return $this->sender;
     }
@@ -80,7 +81,7 @@ class Phone
     {
         $phone = new \PagSeguro\Domains\Phone();
         $phone->setAreaCode($areaCode)
-              ->setNumber($number);
+            ->setNumber($number);
         $this->sender->setPhone($phone);
         return $this->sender;
     }

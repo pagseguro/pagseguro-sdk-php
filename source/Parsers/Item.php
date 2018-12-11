@@ -27,7 +27,7 @@ namespace PagSeguro\Parsers;
 use PagSeguro\Domains\Requests\Requests;
 
 /**
- * Class Item
+ * Trait Item
  * @package PagSeguro\Parsers
  */
 trait Item

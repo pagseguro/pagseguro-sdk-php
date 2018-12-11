@@ -25,8 +25,8 @@
 namespace PagSeguro\Parsers\DirectPayment\Boleto;
 
 /**
- * Class Moede
- * @package PagSeguro\Parsers\DirectPayment
+ * Trait Method
+ * @package PagSeguro\Parsers\DirectPayment\Boleto
  */
 trait Method
 {

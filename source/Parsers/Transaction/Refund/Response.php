@@ -26,11 +26,10 @@ namespace PagSeguro\Parsers\Transaction\Refund;
 
 /**
  * Class Response
- * @package PagSeguro\Parsers\Refund
+ * @package PagSeguro\Parsers\Transaction\Refund
  */
 class Response
 {
-
     /**
      * @var
      */

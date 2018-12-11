@@ -25,18 +25,17 @@
 namespace PagSeguro\Parsers\Authorization\Search\Code;
 
 use PagSeguro\Enum\Properties\Current;
+use PagSeguro\Parsers\Authorization\Search\Response;
 use PagSeguro\Parsers\Error;
 use PagSeguro\Parsers\Parser;
-use PagSeguro\Parsers\Authorization\Search\Response;
 use PagSeguro\Resources\Http;
 
 /**
- * Class Payment
- * @package PagSeguro\Parsers\Checkout
+ * Class Request
+ * @package PagSeguro\Parsers\Authorization\Search\Code
  */
 class Request extends Error implements Parser
 {
-
     /**
      * @param $code
      * @return array
@@ -61,10 +60,10 @@ class Request extends Error implements Parser
         $xml = simplexml_load_string($http->getResponse());
         $response = new Response();
         $response->setCode(current($xml->code))
-                 ->setCreationDate(current($xml->creationDate))
-                 ->setReference(current($xml->reference))
-                 ->setAccount(current($xml->account))
-                 ->setPermissions(current($xml->permissions));
+            ->setCreationDate(current($xml->creationDate))
+            ->setReference(current($xml->reference))
+            ->setAccount(current($xml->account))
+            ->setPermissions(current($xml->permissions));
         return $response;
     }
 

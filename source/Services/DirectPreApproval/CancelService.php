@@ -41,7 +41,7 @@ class CancelService
 {
     /**
      * @param Credentials $credentials
-     * @param Cancel      $cancel
+     * @param Cancel $cancel
      *
      * @return mixed
      * @throws \Exception
@@ -91,7 +91,7 @@ class CancelService
      */
     private static function request(Connection\Data $connection, $preApprovalCode)
     {
-        return $connection->buildDirectPreApprovalCancelRequestUrl($preApprovalCode)."?".$connection->buildCredentialsQuery();
+        return $connection->buildDirectPreApprovalCancelRequestUrl($preApprovalCode) . "?" . $connection->buildCredentialsQuery();
     }
 
     /**

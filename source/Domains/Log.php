@@ -44,7 +44,8 @@ class Log
     }
 
     /**
-     * @param bool $active
+     * @param $active
+     * @return $this
      */
     public function setActive($active)
     {
@@ -61,7 +62,8 @@ class Log
     }
 
     /**
-     * @param string $location
+     * @param $location
+     * @return $this
      */
     public function setLocation($location)
     {

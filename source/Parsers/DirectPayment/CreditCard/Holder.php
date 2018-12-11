@@ -26,11 +26,10 @@ namespace PagSeguro\Parsers\DirectPayment\CreditCard;
 
 use PagSeguro\Domains\Requests\Requests;
 use PagSeguro\Helpers\Characters;
-use PagSeguro\Helpers\Mask;
 
 /**
- * Class Sender
- * @package PagSeguro\Parsers
+ * Trait Holder
+ * @package PagSeguro\Parsers\DirectPayment\CreditCard
  */
 trait Holder
 {
@@ -88,7 +87,7 @@ trait Holder
     {
         $data = [];
         $document = $payment->getHolder()->getDocuments();
-        
+
         if (!is_null($document)) {
             $data[$properties::CREDIT_CARD_HOLDER_CPF] = Characters::hasSpecialChars($document->getIdentifier());
         }

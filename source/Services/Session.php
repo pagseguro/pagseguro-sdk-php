@@ -39,7 +39,6 @@ class Session
 {
     public static function create(Credentials $credentials)
     {
-
         Logger::info("Begin", ['service' => 'Session']);
 
         try {
@@ -63,10 +62,9 @@ class Session
             throw $exception;
         }
     }
-    
+
     private static function request(Connection\Data $connection)
     {
-
         return $connection->buildSessionRequestUrl() . "?" . $connection->buildCredentialsQuery();
     }
 }

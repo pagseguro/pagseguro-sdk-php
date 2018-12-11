@@ -29,6 +29,7 @@ namespace PagSeguro\Parsers\DirectPayment\Boleto;
  *
  * @package PagSeguro\Parsers\DirectPayment\Boleto
  */
+
 use PagSeguro\Enum\Properties\Current;
 use PagSeguro\Parsers\Basic;
 use PagSeguro\Parsers\Currency;
@@ -40,11 +41,11 @@ use PagSeguro\Parsers\Parser;
 use PagSeguro\Parsers\ReceiverEmail;
 use PagSeguro\Parsers\Sender;
 use PagSeguro\Parsers\Shipping;
-use PagSeguro\Resources\Http;
 use PagSeguro\Parsers\Transaction\Boleto\Response;
+use PagSeguro\Resources\Http;
 
 /**
- * Class Payment
+ * Class Request
  * @package PagSeguro\Parsers\DirectPayment\Boleto
  */
 class Request extends Error implements Parser
