@@ -90,7 +90,8 @@ class Item
         $amount,
         $weight = null,
         $shippingCost = null
-    ) {
+    )
+    {
         $item = new \PagSeguro\Domains\Item();
         $item->setId($id)
             ->setAmount($amount)
@@ -99,6 +100,20 @@ class Item
             ->setWeight($weight)
             ->setShippingCost($shippingCost);
         array_push($this->item, $item);
+        return $this->item;
+    }
+
+    public function addItem(\PagSeguro\Domains\Item $item)
+    {
+        array_push($this->item, $item);
+        return $this->item;
+    }
+
+    /**
+     * @return array
+     */
+    public function getItem(): array
+    {
         return $this->item;
     }
 }
