@@ -128,15 +128,15 @@ Achou e corrigiu um bug ou tem alguma feature em mente e deseja contribuir?
 * Envie um Pull Request
 * Obs.: Adicione exemplos para sua nova feature. Se seu Pull Request for relacionado a uma versão específica, o Pull Request não deve ser enviado para o branch master e sim para o branch correspondente a versão.
 
-  [Criar Requisições de Pagamentos]: https://devs.pagseguro.uol.com.br/docs/checkout-web
-  [Criar Requisições de Pagamento Recorrente]: https://devs.pagseguro.uol.com.br/docs/pagamento-recorrente
-  [Criar Requisições de assinaturas]: https://devs.pagseguro.uol.com.br/docs/arquivo-documentacoes-depreciadas
-  [Cancelar Assinaturas]: https://devs.pagseguro.uol.com.br/docs/arquivo-documentacoes-depreciadas
-  [Consultar Assinaturas]: https://devs.pagseguro.uol.com.br/docs/arquivo-documentacoes-depreciadas
-  [Cancelar Transações por Código]: https://devs.pagseguro.uol.com.br/docs/pagamento-recorrente-cancelamento-de-adesao
-  [Consultar Transações por Código]: https://devs.pagseguro.uol.com.br/docs/pagamento-recorrente-consulta-pelo-codigo-de-adesao
-  [Consultar Transações por Intervalo de Datas]: https://devs.pagseguro.uol.com.br/docs/pagamento-recorrente-consulta-por-intervalo-de-datas
-  [Receber Notificações]: https://devs.pagseguro.uol.com.br/docs/checkout-web-notificacoes
+  [Criar Requisições de Pagamentos]: https://dev.pagseguro.uol.com.br/docs/checkout-web
+  [Criar Requisições de Pagamento Recorrente]: https://dev.pagseguro.uol.com.br/docs/pagamento-recorrente
+  [Criar Requisições de assinaturas]: https://dev.pagseguro.uol.com.br/docs/arquivo-documentacoes-depreciadas
+  [Cancelar Assinaturas]: https://dev.pagseguro.uol.com.br/docs/arquivo-documentacoes-depreciadas
+  [Consultar Assinaturas]: https://dev.pagseguro.uol.com.br/docs/arquivo-documentacoes-depreciadas
+  [Cancelar Transações por Código]: https://dev.pagseguro.uol.com.br/docs/pagamento-recorrente-cancelamento-de-adesao
+  [Consultar Transações por Código]: https://dev.pagseguro.uol.com.br/docs/pagamento-recorrente-consulta-pelo-codigo-de-adesao
+  [Consultar Transações por Intervalo de Datas]: https://dev.pagseguro.uol.com.br/docs/pagamento-recorrente-consulta-por-intervalo-de-datas
+  [Receber Notificações]: https://dev.pagseguro.uol.com.br/docs/checkout-web-notificacoes
   [fórum]: https://comunidade.pagseguro.uol.com.br/hc/pt-br/community/topics
   [PHP]: http://www.php.net/
   [SPL]: http://php.net/manual/en/book.spl.php
