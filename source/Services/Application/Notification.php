@@ -61,7 +61,7 @@ class Notification
             Logger::info(
                 sprintf(
                     "Date: %s, Code: %s",
-                    $response->getDate(),
+                    $response->getCreationDate(),
                     $response->getCode()
                 ),
                 ['service' => 'Application.Notification']
