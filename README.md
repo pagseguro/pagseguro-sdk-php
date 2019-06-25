@@ -144,3 +144,7 @@ Achou e corrigiu um bug ou tem alguma feature em mente e deseja contribuir?
   [Como receber pagamentos pelo PagSeguro]: https://pagseguro.uol.com.br/receba-pagamentos.jhtml#checkout-transparent
   [arquivo zip]: https://github.com/pagseguro/pagseguro-php-sdk/archive/master.zip
   [documentação oficial do Composer]: https://getcomposer.org/doc/
+
+Ajude com uma doaçãem BITCOIN para o desenvolvedor
+
+**adicionar sua carteira aqui**
