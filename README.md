@@ -80,7 +80,7 @@ Para saber mais sobre como configurar a biblioteca acesse a [documentação](/pu
 Dúvidas?
 ----------
 ---
-Caso tenha dúvidas ou precise de suporte, abra um chamado conosco[link].
+Caso tenha dúvidas ou precise de suporte, abra um chamado conosco [link].
 
 
 Changelog
