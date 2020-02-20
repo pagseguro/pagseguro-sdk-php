@@ -130,7 +130,7 @@ $creditCard->setMode('DEFAULT');
 // in future notifications.
 
 try {
-    //Get the crendentials and register the boleto payment
+    //Get the crendentials and register the credit card payment
     $result = $creditCard->register(
         \PagSeguro\Configuration\Configure::getAccountCredentials()
     );
