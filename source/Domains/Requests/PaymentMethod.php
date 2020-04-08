@@ -64,6 +64,6 @@ trait PaymentMethod
 
     public function paymentMethodLenght()
     {
-        return count($this->paymentMethod);
+        return count((array) $this->paymentMethod);
     }
 }
