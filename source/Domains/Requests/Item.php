@@ -36,7 +36,7 @@ trait Item
             $this->items,
             new \PagSeguro\Resources\Factory\Item()
         );
-        
+
         return $this->items;
     }
 
@@ -64,6 +64,11 @@ trait Item
 
     public function itemLenght()
     {
-        return count(current($this->items));
+        if((current($this->items) instanceof \Countable)
+            || \is_array(current($this->items))
+        ) {
+            return count(current($this->items));
+        }
+        return count($this->items);
     }
 }
