@@ -157,7 +157,7 @@ class Response
         //check if is an array of transactions if is just push to array
         if (is_array($transaction)) {
             foreach ($transaction as $item) {
-                array_push($this->transactions, $item);
+                $this->transactions[] = $item;
             }
             return;
         }
