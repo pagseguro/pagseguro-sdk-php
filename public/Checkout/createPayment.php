@@ -104,15 +104,15 @@ $payment->addPaymentMethod()->withParameters(
 
 //Add installments with no interest
 $payment->addPaymentMethod()->withParameters(
-    PagSeguro\Enum\PaymentMethod\Group::CREDIT_CARD,
-    PagSeguro\Enum\PaymentMethod\Config\Keys::MAX_INSTALLMENTS_NO_INTEREST,
+    \PagSeguro\Enum\PaymentMethod\Group::CREDIT_CARD,
+    \PagSeguro\Enum\PaymentMethod\Config\Keys::MAX_INSTALLMENTS_NO_INTEREST,
     2 // (int) qty of installment
 );
 
 //Add a limit for installment
 $payment->addPaymentMethod()->withParameters(
-    PagSeguro\Enum\PaymentMethod\Group::CREDIT_CARD,
-    PagSeguro\Enum\PaymentMethod\Config\Keys::MAX_INSTALLMENTS_LIMIT,
+    \PagSeguro\Enum\PaymentMethod\Group::CREDIT_CARD,
+    \PagSeguro\Enum\PaymentMethod\Config\Keys::MAX_INSTALLMENTS_LIMIT,
     6 // (int) qty of installment
 );
 
