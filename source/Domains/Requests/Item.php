@@ -28,6 +28,9 @@ use PagSeguro\Helpers\InitializeObject;
 
 trait Item
 {
+    /**
+     * @var \PagSeguro\Resources\Factory\Item
+     */
     private $items;
 
     public function addItems()
@@ -36,7 +39,7 @@ trait Item
             $this->items,
             new \PagSeguro\Resources\Factory\Item()
         );
-        
+
         return $this->items;
     }
 
@@ -46,24 +49,23 @@ trait Item
             $arr = array();
             foreach ($items as $key => $item) {
                 if ($item instanceof \PagSeguro\Domains\Item) {
-                    $arr[$key] = $item;
+                    $this->addItems()->addItem($item);
                 } else {
                     if (is_array($item)) {
-                        $arr[$key] = new \PagSeguro\Domains\Item($item);
+                        $this->addItems()->withArray($item);
                     }
                 }
             }
-            $this->items = $arr;
         }
     }
 
     public function getItems()
     {
-        return current($this->items);
+        return $this->items->getItem();
     }
 
     public function itemLenght()
     {
-        return count(current($this->items));
+        return count($this->items->getItem());
     }
 }
