@@ -56,4 +56,14 @@ class Permissions extends Enum
      *
      */
     const DIRECT_PAYMENT = 'DIRECT_PAYMENT';
+
+    /**
+     *
+     */
+    const REFUND_TRANSACTIONS = 'REFUND_TRANSACTIONS';
+
+    /**
+     *
+     */
+    const CANCEL_TRANSACTIONS = 'CANCEL_TRANSACTIONS';
 }
