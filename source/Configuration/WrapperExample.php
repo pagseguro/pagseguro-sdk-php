@@ -24,7 +24,7 @@
 
 namespace PagSeguro\Configuration;
 
-class Wrapper
+class WrapperExample
 {
     const ENV = "production";
     const EMAIL = "your_pagseguro_email";
