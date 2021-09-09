@@ -25,6 +25,5 @@
     "psr-4": {
       "PagSeguro\\Tests\\": "tests/"
     }
-  },
-  "minimum-stability": "dev"
+  }
 }
