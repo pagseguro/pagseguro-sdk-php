@@ -1,5 +1,6 @@
-Biblioteca de integração PagSeguro para PHP
-===========================================
+`DEPRECATED` # Biblioteca de integração PagSeguro para PHP
+
+> **_NOTE:_** **Esse SDK foi descontinuado** <br> Estamos trabalhando em soluções e facilidades para evoluirmos a Plataforma de API’s do PagSeguro. Conheça nossa Plataforma de API’s acessando https://dev.pagseguro.uol.com.br/reference/pagseguro-reference-intro
 
 [![Code Climate](https://codeclimate.com/github/pagseguro/pagseguro-php-sdk/badges/gpa.svg)](https://codeclimate.com/github/pagseguro/pagseguro-php-sdk)
 [![Total Downloads](https://poser.pugx.org/pagseguro/pagseguro-php-sdk/d/total.svg)](https://packagist.org/packages/pagseguro/pagseguro-php-sdk)
