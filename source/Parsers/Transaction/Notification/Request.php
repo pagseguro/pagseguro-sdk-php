@@ -44,7 +44,7 @@ class Request extends Error implements Parser
         $xml = simplexml_load_string($http->getResponse());
 
         $response = new Response();
-        $response->setDate(current($xml->date))
+        $response = $response->setDate(current($xml->date))
             ->setCode(current($xml->code))
             ->setReference(current($xml->reference))
             ->setType(current($xml->type))
@@ -60,8 +60,11 @@ class Request extends Error implements Parser
             ->setInstallmentCount(current($xml->installmentCount))
             ->setItemCount(current($xml->itemCount))
             ->setItems($xml->items)
-            ->setSender($xml->sender)
-            ->setShipping($xml->shipping);
+            ->setDeviceInfo($xml->deviceInfo);
+            if (!empty($xml->sender)) {
+                $response = $response->setSender($xml->sender);
+            }
+            $response = $response->setShipping($xml->shipping);
         return $response;
     }
 

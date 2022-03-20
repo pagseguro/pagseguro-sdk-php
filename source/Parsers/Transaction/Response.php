@@ -84,6 +84,11 @@ class Response
      */
     private $promoCode;
 
+    /**
+     * @var
+     */
+    private $deviceInfo;
+
     public function getCancelationSource()
     {
         return $this->cancelationSource;
@@ -236,6 +241,24 @@ class Response
     public function setPromoCode($promoCode)
     {
         $this->promoCode = $promoCode;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDeviceInfo()
+    {
+        return $this->deviceInfo;
+    }
+
+    /**
+     * @param mixed $DeviceInfo
+     * @return Response
+     */
+    public function setDeviceInfo($deviceInfo)
+    {
+        $this->deviceInfo = $deviceInfo;
         return $this;
     }
 }
