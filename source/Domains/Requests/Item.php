@@ -64,6 +64,10 @@ trait Item
 
     public function itemLenght()
     {
-        return count(current($this->items));
+        if((current($this->items) instanceof \Countable) || \is_array(current($this->items))) {
+            return count(current($this->items));
+        }
+
+        return count($this->items);
     }
 }
