@@ -64,6 +64,10 @@ trait PaymentMethod
 
     public function paymentMethodLenght()
     {
-        return count((array) $this->paymentMethod);
+        if((current($this->paymentMethod) instanceof \Countable) || \is_array(current($this->paymentMethod))) {
+            return count(current($this->paymentMethod));
+        }
+        
+        return count($this->paymentMethod);
     }
 }
