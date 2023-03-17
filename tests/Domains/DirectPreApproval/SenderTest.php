@@ -1,6 +1,6 @@
 <?php
 
-namespace PagSeguro\Tests\Domains\DirectPreApproval;
+namespace PagSeguro\Tests;
 
 use PHPUnit\Framework\TestCase;
 use PagSeguro\Domains\DirectPreApproval\Sender;
@@ -9,10 +9,8 @@ class SenderTest extends TestCase
 {
     private $obj;
 
-    protected function setUp(): void
+    protected function setUp()
     {
-        parent::setUp();
-
         $this->obj = new Sender();
     }
 
