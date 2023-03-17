@@ -1,6 +1,6 @@
 <?php
 
-namespace PagSeguro\Tests;
+namespace PagSeguro\Tests\Domains\DirectPreApproval;
 
 use PHPUnit\Framework\TestCase;
 use PagSeguro\Domains\DirectPreApproval\PaymentMethod;
@@ -9,8 +9,10 @@ class PaymentMethodTest extends TestCase
 {
     private $obj;
 
-    protected function setUp()
+    protected function setUp(): void
     {
+        parent::setUp();
+
         $this->obj = new PaymentMethod();
     }
 

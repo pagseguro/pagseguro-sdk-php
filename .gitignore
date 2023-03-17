@@ -67,6 +67,7 @@ sonar-project.properties
 *.vspscc
 .builds
 *.dotCover
+.phpunit.result.cache
 
 ## TODO: If you have NuGet Package Restore enabled, uncomment this
 #packages/
