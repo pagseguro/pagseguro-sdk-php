@@ -80,8 +80,8 @@ class QueryRequest
      * @param null $preApprovalCode
      */
     public function __construct(
-        $page = 1,
-        $maxPageResults = 50,
+        $page,
+        $maxPageResults,
         $initialDate,
         $finalDate = null,
         $status = null,

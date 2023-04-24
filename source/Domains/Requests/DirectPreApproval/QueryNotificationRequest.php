@@ -60,8 +60,8 @@ class QueryNotificationRequest
      * @param null $notificationCode
      */
     public function __construct(
-        $page = 1,
-        $maxPageResults = 50,
+        $page,
+        $maxPageResults,
         $interval,
         $notificationCode = null
     ) {
