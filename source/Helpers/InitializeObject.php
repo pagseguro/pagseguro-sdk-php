@@ -33,7 +33,7 @@ class InitializeObject
     /**
      * Check if $attr is started, if not instatiate it
      * @param object $attr
-     * @param class $instantiateClass
+     * @param self $instantiateClass
      * @return object from $instantiateClass
      */
     public static function initialize($attr, $instantiateClass)
